@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Laravel PHP Framework</title>
+	<title>Screenly</title>
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
@@ -37,6 +37,20 @@
 	<div class="welcome">
 		<h1>Screenly</h1>
 		<p>API to get Screenshots from Websites</p>
+
+		<hr>
+
+		@if(Auth::check())
+			<p>{{ link_to_route('oauth.logout', 'Logout') }}</p>
+		@else
+			<p>{{ link_to_route('oauth.github', 'Login via Github') }}</p>
+		@endif
+
+		<p>
+
+
+		</p>
+
 	</div>
 </body>
 </html>
