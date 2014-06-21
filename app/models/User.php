@@ -80,4 +80,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+
+    protected $fillable = [
+        'email', 'token', 'api_key', 'plan', 'provider'
+    ];
+
+
+
+
+
+    /**
+    *
+    * Relationships
+    *
+    **/
+
+    public function api_logs()
+    {
+        return $this->has_many('APILog', 'user_id');
+    }
+
+
+
+
 }

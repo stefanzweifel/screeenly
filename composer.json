@@ -4,8 +4,19 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*"
+		"laravel/framework": "4.2.*",
+  		"artdarek/oauth-4-laravel": "dev-master",
+		"laravelbook/ardent": "dev-master",
+		"doctrine/dbal": "~2.3",
+		"jonnyw/php-phantomjs": "dev-master"
+
+
 	},
+	"require-dev": {
+		"way/generators": "2.3"
+	},
+
+
 	"autoload": {
 		"classmap": [
 			"app/commands",
