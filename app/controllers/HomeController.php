@@ -20,4 +20,34 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	/**
+	*
+	* Display a landingpage
+	*
+	**/
+
+	public function showLandingpage()
+	{
+		return View::make('hello');
+	}
+
+	/**
+	*
+	* Show Dashboard with user information
+	*
+	**/
+
+	public function showDashboard()
+	{
+
+        //Get Current user
+        $user = User::find( Auth::id() );
+
+        //Get API Calls
+        $logs = APILog::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->get();
+
+        return View::make('dashboard', compact('user', 'logs'));
+
+	}
+
 }

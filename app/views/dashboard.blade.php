@@ -7,3 +7,25 @@
 
 
 <p>{{ link_to_route('oauth.logout', 'Logout') }}</p>
+
+
+<hr>
+
+
+@if($logs)
+
+    <ul>
+    @foreach ($logs as $key => $log)
+
+        <li>
+            <a href="{{ asset(Config::get('api.storage_path').$log->images); }}" target="blank">{{ $log->images }}</a>
+        </li>
+
+    @endforeach
+    </ul>
+
+
+@else
+
+
+@endif
