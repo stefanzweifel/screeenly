@@ -8,8 +8,7 @@
   		"artdarek/oauth-4-laravel": "dev-master",
 		"laravelbook/ardent": "dev-master",
 		"doctrine/dbal": "~2.3",
-		"jonnyw/php-phantomjs": "dev-master"
-
+		"spatie/browsershot": "dev-master"
 
 	},
 	"require-dev": {
