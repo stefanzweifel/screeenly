@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => '1GNCGsRNe0LaLAtODiAskIJ3mUwJh3hA',
+	'key' => $_ENV['encryption_key'],
 
 	'cipher' => MCRYPT_RIJNDAEL_256,
 
@@ -123,7 +123,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Artdarek\OAuth\OAuthServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider'
+		'Way\Generators\GeneratorsServiceProvider',
+
+		'Spatie\Browsershot\BrowsershotServiceProvider'
 
 
 	),
@@ -193,7 +195,6 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 		'OAuth'  => 'Artdarek\OAuth\Facade\OAuth',
-		'Client' => 'JonnyW\PhantomJs\Client'
 
 	),
 
