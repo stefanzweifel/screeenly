@@ -1,0 +1,25 @@
+{
+  "name": "screenshot-app",
+  "version": "0.0.1",
+  "authors": [
+    "Stefan Zweifel <stef.zweifel@gmail.com>"
+  ],
+  "description": "Fuellog app",
+  "keywords": [
+    "Bower",
+    "Laravel",
+    "Grunt"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/assets/bower_stuff/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0"
+  }
+}
