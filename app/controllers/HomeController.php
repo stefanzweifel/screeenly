@@ -28,7 +28,14 @@ class HomeController extends BaseController {
 
 	public function showLandingpage()
 	{
-		return View::make('hello');
+
+		if(Auth::check()) {
+			return Redirect::to('/dashboard');
+		}
+		else {
+			return View::make('marketing.landingpage');
+		}
+
 	}
 
 	/**

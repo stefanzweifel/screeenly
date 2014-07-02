@@ -2,13 +2,22 @@
 
 /**
 *
-* OAuth Systemö
+* Landingpage
 *
 **/
 
+Route::get('/', [
+    'as' => 'home.landingpage',
+    'uses' => 'HomeController@showLandingpage'
+]);
+
+/**
+*
+* OAuth System
+*
+**/
 
 Route::group(['prefix' => 'oauth'], function(){
-
 
     Route::get('authorize', array(
         'as' => 'oauth.github',
@@ -24,10 +33,6 @@ Route::group(['prefix' => 'oauth'], function(){
         'as' => 'oauth.logout',
         'uses' => 'OAuthController@logout'
         ));
-
-
-
-
 
 });
 
@@ -87,13 +92,4 @@ Route::group(['before' => 'auth'], function(){
             'uses' => 'HomeController@showDashboard'
         ));
 
-
-});
-
-
-
-
-Route::get('/', function()
-{
-	return View::make('hello');
 });

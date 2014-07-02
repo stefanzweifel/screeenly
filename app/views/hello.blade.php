@@ -46,11 +46,6 @@
 			<p>{{ link_to_route('oauth.github', 'Login via Github') }}</p>
 		@endif
 
-		<p>
-
-
-		</p>
-
 	</div>
 </body>
 </html>
