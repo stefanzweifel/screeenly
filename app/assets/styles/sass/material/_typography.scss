@@ -1,0 +1,63 @@
+.material__title {
+    font-weight: $font-weight__medium;
+    font-size: em(20);
+
+    @include hyphens(auto);
+    @include ellipsis();
+}
+
+.material__caption {
+    font-weight: $font-weight__normal;
+    font-size: em(12);
+}
+
+.material__menu {
+    font-weight: $font-weight__medium;
+    font-size: em(14);
+}
+
+.material__button {
+    font-weight: $font-weight__medium;
+    font-size: em(14);
+    text-transform: uppercase;
+}
+
+.material__body-1 {
+    font-weight: $font-weight__normal;
+    font-size: em(14);
+}
+
+.material__body-2 {
+    font-weight: $font-weight__medium;
+    font-size: em(14);
+}
+
+.material__subhead {
+    font-weight: $font-weight__normal;
+    font-size: em(16);
+}
+
+.material__headline {
+    font-weight: $font-weight__normal;
+    font-size: em(24);
+}
+
+.material__display-1 {
+    font-weight: $font-weight__normal;
+    font-size: em(34);
+}
+
+.material__display-2 {
+    font-weight: $font-weight__normal;
+    font-size: em(45);
+}
+
+.material__display-3 {
+    font-weight: $font-weight__normal;
+    font-size: em(56);
+}
+
+.material__display-4 {
+    font-weight: $font-weight__light;
+    font-size: em(112);
+}

@@ -69,6 +69,14 @@ module.exports = function(grunt) {
                 'app/assets/scripts/main.js'
                 ],
             dest: '<%= project.dist_js %>/main.min.js',
+        },
+
+        //CSS
+        vendor_css: {
+            src: [
+                'app/assets/bower_stuff/animate-css/animate.min.css'
+                ],
+            dest: '<%= project.dist_css %>/vendor.css',
         }
 
     },
@@ -109,7 +117,7 @@ module.exports = function(grunt) {
             tasks: ['concat', 'uglify']
         },
         sass: {
-            files: ['<%= project.src_css %>/scss/{,*/}*.{scss,sass}' ],
+            files: ['<%= project.src_css %>/sass/**/*.{scss,sass}' ],
             tasks: ['sass:dev']
         }
 
@@ -146,6 +154,7 @@ module.exports = function(grunt) {
     *
     **/
     grunt.registerTask('default', ['concat', 'uglify']);
-    grunt.registerTask('sass-dev', ['newer:sass:dev', 'newer:watch:sass']);
+
+    grunt.registerTask('sass-dev', ['watch:sass', 'sass:dev']);
 
 };

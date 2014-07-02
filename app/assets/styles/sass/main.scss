@@ -5,7 +5,79 @@
 **/
 
 /* Vendor Stuff */
-
 @import "bourbon/bourbon";
 @import "neat/neat";
+
+
+@import "_base/variables";
+
+
 @import "bitters/bitters";
+
+
+/* Material Design */
+@import "material/card";
+@import "material/statusbar";
+@import "material/appbar";
+@import "material/typography";
+
+body, html {
+    margin: 0;
+    padding: 0;
+    @include hyphens(auto);
+    font-family: 'Roboto';
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto';
+}
+
+#main-content--wrapper {
+    @include position(relative, -50px null null null);
+
+      @include media($tablet) {
+        padding: em(20);
+      }
+}
+
+section, .container {
+  @include outer-container;
+
+  aside { @include span-columns(3); }
+
+  article { @include span-columns(9); }
+
+}
+
+footer {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+
+    a {
+        font-style: italic;
+        color: #fff;
+    }
+}
+
+
+nav {
+
+    color: #fff;
+
+    a {
+        color: #fff;
+    }
+
+    ul {
+        text-align: right;
+        position: relative;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+}
