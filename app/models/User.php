@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -82,8 +83,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
     protected $fillable = [
-        'email', 'token', 'api_key', 'plan', 'provider'
+        'email', 'token', 'api_key', 'plan', 'provider', 'provider_id'
     ];
+
+    use SoftDeletingTrait;
 
 
     /**

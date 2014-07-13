@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class APILog extends \Eloquent {
 
     protected $fillable = [
@@ -8,8 +10,7 @@ class APILog extends \Eloquent {
 
     protected $table = 'api_log';
 
-    protected $softDelete = true;
-
+    use SoftDeletingTrait;
 
     /**
     *
