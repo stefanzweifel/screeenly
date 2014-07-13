@@ -4,13 +4,12 @@
 {{-- Include head with navigation and logo --}}
 <header>
     @include('layouts.head')
-    @include('layouts.appbar')
 </header>
 
 
-    <section id="main-content--wrapper" class="animated fadeIn" role="main">
+    <main role="main">
         @yield('content')
-    </section>
+    </main>
 
 {{-- include footer  --}}
 @include('layouts.footer')

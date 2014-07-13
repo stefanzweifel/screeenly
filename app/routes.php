@@ -11,6 +11,21 @@ Route::get('/', [
     'uses' => 'HomeController@showLandingpage'
 ]);
 
+Route::get('/docs', [
+    'as' => 'front.documentation',
+    'uses' => 'HomeController@showDocumentation'
+]);
+
+Route::get('/terms', [
+    'as' => 'front.terms',
+    'uses' => 'HomeController@showTerms'
+]);
+
+Route::get('/imprint', [
+    'as' => 'front.imprint',
+    'uses' => 'HomeController@showImprint'
+]);
+
 /**
 *
 * OAuth System
@@ -91,5 +106,22 @@ Route::group(['before' => 'auth'], function(){
             'as' => 'front.dashboard',
             'uses' => 'HomeController@showDashboard'
         ));
+
+        Route::get('settings', array(
+            'as' => 'front.settings',
+            'uses' => 'HomeController@showSettings'
+        ));
+
+        Route::post('resetAPIKey', array(
+            'as' => 'front.resetAPIKey',
+            'uses' => 'UserController@resetAPIKey'
+        ));
+
+        Route::post('close', array(
+            'as' => 'front.closeAccount',
+            'uses' => 'UserController@closeAccount'
+        ));
+
+
 
 });
