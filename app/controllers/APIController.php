@@ -36,7 +36,7 @@ class APIController extends BaseController {
         {
 
             //Generate Filename and path
-            $filename       = uniqid().'_'.Str::random(20).'.jpg';
+            $filename       = uniqid().Str::random(20).'.jpg';
             $storage_folder = Config::get('api.storage_path');
             $storage_path   = public_path().'/'.$storage_folder.$filename;
             $return_path    = asset($storage_folder.$filename);
