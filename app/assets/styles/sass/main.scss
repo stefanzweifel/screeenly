@@ -16,10 +16,13 @@
 
 
 /* Material Design */
+@import "material/grid";
+@import "material/z-depth";
 @import "material/card";
 @import "material/statusbar";
 @import "material/appbar";
 @import "material/typography";
+@import "material/logo";
 
 body, html {
     margin: 0;
@@ -29,24 +32,16 @@ body, html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
 }
 
 #main-content--wrapper {
-    @include position(relative, -50px null null null);
+
+    padding: em(20) 0;
 
       @include media($tablet) {
         padding: em(20);
       }
-}
-
-section, .container {
-  @include outer-container;
-
-  aside { @include span-columns(3); }
-
-  article { @include span-columns(9); }
-
 }
 
 footer {
@@ -54,6 +49,7 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
+    font-size: em(14);
 
     a {
         font-style: italic;
@@ -80,4 +76,69 @@ nav {
         margin: 0 20px;
     }
 
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+hr {
+    border: 0;
+    border-bottom: 2px solid #d0d2d4;
+    width: 6em;
+    padding-top: 1.4rem;
+    margin: -2px auto 2.8rem;
+}
+
+pre {
+    background: $light-gray;
+    padding: em(10);
+    border-radius: 2px;
+    border: solid 1px darken($light-gray, 10);
+    word-wrap: break-word;
+}
+
+.message {
+    background: #323232;
+    color: #fff;
+    padding: 18px 24px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+button {
+    @extend .material--button;
+    @extend a;
+    border: none;
+    outline: none;
+    background: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.button--raised {
+    @extend .material--button;
+    @extend a;
+
+    background: $accent-color;
+    color: $base-font-color--invert;
+
+    padding: em(15) em(30);
+
+    box-shadow: 2px 2px 5px 0 #838383;
+    @include transition (all .2s ease-in-out);
+
+    &:hover {
+        background: #333;
+        color: darken($base-font-color--invert, 1);
+    }
+}
+
+.card {
+    ul, ol {
+        list-style-type: initial;
+        padding-left: 40px;
+    }
 }

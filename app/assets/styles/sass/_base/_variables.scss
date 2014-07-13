@@ -61,18 +61,23 @@ $button-style: simple;
 /* Variables */
 $primary-color: #ff5722;
 $primary-color__fallback: #ffccbc;
-$primary-color__hue: #e64a19;
+$primary-color--hue: #e64a19;
+$primary-color--dark: #bf360c;
 
-$accent-color: #111;
-$accent-color__fallback: #111;
-$accent-color__hue: #111;
+$primary-color--fallback: #fbe9e7;
+
+
+$accent-color: #03a9f4;
+$accent-color--fallback: #e1f5fe;
+$accent-color--hue: #4fc3f7;
+$accent-color--dark: #01579b;
 
 $base-font-color: #111;
-$base-font-color__invert: #fff;
+$base-font-color--invert: #fff;
 
-$font-weight__light: 300;
-$font-weight__normal: 400;
-$font-weight__medium: 500;
+$font-weight--light: 300;
+$font-weight--normal: 400;
+$font-weight--medium: 500;
 
 $max-width: em(800);
 

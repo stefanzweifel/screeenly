@@ -1,31 +1,11 @@
 .card {
-    background: #fff;
+    background: rgb(255, 255, 255);
     min-height: 150px;
     width: 100%;
-    box-shadow: 0 0 5px 2px rgba(138, 138, 138, 0.42);
     margin-bottom: 20px;
     padding: 20px;
+    border-radius: em(2);
 
-    @include row();
-
-
-    @include outer-container;
-
-        img {
-            @include span-columns(4);
-
-            @include media($mobile) {
-                @include span-columns(12);
-            }
-
-        }
-
-        section {
-            @include span-columns(8);
-
-            @include media($mobile) {
-                @include span-columns(12);
-            }
-        }
+    position: relative;
 
 }

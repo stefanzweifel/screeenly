@@ -1,63 +1,66 @@
-.material__title {
-    font-weight: $font-weight__medium;
+.material--title {
+    font-weight: $font-weight--medium;
     font-size: em(20);
 
     @include hyphens(auto);
     @include ellipsis();
 }
 
-.material__caption {
-    font-weight: $font-weight__normal;
+.material--caption {
+    font-weight: $font-weight--normal;
     font-size: em(12);
 }
 
-.material__menu {
-    font-weight: $font-weight__medium;
+.material--menu {
+    font-weight: $font-weight--medium;
     font-size: em(14);
 }
 
-.material__button {
-    font-weight: $font-weight__medium;
+.material--button {
+    font-weight: $font-weight--medium;
     font-size: em(14);
     text-transform: uppercase;
+
+    margin: 0;
+    padding: em(10) em(15);
 }
 
-.material__body-1 {
-    font-weight: $font-weight__normal;
+.material--body-1 {
+    font-weight: $font-weight--normal;
     font-size: em(14);
 }
 
-.material__body-2 {
-    font-weight: $font-weight__medium;
+.material--body-2 {
+    font-weight: $font-weight--medium;
     font-size: em(14);
 }
 
-.material__subhead {
-    font-weight: $font-weight__normal;
+.material--subhead {
+    font-weight: $font-weight--normal;
     font-size: em(16);
 }
 
-.material__headline {
-    font-weight: $font-weight__normal;
+.material--headline {
+    font-weight: $font-weight--normal;
     font-size: em(24);
 }
 
-.material__display-1 {
-    font-weight: $font-weight__normal;
+.material--display-1 {
+    font-weight: $font-weight--normal;
     font-size: em(34);
 }
 
-.material__display-2 {
-    font-weight: $font-weight__normal;
+.material--display-2 {
+    font-weight: $font-weight--normal;
     font-size: em(45);
 }
 
-.material__display-3 {
-    font-weight: $font-weight__normal;
+.material--display-3 {
+    font-weight: $font-weight--normal;
     font-size: em(56);
 }
 
-.material__display-4 {
-    font-weight: $font-weight__light;
+.material--display-4 {
+    font-weight: $font-weight--light;
     font-size: em(112);
 }

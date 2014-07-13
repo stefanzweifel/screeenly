@@ -1,12 +1,12 @@
 .appbar {
 
     background-color: $primary-color;
-    height: 170px;
+    color: $base-font-color--invert;
+    padding: em(10) 0;
+    min-height: 56px;
 
-    color: $base-font-color__invert;
-
-    // box-shadow: 0 0px 5px 0px $medium-gray;
-
-
+    @include media($tablet) {
+        padding: em(20);
+    }
 
 }

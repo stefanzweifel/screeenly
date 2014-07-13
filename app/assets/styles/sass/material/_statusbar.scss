@@ -1,8 +1,11 @@
 .statusbar {
-
-    background-color: $primary-color__hue;
+    background-color: $primary-color--hue;
     height: 25px;
 
+    a {
 
-
+        &:hover {
+            color: $primary-color--fallback;
+        }
+    }
 }
