@@ -17,6 +17,8 @@ return array(
 
 	'default' => 'sync',
 
+	'encrypt' => true,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Queue Connections
@@ -52,8 +54,8 @@ return array(
 		'iron' => array(
 			'driver'  => 'iron',
 			'host'    => 'mq-aws-us-east-1.iron.io',
-			'token'   => 'your-token',
-			'project' => 'your-project-id',
+			'token'   => $_ENV['iron_token'],
+			'project' => $_ENV['iron_project'],
 			'queue'   => 'your-queue-name',
 		),
 
