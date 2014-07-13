@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
     @section('meta_title')
-        Screenly
+        Settings
     @stop
 
     @section('page_title')Settings @stop
@@ -29,7 +29,7 @@
             <hr>
 
             <h2 class="material--display-1">Close account</h2>
-            <p class="material--body-1">If you no longer wan't to use Screenly, just hit that button down there. We will erase all your screenshots and will close your account.</p>
+            <p class="material--body-1">If you no longer wan't to use screeenly, just hit that button down there. We will erase all your screenshots and will close your account.</p>
             <p class="material--body-1">We would be pleased to hear why you left us. Just drop a line.</p>
 
             {{ Form::open(array('route' => 'front.closeAccount')) }}

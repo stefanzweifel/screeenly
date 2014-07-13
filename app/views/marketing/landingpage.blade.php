@@ -1,18 +1,11 @@
 @extends ('layouts.landingpage')
 
-    @section('meta_title')
-        Screenly
-    @stop
-
-    @section('page_title')
-        Screenshot-App
-    @stop
 
     @section('content')
 
         <div class="layer layer--primary">
             <div class="container">
-                <h1 class="site-logo text-center"><img src="/images/site-logo.png" alt="Screenly Logo"></h1>
+                <h1 class="site-logo text-center"><img src="/images/site-logo.png" alt="screeenly Logo"></h1>
                 <p class="material--display-1 text-center animated fadeIn">Dead simple screenshot grapping API</p>
 
             @if(!Auth::check())
@@ -33,10 +26,10 @@
                     </div>
                     <div class="col--6">
                         <h3>Check it out. It's free</h3>
-                        <p>Screenly is and will always be free!</p>
+                        <p>screeenly is free!</p>
                         <p>We are tired of all those apps, where you have to pay a monthly fee.</p>
                         <br>
-                        <p>Screenly is also Open Source.</p>
+                        <p>Screeenly is also Open Source.</p>
                     </div>
                 </div>
             </div>

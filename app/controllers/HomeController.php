@@ -3,11 +3,9 @@
 class HomeController extends BaseController {
 
 	/**
-	*
-	* Display a landingpage
-	*
-	**/
-
+	 * Display Landingpage
+	 * @return void
+	 */
 	public function showLandingpage()
 	{
 
@@ -21,14 +19,11 @@ class HomeController extends BaseController {
 	}
 
 	/**
-	*
-	* Show Dashboard with user information
-	*
-	**/
-
+	 * Display User Dashboard
+	 * @return void
+	 */
 	public function showDashboard()
 	{
-
         //Get Current user
         $user = User::find( Auth::id() );
 
@@ -47,7 +42,7 @@ class HomeController extends BaseController {
 	{
 
 		$user = User::find( Auth::id() );
-		$logs = APILog::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->get();
+		$logs = APILog::where('user_id', '=', $user->id)->withTrashed()->orderBy('created_at', 'DESC')->get();
 
 		return View::make('application.settings', compact('user', 'logs'));
 	}
@@ -61,11 +56,19 @@ class HomeController extends BaseController {
 		return View::make('documentation.start');
 	}
 
+	/**
+	 * Diplsay Terms of Service Page
+	 * @return void
+	 */
 	public function showTerms()
 	{
 		return View::make('terms');
 	}
 
+	/**
+	 * Display Imprint Page
+	 * @return void
+	 */
 	public function showImprint()
 	{
 		return View::make('imprint');

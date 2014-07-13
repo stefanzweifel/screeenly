@@ -1,10 +1,10 @@
 {
-  "name": "screenshot-app",
-  "version": "0.0.1",
+  "name": "screeenly",
+  "version": "0.1.0",
   "authors": [
-    "Stefan Zweifel <stef.zweifel@gmail.com>"
+    "Stefan Zweifel <hello@screeenly.com>"
   ],
-  "description": "Fuellog app",
+  "description": "A dead simple screenshot API",
   "keywords": [
     "Bower",
     "Laravel",

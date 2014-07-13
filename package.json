@@ -1,7 +1,7 @@
 {
-  "name": "screenshot-app",
-  "version": "0.0.1",
-  "description": "Simple Screenshot API",
+  "name": "screeenly",
+  "version": "0.1.0",
+  "description": "Dead simple screenshot API",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -3,16 +3,14 @@
 class OAuthController extends BaseController {
 
     /**
-    *
-    * Authorize User with Github Account
-    *
-    **/
-
+     * Handle OAuth with Github
+     * @return void
+     */
     public function authorize_github(){
 
         if (Auth::check())
         {
-            return Redirect::to('/');
+            return Redirect::to('/dashboard');
         }
 
         // get data from input
@@ -48,12 +46,10 @@ class OAuthController extends BaseController {
                 ];
 
                 $user = User::create($data);
-
                 Slack::sendMessage('A new user has registered.');
 
-                Auth::login($user);
-
             }
+
             Auth::login($user);
             return Redirect::to('/dashboard');
 
@@ -63,7 +59,7 @@ class OAuthController extends BaseController {
             // get githubService authorization
             $url = $githubService->getAuthorizationUri();
 
-            // return to facebook login url
+            // return to Github login url
             return Redirect::to( (string)$url );
         }
 

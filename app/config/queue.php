@@ -15,9 +15,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sync',
-
-	'encrypt' => true,
+	'default' => 'iron',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,7 +54,8 @@ return array(
 			'host'    => 'mq-aws-us-east-1.iron.io',
 			'token'   => $_ENV['iron_token'],
 			'project' => $_ENV['iron_project'],
-			'queue'   => 'your-queue-name',
+			'queue'   => $_ENV['iron_queue'],
+			'encrypt' => true,
 		),
 
 		'redis' => array(

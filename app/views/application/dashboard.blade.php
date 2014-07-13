@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
     @section('meta_title')
-        Screenly
+        Dashboard
     @stop
 
     @section('page_title')Dashboard @stop
@@ -10,10 +10,10 @@
 
         <div class="card">
 
-            <p class="material--title">Hi there, thanks for using Screenly.</p>
-            <p class="material--body-1">We are currently in an early alpha version and we will improve the overall app over the upcoming weeks. We are currently working on the overall design and documention of the app. If you find any bugs or just want to give us feedback, please let us know via <a href="mailto:hello@wnx.ch">email</a> or via <a href="http//twitter.com/_stefanzweifel">Twitter</a>.</p>
+            <p class="material--title">Hi there, thanks for using screeenly.</p>
+            <p class="material--body-1">We are currently in an early alpha version, so bugs may apear. We're happy about every <a href="https://docs.google.com/forms/d/1rSfWcUrPCf2Ony3blKh6L3dOQiIanVKU0HZ0Org4eFs/viewform?usp=send_form">Feedback</a>.</p>
 
-            <p class="material--body-2">Your personal API Key is <code>{{ $user->api_key }}</code>. Just create a POST-Request to <strong>http://screenshot.app:8000/api/v1/screen</strong> with the parameters <strong>key</strong> (your API key) and <strong>url</strong>.</p>
+            <div class="message">Your API Key: <code>{{ $user->api_key }}</code></div>
 
             <!-- Shadow -->
             <div class="paper-shadow paper-shadow-bottom-z-1"></div>

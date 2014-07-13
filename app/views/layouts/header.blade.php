@@ -4,7 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
-        <title>@yield('meta_title', 'screeenly')</title>
+        @if (trim($__env->yieldContent('meta_title')))
+            <title>@yield('meta_title') | screeenly</title>
+        @else
+            <title>screeenly &bull; dead simple screenshot API</title>
+        @endif
+
         <meta name="description" content="@yield('meta_description', 'Meta Text')" />
 
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">

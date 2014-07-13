@@ -1,25 +1,20 @@
 <?php
 
-// use JonnyW\PhantomJs\Client;
+use Carbon\Carbon;
 
 class APIController extends BaseController {
 
     private $header;
-
 
     public function __construct()
     {
         $this->header = ['Access-Control-Allow-Origin' => '*'];
     }
 
-
     /**
-    *
-    * Take screenshot from website
-    * via phantomJS
-    *
-    **/
-
+     * Create a screenshot with Phantom JS
+     * @return void
+     */
     public function createScreenshot()
     {
         //Debug
@@ -27,9 +22,11 @@ class APIController extends BaseController {
 
         //Get Input
         $api_key = Input::get('key');
-        $url     = Input::get('url', 'http://google.com');
+        $url     = Input::get('url', 'http://screeenly.com');
         $width   = Input::get('width', 1024);
         $height  = Input::get('height', 768);
+
+        $url = $this->addhttp($url);
 
         //Check API-Key
         if( $user = User::getUserByKey($api_key) )
@@ -48,8 +45,6 @@ class APIController extends BaseController {
                     ->setWidth($width)
                     ->setHeight($height)
                     ->save($storage_path);
-
-
 
             //Debug
             $endTime = time();
@@ -71,12 +66,30 @@ class APIController extends BaseController {
             $log->user()->associate($user);
             $log->save();
 
+            //Push Queue to delete Screenshot in a week
+            $date = Carbon::now()->addWeeks(1);
+            Queue::later($date, 'IronController@deleteScreenshot', ['id' => $log->id]);
+
             return Response::json($result, 201, $this->header);
 
         }
         else {
             return Response::json('Wrong API key', 401, $this->header);
         }
+
+    }
+
+    /**
+     * Add HTTP to a URL, if it not exists
+     * @param  string $url
+     * @return string
+     */
+    public function addhttp($url) {
+
+        if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
+            $url = "http://" . $url;
+        }
+        return $url;
 
     }
 

@@ -8,7 +8,9 @@
   		"artdarek/oauth-4-laravel": "dev-master",
 		"laravelbook/ardent": "dev-master",
 		"doctrine/dbal": "~2.3",
-		"spatie/browsershot": "dev-master"
+		"spatie/browsershot": "dev-master",
+		"iron-io/iron_mq": "dev-master",
+		"nesbot/Carbon": "*"
 
 	},
 	"require-dev": {

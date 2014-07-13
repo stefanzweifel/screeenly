@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
     @section('meta_title')
-        Documentation | screeenly
+        Documentation
     @stop
 
     @section('page_title')Documentation @stop
@@ -14,7 +14,7 @@
             <p class="material--body-1">Before you start, please be aware of the following rules</p>
             <ol>
                 <li>You must have an API Key to create Screenshots</li>
-                <li><strong>You're screenshots will be removed after 7 days (604'800 seconds) of their creation.</strong></li>
+                <li><strong>Your screenshots will be removed after 7 days (604'800 seconds) of their creation.</strong></li>
             </ol>
             <br>
 
@@ -30,7 +30,7 @@
 
             <p class="material--body-2">Return value</p>
             <pre>{
-    "filename": "http://screenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
+    "filename": "http://screeenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
 }</pre>
 
             <h3 class="material--title">Advanced Request with dimensions</h3>
@@ -46,7 +46,7 @@
 
             <p class="material--body-2">Return value</p>
             <pre>{
-    "filename": "http://screenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
+    "filename": "http://screeenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
 }</pre>
 
             <!-- Shadow -->

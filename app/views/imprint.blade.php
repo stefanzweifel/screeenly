@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
     @section('meta_title')
-        Screenly
+        Imprint
     @stop
 
     @section('page_title')Imprint @stop
@@ -11,7 +11,7 @@
         <div class="card">
 
             <h2 class="material--display-1">Contact Information</h2>
-            <p class="material--body-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, ex dolores minus eaque quaerat. Quis quibusdam a, sunt nesciunt quod nisi sint. At unde, voluptatibus dicta qui saepe placeat aperiam.</p>
+            <p class="material--body-1">You can reach us via Email at <a href="mailto:hello@screeenly.com">hello@screeenly.com</a> if you have any questions, concerns, feedback, news, love you want to share with us.</p>
 
 
             <!-- Shadow -->
