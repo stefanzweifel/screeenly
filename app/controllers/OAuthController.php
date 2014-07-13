@@ -26,10 +26,12 @@ class OAuthController extends BaseController {
         if ( !empty( $code ) ) {
 
             // This was a callback request from github, get the token
-            $token  = $githubService->requestAccessToken( $code );
-            $result = json_decode($githubService->request('user'), true);
-            $email  = $result['email'];
-            $user   = User::where('email', '=', $email)->first();
+            $token       = $githubService->requestAccessToken( $code );
+            $result      = json_decode($githubService->request('user'), true);
+
+            $email       = $result['email'];
+            $provider_id = $result['id'];
+            $user        = User::where('provider_id', '=', $provider_id)->first();
 
             //User exists
             if(!$user)
@@ -37,14 +39,17 @@ class OAuthController extends BaseController {
 
                 //Create User
                 $data = [
-                    'email'    => $email,
-                    'token'    => $code,
-                    'api_key'  => Str::random(50),
-                    'plan'     => 0,
-                    'provider' => 'Github'
+                    'email'       => $email,
+                    'token'       => $code,
+                    'api_key'     => Str::random(50),
+                    'plan'        => 0,
+                    'provider_id' => $provider_id,
+                    'provider'    => 'Github'
                 ];
 
                 $user = User::create($data);
+
+                Slack::sendMessage('A new user has registered.');
 
                 Auth::login($user);
 
@@ -64,24 +69,10 @@ class OAuthController extends BaseController {
 
     }
 
-    public function response()
-    {
-
-
-    }
-
     /**
-    *
-    * Log user in
-    *
-    **/
-
-    public function login()
-    {
-
-    }
-
-
+     * Logout User
+     * @return void
+     */
     public function logout()
     {
 
