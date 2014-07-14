@@ -17,7 +17,7 @@ class OAuthController extends BaseController {
         $code = Input::get( 'code' );
 
         // get github service
-        $githubService = OAuth::consumer( 'Github' );
+        $githubService = OAuth::consumer( 'GitHub' );
 
 
         // if code is provided get user data and sign in
