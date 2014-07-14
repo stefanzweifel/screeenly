@@ -630,6 +630,7 @@ section article:last-child, .container article:last-child {
 .material--title {
   font-weight: 500;
   font-size: 1.25em;
+  line-height: 0.75em;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -644,16 +645,19 @@ section article:last-child, .container article:last-child {
 .material--caption {
   font-weight: 400;
   font-size: 0.75em;
+  line-height: 0.75em;
 }
 
 .material--menu {
   font-weight: 500;
   font-size: 0.875em;
+  line-height: 0.75em;
 }
 
 .material--button, button, .button--raised {
   font-weight: 500;
   font-size: 0.875em;
+  line-height: 0.875em;
   text-transform: uppercase;
   margin: 0;
   padding: 0.625em 0.9375em;
@@ -662,41 +666,49 @@ section article:last-child, .container article:last-child {
 .material--body-1 {
   font-weight: 400;
   font-size: 0.875em;
+  line-height: 1.3125em;
 }
 
 .material--body-2 {
   font-weight: 500;
   font-size: 0.875em;
+  line-height: 1.3125em;
 }
 
 .material--subhead {
   font-weight: 400;
   font-size: 1em;
+  line-height: 1em;
 }
 
 .material--headline {
   font-weight: 400;
   font-size: 1.5em;
+  line-height: 7.75em;
 }
 
 .material--display-1 {
   font-weight: 400;
   font-size: 2.125em;
+  line-height: 40px;
 }
 
 .material--display-2 {
   font-weight: 400;
   font-size: 2.8125em;
+  line-height: 45px;
 }
 
 .material--display-3 {
   font-weight: 400;
   font-size: 3.5em;
+  line-height: 56px;
 }
 
 .material--display-4 {
   font-weight: 300;
   font-size: 7em;
+  line-height: 112px;
 }
 
 .site-logo {

@@ -5,8 +5,8 @@
 
         <div class="layer layer--primary">
             <div class="container">
-                <h1 class="site-logo text-center"><img src="/images/site-logo.png" alt="screeenly Logo"></h1>
-                <p class="material--display-1 text-center animated fadeIn">Dead simple screenshot grapping API</p>
+                <h1 class="site-logo text-center"><img src="{{ URL::asset('assets/images/site-logo.png') }}" alt="screeenly Logo"></h1>
+                <p class="material--display-1 text-center animated fadeIn">Dead simple screenshot grabbing API</p>
 
             @if(!Auth::check())
                 <div class="row text-center">
@@ -22,14 +22,13 @@
             <div class="container animated fadeInUp">
                 <div class="row">
                     <div class="col--6">
-                        <img src="#" alt="BIld">
+                        <img src="{{ URL::asset('assets/images/landing-api.png') }}" alt="How to use the API">
                     </div>
                     <div class="col--6">
-                        <h3>Check it out. It's free</h3>
-                        <p>screeenly is free!</p>
+                        <h3>Check it out. It's free.</h3>
                         <p>We are tired of all those apps, where you have to pay a monthly fee.</p>
                         <br>
-                        <p>Screeenly is also Open Source.</p>
+                        <p>Screeenly is also <a href="https://github.com/stefanzweifel/screeenly">Open Source</a>.</p>
                     </div>
                 </div>
             </div>
@@ -39,11 +38,11 @@
             <div class="container animated fadeInUp">
                 <div class="row">
                     <div class="col--6">
-                        <h3>Simple. Fast.</h3>
-                        <p>It's so simple to use. And it's also really fast. If you still have trouble, check out the {{ link_to_route('home.landingpage', 'Docs') }}.</p>
+                        <h3>Simple to use.</h3>
+                        <p>You just have to remember one single API rule. If you still have trouble, check out the {{ link_to_route('home.landingpage', 'Docs') }}.</p>
                     </div>
                     <div class="col--6">
-                        <img src="#" alt="Picture">
+                        <img src="{{ URL::asset('assets/images/landing-dashboard.png') }}" alt="How to use the API">
                     </div>
                 </div>
             </div>
