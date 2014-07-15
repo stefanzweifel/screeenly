@@ -27,7 +27,7 @@ class OAuthController extends BaseController {
             $token       = $githubService->requestAccessToken( $code );
             $result      = json_decode($githubService->request('user'), true);
 
-            $email       = $result['email'];
+            // $email       = $result['email'];
             $provider_id = $result['id'];
             $user        = User::where('provider_id', '=', $provider_id)->first();
 
@@ -37,7 +37,7 @@ class OAuthController extends BaseController {
 
                 //Create User
                 $data = [
-                    'email'       => $email,
+                    // 'email'       => $email,
                     'token'       => $code,
                     'api_key'     => Str::random(50),
                     'plan'        => 0,
