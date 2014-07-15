@@ -630,7 +630,6 @@ section article:last-child, .container article:last-child {
 .material--title {
   font-weight: 500;
   font-size: 1.25em;
-  line-height: 0.75em;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -645,7 +644,6 @@ section article:last-child, .container article:last-child {
 .material--caption {
   font-weight: 400;
   font-size: 0.75em;
-  line-height: 0.75em;
 }
 
 .material--menu {

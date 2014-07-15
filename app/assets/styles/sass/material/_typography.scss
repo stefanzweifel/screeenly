@@ -1,7 +1,7 @@
 .material--title {
     font-weight: $font-weight--medium;
     font-size: em(20);
-    line-height: em(12);
+    // line-height: em(12);
 
     @include hyphens(auto);
     @include ellipsis();
@@ -10,7 +10,7 @@
 .material--caption {
     font-weight: $font-weight--normal;
     font-size: em(12);
-    line-height: em(12);
+    // line-height: em(12);
 }
 
 .material--menu {
