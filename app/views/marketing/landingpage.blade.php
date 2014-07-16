@@ -39,7 +39,7 @@
                 <div class="row">
                     <div class="col--6">
                         <h3>Simple to use.</h3>
-                        <p>You just have to remember one single API rule. If you still have trouble, check out the {{ link_to_route('home.landingpage', 'Docs') }}.</p>
+                        <p>You just have to remember one single API rule. If you still have trouble, check out the {{ link_to_route('home.documentation', 'Docs') }}.</p>
                     </div>
                     <div class="col--6">
                         <img src="{{ URL::asset('assets/images/landing-dashboard.png') }}" alt="How to use the API">
