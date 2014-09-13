@@ -123,9 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Artdarek\OAuth\OAuthServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
-
-		'Spatie\Browsershot\BrowsershotServiceProvider'
+		'Way\Generators\GeneratorsServiceProvider'
 
 
 	),
