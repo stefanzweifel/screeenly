@@ -22,7 +22,7 @@ class APIController extends BaseController {
         $startTime = time();
 
         $url    = Input::get('url', 'http://screeenly.com');
-        $user = User::getUserByKey( Input::get('key') );
+        $user   = User::getUserByKey( Input::get('key') );
         $width  = Input::get('width', 1024);
         $height = Input::get('height', 768);
         $url    = $this->addHttp($url);
@@ -56,7 +56,7 @@ class APIController extends BaseController {
 
         $result = [
             'debug'    => $debug,
-            'filename' => $return_path
+            'filename' => $return_path,
         ];
 
 

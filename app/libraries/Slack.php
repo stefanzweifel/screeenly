@@ -44,7 +44,6 @@ class Slack
                 'Content-Length: ' . strlen($payload))
             );
 
-        //Execute CURL
         $result = curl_exec($ch);
 
         return $result;

@@ -1,8 +1,6 @@
 @extends ('layouts.master')
 
-    @section('meta_title')
-        Documentation
-    @stop
+    @section('meta_title') Documentation @stop
 
     @section('page_title')Documentation @stop
 
@@ -20,7 +18,7 @@
 
 
             <h3 class="material--title">Simple Request</h3>
-            <p class="material--body-1">For a simple request, just send a POST-Request to <code>http://screenly.com/api/v1/screen</code>. The API will then take a screenshot of the given URL in the dimensions 1024 x 768 px.</p>
+            <p class="material--body-1">For a simple request, just send a POST-Request to <code>http://screenly.com/api/v1/screen</code>. The API will then take a screenshot of the given URL width a with of 1024 pixels. The height of the screenshot is 100%.</p>
 
             <pre>
 {
@@ -33,7 +31,7 @@
     "filename": "http://screeenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
 }</pre>
 
-            <h3 class="material--title">Advanced Request with dimensions</h3>
+<!--             <h3 class="material--title">Advanced Request with dimensions</h3>
             <p class="material--body-1">You can also specify your own dimensions. Just add a <code>width</code> and <code>height</code> parameter to your request.</p>
 
             <pre>
@@ -47,7 +45,7 @@
             <p class="material--body-2">Return value</p>
             <pre>{
     "filename": "http://screeenly.com/images/generated/53c14c7e1d76dF9LuQB9upf2jtjpn0dOm.jpg"
-}</pre>
+}</pre> -->
 
             <!-- Shadow -->
             <div class="paper-shadow paper-shadow-bottom-z-1"></div>
