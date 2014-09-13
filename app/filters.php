@@ -78,3 +78,14 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/**
+ * Check if a user with given API key exists
+ */
+Route::filter('api-auth', function(){
+
+    if( !User::getUserByKey( Input::get('key') ) ) {
+        return Response::json('no-access', 401, ['Access-Control-Allow-Origin' => '*']);
+    }
+
+});

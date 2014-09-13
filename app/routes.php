@@ -60,7 +60,7 @@ Route::get('login', function(){
 *
 **/
 
-Route::group(['prefix' => 'api'], function(){
+Route::group(['prefix' => 'api', 'before' => 'api-auth'], function(){
 
 
     /**
