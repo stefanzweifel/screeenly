@@ -1,19 +1,19 @@
 {{-- Include Header (Styles, Meta Tags and more) --}}
-@include('layouts.header')
+@include('layouts.partials._header')
 
-{{-- Include head with navigation and logo --}}
-<header>
-    @include('layouts.head')
-    @include('layouts.appbar')
-</header>
+{{-- Navigation --}}
+@include('layouts.navigation')
 
+<div class="container">
 
-    <section id="main-content--wrapper" class="animated fadeIn" role="main">
+    <section role="main">
         @yield('content')
     </section>
 
-{{-- include footer  --}}
-@include('layouts.footer')
+    {{-- include footer  --}}
+    @include('layouts.footer')
+
+</div>
 
 {{-- include tail (scripts and end tags) --}}
-@include('layouts.tail')
+@include('layouts..partials._tail')

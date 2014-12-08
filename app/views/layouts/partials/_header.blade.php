@@ -12,14 +12,11 @@
 
         <meta name="description" content="@yield('meta_description', 'Meta Text')" />
 
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-
         {{-- Basic Stylesheets --}}
         <link rel="stylesheet" href="{{ URL::asset('assets/styles/vendor.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('assets/styles/main.min.css') }}">
 
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
 
         @yield('styles')

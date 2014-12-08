@@ -1,18 +1,24 @@
 {{-- Include Header (Styles, Meta Tags and more) --}}
-@include('layouts.header')
+@include('layouts.partials._header')
 
-{{-- Include head with navigation and logo --}}
-<header>
-    @include('layouts.head')
-</header>
+<!-- {{-- Navigation --}}
+@include('layouts.navigation') -->
 
+<div class="container landingpage">
 
-    <main role="main">
-        @yield('content')
-    </main>
+    <section role="main" class="hero">
 
-{{-- include footer  --}}
-@include('layouts.footer')
+        <h1>screeenly</h1>
+        <p>Create fullsize website screenshots through a simple API.</p>
+
+        {{ link_to_route('oauth.github', 'Sign in with Github', null, ['class' => 'button']) }}
+
+    </section>
+
+    {{-- include footer  --}}
+    @include('layouts.footer')
+
+</div>
 
 {{-- include tail (scripts and end tags) --}}
-@include('layouts.tail')
+@include('layouts..partials._tail')
