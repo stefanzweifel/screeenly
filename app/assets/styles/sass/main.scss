@@ -8,31 +8,55 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
-
 @import "_base/variables";
 
+@import "bitters/extends/extends";
+@import "bitters/mixins/mixins";
+@import "bitters/typography";
+@import "bitters/forms";
+@import "bitters/tables";
+@import "bitters/lists";
+@import "bitters/flashes";
 
-@import "bitters/bitters";
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
 
-/* Material Design */
-@import "material/grid";
-@import "material/z-depth";
-@import "material/card";
-@import "material/statusbar";
-@import "material/appbar";
-@import "material/typography";
-@import "material/logo";
+/**
+ * Grid System
+ */
+.row {
+    @include row();
+}
+
+/**
+ * Create Grid-System
+ */
+@for $i from 1 to 12 {
+    .col--#{$i} {
+        @include span-columns($i);
+
+        @include media($tablet) { @include fill-parent; }
+        @include media($mobile) { @include fill-parent; }
+
+    }
+}
+
 
 body, html {
     margin: 0;
     padding: 0;
     @include hyphens(auto);
-    font-family: 'Roboto';
+    font-family: $sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
+    font-family: $sans-serif;
 }
 
 #main-content--wrapper {
@@ -42,40 +66,6 @@ h1, h2, h3, h4, h5, h6 {
       @include media($tablet) {
         padding: em(20);
       }
-}
-
-footer {
-    background: #111;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: em(14);
-
-    a {
-        font-style: italic;
-        color: #fff;
-    }
-}
-
-
-nav {
-
-    color: #fff;
-
-    a {
-        color: #fff;
-    }
-
-    ul {
-        text-align: right;
-        position: relative;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 20px;
-    }
-
 }
 
 .text-center { text-align: center; }
@@ -108,39 +98,30 @@ code { word-wrap: break-word; }
     border-radius: 5px;
 }
 
-button {
-    @extend .material--button;
-    @extend a;
-    border: none;
-    outline: none;
-    background: none;
 
-    &:hover {
-        cursor: pointer;
-    }
+/**
+ * Screeenly 2.0
+ */
+
+.container {
+    @include outer-container;
 }
 
-.button--raised {
-    @extend .material--button;
-    @extend a;
-
-    background: $accent-color;
-    color: $base-font-color--invert;
-
-    padding: em(15) em(30);
-
-    box-shadow: 2px 2px 5px 0 #838383;
-    @include transition (all .2s ease-in-out);
-
-    &:hover {
-        background: #333;
-        color: darken($base-font-color--invert, 1);
-    }
+section {
+    padding: 20px;
 }
 
-.card {
-    ul, ol {
-        list-style-type: initial;
-        padding-left: 40px;
-    }
+body,
+html {
+    // background-color: #152034;
+    // background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
+    // height: 100%;
+    // color: #fff;
 }
+
+@import "components/page-footer";
+@import "components/hero-element";
+@import "components/link-list";
+@import "components/buttons";
+@import "components/anchors";
+@import "components/navigation";

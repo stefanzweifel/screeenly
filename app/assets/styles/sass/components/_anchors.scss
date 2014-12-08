@@ -1,0 +1,15 @@
+a {
+    color: $primary-color;
+    font-weight: 600;
+
+    &:hover,
+    &:active {
+        color: $primary-color;
+        border-bottom: 1px solid $primary-color;
+    }
+
+    &:focus {
+        color: darken($primary-color, 10);
+        border-bottom: 2px solid $primary-color;
+    }
+}

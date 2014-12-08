@@ -1,0 +1,48 @@
+nav {
+
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+
+    a {
+        color: #fff;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+            border-color: $primary-color;
+        }
+    }
+
+    ul {
+        text-align: right;
+        display: inline;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .nav-left {
+        float: left;
+    }
+
+    .nav-right {
+        float: right;
+    }
+
+}
+
+.nav-background {
+    background-color: #152034;
+    background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
+}

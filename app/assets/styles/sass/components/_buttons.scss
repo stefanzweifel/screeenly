@@ -1,0 +1,17 @@
+button,
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    border: solid 1px lighten($dark-gray, 5);
+    background: $primary-color;
+    transition: all .25s ease-in;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: darken($primary-color, 20);
+        border: solid 1px darken($primary-color, 20);
+        color: #fff;
+    }
+}
