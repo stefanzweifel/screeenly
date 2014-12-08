@@ -27,7 +27,10 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/libraries"
-		]
+		],
+		"psr-4": {
+			"Screeenly\\": "app"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": [
