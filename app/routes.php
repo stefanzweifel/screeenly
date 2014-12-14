@@ -22,24 +22,16 @@ Route::get('/imprint', [
 
 
 
-Route::group(['prefix' => 'oauth'], function(){
 
-    Route::get('authorize', array(
-        'as' => 'oauth.github',
-        'uses' => 'OAuthController@authorize_github')
-    );
+Route::get('login', array(
+    'as'   => 'oauth.github',
+    'uses' => 'AuthController@authorizeGithub')
+);
 
-    Route::get('response', [
-        'as' => 'oauth.response',
-        'uses' => 'OAuthController@response'
-        ]);
-
-    Route::get('logout', array(
-        'as' => 'oauth.logout',
-        'uses' => 'OAuthController@logout'
-        ));
-
-});
+Route::get('logout', array(
+    'as'     => 'oauth.logout',
+    'uses'   => 'AuthController@logout'
+));
 
 
 /**
