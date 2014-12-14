@@ -1,31 +1,26 @@
 <?php
 
-
 Route::get('/', [
     'as' => 'home.landingpage',
-    'uses' => 'HomeController@showLandingpage'
+    'uses' => 'PagesController@showLandingpage'
 ]);
 
 Route::get('/docs', [
     'as' => 'front.documentation',
-    'uses' => 'HomeController@showDocumentation'
+    'uses' => 'PagesController@showDocumentation'
 ]);
 
 Route::get('/terms', [
     'as' => 'front.terms',
-    'uses' => 'HomeController@showTerms'
+    'uses' => 'PagesController@showTerms'
 ]);
 
 Route::get('/imprint', [
     'as' => 'front.imprint',
-    'uses' => 'HomeController@showImprint'
+    'uses' => 'PagesController@showImprint'
 ]);
 
-/**
-*
-* OAuth System
-*
-**/
+
 
 Route::group(['prefix' => 'oauth'], function(){
 
@@ -47,13 +42,6 @@ Route::group(['prefix' => 'oauth'], function(){
 });
 
 
-
-Route::get('login', function(){
-
-    return Redirect::to('/');
-
-});
-
 /**
 *
 * API Controller
@@ -62,14 +50,6 @@ Route::get('login', function(){
 
 Route::group(['prefix' => 'api', 'before' => 'api-auth'], function(){
 
-
-    /**
-    *
-    * API - Version 1.0
-    *
-    * @author Stefan Zweifel
-    *
-    **/
 
     Route::group(['prefix' => 'v1'], function(){
 
@@ -99,7 +79,7 @@ Route::group(['before' => 'auth'], function(){
 
     Route::get('dashboard', array(
         'as' => 'front.dashboard',
-        'uses' => 'HomeController@showDashboard'
+        'uses' => 'PagesController@showDashboard'
     ));
 
     Route::post('resetAPIKey', array(

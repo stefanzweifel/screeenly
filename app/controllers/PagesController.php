@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class PagesController extends BaseController {
 
 	/**
 	 * Display Landingpage
@@ -8,14 +8,12 @@ class HomeController extends BaseController {
 	 */
 	public function showLandingpage()
 	{
-
 		if(Auth::check()) {
 			return Redirect::to('/dashboard');
 		}
 		else {
 			return View::make('marketing.landingpage');
 		}
-
 	}
 
 	/**
@@ -32,19 +30,6 @@ class HomeController extends BaseController {
 
         return View::make('application.dashboard', compact('user', 'logs'));
 
-	}
-
-	/**
-	 * Show dedicated settings page
-	 * @return void
-	 */
-	public function showSettings()
-	{
-
-		$user = User::find( Auth::id() );
-		$logs = APILog::where('user_id', '=', $user->id)->withTrashed()->orderBy('created_at', 'DESC')->get();
-
-		return View::make('application.settings', compact('user', 'logs'));
 	}
 
 	/**
