@@ -29,7 +29,7 @@
 			"app/libraries"
 		],
 		"psr-4": {
-			"Screeenly\\": "app"
+			"Screeenly\\": "app/Screeenly/"
 		}
 	},
 	"scripts": {
