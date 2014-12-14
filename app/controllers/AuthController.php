@@ -1,6 +1,6 @@
 <?php
 
-class OAuthController extends BaseController {
+class AuthController extends BaseController {
 
     /**
      * Handle OAuth with Github
