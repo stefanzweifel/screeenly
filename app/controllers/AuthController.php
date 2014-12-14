@@ -4,62 +4,33 @@ class AuthController extends BaseController {
 
     /**
      * Handle OAuth with Github
-     * @return void
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function authorize_github(){
+    public function authorizeGithub(){
 
-        if (Auth::check())
-        {
-            return Redirect::to('/dashboard');
-        }
+        $code   = Input::get('code');
+        $github = OAuth::consumer('GitHub');
 
-        // get data from input
-        $code = Input::get( 'code' );
-
-        // get github service
-        $githubService = OAuth::consumer( 'GitHub' );
-
-
-        // if code is provided get user data and sign in
         if ( !empty( $code ) ) {
 
-            // This was a callback request from github, get the token
-            $token       = $githubService->requestAccessToken( $code );
-            $result      = json_decode($githubService->request('user'), true);
-
-            $email       = $result['email'];
-            $provider_id = $result['id'];
+            $data        = json_decode($github->request('user'), true);
+            $provider_id = $data['id'];
             $user        = User::where('provider_id', '=', $provider_id)->first();
 
-            //User exists
-            if(!$user)
-            {
-
-                //Create User
-                $data = [
-                    'email'       => $email,
-                    'token'       => $code,
-                    'api_key'     => Str::random(50),
-                    'plan'        => 0,
-                    'provider_id' => $provider_id,
-                    'provider'    => 'Github'
-                ];
-
-                $user = User::create($data);
-                Slack::sendMessage('A new user has registered.');
-
+            if ( ! $user) {
+                $userService = new Screeenly\Services\RegisterUserService();
+                $user = $userService->register($data['email'], $code, 'Github', $provider_id);
             }
 
             Auth::login($user);
             return Redirect::to('/dashboard');
 
         }
-        // if not ask for permission first
         else {
-            // get githubService authorization
-            $url = $githubService->getAuthorizationUri();
 
-            // return to Github login url
+            $url = $github->getAuthorizationUri();
+
+            // Redirect to Github Permission Screen
             return Redirect::to( (string)$url );
         }
 
@@ -71,10 +42,8 @@ class AuthController extends BaseController {
      */
     public function logout()
     {
-
         Auth::logout();
         return Redirect::to('/');
-
     }
 
 }

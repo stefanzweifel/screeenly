@@ -8,14 +8,13 @@ class UserController extends BaseController {
      */
     public function resetAPIKey()
     {
-        $user = User::find( Auth::id() );
-
-        $key = Str::random(50);
+        $user = Auth::user();
+        $key  = Str::random(50);
 
         $user->api_key = $key;
         $user->save();
 
-        return Redirect::route('front.settings');
+        return Redirect::route('front.dashboard');
 
     }
 
@@ -25,10 +24,7 @@ class UserController extends BaseController {
      */
     public function closeAccount()
     {
-        //Get the user
-        $user = User::find( Auth::id() );
-
-        //Get logs
+        $user = Auth::user();
         $logs = APILog::where('user_id', '=', $user->id)->get();
 
         foreach($logs as $log) {
