@@ -83,3 +83,4 @@ $max-width: em(800);
 
 $mobile: new-breakpoint(max-width em(480) 4);
 $tablet: new-breakpoint(max-width $max-width 4);
+$large-screen: new-breakpoint(min-width $max-width 4);

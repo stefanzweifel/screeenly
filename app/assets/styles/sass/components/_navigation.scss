@@ -4,6 +4,14 @@ nav {
     height: 50px;
     line-height: 50px;
 
+    @include media($tablet) {
+        padding: 0 em(20);
+    }
+
+    .nav-logo {
+        font-size: 16px;
+    }
+
     a {
         color: #fff;
 
@@ -17,6 +25,7 @@ nav {
     ul {
         text-align: right;
         display: inline;
+        font-size: em(14);
     }
 
     li {
@@ -45,4 +54,22 @@ nav {
 .nav-background {
     background-color: #152034;
     background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
+}
+
+
+.js-menu-mobile-button {
+
+    display: none;
+
+    @include media($mobile) {
+        display: block;
+    }
+}
+
+.js-menu-mobile {
+
+    @include media($mobile) {
+        display: none;
+    }
+
 }
