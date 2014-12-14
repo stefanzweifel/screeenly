@@ -3,9 +3,6 @@
 /public/images/generated
 /app/config/local/*
 /app/assets/bower_stuff
-/app/assets/styles/sass/bitters
-/app/assets/styles/sass/bourbon
-/app/assets/styles/sass/neat
 /node_modules
 /.sass-cache
 composer.phar
