@@ -2,8 +2,6 @@
 
     @section('meta_title') Documentation @stop
 
-    @section('page_title')Documentation @stop
-
     @section('content')
 
         <div class="card">

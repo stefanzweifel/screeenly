@@ -1,5 +1,6 @@
 @extends ('layouts.landingpage')
 
+    @section('body-class')body--landingpage @stop
 
     @section('content')
 

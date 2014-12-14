@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <section role="main">
+    <section role="main" class="app--content">
         @yield('content')
     </section>
 

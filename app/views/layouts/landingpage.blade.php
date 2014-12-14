@@ -6,7 +6,7 @@
 
 <div class="container landingpage">
 
-    <section role="main" class="hero">
+    <section role="main" class="hero app--content">
 
         <h1>screeenly</h1>
         <p>Create fullsize website screenshots through a simple API.</p>

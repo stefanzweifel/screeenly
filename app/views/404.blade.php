@@ -1,13 +1,12 @@
 @extends ('layouts.master')
 
-    @section('meta_title')
-        404 - There is nothing!
-    @stop
+@section('meta_title')
+    404 - There is nothing!
+@stop
 
-    @section('page_title')404 - There is nothing @stop
+@section('content')
 
-    @section('content')
+    <h1>Error 404 - Here is nothing!</h1>
+    <img src="http://media.giphy.com/media/lPdnkrxkqnS48/giphy.gif" style="height: 100%; width: 100%">
 
-        <img src="http://media.giphy.com/media/lPdnkrxkqnS48/giphy.gif" style="height: 100%; width: 100%">
-
-    @stop
+@stop

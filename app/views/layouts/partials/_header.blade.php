@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="@yield('body-class')">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
@@ -30,4 +30,4 @@
         <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico?v1') }}">
 
     </head>
-    <body>
+    <body class="@yield('body-class')">
