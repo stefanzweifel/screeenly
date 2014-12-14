@@ -40,10 +40,8 @@ html {
 @for $i from 1 to 12 {
     .col--#{$i} {
         @include span-columns($i);
-
         @include media($tablet) { @include fill-parent; }
         @include media($mobile) { @include fill-parent; }
-
     }
 }
 
@@ -57,6 +55,9 @@ body, html {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: $sans-serif;
+    margin: 30px 0 10px;
+
+    @include media($mobile) { margin: 10px 0 5px; }
 }
 
 #main-content--wrapper {

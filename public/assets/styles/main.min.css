@@ -497,6 +497,12 @@ body, html {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  margin: 30px 0 10px;
+}
+@media screen and (max-width: 30em) {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0 5px;
+  }
 }
 
 #main-content--wrapper {
@@ -607,12 +613,14 @@ button,
 .button {
   display: inline-block;
   padding: 15px 30px;
-  border: solid 1px #404040;
+  border: solid 1px #e95c30;
   background: #e64a19;
   transition: all .25s ease-in;
   color: #fff;
   font-size: 16px;
   border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
 }
 button:hover, button.focus,
 .button:hover,
@@ -620,6 +628,11 @@ button:hover, button.focus,
   background-color: #8a2c0f;
   border: solid 1px #8a2c0f;
   color: #fff;
+}
+button.small,
+.button.small {
+  font-size: 14px;
+  padding: 7.5px 15px;
 }
 
 a {
@@ -637,19 +650,21 @@ a:focus {
 
 nav {
   color: #fff;
-  height: 50px;
-  line-height: 50px;
+  height: 80px;
+  line-height: 80px;
 }
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 30em) {
   nav {
     padding: 0 1.25em;
   }
 }
 nav .nav-logo {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 900;
 }
 nav a {
   color: #fff;
+  font-size: 16px;
 }
 nav a:hover, nav a:focus {
   color: #fff;
@@ -663,6 +678,11 @@ nav ul {
 nav li {
   display: inline-block;
   margin: 0 20px;
+}
+@media screen and (max-width: 30em) {
+  nav li {
+    margin: 0 0.625em;
+  }
 }
 nav li:first-child {
   margin-left: 0;
@@ -680,19 +700,4 @@ nav .nav-right {
 .nav-background {
   background-color: #152034;
   background-image: linear-gradient(-180deg, #152034 0%, #2f3b59 100%);
-}
-
-.js-menu-mobile-button {
-  display: none;
-}
-@media screen and (max-width: 30em) {
-  .js-menu-mobile-button {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 30em) {
-  .js-menu-mobile {
-    display: none;
-  }
 }

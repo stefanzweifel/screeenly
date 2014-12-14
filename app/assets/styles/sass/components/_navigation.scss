@@ -1,19 +1,25 @@
 nav {
 
     color: #fff;
-    height: 50px;
-    line-height: 50px;
+    height: 80px;
+    line-height: 80px;
 
     @include media($tablet) {
-        padding: 0 em(20);
+
+    }
+
+    @include media($mobile) {
+       padding: 0 em(20);
     }
 
     .nav-logo {
-        font-size: 16px;
+        font-size: 20px;
+        font-weight: 900;
     }
 
     a {
         color: #fff;
+        font-size: 16px;
 
         &:hover,
         &:focus {
@@ -31,6 +37,10 @@ nav {
     li {
         display: inline-block;
         margin: 0 20px;
+
+            @include media($mobile) {
+               margin: 0 em(10);
+            }
 
         &:first-child {
             margin-left: 0;
@@ -54,22 +64,4 @@ nav {
 .nav-background {
     background-color: #152034;
     background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
-}
-
-
-.js-menu-mobile-button {
-
-    display: none;
-
-    @include media($mobile) {
-        display: block;
-    }
-}
-
-.js-menu-mobile {
-
-    @include media($mobile) {
-        display: none;
-    }
-
 }
