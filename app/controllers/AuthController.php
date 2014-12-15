@@ -13,6 +13,7 @@ class AuthController extends BaseController {
 
         if ( !empty( $code ) ) {
 
+            $token       = $github->requestAccessToken( $code );
             $data        = json_decode($github->request('user'), true);
             $provider_id = $data['id'];
             $user        = User::where('provider_id', '=', $provider_id)->first();
