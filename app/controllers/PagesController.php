@@ -22,14 +22,7 @@ class PagesController extends BaseController {
 	 */
 	public function showDashboard()
 	{
-        //Get Current user
-        $user = User::find( Auth::id() );
-
-        //Get API Calls
-        $logs = APILog::where('user_id', '=', $user->id)->orderBy('created_at', 'DESC')->get();
-
-        return View::make('application.dashboard', compact('user', 'logs'));
-
+        return View::make('application.dashboard');
 	}
 
 	/**

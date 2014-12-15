@@ -9,9 +9,7 @@ class UserController extends BaseController {
     public function resetAPIKey()
     {
         $user = Auth::user();
-        $key  = Str::random(50);
-
-        $user->api_key = $key;
+        $user->api_key = Str::random(50);
         $user->save();
 
         return Redirect::route('front.dashboard');
@@ -28,12 +26,10 @@ class UserController extends BaseController {
         $logs = APILog::where('user_id', '=', $user->id)->get();
 
         foreach($logs as $log) {
-            //Delete the file
-            $path = public_path(Config::get('api.storage_path').$log->images);
 
+            $path = public_path(Config::get('api.storage_path').$log->images);
             File::delete($path);
 
-            //Delete DB Entry
             $log->delete();
         }
 
