@@ -58,17 +58,13 @@ module.exports = function(grunt) {
         },
 
         //Javascript
-        vendor_js: {
+        js: {
             src: [
-                'app/assets/bower/jquery/dist/jquery.js'
-                ],
-            dest: '<%= project.dist_js %>/vendor.min.js',
-        },
-        main_js: {
-            src: [
+                // 'app/assets/bower_stuff/jquery/dist/jquery.js',
+                'app/assets/bower_stuff/particles.js/particles.js',
                 'app/assets/scripts/main.js'
                 ],
-            dest: '<%= project.dist_js %>/main.min.js',
+            dest: '<%= project.dist_js %>/app.js',
         },
 
         //CSS
@@ -85,8 +81,7 @@ module.exports = function(grunt) {
     uglify: {
         dist: {
             files: {
-                '<%= project.dist_js %>/main.min.js': ['<%= concat.main_js.dest %>'],
-                '<%= project.dist_js %>/vendor.min.js': ['<%= concat.vendor_js.dest %>']
+                '<%= project.dist_js %>/app.js': ['<%= concat.js.dest %>']
             }
         }
     },
@@ -155,6 +150,8 @@ module.exports = function(grunt) {
     **/
     grunt.registerTask('default', ['concat', 'uglify']);
 
-    grunt.registerTask('sass-dev', ['watch:sass', 'sass:dev']);
+    grunt.registerTask('css', ['watch:sass', 'sass:dev']);
+
+    grunt.registerTask('js', ['concat:js', 'uglify', 'watch']);
 
 };

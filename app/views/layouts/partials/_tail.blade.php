@@ -1,4 +1,4 @@
-        <script src="{{ URL::asset('assets/scripts/vendor.min.js') }}"></script>
+        <script src="{{ URL::asset('assets/scripts/app.js') }}"></script>
 
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -11,31 +11,55 @@
 
         </script>
 
-        <script src="//code.jquery.com/jquery.js"></script>
         <script>
-            $(document).ready(function() {
-                var menu = $('#navigation-menu');
-                var menuToggle = $('#js-mobile-menu');
-                var signUp = $('.sign-up');
 
-                $(menuToggle).on('click', function(e) {
-                  e.preventDefault();
-                  menu.slideToggle(function(){
-                    if(menu.is(':hidden')) {
-                      menu.removeAttr('style');
-                    }
-                  });
-            });
-
-            // underline under the active nav item
-            $(".nav .nav-link").click(function() {
-                  $(".nav .nav-link").each(function() {
-                    $(this).removeClass("active-nav-item");
-                  });
-                  $(this).addClass("active-nav-item");
-                  $(".nav .more").removeClass("active-nav-item");
-                });
-            });
+/* config dom id (optional) + config particles params */
+particlesJS('particles-js', {
+    particles: {
+        color: '#E64A19',
+        shape: 'circle', // "circle", "edge" or "triangle"
+        opacity: .8,
+        size: 2,
+        size_random: true,
+        nb: 200,
+        line_linked: {
+            enable_auto: true,
+            distance: 100,
+            color: '#E64A19',
+            opacity: .8,
+            width: 1,
+            condensed_mode: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 600
+            }
+        },
+        anim: {
+            enable: true,
+            speed: 1.5
+        }
+    },
+    interactivity: {
+        enable: false,
+        mouse: {
+            distance: 250
+        },
+        detect_on: 'canvas', // "canvas" or "window"
+        mode: 'grab',
+        line_linked: {
+            opacity: .5
+        },
+        events: {
+            onclick: {
+                enable: true,
+                mode: 'push', // "push" or "remove" (particles)
+                nb: 4
+            }
+        }
+    },
+    /* Retina Display Support */
+    retina_detect: true
+});
 
         </script>
     </body>

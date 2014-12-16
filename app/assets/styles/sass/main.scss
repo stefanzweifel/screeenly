@@ -106,6 +106,8 @@ code { word-wrap: break-word; }
 
 .container {
     @include outer-container;
+    z-index: 10;
+    position: relative;
 }
 
 section {
@@ -120,7 +122,7 @@ section {
 }
 
 .app--content {
-    min-height: calc(100vh - 150px)
+    min-height: calc(100vh - 150px);
 }
 
 @import "components/page-footer";
@@ -129,3 +131,17 @@ section {
 @import "components/buttons";
 @import "components/anchors";
 @import "components/navigation";
+
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    canvas{
+        display:block;
+        vertical-align:bottom;
+    }
+}

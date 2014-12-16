@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "particles.js": "~1.0.3"
   }
 }

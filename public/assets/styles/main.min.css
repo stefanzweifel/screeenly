@@ -561,6 +561,8 @@ code {
   max-width: 50em;
   margin-left: auto;
   margin-right: auto;
+  z-index: 10;
+  position: relative;
 }
 .container:after {
   content: "";
@@ -700,4 +702,17 @@ nav .nav-right {
 .nav-background {
   background-color: #152034;
   background-image: linear-gradient(-180deg, #152034 0%, #2f3b59 100%);
+}
+
+#particles-js {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+#particles-js canvas {
+  display: block;
+  vertical-align: bottom;
 }
