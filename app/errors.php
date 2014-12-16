@@ -9,8 +9,8 @@ App::error(function($exception, $code)
     if (App::environment('production')) {
 
         $attachments = array([
-            'fallback' => 'An error accoured on screeenly',
-            'pretext'  => 'An error accoured on screeenly.',
+            'fallback' => 'An error accoured on Screeenly',
+            'pretext'  => 'An error accoured on Screeenly.',
             'color'    => '#c0392b',
             'fields'   => array(
                 [
@@ -28,6 +28,7 @@ App::error(function($exception, $code)
                     'value' => $exception->getMessage(),
                     'short' => false
                 ]
+
                 )
         ]);
 
@@ -44,12 +45,12 @@ App::error(function($exception, $code)
                 return Response::view('404', array(), 404);
 
             case 500:
-                Slack::sendMessage('APP ERROR', $attachments);
-                return Response::view('404', array(), 500);
+                Slack::sendMessage('Application Error', $attachments);
+                return Response::view('500', array(), 500);
 
             default:
-                Slack::sendMessage('APP ERROR', $attachments);
-                return Response::view('404', array(), $code);
+                Slack::sendMessage('Application Error', $attachments);
+                return Response::view('500', array(), $code);
         }
 
     }
