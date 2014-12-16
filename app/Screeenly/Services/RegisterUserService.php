@@ -17,7 +17,7 @@ class RegisterUserService {
 
         $user = \User::where('email', '=', $email);
 
-        // \Slack::sendMessage('A new user has registered.');
+        \Slack::sendMessage('A new user has registered.');
 
         return $user;
     }
