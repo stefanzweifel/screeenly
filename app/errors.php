@@ -6,7 +6,7 @@
 
 App::error(function($exception, $code)
 {
-    if (App::environment('production')) {
+    if (App::environment('live')) {
 
         $attachments = array([
             'fallback' => 'An error accoured on Screeenly',
