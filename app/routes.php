@@ -5,23 +5,20 @@ Route::get('/', [
     'uses' => 'PagesController@showLandingpage'
 ]);
 
-Route::get('/docs', [
+Route::get('docs', [
     'as' => 'front.documentation',
     'uses' => 'PagesController@showDocumentation'
 ]);
 
-Route::get('/terms', [
+Route::get('terms', [
     'as' => 'front.terms',
     'uses' => 'PagesController@showTerms'
 ]);
 
-Route::get('/imprint', [
+Route::get('imprint', [
     'as' => 'front.imprint',
     'uses' => 'PagesController@showImprint'
 ]);
-
-
-
 
 Route::get('login', array(
     'as'   => 'oauth.github',
@@ -33,40 +30,9 @@ Route::get('logout', array(
     'uses'   => 'AuthController@logout'
 ));
 
-
 /**
-*
-* API Controller
-*
-**/
-
-Route::group(['prefix' => 'api', 'before' => 'api-auth'], function(){
-
-
-    Route::group(['prefix' => 'v1'], function(){
-
-        /**
-        *
-        * Create Screenshot from payload
-        *
-        **/
-
-        Route::post('screen', array(
-            'as' => 'api.screen',
-            'uses' => 'APIController@createScreenshot'
-        ));
-
-    });
-
-});
-
-
-/**
-*
-* Display Dashboard
-*
-**/
-
+ * Account Routes
+ */
 Route::group(['before' => 'auth'], function(){
 
     Route::get('dashboard', array(
@@ -74,7 +40,7 @@ Route::group(['before' => 'auth'], function(){
         'uses' => 'PagesController@showDashboard'
     ));
 
-    Route::post('resetAPIKey', array(
+    Route::post('reset', array(
         'as' => 'front.resetAPIKey',
         'uses' => 'UserController@resetAPIKey'
     ));
@@ -83,5 +49,22 @@ Route::group(['before' => 'auth'], function(){
         'as' => 'front.closeAccount',
         'uses' => 'UserController@closeAccount'
     ));
+
+});
+
+
+/**
+ * API Routes
+ */
+Route::group(['prefix' => 'api', 'before' => 'api-auth'], function(){
+
+    Route::group(['prefix' => 'v1'], function(){
+
+        Route::post('fullsize', array(
+            'as'   => 'api.fullsize',
+            'uses' => 'APIController@createFullSizeScreenshot'
+        ));
+
+    });
 
 });
