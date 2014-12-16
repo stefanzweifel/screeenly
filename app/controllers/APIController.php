@@ -16,23 +16,19 @@ class APIController extends BaseController {
      * Create a screenshot with Phantom JS
      * @return void
      */
-    public function createScreenshot()
+    public function createFullSizeScreenshot()
     {
-        //Debug
-        $startTime = time();
-
         $url    = Input::get('url', 'http://screeenly.com');
         $user   = User::getUserByKey( Input::get('key') );
         $width  = Input::get('width', 1024);
         $height = Input::get('height', 768);
-        $url    = $this->addHttp($url);
+        $url    = $this->prepareURL($url);
 
         //Generate Filename and path
-        $filename       = uniqid().Str::random(20).'.jpg';
-        $storage_folder = Config::get('api.storage_path');
-        $storage_path   = public_path().'/'.$storage_folder.$filename;
-        $return_path    = asset($storage_folder.$filename);
-
+        $filename      = uniqid() . Str::random(20) . '.jpg';
+        $storageFolder = Config::get('api.storage_path');
+        $storagePath   = public_path() . '/' . $storageFolder . $filename;
+        $assetPath     = asset($storageFolder . $filename);
 
         $client = Client::getInstance();
         $client->setBinDir(base_path().'/bin');
@@ -40,7 +36,7 @@ class APIController extends BaseController {
         $client->addOption('--ignore-ssl-errors=true');
 
         $request = $client->getMessageFactory()->createCaptureRequest($url, 'GET');
-        $request->setCaptureFile($storage_path);
+        $request->setCaptureFile($storagePath);
         $request->setViewportSize($width, $height);
         $request->setTimeout(1000);
         $request->setDelay(1); // Delay Rendering for 1 sec (Animations etc.)
@@ -48,33 +44,20 @@ class APIController extends BaseController {
         $response = $client->getMessageFactory()->createResponse();
         $client->send($request, $response);
 
-        //Debug
-        $endTime = time();
-        $debug = [
-            'exex_time' => ($endTime - $startTime)
-        ];
+        $file = File::get($storagePath);
 
         $result = [
-            'debug'    => $debug,
-            'filename' => $return_path,
+            'path'   => $assetPath ,
+            'base64' =>  'data:image/jpg;base64,' . base64_encode($file)
         ];
-
 
         //Create Log Entry
         $log = new APILog;
-        $log->payload  = json_encode( Input::all() );
-        $log->response = json_encode( $result );
         $log->images   = $filename;
         $log->user()->associate($user);
         $log->save();
 
-        //Push Queue to delete Screenshot in a week
-        // $date = Carbon::now()->addWeeks(1);
-        // Queue::later($date, 'IronController@deleteScreenshot', ['id' => $log->id]);
-        Queue::push('IronController@deleteScreenshot', ['id' => $log->id]);
-
         return Response::json($result, 201, $this->header);
-
     }
 
     /**
@@ -82,7 +65,7 @@ class APIController extends BaseController {
      * @param  string $url
      * @return string
      */
-    public function addHttp($url) {
+    public function prepareURL($url) {
 
         if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
             $url = "http://" . $url;
