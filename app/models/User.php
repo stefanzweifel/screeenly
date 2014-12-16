@@ -117,12 +117,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     *
     **/
 
-    public function api_logs()
+    public function logs()
     {
-        return $this->has_many('APILog', 'user_id');
+        return $this->hasMany('APILog', 'user_id');
     }
-
-
 
 
 }

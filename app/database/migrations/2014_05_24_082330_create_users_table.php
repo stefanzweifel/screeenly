@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->unique('api_key');
 			$table->integer('plan')->default(0);
 			$table->string('provider', 50);
+			$table->string('probider_id');
 			$table->timestamps();
 			$table->softDeletes();
         });

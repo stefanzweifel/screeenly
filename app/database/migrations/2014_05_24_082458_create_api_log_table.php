@@ -14,9 +14,10 @@ class CreateApiLogTable extends Migration {
 	{
         Schema::create('api_log', function(Blueprint $table) {
             $table->increments('id');
-			$table->integer('user_id');
-			$table->text('payload');
-			$table->text('response');
+
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
+
 			$table->text('images');
 			$table->timestamps();
 			$table->softDeletes();
