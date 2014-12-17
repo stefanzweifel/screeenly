@@ -44,11 +44,11 @@ class APIController extends BaseController {
         $response = $client->getMessageFactory()->createResponse();
         $client->send($request, $response);
 
-        $file = File::get($storagePath);
+        // $file = File::get($storagePath);
 
         $result = [
             'path'   => $assetPath ,
-            'base64' =>  'data:image/jpg;base64,' . base64_encode($file)
+            // 'base64' =>  'data:image/jpg;base64,' . base64_encode($file)
         ];
 
         //Create Log Entry
