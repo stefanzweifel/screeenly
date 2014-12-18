@@ -34,6 +34,7 @@ class APIController extends BaseController {
         $client->setBinDir(base_path().'/bin');
         $client->addOption('--load-images=true');
         $client->addOption('--ignore-ssl-errors=true');
+        $client->addOption('--ssl-protocol=any');
 
         $request = $client->getMessageFactory()->createCaptureRequest($url, 'GET');
         $request->setCaptureFile($storagePath);
