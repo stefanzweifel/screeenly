@@ -12,7 +12,8 @@
     </ol>
 
     <h3>Do API Request</h3>
-    <p>For a simple request, just send a POST-Request to <code>http://screenly.com/api/v1/fullscreen</code>. The API will then take a screenshot of the given URL width a with of 1024 pixels. The height of the screenshot is 100%.</p>
+    <p>For a simple request, just send a POST-Request to <code>http://screeenly.com/api/v1/fullsize</code>. The API will then take a screenshot of the given URL width a with of 1024 pixels. The height of the screenshot is 100%.</p>
+    <p><a href="https://gist.github.com/stefanzweifel/968e68785277013ac214">Simple PHP CURL Example</a>.</p>
 
 <pre>
 {
