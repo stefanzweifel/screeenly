@@ -2,10 +2,10 @@
 
 class RegisterUserService {
 
-    public function register($email, $code, $provider, $providerId)
+    public function register($code, $provider, $providerId)
     {
         $data = [
-            'email'       => $email,
+            // 'email'       => $email,
             'token'       => $code,
             'api_key'     => \Str::random(50),
             'plan'        => 0,
@@ -15,7 +15,7 @@ class RegisterUserService {
 
         $user = \User::create($data);
 
-        $user = \User::where('email', '=', $email);
+        // $user = \User::where('email', '=', $email);
 
         \Slack::sendMessage('A new user has registered.');
 

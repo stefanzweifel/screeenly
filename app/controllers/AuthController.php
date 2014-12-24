@@ -19,8 +19,14 @@ class AuthController extends BaseController {
             $user        = User::where('provider_id', '=', $provider_id)->first();
 
             if ( ! $user) {
+
+                // Disabled - See: https://github.com/stefanzweifel/screeenly/issues/11
+                // if ( ! array_key_exists('email', $data)) {
+                //     throw new Exception("You're Github Account doesn't have a email adress", 1);
+                // }
+
                 $userService = new Screeenly\Services\RegisterUserService();
-                $user = $userService->register($data['email'], $code, 'Github', $provider_id);
+                $user = $userService->register($code, 'Github', $provider_id);
             }
 
             Auth::login($user);
