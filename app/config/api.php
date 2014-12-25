@@ -3,7 +3,9 @@
 
     return array(
 
-        'storage_path' => 'images/generated/'
+        'storage_path' => 'images/generated/',
+
+        'rateLimit'    => 1000
 
     );
 

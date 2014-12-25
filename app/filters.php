@@ -82,10 +82,36 @@ Route::filter('csrf', function()
 /**
  * Check if a user with given API key exists
  */
-Route::filter('api-auth', function(){
+Route::filter('api.auth', function(){
 
     if( !User::getUserByKey( Input::get('key') ) ) {
         return Response::json('Access denied.', 401, ['Access-Control-Allow-Origin' => '*']);
     }
+
+});
+
+/**
+ * Very simple API throttling / rate limit
+ * Set max amount of requests in config.api.rateLimit
+ */
+Route::filter('api.throttle', function(){
+
+    $key             = Input::get('key');
+    $expiresAt       = Carbon\Carbon::now()->addMinutes(60);
+    $requestsPerHour = Config::get('api.rateLimit');
+
+    if (Cache::has($key)) {
+
+        $current = Cache::get($key, 0);
+
+        if ($current >= $requestsPerHour) {
+            return Response::json('Rate Limit reached.', 401, ['Access-Control-Allow-Origin' => '*']);
+        }
+
+        return Cache::put($key, $current + 1, $expiresAt);
+
+    }
+
+    return Cache::put($key, 1, $expiresAt);
 
 });

@@ -56,7 +56,7 @@ Route::group(['before' => 'auth'], function(){
 /**
  * API Routes
  */
-Route::group(['prefix' => 'api', 'before' => 'api-auth'], function(){
+Route::group(['prefix' => 'api', 'before' => 'api.auth|api.throttle'], function(){
 
     Route::group(['prefix' => 'v1'], function(){
 
