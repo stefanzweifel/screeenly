@@ -45,7 +45,11 @@ class APIController extends BaseController {
         $response = $client->getMessageFactory()->createResponse();
         $client->send($request, $response);
 
-        // $file = File::get($storagePath);
+        try {
+            $file = File::get($storagePath);
+        } catch (Exception $e) {
+            App::abort(500, 'Screenshot can\'t be generated for URL: ' . $url, $this->header);
+        }
 
         $result = [
             'path'   => $assetPath ,
