@@ -26,8 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    'local'      => array('homestead'),
-    'live' => ['sagitta.uberspace.de']
+    'local' => array('homestead'),
+    'live'  => array('sagitta.uberspace.de')
 
 ));
 
