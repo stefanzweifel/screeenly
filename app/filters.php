@@ -105,7 +105,7 @@ Route::filter('api.throttle', function(){
         $current = Cache::get($key, 0);
 
         if ($current >= $requestsPerHour) {
-            return Response::json('Rate Limit reached.', 401, ['Access-Control-Allow-Origin' => '*']);
+            return App::abort(429, 'Rate Limit reached');
         }
 
         return Cache::put($key, $current + 1, $expiresAt);
