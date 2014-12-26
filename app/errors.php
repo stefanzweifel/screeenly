@@ -4,53 +4,70 @@
  * Error Handling
  */
 
-App::error(function($exception, $code)
+App::error(function(Exception $e, $code)
 {
-    if (App::environment('live')) {
+    $headers = $e->getHeaders();
 
-        $attachments = array([
-            'fallback' => 'An error accoured on Screeenly',
-            'pretext'  => 'An error accoured on Screeenly.',
-            'color'    => '#c0392b',
-            'fields'   => array(
-                [
-                    'title' => 'Request URL',
-                    'value' => Request::url(),
-                    'short' => true
-                ],
-                [
-                    'title' => 'HTTP Code',
-                    'value' => $code,
-                    'short' => true
-                ],
-                [
-                    'title' => 'Exception',
-                    'value' => $exception->getMessage(),
-                    'short' => false
-                ]
+    $attachments = array([
+        'fallback' => 'An error accoured on Screeenly',
+        'pretext'  => 'An error accoured on Screeenly.',
+        'color'    => '#c0392b',
+        'fields'   => array(
+            [
+                'title' => 'Request URL',
+                'value' => Request::url(),
+                'short' => true
+            ],
+            [
+                'title' => 'HTTP Code',
+                'value' => $code,
+                'short' => true
+            ],
+            [
+                'title' => 'Exception',
+                'value' => $e->getMessage(),
+                'short' => false
+            ]
+        )
+    ]);
 
-                )
-        ]);
+    if (Request::is('api/*')) {
 
-        switch ($code)
-        {
-            //We don't need messages for the following HTTP Codes
-            case 200:
-                break;
+        Log::error($e);
+        Slack::sendMessage('API Application Error', $attachments);
 
-            case 403:
-                return Response::view('404', array(), 403);
+        $returnMessage = array(
+            'title' => 'An error accoured',
+            'message' => $e->getMessage()
+        );
 
-            case 404:
-                return Response::view('404', array(), 404);
+        return Response::json($returnMessage, $code, $headers);
 
-            case 500:
-                Slack::sendMessage('Application Error', $attachments);
-                return Response::view('500', array(), 500);
+    }
+    else {
 
-            default:
-                Slack::sendMessage('Application Error', $attachments);
-                return Response::view('500', array(), $code);
+        if (App::environment() == 'live') {
+
+            switch ($code) {
+
+                case 403:
+                    return Response::view('404', array(), 403);
+                    break;
+
+                case 404:
+                    return Response::view('404', array(), 404);
+                    break;
+
+                default:
+                    Log::error($e);
+                    Slack::sendMessage('Frontend Application Error', $attachments);
+                    return Response::view('500', array(), 500, $headers);
+                    break;
+            }
+
+        }
+        else {
+            Log::error($e);
         }
 
     }

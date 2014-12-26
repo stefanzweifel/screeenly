@@ -22,7 +22,17 @@ class APIController extends BaseController {
         $user   = User::getUserByKey( Input::get('key') );
         $width  = Input::get('width', 1024);
         $height = Input::get('height', 768);
-        $url    = $this->prepareURL($url);
+        // $url    = $this->prepareURL($url);
+
+        /**
+         * TODO: - Move Rules to an Entity or Model
+         */
+        $validator = Validator::make(Input::all(), array('key' => 'required' ,'url' => 'required|url') );
+
+        if ($validator->fails()) {
+            $messages = array_flatten($validator->messages());
+            App::abort(400, 'Validation Error: ' . $messages[0], $this->header);
+        }
 
         //Generate Filename and path
         $filename      = uniqid() . Str::random(20) . '.jpg';
@@ -45,7 +55,11 @@ class APIController extends BaseController {
         $response = $client->getMessageFactory()->createResponse();
         $client->send($request, $response);
 
-        // $file = File::get($storagePath);
+        try {
+            $file = File::get($storagePath);
+        } catch (Exception $e) {
+            App::abort(500, 'Screenshot can\'t be generated for URL: ' . $url, $this->header);
+        }
 
         $result = [
             'path'   => $assetPath ,

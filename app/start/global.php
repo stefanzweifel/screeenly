@@ -46,11 +46,6 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
-	Log::error($exception);
-});
-
 require app_path().'/errors.php';
 
 /*
@@ -66,7 +61,13 @@ require app_path().'/errors.php';
 
 App::down(function()
 {
-    return Response::view('503', array(), 503);
+    if (Request::is('api/*')) {
+        return Response::json('Screeenly is currently down for maintenance', 503, ['Access-Control-Allow-Origin' => '*']);
+    }
+    else {
+        return Response::view('503', array(), 503);
+    }
+
 });
 
 /*
