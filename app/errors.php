@@ -35,7 +35,13 @@ App::error(function(Exception $e, $code)
 
         Log::error($e);
         Slack::sendMessage('API Application Error', $attachments);
-        return Response::json('An error accoured: ' . $e->getMessage(), $code, $headers);
+
+        $returnMessage = array(
+            'title' => 'An error accoured',
+            'message' => $e->getMessage()
+        );
+
+        return Response::json($returnMessage, $code, $headers);
 
     }
     else {
