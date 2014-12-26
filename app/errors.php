@@ -7,6 +7,7 @@
 App::error(function(Exception $e, $code)
 {
     $headers = $e->getHeaders();
+    $headers['Access-Control-Allow-Origin'] = '*';
 
     $attachments = array([
         'fallback' => 'An error accoured on Screeenly',

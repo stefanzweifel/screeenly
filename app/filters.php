@@ -85,7 +85,7 @@ Route::filter('csrf', function()
 Route::filter('api.auth', function(){
 
     if( !User::getUserByKey( Input::get('key') ) ) {
-        return App::abort(401, 'Access denied.', ['Access-Control-Allow-Origin' => '*']);
+        return App::abort(401, 'Access denied.');
     }
 
 });
