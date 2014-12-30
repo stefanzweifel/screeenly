@@ -23,7 +23,7 @@
 
 <p>Return Value</p>
             <pre>{
-    "filename": "http://screeenly.com/images/generated/FILENAME.jpg",
+    "path":     "http://screeenly.com/images/generated/FILENAME.jpg",
     "base64":   "ENCODED_FILE"
 }</pre>
 
