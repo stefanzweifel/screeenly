@@ -23,8 +23,9 @@
 
 <p>Return Value</p>
             <pre>{
-    "path":     "http://screeenly.com/images/generated/FILENAME.jpg",
-    "base64":   "ENCODED_FILE"
+    "path":         "http://screeenly.com/images/generated/FILENAME.jpg",
+    "base64":       "ENCODED_FILE"
+    "base64_raw":   "ENCODED_FILE_FOR_STORAGE"
 }</pre>
 
     @stop
