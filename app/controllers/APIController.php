@@ -61,9 +61,12 @@ class APIController extends BaseController {
             App::abort(500, 'Screenshot can\'t be generated for URL: ' . $url, $this->header);
         }
 
+        $bas64 = base64_encode($file);
+
         $result = [
-            'path'   => $assetPath ,
-            // 'base64' =>  'data:image/jpg;base64,' . base64_encode($file)
+            'path'       => $assetPath ,
+            'base64'     => 'data:image/jpg;base64,' . $bas64,
+            'base64_raw' => $bas64
         ];
 
         //Create Log Entry
