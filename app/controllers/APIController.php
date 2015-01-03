@@ -10,8 +10,8 @@ class APIController extends BaseController {
     private static $rules = [
         'key'    => 'required' ,
         'url'    => 'required|url',
-        'width'  => '',
-        'height' => ''
+        'width'  => 'integer',
+        'height' => 'integer'
     ];
 
     public function __construct()
