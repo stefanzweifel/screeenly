@@ -11,7 +11,7 @@ class APIController extends BaseController {
 
     /**
      * Create a screenshot with Phantom JS
-     * @return void
+     * @return Illuminate\Http\RedirectResponse
      */
     public function createFullSizeScreenshot()
     {

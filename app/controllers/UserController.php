@@ -4,7 +4,7 @@ class UserController extends BaseController {
 
     /**
      * Create new API key for logged in user
-     * @return void
+     * @return Illuminate\Http\RedirectResponse
      */
     public function resetAPIKey()
     {
@@ -18,7 +18,7 @@ class UserController extends BaseController {
 
     /**
      * Close Account of logged in user
-     * @return void
+     * @return Illuminate\Http\RedirectResponse
      */
     public function closeAccount()
     {

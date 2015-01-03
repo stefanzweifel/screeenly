@@ -4,7 +4,7 @@ class PagesController extends BaseController {
 
 	/**
 	 * Display Landingpage
-	 * @return void
+	 * @return Illuminate\View\View
 	 */
 	public function showLandingpage()
 	{
@@ -18,7 +18,7 @@ class PagesController extends BaseController {
 
 	/**
 	 * Display User Dashboard
-	 * @return void
+	 * @return Illuminate\View\View
 	 */
 	public function showDashboard()
 	{
@@ -27,7 +27,7 @@ class PagesController extends BaseController {
 
 	/**
 	 * Show dedicated documentation page
-	 * @return void
+	 * @return Illuminate\View\View
 	 */
 	public function showDocumentation()
 	{
@@ -36,7 +36,7 @@ class PagesController extends BaseController {
 
 	/**
 	 * Diplsay Terms of Service Page
-	 * @return void
+	 * @return Illuminate\View\View
 	 */
 	public function showTerms()
 	{
@@ -45,7 +45,7 @@ class PagesController extends BaseController {
 
 	/**
 	 * Display Imprint Page
-	 * @return void
+	 * @return Illuminate\View\View
 	 */
 	public function showImprint()
 	{
