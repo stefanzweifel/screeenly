@@ -7,6 +7,13 @@ class APIController extends BaseController {
 
     private $header;
 
+    private static $rules = [
+        'key'    => 'required' ,
+        'url'    => 'required|url',
+        'width'  => '',
+        'height' => ''
+    ];
+
     public function __construct()
     {
         $this->header = ['Access-Control-Allow-Origin' => '*'];
@@ -25,9 +32,9 @@ class APIController extends BaseController {
         // $url    = $this->prepareURL($url);
 
         /**
-         * TODO: - Move Rules to an Entity or Model
+         * ToDo: Move Validation into it's own object
          */
-        $validator = Validator::make(Input::all(), array('key' => 'required' ,'url' => 'required|url') );
+        $validator = Validator::make(Input::all(), static::$rules );
 
         if ($validator->fails()) {
             $messages = array_flatten($validator->messages());
