@@ -29,7 +29,6 @@ class APIController extends BaseController {
         $user   = User::getUserByKey( Input::get('key') );
         $width  = Input::get('width', 1024);
         $height = Input::get('height', 768);
-        // $url    = $this->prepareURL($url);
 
         /**
          * ToDo: Move Validation into it's own object
@@ -84,20 +83,5 @@ class APIController extends BaseController {
 
         return Response::json($result, 201, $this->header);
     }
-
-    /**
-     * Add HTTP to a URL, if it not exists
-     * @param  string $url
-     * @return string
-     */
-    public function prepareURL($url) {
-
-        if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
-            $url = "http://" . $url;
-        }
-        return $url;
-
-    }
-
 
 }
