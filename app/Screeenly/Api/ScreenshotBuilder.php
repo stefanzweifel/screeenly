@@ -23,6 +23,10 @@ class ScreenshotBuilder
 
     protected $viewportHeight = 768;
 
+    /**
+     * Validation Rules
+     * @var array
+     */
     private static $rules = [
         'key'    => 'required' ,
         'url'    => 'required|url',
@@ -30,7 +34,7 @@ class ScreenshotBuilder
         'height' => 'integer'
     ];
 
-    function __construct($header)
+    function __construct(array $header)
     {
         $this->header = $header;
 
@@ -41,7 +45,11 @@ class ScreenshotBuilder
         $this->buildClient();
     }
 
-    public function saveInput()
+    /**
+     * Store Input Data to Object
+     * @return void
+     */
+    private function saveInput()
     {
         $this->url    = Input::get('url', 'http://screeenly.com');
         $this->user   = User::getUserByKey( Input::get('key') );
@@ -49,7 +57,11 @@ class ScreenshotBuilder
         $this->height = Input::get('height');
     }
 
-    public function generateFilename()
+    /**
+     * Create new filename for request
+     * @return void
+     */
+    private function generateFilename()
     {
         $this->filename    = uniqid() . Str::random(20) . '.jpg';
         $storageFolder     = Config::get('api.storage_path');
@@ -57,7 +69,11 @@ class ScreenshotBuilder
         $this->assetPath   = asset($storageFolder . $this->filename);
     }
 
-    public function buildClient()
+    /**
+     * Initialize PhantomJS Client
+     * @return JonnyW\PhantomJs\Client
+     */
+    private function buildClient()
     {
         $client = Client::getInstance();
         $client->setBinDir(base_path() . '/bin');
@@ -68,7 +84,11 @@ class ScreenshotBuilder
         return $this->client = $client;
     }
 
-    public function takeScreenshot()
+    /**
+     * Use PhantomJS Client to take Screenshot of given URL
+     * @return void
+     */
+    private function takeScreenshot()
     {
         $viewportHeight = 768;
 
@@ -100,7 +120,11 @@ class ScreenshotBuilder
         return;
     }
 
-    public function createLog()
+    /**
+     * Create Log in Database
+     * @return void
+     */
+    private function createLog()
     {
         $log = new \APILog;
         $log->images   = $this->filename;
@@ -108,11 +132,10 @@ class ScreenshotBuilder
         $log->save();
     }
 
-    public function createResponse()
-    {
-
-    }
-
+    /**
+     * Main function to execute Screenshot Capture Command
+     * @return Illuminate\Http\Response
+     */
     public function execute()
     {
         $this->takeScreenshot();
