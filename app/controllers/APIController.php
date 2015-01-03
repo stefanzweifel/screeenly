@@ -25,10 +25,11 @@ class APIController extends BaseController {
      */
     public function createFullSizeScreenshot()
     {
+        $viewportHeight = 768;
         $url    = Input::get('url', 'http://screeenly.com');
         $user   = User::getUserByKey( Input::get('key') );
         $width  = Input::get('width', 1024);
-        $height = Input::get('height', 768);
+        $height = Input::get('height');
 
         /**
          * ToDo: Move Validation into it's own object
@@ -54,7 +55,15 @@ class APIController extends BaseController {
 
         $request = $client->getMessageFactory()->createCaptureRequest($url, 'GET');
         $request->setCaptureFile($storagePath);
-        $request->setViewportSize($width, $height);
+        $request->setViewportSize($width, $viewportHeight);
+
+        /**
+         * If height is set by user, crop the image
+         */
+        if (isset($height)) {
+            $request->setCaptureDimensions($width, $height, 0, 0);
+        }
+
         $request->setTimeout(1000);
         $request->setDelay(1); // Delay Rendering for 1 sec (Animations etc.)
 
