@@ -41,8 +41,29 @@ class ScreenshotBuilder
         new RequestValidator();
 
         $this->saveInput();
+        $this->checkHost();
         $this->generateFilename();
         $this->buildClient();
+    }
+
+    /**
+     * Check if a given URL is available
+     * Todo: Rewrite to use fsockopen
+     * @return \Illuminate\Foundation\Application
+     */
+    private function checkHost()
+    {
+        $ch = curl_init($this->url);
+              curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+              curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+              curl_setopt($ch, CURLOPT_NOBODY, true);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        if ($result === false) {
+            App::abort(500, "Host for URL: $this->url is not available", $this->header);
+        }
     }
 
     /**
