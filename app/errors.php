@@ -6,7 +6,10 @@
 
 App::error(function(Exception $e, $code)
 {
-    $headers = $e->getHeaders();
+    if (method_exists($e, 'getHeaders')) {
+        $headers = $e->getHeaders();
+    }
+
     $headers['Access-Control-Allow-Origin'] = '*';
 
     $attachments = array([
