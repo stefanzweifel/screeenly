@@ -4,6 +4,7 @@
 /app/config/local/*
 /app/assets/bower_stuff
 /node_modules
+/workbench
 /.sass-cache
 composer.phar
 .env.*.php
