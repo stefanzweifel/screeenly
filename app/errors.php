@@ -31,6 +31,11 @@ App::error(function(Exception $e, $code)
                 'title' => 'Exception',
                 'value' => $e->getMessage(),
                 'short' => false
+            ],
+            [
+                'title' => 'Values',
+                'value' => json_encode(Input::all()),
+                'short' => false
             ]
         )
     ]);
