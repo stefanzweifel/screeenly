@@ -7,9 +7,9 @@
         <section role="main" class="hero app--content">
 
             <h1>screeenly</h1>
-            <p>Create fullsize website screenshots through a simple API.</p>
+            <p>Create website screenshots through a simple API.</p>
 
-            {{ link_to_route('oauth.github', 'Sign in with Github', null, ['class' => 'button']) }}
+            {{ link_to_route('oauth.github', 'Sign up with Github', null, ['class' => 'button']) }}
 
         </section>
 

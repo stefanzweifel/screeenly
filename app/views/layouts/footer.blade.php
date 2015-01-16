@@ -1,5 +1,7 @@
 <footer class="page--footer">
     <ul class="link-list">
+        <li>Sideproject by <a href="//stefanzweifel.io">@_stefanzweifel</a></li>
+        <li><a target="blank" href="https://github.com/stefanzweifel/screeenly/">Source</a></li>
         <li><a target="blank" href="https://github.com/stefanzweifel/screeenly/wiki">Docs</a></li>
         <li>{{ link_to_route('front.terms', 'Terms &amp; FAQ') }}</li>
         <li>{{ link_to_route('front.imprint', 'Imprint') }}</li>
