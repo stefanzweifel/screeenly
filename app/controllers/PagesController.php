@@ -26,15 +26,6 @@ class PagesController extends BaseController {
 	}
 
 	/**
-	 * Show dedicated documentation page
-	 * @return Illuminate\View\View
-	 */
-	public function showDocumentation()
-	{
-		return View::make('documentation.start');
-	}
-
-	/**
 	 * Diplsay Terms of Service Page
 	 * @return Illuminate\View\View
 	 */

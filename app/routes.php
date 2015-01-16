@@ -5,11 +5,6 @@ Route::get('/', [
     'uses' => 'PagesController@showLandingpage'
 ]);
 
-Route::get('docs', [
-    'as' => 'front.documentation',
-    'uses' => 'PagesController@showDocumentation'
-]);
-
 Route::get('terms', [
     'as' => 'front.terms',
     'uses' => 'PagesController@showTerms'
