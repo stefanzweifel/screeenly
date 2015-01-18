@@ -1,14 +1,24 @@
 # screeenly
 
-Screeenly is a side project by [Stefan Zweifel](http://stefanzweifel.io). It's a dead simple API to create screenshots from websites.
+Screeenly is an open sourced web-app / API to create screenshots from websites.
+Sideproject by [Stefan Zweifel](http://stefanzweifel.io).
 
-**Despite being open sourced, all code and content remain copyright of Stefan Zweifel. Don't steal code!**
+- Live Application: [http://screeenly.com](http://screeenly.com)
+- Twitter: [http://twitter.com/screeenly](http://twitter.com/screeenly)
+- Docs: [https://github.com/stefanzweifel/screeenly/wiki](https://github.com/stefanzweifel/screeenly/wiki)
 
-- Live-Site - [http://screeenly.com](http://screeenly.com)
-- Twitter - [http://twitter.com/screeenly](http://twitter.com/screeenly)
+If you want to use the API in your PHP project I wrote a simple package. Checkout [screeenly-client](https://github.com/stefanzweifel/ScreeenlyClient) for more information.
+
+**Feedback is always appreciated :)**
+
+## Selfhosting
+
+Coming soon.
 
 ## Roadmap
 
-- write some tests
-- improve UI
-- make it Open Source under MIT license
+- Write Unit Tests
+
+# LICENSE
+
+MIT
