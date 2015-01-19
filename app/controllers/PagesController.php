@@ -45,11 +45,19 @@ class PagesController extends BaseController {
 		return View::make('imprint');
 	}
 
+	/**
+	 * Display Form to Try API
+	 * @return Illuminate\View\View
+	 */
 	public function showTestingForm()
 	{
 		return View::make('marketing.tryForm');
 	}
 
+	/**
+	 * Create Screenshot and Redirect to Try-Route
+	 * @return Illuminate\Http\RedirectResponse
+	 */
 	public function createTestScreenshot()
 	{
 		$proof = strtolower(Input::get('proof'));
@@ -57,8 +65,8 @@ class PagesController extends BaseController {
 		if ($proof != 'laravel') { return Redirect::route('home.landingpage'); }
 
 		$screenshot = new ScreenshotBuilder();
-
 		$screenshot->execute();
+
 		return Redirect::route('try')->with('asset', $screenshot->assetPath);
 	}
 
