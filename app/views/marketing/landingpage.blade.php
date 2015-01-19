@@ -4,13 +4,24 @@
 
     @section('content')
 
-        <section role="main" class="hero app--content">
+        <div class="container landingpage">
 
-            <h1>screeenly</h1>
-            <p>Create website screenshots through a simple API.</p>
+            <section role="main" class="hero app--content">
 
-            {{ link_to_route('oauth.github', 'Sign up with Github', null, ['class' => 'button']) }}
+                <h1>screeenly</h1>
+                <p>Create website screenshots through a simple API.</p>
 
-        </section>
+                {{ link_to_route('oauth.github', 'Sign up with Github', null, ['class' => 'button']) }}
+
+            </section>
+
+
+            {{-- include footer  --}}
+            @include('layouts.footer')
+
+        </div>
+
+        <div id="particles-js"></div>
+
 
     @stop

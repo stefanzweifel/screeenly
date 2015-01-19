@@ -2,17 +2,9 @@
 @include('layouts.partials._header')
 
 
+@yield('content')
 
-<div class="container landingpage">
 
-    @yield('content')
-
-    {{-- include footer  --}}
-    @include('layouts.footer')
-
-</div>
-
-<div id="particles-js"></div>
 
 {{-- include tail (scripts and end tags) --}}
-@include('layouts..partials._tail')
+@include('layouts.partials._tail')
