@@ -17,7 +17,8 @@ class ScreenshotBuilder
     protected $client;
     protected $storagePath;
     protected $filename;
-    protected $assetPath;
+    public $assetPath;
+    public $base64;
 
     protected $header;
 
@@ -28,16 +29,14 @@ class ScreenshotBuilder
      * @var array
      */
     private static $rules = [
-        'key'    => 'required' ,
+        'key'    => 'required',
         'url'    => 'required|url',
         'width'  => 'integer',
         'height' => 'integer'
     ];
 
-    function __construct(array $header)
+    function __construct()
     {
-        $this->header = $header;
-
         new RequestValidator();
 
         $this->saveInput();
@@ -145,7 +144,7 @@ class ScreenshotBuilder
      * Create Log in Database
      * @return void
      */
-    private function createLog()
+    public function createLog()
     {
         $log = new \APILog;
         $log->images   = $this->filename;
@@ -159,17 +158,7 @@ class ScreenshotBuilder
      */
     public function execute()
     {
-        $this->takeScreenshot();
-
-        $result = [
-            'path'       => $this->assetPath ,
-            'base64'     => 'data:image/jpg;base64,' . $this->bas64,
-            'base64_raw' => $this->bas64
-        ];
-
-        $this->createLog();
-
-        return Response::json($result, 201, $this->header);
+        return $this->takeScreenshot();
     }
 
 }
