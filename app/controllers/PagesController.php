@@ -1,5 +1,7 @@
 <?php
 
+use Screeenly\Api\ScreenshotBuilder;
+
 class PagesController extends BaseController {
 
 	/**
@@ -41,6 +43,23 @@ class PagesController extends BaseController {
 	public function showImprint()
 	{
 		return View::make('imprint');
+	}
+
+	public function showTestingForm()
+	{
+		return View::make('marketing.tryForm');
+	}
+
+	public function createTestScreenshot()
+	{
+		$proof = strtolower(Input::get('proof'));
+
+		if ($proof != 'laravel') { return Redirect::route('home.landingpage'); }
+
+		$screenshot = new ScreenshotBuilder();
+
+		$screenshot->execute();
+		return Redirect::route('try')->with('asset', $screenshot->assetPath);
 	}
 
 }
