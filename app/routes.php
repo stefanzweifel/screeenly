@@ -25,6 +25,17 @@ Route::get('logout', array(
     'uses'   => 'AuthController@logout'
 ));
 
+Route::get('try', array(
+    'as'   => 'try',
+    'uses' => 'PagesController@showTestingForm'
+));
+
+Route::post('try', array(
+    'as'     => 'try.do',
+    'before' => 'csrf',
+    'uses'   => 'PagesController@createTestScreenshot'
+));
+
 /**
  * Account Routes
  */
