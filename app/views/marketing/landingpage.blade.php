@@ -13,7 +13,7 @@
 
                 {{ link_to_route('oauth.github', 'Sign up with Github', null, ['class' => 'button']) }}
 
-                <p><a href="#show-examples">Show</a> examples or {{ link_to_route('try', 'test the application', null) }} right now.</p>
+                <p><a href="#show-examples">Show</a> examples or {{ link_to_route('try', 'try it', null) }} right now.</p>
 
             </section>
 
