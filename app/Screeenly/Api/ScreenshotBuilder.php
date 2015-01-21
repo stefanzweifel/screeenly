@@ -37,7 +37,8 @@ class ScreenshotBuilder
 
     function __construct()
     {
-        new RequestValidator();
+        $validator = new RequestValidator();
+        $validator->validate();
 
         $this->saveInput();
         $this->checkHost();

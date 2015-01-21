@@ -20,7 +20,7 @@ class RequestValidator
      */
     public function __construct()
     {
-        $this->validate();
+        // $this->validate();
     }
 
     public function validate()
