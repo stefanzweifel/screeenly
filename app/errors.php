@@ -43,7 +43,7 @@ App::error(function(Exception $e, $code)
     if (Request::is('api/*')) {
 
         Log::error($e);
-        Slack::sendMessage('API Application Error', $attachments);
+        //Slack::sendMessage('API Application Error', $attachments);
 
         $returnMessage = array(
             'title' => 'An error accoured',
