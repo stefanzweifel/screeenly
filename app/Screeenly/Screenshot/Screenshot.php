@@ -1,7 +1,7 @@
 <?php namespace Screeenly\Screenshot;
 
 use Screeenly\Screenshot\PhantomJsClient as Client;
-use Config, Str;
+use Config, Str, File;
 
 class Screenshot {
 
@@ -36,6 +36,7 @@ class Screenshot {
     {
         $this->setUrl($url);
         $this->client->capture($this);
+        $this->doesScreenshotExist();
 
         return $this;
     }
@@ -105,9 +106,28 @@ class Screenshot {
         return $this->storagePath = public_path() . '/' . $this->path . $filename;
     }
 
+    /**
+     * Return ViewportHeight
+     * @return int
+     */
     public function getViewportHeight()
     {
         return $this->viewportHeight;
+    }
+
+    /**
+     * Check if Screenshot Exists in Filesystem
+     * @return void
+     */
+    private function doesScreenshotExist()
+    {
+        try {
+            $file = File::get($this->storagePath);
+        } catch (Exception $e) {
+            App::abort(500, 'Screenshot can\'t be generated for URL: ' . $this->url);
+        }
+
+        $this->bas64 = base64_encode($file);
     }
 
 

@@ -3,8 +3,6 @@
 use JonnyW\PhantomJs\Client;
 use Screeenly\Screenshot\Screenshot;
 
-use File;
-
 class PhantomJsClient implements ClientInterface {
 
     private $client;
@@ -44,14 +42,6 @@ class PhantomJsClient implements ClientInterface {
 
         $response = $this->client->getMessageFactory()->createResponse();
         $this->client->send($request, $response);
-
-        try {
-            $file = File::get($screenshot->storagePath);
-        } catch (Exception $e) {
-            App::abort(500, 'Screenshot can\'t be generated for URL: ' . $screenshot->url);
-        }
-
-        $screenshot->bas64 = base64_encode($file);
 
     }
 
