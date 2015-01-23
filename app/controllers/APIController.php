@@ -6,12 +6,7 @@ use Screeenly\Services\CheckHostService;
 
 class APIController extends BaseController {
 
-    private $header;
-
-    public function __construct()
-    {
-        $this->header = ['Access-Control-Allow-Origin' => '*'];
-    }
+    private $header = ['Access-Control-Allow-Origin' => '*'];
 
     /**
      * Create Screenshot
