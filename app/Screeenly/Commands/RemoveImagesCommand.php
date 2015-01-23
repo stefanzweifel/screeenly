@@ -40,18 +40,18 @@ class RemoveImagesCommand extends Command {
 	 */
 	public function fire()
 	{
-		$date   = Carbon::now()->subHours(12);
-		$images = APILog::where('created_at', '<', $date)->get();
+		$date = Carbon::now()->subHours(12);
+		$logs = APILog::where('created_at', '<', $date)->get();
 
-        foreach($images as $image) {
+        foreach ($logs as $log) {
 
-            $path = public_path(Config::get('api.storage_path').$image->images);
+            $path = $log->images;
             File::delete($path);
 
-            $image->delete();
+            $log->delete();
         }
 
-        $this->info('Removed ' . count($images) . ' Images.');
+        $this->info('Removed ' . count($logs) . ' Images.');
 
 	}
 
