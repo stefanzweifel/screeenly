@@ -1,6 +1,8 @@
 <?php
 
-use Screeenly\Api\ScreenshotBuilder;
+use Screeenly\Screenshot\Screenshot;
+use Screeenly\Screenshot\ScreenshotValidator;
+use Screeenly\Services\CheckHostService;
 
 class APIController extends BaseController {
 
@@ -12,13 +14,31 @@ class APIController extends BaseController {
     }
 
     /**
-     * Create a screenshot with Phantom JS
+     * Create Screenshot
      * @return Illuminate\Http\Response
      */
-    public function createFullSizeScreenshot()
+    public function createScreenshot()
     {
-        $screenshot = new ScreenshotBuilder();
-        $screenshot->execute();
+        $url  = Input::get('url', 'http://screeenly.com');
+        $user = User::getUserByKey( Input::get('key') );
+
+        // Validate Input
+        $validator = new ScreenshotValidator();
+        $validator->validate(Input::all());
+
+        // Check if Host is available
+        $checkHost = new CheckHostService();
+        $checkHost->ping($url);
+
+        // Actually Capture the Screenshot
+        $screenshot = new Screenshot();
+        $filename = $screenshot->generateFilename();
+        $screenshot->setStoragePath($filename);
+        $screenshot->setHeight(Input::get('height'));
+        $screenshot->setWidth(Input::get('width', 1024));
+        $screenshot->capture($url);
+
+        $log = ApiLog::store($screenshot, $user);
 
         $result = [
             'path'       => $screenshot->assetPath ,
@@ -26,9 +46,8 @@ class APIController extends BaseController {
             'base64_raw' => $screenshot->bas64
         ];
 
-        $screenshot->createLog();
-
         return Response::json($result, 201, $this->header);
+
     }
 
 }
