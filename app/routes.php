@@ -68,7 +68,7 @@ Route::group(['prefix' => 'api', 'before' => 'api.auth|api.throttle'], function(
 
         Route::post('fullsize', array(
             'as'   => 'api.fullsize',
-            'uses' => 'APIController@createFullSizeScreenshot'
+            'uses' => 'APIController@createScreenshot'
         ));
 
     });

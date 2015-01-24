@@ -97,17 +97,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public static function getUserByKey($key)
     {
-
-
     	$user = User::where('api_key', '=', $key)->first();
 
-    	if($user) {
-    		return $user;
-    	}
-    	else {
-    		return false;
+    	if(!$user) {
+            throw new Exception("API Key not found.", 1);
     	}
 
+        return $user;
     }
 
 

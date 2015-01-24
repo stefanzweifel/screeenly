@@ -1,6 +1,8 @@
 <?php
 
-use Screeenly\Api\ScreenshotBuilder;
+use Screeenly\Screenshot\Screenshot;
+use Screeenly\Screenshot\ScreenshotValidator;
+use Screeenly\Services\CheckHostService;
 
 class PagesController extends BaseController {
 
@@ -64,8 +66,24 @@ class PagesController extends BaseController {
 
 		if ($proof != 'laravel') { return Redirect::route('home.landingpage'); }
 
-		$screenshot = new ScreenshotBuilder();
-		$screenshot->execute();
+        $url  = Input::get('url');
+
+        // Validate Input
+        $validator = new ScreenshotValidator();
+        $validator->validate(Input::all());
+
+        // Check if Host is available
+        $checkHost = new CheckHostService();
+        $checkHost->ping($url);
+
+        // Actually Capture the Screenshot
+        $screenshot = new Screenshot();
+        $filename = $screenshot->generateFilename();
+        $screenshot->setPath('images/try/');
+        $screenshot->setStoragePath($filename);
+        $screenshot->setHeight(Input::get('height'));
+        $screenshot->setWidth(Input::get('width', 1024));
+        $screenshot->capture($url);
 
 		return Redirect::route('try')->with('asset', $screenshot->assetPath);
 	}
