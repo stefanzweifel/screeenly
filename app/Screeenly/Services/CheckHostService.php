@@ -18,7 +18,7 @@ class CheckHostService {
         curl_close($ch);
 
         if ($result === false) {
-            throw new Exception("Host for URL: $this->url is not available", 500);
+            throw new \Exception("Host for URL: $url is not available", 500);
         }
     }
 
