@@ -33,7 +33,7 @@ class APIController extends BaseController {
         $screenshot->setWidth(Input::get('width', 1024));
         $screenshot->capture($url);
 
-        $log = ApiLog::store($screenshot, $user);
+        $log = APILog::store($screenshot, $user);
 
         $result = [
             'path'       => $screenshot->assetPath ,
