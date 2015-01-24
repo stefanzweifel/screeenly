@@ -62,7 +62,7 @@ class PagesController extends BaseController {
 	 */
 	public function createTestScreenshot()
 	{
-		$proof = strtolower(Input::get('proof'));
+		$proof = trim(strtolower(Input::get('proof')));
 
 		if ($proof != 'laravel') { return Redirect::route('home.landingpage'); }
 
