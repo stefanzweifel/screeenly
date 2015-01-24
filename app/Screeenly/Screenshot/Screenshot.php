@@ -1,7 +1,7 @@
 <?php namespace Screeenly\Screenshot;
 
 use Screeenly\Screenshot\PhantomJsClient as Client;
-use Config, Str, File;
+use Config, Str, File, App;
 
 class Screenshot {
 
@@ -35,8 +35,11 @@ class Screenshot {
     public function capture($url)
     {
         $this->setUrl($url);
-        $this->client->capture($this);
-        $this->doesScreenshotExist();
+
+        if (App::environment() != 'testing') {
+            $this->client->capture($this);
+            $this->doesScreenshotExist();
+        }
 
         return $this;
     }
