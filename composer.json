@@ -13,7 +13,8 @@
 
 	},
 	"require-dev": {
-		"way/generators": "2.3"
+		"way/generators": "2.3",
+		"phpunit/phpunit": "4.4.*"
 	},
 
 
