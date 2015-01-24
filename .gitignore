@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /vendor
 /public/images/generated
+/public/images/try
 /app/config/local/*
 /app/assets/bower_stuff
 /node_modules
