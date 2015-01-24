@@ -1,7 +1,7 @@
 <?php namespace Screeenly\Screenshot;
 
 use Screeenly\Screenshot\PhantomJsClient as Client;
-use Config, Str, File;
+use Config, Str, File, App;
 
 class Screenshot {
 
@@ -35,8 +35,11 @@ class Screenshot {
     public function capture($url)
     {
         $this->setUrl($url);
-        $this->client->capture($this);
-        $this->doesScreenshotExist();
+
+        if (App::environment() != 'testing') {
+            $this->client->capture($this);
+            $this->doesScreenshotExist();
+        }
 
         return $this;
     }
@@ -102,7 +105,7 @@ class Screenshot {
      */
     public function setStoragePath($filename)
     {
-        $this->assetPath   = asset($this->path . $filename);
+        $this->assetPath          = asset($this->path . $filename);
         return $this->storagePath = public_path() . '/' . $this->path . $filename;
     }
 
