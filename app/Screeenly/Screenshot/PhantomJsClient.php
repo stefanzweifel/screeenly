@@ -42,7 +42,6 @@ class PhantomJsClient implements ClientInterface {
 
         $response = $this->client->getMessageFactory()->createResponse();
         $this->client->send($request, $response);
-
     }
 
 }

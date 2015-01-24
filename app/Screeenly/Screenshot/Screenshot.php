@@ -102,7 +102,7 @@ class Screenshot {
      */
     public function setStoragePath($filename)
     {
-        $this->assetPath   = asset($this->path . $filename);
+        $this->assetPath          = asset($this->path . $filename);
         return $this->storagePath = public_path() . '/' . $this->path . $filename;
     }
 
