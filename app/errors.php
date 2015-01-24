@@ -94,6 +94,34 @@ App::error(function(Illuminate\Filesystem\FileNotFoundException $e, $code){
 
     $headers['Access-Control-Allow-Origin'] = '*';
 
+    $attachments = array([
+        'fallback' => 'An error accoured on Screeenly',
+        'pretext'  => 'An error accoured on Screeenly.',
+        'color'    => '#c0392b',
+        'fields'   => array(
+            [
+                'title' => 'Request URL',
+                'value' => Request::url(),
+                'short' => true
+            ],
+            [
+                'title' => 'HTTP Code',
+                'value' => $code,
+                'short' => true
+            ],
+            [
+                'title' => 'Exception',
+                'value' => $e->getMessage(),
+                'short' => false
+            ],
+            [
+                'title' => 'Values',
+                'value' => json_encode(Input::all()),
+                'short' => false
+            ]
+        )
+    ]);
+
     if (Request::is('api/*')) {
 
         Log::error($e);
