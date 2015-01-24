@@ -124,7 +124,12 @@ class Screenshot {
      */
     private function doesScreenshotExist()
     {
-        $file = File::get($this->storagePath);
+        try {
+            $file = File::get($this->storagePath);
+        } catch (\Illuminate\Filesystem\FileNotFoundException $e) {
+            App::abort(500, "Screenshot can't be generated for URL $this->url");
+        }
+
         $this->bas64 = base64_encode($file);
     }
 
