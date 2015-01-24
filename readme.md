@@ -15,10 +15,6 @@ If you want to use the API in your PHP project I wrote a simple package. Checkou
 
 Coming soon.
 
-## Roadmap
-
-- Write Unit Tests
-
 # LICENSE
 
 MIT
