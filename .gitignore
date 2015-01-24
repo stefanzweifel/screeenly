@@ -8,8 +8,7 @@
 /workbench
 /.sass-cache
 composer.phar
-.env.*.php
-.env.php
+.env.local.php
 .DS_Store
 Thumbs.db
 /bin/phantomjs
