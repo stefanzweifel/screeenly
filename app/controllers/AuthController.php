@@ -20,13 +20,16 @@ class AuthController extends BaseController {
 
             if ( ! $user) {
 
-                // Disabled - See: https://github.com/stefanzweifel/screeenly/issues/11
-                // if ( ! array_key_exists('email', $data)) {
-                //     throw new Exception("You're Github Account doesn't have a email adress", 1);
-                // }
+                $email = '';
+
+                if ( array_key_exists('email', $data)) {
+                    $email = $data['email'];
+                    // Disabled - See: https://github.com/stefanzweifel/screeenly/issues/11
+                    // throw new Exception("You're Github Account doesn't have a email adress", 1);
+                }
 
                 $userService = new Screeenly\Services\RegisterUserService();
-                $user = $userService->register($code, 'Github', $provider_id);
+                $user = $userService->register($code, 'Github', $provider_id, $email);
             }
 
             Auth::login($user);

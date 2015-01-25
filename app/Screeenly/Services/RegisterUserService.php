@@ -2,10 +2,10 @@
 
 class RegisterUserService {
 
-    public function register($code, $provider, $providerId)
+    public function register($code, $provider, $providerId, $email = '')
     {
         $data = [
-            // 'email'       => $email,
+            'email'       => $email,
             'token'       => $code,
             'api_key'     => \Str::random(50),
             'plan'        => 0,
