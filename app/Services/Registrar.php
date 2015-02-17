@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace Screeenly\Services;
 
-use App\User;
+use Screeenly\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

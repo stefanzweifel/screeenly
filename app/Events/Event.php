@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace Screeenly\Events;
 
 abstract class Event {
 

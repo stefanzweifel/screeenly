@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Screeenly\Commands;
 
 abstract class Command {
 
