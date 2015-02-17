@@ -1,7 +1,7 @@
 <?php namespace Screeenly\Screenshot;
 
 use Screeenly\Screenshot\PhantomJsClient as Client;
-use Config, Str, File, App;
+use Config, File, App;
 
 class Screenshot {
 
@@ -95,7 +95,7 @@ class Screenshot {
      */
     public function generateFilename()
     {
-        $filename = uniqid() . Str::random(20) . '.jpg';
+        $filename = uniqid() . str_random(20) . '.jpg';
         return $this->setFilename($filename);
     }
 

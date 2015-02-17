@@ -8,15 +8,23 @@ use Illuminate\Http\Request;
 use Screeenly\User;
 use Screeenly\Services\RegisterUserService;
 
-use Auth, Redirect;
+use Auth;
 
 class OAuthController extends Controller {
 
+	/**
+	 * Redirect to Github.com to get Permission
+	 * @return [type] [description]
+	 */
 	public function redirectToProvider()
 	{
 	    return \Socialize::with('github')->scopes(['public'])->redirect();
 	}
 
+	/**
+	 * Handle Response from Provider
+	 * @return Illuminate\Html\Redirect
+	 */
 	public function handleProviderCallback()
 	{
 		$response = \Socialize::with('github')->user();
@@ -36,13 +44,17 @@ class OAuthController extends Controller {
 	    }
 
         Auth::login($user);
-        return Redirect::to('/dashboard');
+        return redirect('/dashboard');
 	}
 
+	/**
+	 * Logout USer
+	 * @return Illuminate\Html\Redirect
+	 */
 	public function logout()
 	{
         Auth::logout();
-        return Redirect::to('/');
+        return redirect('/');
 	}
 
 }

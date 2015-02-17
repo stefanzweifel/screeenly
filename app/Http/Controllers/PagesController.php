@@ -4,7 +4,7 @@ use Screeenly\Screenshot\Screenshot;
 use Screeenly\Screenshot\ScreenshotValidator;
 use Screeenly\Services\CheckHostService;
 
-use Auth, Redirect, View, Input;
+use Auth, Input;
 
 class PagesController extends Controller {
 
@@ -15,10 +15,10 @@ class PagesController extends Controller {
 	public function showLandingpage()
 	{
 		if(Auth::check()) {
-			return Redirect::to('/dashboard');
+			return redirect('/dashboard');
 		}
 		else {
-			return View::make('marketing.landingpage');
+            return view('marketing.landingpage');
 		}
 	}
 
@@ -28,7 +28,7 @@ class PagesController extends Controller {
 	 */
 	public function showDashboard()
 	{
-        return View::make('application.dashboard');
+        return view('application.dashboard');
 	}
 
 	/**
@@ -37,7 +37,7 @@ class PagesController extends Controller {
 	 */
 	public function showTerms()
 	{
-		return View::make('terms');
+		return view('terms');
 	}
 
 	/**
@@ -46,7 +46,7 @@ class PagesController extends Controller {
 	 */
 	public function showImprint()
 	{
-		return View::make('imprint');
+		return view('imprint');
 	}
 
 	/**
@@ -55,7 +55,7 @@ class PagesController extends Controller {
 	 */
 	public function showTestingForm()
 	{
-		return View::make('marketing.tryForm');
+		return view('marketing.tryForm');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class PagesController extends Controller {
 	{
 		$proof = trim(strtolower(Input::get('proof')));
 
-		if ($proof != 'laravel') { return Redirect::route('home.landingpage'); }
+		if ($proof != 'laravel') { return redirect()->route('home.landingpage'); }
 
         $url  = Input::get('url');
 
@@ -87,7 +87,7 @@ class PagesController extends Controller {
         $screenshot->setWidth(Input::get('width', 1024));
         $screenshot->capture($url);
 
-		return Redirect::route('try')->with('asset', $screenshot->assetPath);
+		return redirect()->route('try')->with('asset', $screenshot->assetPath);
 	}
 
 }
