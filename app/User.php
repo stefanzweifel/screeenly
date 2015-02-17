@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace Screeenly;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -22,7 +22,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	//protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = [ 'email', 'token', 'api_key', 'plan', 'provider', 'provider_id'];
+
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -30,5 +32,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+
+    /**
+     * Return User associated with APIKey
+     * @param  string $key
+     * @return Screeenly\User
+     */
+    public static function getUserByKey($key)
+    {
+    	$user = self::where('api_key', '=', $key)->first();
+
+    	if(!$user) {
+            throw new Exception("API Key not found.", 1);
+    	}
+
+        return $user;
+    }
+
+    public function logs()
+    {
+        return $this->hasMany('APILog', 'user_id');
+    }
 
 }
