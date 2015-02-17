@@ -1,0 +1,26 @@
+{
+  "name": "screeenly",
+  "version": "0.1.0",
+  "authors": [
+    "Stefan Zweifel <hello@screeenly.com>"
+  ],
+  "description": "A dead simple screenshot API",
+  "keywords": [
+    "Bower",
+    "Laravel",
+    "Grunt"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/assets/bower_stuff/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "particles.js": "~1.0.3"
+  }
+}
