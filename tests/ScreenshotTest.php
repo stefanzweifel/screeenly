@@ -44,7 +44,7 @@ class ScreenshotTest extends TestCase {
 	}
 
 	/**
-     * @expectedException Illuminate\Filesystem\FileNotFoundException
+     * @expectedException Illuminate\Contracts\Filesystem\FileNotFoundException
      */
 	public function testScreenshotDoesnExist()
 	{

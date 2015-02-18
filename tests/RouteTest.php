@@ -9,16 +9,14 @@ class RouteTest extends TestCase {
 	 */
 	public function testHomepage()
 	{
-		$crawler = $this->client->request('GET', '/');
-
-		$this->assertTrue($this->client->getResponse()->isOk());
+		$crawler = $this->call('GET', '/');
+		$this->assertResponseOk();
 	}
 
 	public function testTryPage()
 	{
-		$crawler = $this->client->request('GET', '/try');
-
-		$this->assertTrue($this->client->getResponse()->isOk());
+		$crawler = $this->call('GET', '/try');
+		$this->assertResponseOk();
 	}
 
 	public function testTryWithWrongProof()

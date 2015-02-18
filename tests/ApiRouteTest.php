@@ -2,12 +2,11 @@
 
 class ApiRouteTest extends TestCase {
 
-	/**
-     * @expectedException Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException
-     */
 	public function testRouteOnlyByPost()
 	{
 		$this->call('GET', '/api/v1/fullsize');
+
+        $this->assertResponseStatus(405);
 	}
 
 	/**
