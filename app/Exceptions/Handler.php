@@ -36,7 +36,43 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+		/**
+		 * Handle API Errors
+		 */
+		if ( $request->is('api/*') && $request->isMethod('post') ) {
+
+            if (method_exists($e, 'getHeaders')) {
+                $headers = $e->getHeaders();
+            }
+
+            if ($code = $e->getCode() == 0) {
+            	$code = 400;
+            }
+
+            \Log::error($e);
+            //Slack::sendMessage('API Application Error', $attachments);
+
+            $headers['Access-Control-Allow-Origin'] = '*';
+
+            $returnMessage = array(
+                'title' => 'An error accoured',
+                'message' => $e->getMessage()
+            );
+
+			return \Response::json($returnMessage, $code, $headers);
+
+		}
+
 		return parent::render($request, $e);
+
+
+
+
+		// if ($e instanceof Exception) {
+
+		//     return redirect()->route('home.landingpage')->withErrors(['error' => $e->getMessage()]);
+		// }
+
 	}
 
 }
