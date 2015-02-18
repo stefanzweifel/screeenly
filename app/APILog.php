@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Screeenly\Screenshot\Screenshot;
+use Screeenly\User;
 
 class APILog extends \Eloquent {
 
@@ -11,7 +12,7 @@ class APILog extends \Eloquent {
 
     protected $table = 'api_log';
 
-    public static function store(Screenshot $screenshot, $user)
+    public static function store(Screenshot $screenshot, User $user)
     {
         $log = new self();
         $log->images = $screenshot->storagePath;
@@ -29,7 +30,7 @@ class APILog extends \Eloquent {
 
     public function user()
     {
-        return $this->belongsTo('User', 'user_id');
+        return $this->belongsTo('Screeenly\User', 'user_id');
     }
 
 

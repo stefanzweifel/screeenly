@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Exception;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -52,7 +53,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function logs()
     {
-        return $this->hasMany('APILog', 'user_id');
+        return $this->hasMany('Screeenly\APILog', 'user_id');
     }
 
 }
