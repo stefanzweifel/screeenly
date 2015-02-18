@@ -5,7 +5,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Exception;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -45,7 +44,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     	$user = self::where('api_key', '=', $key)->first();
 
     	if(!$user) {
-            throw new Exception("API Key not found.", 1);
+            return abort(401, 'API Key not found.');
     	}
 
         return $user;
