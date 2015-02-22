@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Screeenly\User;
 use Screeenly\Services\RegisterUserService;
 
-use Auth;
+use Auth, Socialize;
 
 class OAuthController extends Controller {
 
@@ -18,7 +18,7 @@ class OAuthController extends Controller {
 	 */
 	public function redirectToProvider()
 	{
-	    return \Socialize::with('github')->scopes(['public'])->redirect();
+	    return Socialize::with('github')->scopes(['user:email'])->redirect();
 	}
 
 	/**
@@ -27,7 +27,7 @@ class OAuthController extends Controller {
 	 */
 	public function handleProviderCallback()
 	{
-		$response = \Socialize::with('github')->user();
+		$response = Socialize::with('github')->user();
 		$user     = User::where('provider_id', '=', $response->id)->first();
 
 	    if (!$user) {
