@@ -747,16 +747,16 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jonnnnyw/php-phantomjs.git",
-                "reference": "d55362eb2fcc52949642182536503f0b249acccc"
+                "reference": "b2e6985b7362f7699c11823e2956a2d8112728eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/d55362eb2fcc52949642182536503f0b249acccc",
-                "reference": "d55362eb2fcc52949642182536503f0b249acccc",
+                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/b2e6985b7362f7699c11823e2956a2d8112728eb",
+                "reference": "b2e6985b7362f7699c11823e2956a2d8112728eb",
                 "shasum": ""
             },
             "require": {
@@ -769,7 +769,7 @@
                 "twig/twig": "~1.16"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "~4.0"
             },
             "bin": [
                 "bin/phantomloader"
@@ -800,7 +800,7 @@
                 "phantomjs",
                 "testing"
             ],
-            "time": "2014-09-09 08:30:19"
+            "time": "2015-02-17 14:23:56"
         },
         {
             "name": "laravel/framework",
