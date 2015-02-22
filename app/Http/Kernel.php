@@ -28,7 +28,8 @@ class Kernel extends HttpKernel {
 		'guest'        => 'Screeenly\Http\Middleware\RedirectIfAuthenticated',
 		'csrf'         => 'Screeenly\Http\Middleware\VerifyCsrfToken',
 		'api.auth'     => 'Screeenly\Http\Middleware\ApiAuth',
-		'api.throttle' => 'Screeenly\Http\Middleware\ApiThrottle'
+		'api.throttle' => 'Screeenly\Http\Middleware\ApiThrottle',
+		'app.hasEmail' => 'Screeenly\Http\Middleware\UserHasEmail'
 	];
 
 }

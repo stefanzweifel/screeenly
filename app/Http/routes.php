@@ -48,7 +48,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('dashboard', array(
         'as' => 'front.dashboard',
-        'uses' => 'PagesController@showDashboard'
+        'uses' => 'PagesController@showDashboard',
+        'middleware' => 'app.hasEmail'
     ));
 
     Route::post('reset', array(
@@ -60,6 +61,16 @@ Route::group(['middleware' => 'auth'], function(){
         'as' => 'front.closeAccount',
         'uses' => 'UserController@closeAccount'
     ));
+
+    Route::get('email-setup', [
+        'as' => 'app.storeEmailForm',
+        'uses' => 'PagesController@showEmailForm'
+    ]);
+
+    Route::post('email-setup', [
+        'as' => 'app.storeEmail',
+        'uses' => 'UserController@storeEmail',
+    ]);
 
 });
 

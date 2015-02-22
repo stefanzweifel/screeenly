@@ -58,6 +58,15 @@ class PagesController extends Controller {
 		return view('marketing.tryForm');
 	}
 
+    /**
+     * Show Form to store Email
+     * @return Illuminate\View\View
+     */
+    public function showEmailForm()
+    {
+        return view('application.storeEmail');
+    }
+
 	/**
 	 * Create Screenshot and Redirect to Try-Route
 	 * @return Illuminate\Http\RedirectResponse

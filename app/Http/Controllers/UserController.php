@@ -1,7 +1,9 @@
 <?php namespace Screeenly\Http\Controllers;
 
+use Auth, Config, File;
 
 use Screeenly\APILog;
+use Screeenly\Http\Requests\StoreEmailRequest;
 
 class UserController extends Controller {
 
@@ -40,7 +42,22 @@ class UserController extends Controller {
         // Slack::sendMessage('User deleted');
 
         return redirect()->route('oauth.logout');
+    }
 
+    /**
+     * Store User Email if not given by OAuth
+     * @param  StoreEmailRequest $request
+     * @return Illuminate\Http\RedurectResponse
+     */
+    public function storeEmail(StoreEmailRequest $request)
+    {
+        $user = Auth::user();
+        $user->email = $request->get('email');
+        $user->save();
+
+        $requestedPath = \Session::get('requestedPath', '/');
+
+        return redirect($requestedPath);
     }
 
 }
