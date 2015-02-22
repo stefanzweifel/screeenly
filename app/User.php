@@ -43,10 +43,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
     	$user = self::where('api_key', '=', $key)->first();
 
-    	if(!$user) {
-            return abort(401, 'API Key not found.');
-    	}
-
         return $user;
     }
 
