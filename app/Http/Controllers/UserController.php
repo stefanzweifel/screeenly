@@ -1,6 +1,6 @@
 <?php namespace Screeenly\Http\Controllers;
 
-use Auth, Config, File;
+use Auth, Config, File, Session;
 
 use Screeenly\APILog;
 use Screeenly\Http\Requests\StoreEmailRequest;
@@ -55,7 +55,7 @@ class UserController extends Controller {
         $user->email = $request->get('email');
         $user->save();
 
-        $requestedPath = \Session::get('requestedPath', '/');
+        $requestedPath = Session::get('requestedPath', '/');
 
         return redirect($requestedPath);
     }

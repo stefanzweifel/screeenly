@@ -5,9 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/). [keepachangel
 ## [Unreleased][unreleased]
 ### Changed
 - Upgrade to Laravel 5
-- Moved to Socialite Pacakge
+- Moved to Socialite Package
 - Switched from Grunt to Gulp
 - Overall Code improvements
+
+### Added
+- Store Github Email address
+- Force User to enter an email address  (If something happens to Screeenly, we should contact our users in some way)
 
 ## [0.1.1] - 2014-07-14
 
