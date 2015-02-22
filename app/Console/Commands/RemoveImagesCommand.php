@@ -5,7 +5,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 use Carbon\Carbon;
-use APILog, Config, File;
+use Config, File;
+use Screeenly\APILog;
 
 class RemoveImagesCommand extends Command {
 
