@@ -87,7 +87,9 @@ class PagesController extends Controller {
         $screenshot->setWidth(Input::get('width', 1024));
         $screenshot->capture($url);
 
-		return redirect()->route('try')->with('asset', $screenshot->assetPath);
+		return redirect()
+            ->route('try')
+            ->with('asset', $screenshot->assetPath);
 	}
 
 }

@@ -9,27 +9,25 @@ class ApiRouteTest extends TestCase {
         $this->assertResponseStatus(405);
 	}
 
-	/**
-     * @expectedException Exception
-     */
 	public function testRouteAuthentication()
 	{
-		$this->call(
+		$response = $this->call(
 			'POST',
 			'/api/v1/fullsize'
 		);
+
+		$this->assertResponseStatus(401);
 	}
 
-	/**
-     * @expectedException Exception
-     */
 	public function testRouteNeedsValidKey()
 	{
-		$this->call(
+		$response = $this->call(
 			'POST',
 			'/api/v1/fullsize',
 			['key' => 'something']
 		);
+
+		$this->assertResponseStatus(403);
 	}
 
 }

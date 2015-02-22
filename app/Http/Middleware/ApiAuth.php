@@ -34,12 +34,12 @@ class ApiAuth {
 		$key = $request->get('key');
 
 		if ( is_null($key) ) {
-			return abort(400, 'No API Key specified.');
+			return abort(401, 'No API Key specified.');
 		}
 
 		if ( !User::getUserByKey($key) ) {
 
-			return abort(401, 'Access denied.');
+			return abort(403, 'Access denied.');
 
 		}
 

@@ -21,24 +21,29 @@ class RouteTest extends TestCase {
 
 	public function testTryWithWrongProof()
 	{
-		$response = $this->action(
-			'POST',
-			'PagesController@createTestScreenshot',
-			['url' => 'http://google.com', 'key' => 'something', 'proof' => 'something']
-		);
+		$response = $this->call('POST', '/try', [
+				'url' => 'http://google.com',
+				'key' => 'something',
+				'proof' => 'something'
+		]);
 
+		$this->assertResponseStatus(302);
 		$this->assertRedirectedToRoute('home.landingpage');
 
 	}
 
 	public function testTryWithCorrectProof()
 	{
-		$response = $this->action(
-			'POST',
-			'PagesController@createTestScreenshot',
-			['url' => 'http://google.com', 'key' => 'something', 'proof' => 'laravel']
-		);
+		$token = csrf_token();
 
+		$response = $this->call('POST', '/try', [
+				'url'    => 'http://google.com',
+				'key'    => 'something',
+				'proof'  => 'laravel'
+		]);
+
+		$this->assertResponseStatus(302);
+		// $this->assertRedirectedTo('try');
 		$this->assertRedirectedToRoute('try');
 		$this->assertSessionHas('asset');
 

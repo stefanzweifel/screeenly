@@ -36,6 +36,8 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+        $code = 0;
+
 		/**
 		 * Handle API Errors
 		 */
@@ -45,7 +47,11 @@ class Handler extends ExceptionHandler {
                 $headers = $e->getHeaders();
             }
 
-            if ($code = $e->getCode() == 0) {
+            if (method_exists($e, 'getStatusCode')) {
+                $code = $e->getStatusCode();
+            }
+
+            if ($code == 0) {
             	$code = 400;
             }
 
