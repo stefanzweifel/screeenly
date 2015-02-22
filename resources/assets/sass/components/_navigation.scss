@@ -1,0 +1,67 @@
+nav {
+
+    color: #fff;
+    height: 80px;
+    line-height: 80px;
+
+    @include media($tablet) {
+
+    }
+
+    @include media($mobile) {
+       padding: 0 em(20);
+    }
+
+    .nav-logo {
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    a {
+        color: #fff;
+        font-size: 16px;
+
+        &:hover,
+        &:focus {
+            color: #fff;
+            border-color: $primary-color;
+        }
+    }
+
+    ul {
+        text-align: right;
+        display: inline;
+        font-size: em(14);
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 20px;
+
+            @include media($mobile) {
+               margin: 0 em(10);
+            }
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .nav-left {
+        float: left;
+    }
+
+    .nav-right {
+        float: right;
+    }
+
+}
+
+.nav-background {
+    background-color: #152034;
+    background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
+}

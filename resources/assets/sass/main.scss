@@ -1,0 +1,156 @@
+/**
+*
+* Main CSS File
+*
+**/
+
+/* Vendor Stuff */
+@import "./resources/vendor/bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "./resources/vendor/neat/app/assets/stylesheets/_neat.scss";
+
+@import "_base/variables";
+
+@import "bitters/extends/extends";
+@import "bitters/mixins/mixins";
+@import "bitters/typography";
+@import "bitters/forms";
+@import "bitters/tables";
+@import "bitters/lists";
+@import "bitters/flashes";
+
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+/**
+ * Grid System
+ */
+.row {
+    @include row();
+}
+
+/**
+ * Create Grid-System
+ */
+@for $i from 1 to 12 {
+    .col--#{$i} {
+        @include span-columns($i);
+        @include media($tablet) { @include fill-parent; }
+        @include media($mobile) { @include fill-parent; }
+    }
+}
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    @include hyphens(auto);
+    font-family: $sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $sans-serif;
+    margin: 30px 0 10px;
+
+    @include media($mobile) { margin: 10px 0 5px; }
+}
+
+#main-content--wrapper {
+
+    padding: em(20) 0;
+
+    @include media($tablet) {
+        padding: em(20);
+    }
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+hr {
+    border: 0;
+    border-bottom: 2px solid #d0d2d4;
+    width: 6em;
+    padding-top: 1.4rem;
+    margin: -2px auto 2.8rem;
+}
+
+pre {
+    background: $light-gray;
+    padding: em(10);
+    border-radius: 2px;
+    border: solid 1px darken($light-gray, 10);
+    word-wrap: break-word;
+}
+
+code { word-wrap: break-word; }
+
+.message {
+    background: #323232;
+    color: #fff;
+    padding: 18px 24px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+
+/**
+ * Screeenly 2.0
+ */
+
+.container {
+    @include outer-container;
+    z-index: 10;
+    position: relative;
+}
+
+section {
+    padding: 20px;
+}
+
+.body--landingpage {
+    background-color: #152034;
+    background-image: linear-gradient(-180deg, #152034 0%, #2F3B59 100%);
+    color: #fff;
+}
+
+.app--content {
+    min-height: calc(100vh - 150px);
+}
+
+@import "components/page-footer";
+@import "components/hero-element";
+@import "components/link-list";
+@import "components/buttons";
+@import "components/anchors";
+@import "components/navigation";
+
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    canvas{
+        display:block;
+        vertical-align:bottom;
+    }
+}
+
+.layer {
+    min-height: 100%;
+    min-height: 100vh;
+}
+
+figure img {
+    border: solid 1px $blue;
+}

@@ -13,8 +13,7 @@
         <meta name="description" content="@yield('meta_description', 'Meta Text')" />
 
         {{-- Basic Stylesheets --}}
-        <link rel="stylesheet" href="{{ URL::asset('assets/styles/vendor.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('assets/styles/main.min.css') }}">
+        <link rel="stylesheet" href="{{ URL::asset('assets/main.css') }}">
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 

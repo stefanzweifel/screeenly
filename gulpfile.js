@@ -13,9 +13,18 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 
+    /**
+     * Merge Javascript together
+     */
     mix.scripts([
-        'ga.js',
-        'main.js'
-    ], 'public/assets/scripts/app.js', 'resources/assets/js/');
+        'vendor/particles.js/particles.js',
+        'assets/js/ga.js',
+        'assets/js/main.js'
+    ], 'public/assets/app.js', 'resources/');
+
+    /**
+     * Compile Sass
+     */
+    mix.sass('main.scss', 'public/assets');
 
 });

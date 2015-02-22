@@ -1,3 +1,3 @@
-        <script src="{{ URL::asset('assets/scripts/app.js') }}"></script>
+        <script src="{{ URL::asset('assets/app.js') }}"></script>
     </body>
 </html>
