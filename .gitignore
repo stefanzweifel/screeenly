@@ -1,3 +1,6 @@
 /vendor
 /node_modules
 .env
+/resources/vendor
+/public/images/generated
+/public/images/try
