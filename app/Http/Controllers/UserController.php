@@ -1,6 +1,5 @@
 <?php namespace Screeenly\Http\Controllers;
 
-use Auth, Redirect, Config, File;
 
 use Screeenly\APILog;
 
@@ -16,8 +15,7 @@ class UserController extends Controller {
         $user->api_key = str_random(50);
         $user->save();
 
-        return Redirect::route('front.dashboard');
-
+        return redirect()->route('front.dashboard');
     }
 
     /**
@@ -41,7 +39,7 @@ class UserController extends Controller {
 
         // Slack::sendMessage('User deleted');
 
-        return Redirect::route('oauth.logout');
+        return redirect()->route('oauth.logout');
 
     }
 
