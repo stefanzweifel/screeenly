@@ -148,7 +148,8 @@ return [
 		'Screeenly\Providers\RouteServiceProvider',
 
 
-		'Laravel\Socialite\SocialiteServiceProvider'
+		'Laravel\Socialite\SocialiteServiceProvider',
+		'GrahamCampbell\Throttle\ThrottleServiceProvider'
 
 
 
@@ -204,6 +205,7 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
 
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
+        'Throttle'  => 'GrahamCampbell\Throttle\Facades\Throttle'
 
 	],
 

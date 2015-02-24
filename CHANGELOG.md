@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/). [keepachangel
 ### Added
 - Store Github Email address
 - Force User to enter an email address  (If something happens to Screeenly, we should contact our users in some way)
+- Better API Throttling through https://github.com/GrahamCampbell/Laravel-Throttle
 
 ## [0.1.1] - 2014-07-14
 

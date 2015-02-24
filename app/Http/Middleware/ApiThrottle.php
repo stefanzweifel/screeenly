@@ -1,30 +1,38 @@
 <?php namespace Screeenly\Http\Middleware;
 
 use Closure;
-use Carbon\Carbon;
-use Illuminate\Foundation\Application;
+use GrahamCampbell\Throttle\Throttle;
 use Illuminate\Config\Repository as Config;
-
-use Cache;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class ApiThrottle {
 
+
 	/**
-	 * Application implementation
-	 * @var Illuminate\Foundation\Application
+	 * The config instance
+	 *
+	 * @var Illuminate\Config\Repository
 	 */
-	protected $app;
+	protected $config;
+
+    /**
+     * The throttle instance.
+     *
+     * @var \GrahamCampbell\Throttle\Throttle
+     */
+    protected $throttle;
+
 
 	/**
 	 * Create a new filter instance.
 	 * @param Application $app
 	 * @return void
 	 */
-	public function __construct(Application $app, Cache $cache, Config $config)
+	public function __construct(Config $config, Throttle $throttle)
 	{
-		$this->app = $app;
-		$this->cache = $cache;
 		$this->config = $config;
+
+		$this->throttle = $throttle;
 	}
 
 	/**
@@ -34,29 +42,17 @@ class ApiThrottle {
 	 * @param  \Closure  $next
 	 * @return mixed
 	 */
+
 	public function handle($request, Closure $next)
 	{
-	    $key             = $request->get('key');
-	    $expiresAt       = Carbon::now()->addMinutes(60);
-	    $requestsPerHour = $this->config->get('api.rateLimit');
+		$limit = $this->config->get('api.rateLimit'); // request limit
+		$time  = 60; // ban time in minutes
 
+        if (false === $this->throttle->attempt($request, $limit, $time)) {
+            throw new TooManyRequestsHttpException($time * 60, 'Rate limit exceed.');
+        }
 
-
-	    if (Cache::has($key)) {
-
-	        $current = Cache::get($key, 0);
-
-	        if ($current >= $requestsPerHour) {
-	            return $this->app->abort(429, 'Rate Limit reached');
-	        }
-
-	        Cache::put($key, $current + 1, $expiresAt);
-	        return $next($request);
-
-	    }
-
-	    Cache::put($key, 1, $expiresAt);
-		return $next($request);
+        return $next($request);
 	}
 
 }
