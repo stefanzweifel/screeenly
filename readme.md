@@ -16,7 +16,19 @@ If you want to use the API in your PHP project I wrote a simple package. Checkou
 
 ## Selfhosting
 
-Coming soon.
+> Coming soon.
+
+### Asset Management
+
+We switched to Gulp in Version 1.0.
+
+#### local development
+
+`gulp watch`
+
+#### production ready
+
+`gulp --production`
 
 # LICENSE
 
