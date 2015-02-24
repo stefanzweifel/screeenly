@@ -4,3 +4,6 @@
 /resources/vendor
 /public/images/generated
 /public/images/try
+/bin
+.DS_Store
+Thumbs.db
