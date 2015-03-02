@@ -17,7 +17,6 @@ elixir(function(mix) {
      * Merge Javascript together
      */
     mix.scripts([
-        'vendor/particles.js/particles.js',
         'assets/js/ga.js',
         'assets/js/main.js'
     ], 'public/assets/app.js', 'resources/');
