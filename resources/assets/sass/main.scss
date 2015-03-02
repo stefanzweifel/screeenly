@@ -32,6 +32,10 @@ body, html {
     font-family: $sans-serif;
 }
 
+figure {
+    margin: 0;
+}
+
 /**
  * Screeenly V 1.0
  */
@@ -47,7 +51,7 @@ body {
         @include span-columns(3);
 
         @include media($mobile) {
-            display: none;
+            // display: none;
         }
     }
 
@@ -58,7 +62,7 @@ body {
 
         @include media($mobile) {
             padding: 20px;
-            width: 100%;
+            // width: 100%;
         }
 
     }
@@ -124,24 +128,13 @@ body {
 }
 
 /**
- * Mobile Navigation
- */
-#mobile-nav {
-    display: none;
-    margin-right: 25px;
-
-    @include media($mobile) {
-        display: inline-block;
-    }
-}
-
-/**
  * Version Tag in Header
  */
 .version-tag {
-    background: rgb(218, 218, 218);
+    background: #EEEEEE;
     padding: 3px 9px;
     border-radius: 3px;
+    border: 1px solid #C9C9C9;
     font-size: 12px;
 }
 

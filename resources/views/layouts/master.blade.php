@@ -4,12 +4,10 @@
 <div class="container">
 
     <header class="page-header">
-        <a href="#" id="mobile-nav">M</a>
-
         <a id="top-link" href="/">screeenly <span class="version-tag">v 1.0</span></a>
     </header>
 
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
 
         @include('layouts.partials._navigation')
 
@@ -26,4 +24,4 @@
 </div>
 
 {{-- include tail (scripts and end tags) --}}
-@include('layouts..partials._tail')
+@include('layouts.partials._tail')
