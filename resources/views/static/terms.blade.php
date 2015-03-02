@@ -6,6 +6,8 @@
 
 @section('content')
 
+    <h1>Terms of Service</h1>
+
     <article>
         <h2>I have a problem. How can I reach you?</h2>
         <p>You can always send me an <a href="mailto:hello@screeenly.com">Email</a>, a <a href="http://twitter.com/screeenly">Tweet</a> or leave your Feedback <a href="//docs.google.com/forms/d/1rSfWcUrPCf2Ony3blKh6L3dOQiIanVKU0HZ0Org4eFs/viewform?usp=send_form">here</a>.</p>

@@ -17,7 +17,10 @@ class UserController extends Controller {
         $user->api_key = str_random(50);
         $user->save();
 
-        return redirect()->route('front.dashboard');
+        \Session::flash('message', "Youre API key was resetet.");
+        \Session::flash('message_type', 'success');
+
+        return redirect()->route('app.dashboard');
     }
 
     /**
@@ -41,6 +44,9 @@ class UserController extends Controller {
 
         // Slack::sendMessage('User deleted');
 
+        \Session::flash('message', "Youre account has been closed. Goodbye :)");
+        \Session::flash('message_type', 'success');
+
         return redirect()->route('oauth.logout');
     }
 
@@ -56,6 +62,9 @@ class UserController extends Controller {
         $user->save();
 
         $requestedPath = Session::get('requestedPath', '/');
+
+        \Session::flash('message', "Youre email has been updated.");
+        \Session::flash('message_type', 'success');
 
         return redirect($requestedPath);
     }

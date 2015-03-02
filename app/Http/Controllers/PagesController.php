@@ -18,7 +18,7 @@ class PagesController extends Controller {
 			return redirect('/dashboard');
 		}
 		else {
-            return view('marketing.landingpage');
+            return view('static.landingpage');
 		}
 	}
 
@@ -28,25 +28,7 @@ class PagesController extends Controller {
 	 */
 	public function showDashboard()
 	{
-        return view('application.dashboard');
-	}
-
-	/**
-	 * Diplsay Terms of Service Page
-	 * @return Illuminate\View\View
-	 */
-	public function showTerms()
-	{
-		return view('terms');
-	}
-
-	/**
-	 * Display Imprint Page
-	 * @return Illuminate\View\View
-	 */
-	public function showImprint()
-	{
-		return view('imprint');
+        return view('app.dashboard');
 	}
 
 	/**
@@ -59,12 +41,21 @@ class PagesController extends Controller {
 	}
 
     /**
+     * Show Settings Screeen
+     * @return Illuminate\View\View
+     */
+    public function showSettings()
+    {
+        return view('app.settings');
+    }
+
+    /**
      * Show Form to store Email
      * @return Illuminate\View\View
      */
     public function showEmailForm()
     {
-        return view('application.storeEmail');
+        return view('app.storeEmail');
     }
 
 	/**

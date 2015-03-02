@@ -1,6 +1,38 @@
+/**
+ * Screeenly Variables
+ */
+
+/* Variables */
+$primary-color: #E64A19;
+$primary-color__fallback: #ffccbc;
+$primary-color--hue: #e64a19;
+$primary-color--dark: #bf360c;
+
+$primary-color--fallback: #fbe9e7;
+
+
+$accent-color: #03a9f4;
+$accent-color--fallback: #e1f5fe;
+$accent-color--hue: #4fc3f7;
+$accent-color--dark: #01579b;
+
+$base-font-color: #111;
+$base-font-color--invert: #fff;
+
+$font-weight--light: 300;
+$font-weight--normal: 400;
+$font-weight--medium: 500;
+
+$max-width: 800px;
+
+$mobile: new-breakpoint(max-width em(480) 4);
+$tablet: new-breakpoint(max-width $max-width 4);
+$large-screen: new-breakpoint(min-width $max-width 4);
+
+
 // Typography
 ///////////////////////////////////////////////////////////////////////////////
-$sans-serif: 'Open Sans', $helvetica;
+$sans-serif: $helvetica;
 $serif: $georgia;
 
 $base-font-family: $sans-serif;
@@ -8,7 +40,7 @@ $header-font-family: $base-font-family;
 
 // Sizes
 ///////////////////////////////////////////////////////////////////////////////
-$base-font-size: 1em;
+$base-font-size: 14px;
 $base-line-height: $base-font-size * 1.5;
 $base-border-radius: em(3);
 
@@ -28,7 +60,7 @@ $base-body-color: white;
 
 //  Font Colors
 $base-font-color: $dark-gray;
-$base-accent-color: $blue;
+$base-accent-color: $primary-color;
 
 //  Text Link Colors
 $base-link-color: $base-accent-color;
@@ -58,29 +90,3 @@ $button-style: simple;
 
 
 
-/* Variables */
-$primary-color: #E64A19;
-$primary-color__fallback: #ffccbc;
-$primary-color--hue: #e64a19;
-$primary-color--dark: #bf360c;
-
-$primary-color--fallback: #fbe9e7;
-
-
-$accent-color: #03a9f4;
-$accent-color--fallback: #e1f5fe;
-$accent-color--hue: #4fc3f7;
-$accent-color--dark: #01579b;
-
-$base-font-color: #111;
-$base-font-color--invert: #fff;
-
-$font-weight--light: 300;
-$font-weight--normal: 400;
-$font-weight--medium: 500;
-
-$max-width: em(800);
-
-$mobile: new-breakpoint(max-width em(480) 4);
-$tablet: new-breakpoint(max-width $max-width 4);
-$large-screen: new-breakpoint(min-width $max-width 4);

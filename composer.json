@@ -19,7 +19,11 @@
 	},
 	"autoload": {
 		"classmap": [
-			"database"
+			"database",
+			"helpers"
+		],
+		"files": [
+		    "helpers/functions.php"
 		],
 		"psr-4": {
 			"Screeenly\\": "app/"

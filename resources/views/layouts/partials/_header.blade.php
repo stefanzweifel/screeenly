@@ -10,13 +10,10 @@
             <title>screeenly | dead simple screenshot API</title>
         @endif
 
-        <meta name="description" content="@yield('meta_description', 'Meta Text')" />
+        <meta name="description" content="@yield('meta_description', '')" />
 
         {{-- Basic Stylesheets --}}
         <link rel="stylesheet" href="{{ URL::asset('assets/main.css') }}">
-
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-
 
         @yield('styles')
 

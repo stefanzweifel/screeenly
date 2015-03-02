@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h2>Imprint</h2>
+    <h1>Imprint</h1>
     <p>You can reach us via Email at <a href="mailto:hello@screeenly.com">hello@screeenly.com</a> if you have any questions, concerns, feedback, news, love you want to share with us.</p>
 
     <h3>Owner</h3>

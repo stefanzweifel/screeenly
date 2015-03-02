@@ -48,7 +48,7 @@ class OAuthController extends Controller {
 	}
 
 	/**
-	 * Logout USer
+	 * Logout User
 	 * @return Illuminate\Html\Redirect
 	 */
 	public function logout()

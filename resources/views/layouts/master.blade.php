@@ -1,17 +1,27 @@
 {{-- Include Header (Styles, Meta Tags and more) --}}
 @include('layouts.partials._header')
 
-{{-- Navigation --}}
-@include('layouts.navigation')
-
 <div class="container">
 
-    <section role="main" class="app--content">
-        @yield('content')
-    </section>
+    <header class="page-header">
+        <a href="#" id="mobile-nav">M</a>
 
-    {{-- include footer  --}}
-    @include('layouts.footer')
+        <a id="top-link" href="/">screeenly <span class="version-tag">v 1.0</span></a>
+    </header>
+
+    <aside class="sidebar">
+
+        @include('layouts.partials._navigation')
+
+    </aside>
+
+    <section role="main" class="page-content">
+
+        @include('layouts.partials._flash')
+
+        @yield('content')
+
+    </section>
 
 </div>
 
