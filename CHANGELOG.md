@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/). [keepachangel
 - Upgrade to Laravel 5
 - Moved to Socialite Package
 - Switched from Grunt to Gulp
+- New simple design
 - Overall Code improvements
 
 ### Added
