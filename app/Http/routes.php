@@ -17,7 +17,6 @@ Route::post('try', [
 ]);
 
 Route::get('feedback', ['as' => 'app.feedback', 'uses' => 'StaticController@showFeedback']);
-Route::get('statistics', ['as' => 'app.statistics', 'uses' => 'StaticController@showStatistics']);
 
 /**
  * Account Routes

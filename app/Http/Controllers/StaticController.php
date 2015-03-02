@@ -24,15 +24,6 @@ class StaticController extends Controller {
     }
 
     /**
-     * Show Statistics Page
-     * @return Illuminate\View\View
-     */
-    public function showStatistics()
-    {
-        return view('static.statistics');
-    }
-
-    /**
      * Show Feedback Page
      * @return Illuminate\View\View
      */
