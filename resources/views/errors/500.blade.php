@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <h2>A Server Error accoured</h2>
-    <p>Opps! Looks like you have done something and something went terribly wrong. We were notified an we will look into it.</p>
+    <h1>A Server Error accoured</h1>
+    <p>An action caused a server error. We were notified and will look into it!</p>
 
     <img src="http://media.giphy.com/media/Pok6284jGzyGA/giphy.gif" style="height: 100%; width: 100%">
 
