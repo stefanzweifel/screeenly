@@ -1,6 +1,7 @@
 <?php namespace Screeenly\Services;
 
 use Screeenly\User;
+use Slack;
 
 class RegisterUserService {
 
@@ -17,7 +18,7 @@ class RegisterUserService {
 
         $user = User::create($data);
 
-        //\Slack::sendMessage('A new user has registered.');
+        \Slack::send('A new user has registered.');
 
         return $user;
     }

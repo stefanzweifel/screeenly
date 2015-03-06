@@ -1,6 +1,6 @@
 <?php namespace Screeenly\Exceptions;
 
-use Exception;
+use Exception, Slack;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler {
@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler {
             }
 
             \Log::error($e);
-            //Slack::sendMessage('API Application Error', $attachments);
+            Slack::send('API Application Error', $attachments);
 
             $headers['Access-Control-Allow-Origin'] = '*';
 
