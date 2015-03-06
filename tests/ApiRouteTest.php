@@ -16,6 +16,14 @@ class ApiRouteTest extends TestCase {
 			'/api/v1/fullsize'
 		);
 
+		$errorMessage = [
+			'title' => 'An error accoured',
+			'message' => 'No API Key specified.'
+		];
+
+
+		$this->assertEquals(json_encode($errorMessage), $response->getContent());
+
 		$this->assertResponseStatus(401);
 	}
 
@@ -26,6 +34,14 @@ class ApiRouteTest extends TestCase {
 			'/api/v1/fullsize',
 			['key' => 'something']
 		);
+
+		$errorMessage = [
+			'title' => 'An error accoured',
+			'message' => 'Access denied.'
+		];
+
+
+		$this->assertEquals(json_encode($errorMessage), $response->getContent());
 
 		$this->assertResponseStatus(403);
 	}
