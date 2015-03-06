@@ -4,7 +4,44 @@
 *
 **/
 
-/* Vendor Stuff */
+/**
+ * Animate CSS - fadeOutUp
+ * I just need one animation, so I just copied it  ¯\_(ツ)_/¯
+ */
+@charset "UTF-8";
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
+}
+
+
+/**
+ * Bourbon
+ */
 @import "./resources/vendor/bourbon/app/assets/stylesheets/_bourbon.scss";
 @import "./resources/vendor/neat/app/assets/stylesheets/_neat.scss";
 

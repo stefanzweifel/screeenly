@@ -14,7 +14,7 @@
                 <br><small>We currently only support Login with Github. An email address is required.</small>
             </p>
 
-            <p>You can see <a href="#show-examples">examples</a> below or {!! link_to_route('try', 'test it') !!} right now for!</p>
+            <p>You can see <a href="#show-examples">examples</a> below or {!! link_to_route('try', 'test it') !!} right now for free!</p>
 
             <hr class="divider">
 

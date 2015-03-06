@@ -6,7 +6,15 @@
 
     <script>
         setTimeout(function(){
-            document.getElementById('flash-message').className += ' hide-me';
+            var el = document.getElementById('flash-message');
+
+            el.className += ' animated fadeOutUp';
+
+            setTimeout(function(){
+
+                el.parentNode.removeChild(el);
+            }, 500);
+
         }, 3000);
     </script>
 

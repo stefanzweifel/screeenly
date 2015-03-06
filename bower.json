@@ -21,6 +21,7 @@
   ],
   "dependencies": {
     "bourbon": "~4.2.0",
-    "neat": "~1.7.1"
+    "neat": "~1.7.1",
+    "animate-css": "~3.2.3"
   }
 }
