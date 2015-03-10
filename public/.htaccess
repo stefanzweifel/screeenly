@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    # Fix 10x redirect on uberspace
+    RewriteBase /
+
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
