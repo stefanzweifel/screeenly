@@ -45,7 +45,7 @@ class ApiThrottle {
 
 	public function handle($request, Closure $next)
 	{
-		$limit = $this->config->get('api.rateLimit'); // request limit
+		$limit = $this->config->get('api.rateLimit', 1000); // request limit
 		$time  = 60; // ban time in minutes
 
         if (false === $this->throttle->attempt($request, $limit, $time)) {
