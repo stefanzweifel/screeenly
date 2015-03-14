@@ -61,10 +61,10 @@ class UserController extends Controller {
         $user->email = $request->get('email');
         $user->save();
 
-        $requestedPath = Session::get('requestedPath', '/');
+        $requestedPath = Session::get('requestedPath', '/dashboard');
 
-        \Session::flash('message', "Youre email has been updated.");
-        \Session::flash('message_type', 'success');
+        Session::flash('message', "Youre email has been updated.");
+        Session::flash('message_type', 'success');
 
         return redirect($requestedPath);
     }
