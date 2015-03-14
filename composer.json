@@ -3,34 +3,37 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
+	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*",
-  		"artdarek/oauth-4-laravel": "dev-master",
-		"laravelbook/ardent": "dev-master",
-		"doctrine/dbal": "~2.3",
+		"laravel/framework": "5.0.*",
 		"nesbot/Carbon": "*",
-		"jonnyw/php-phantomjs": "3.*"
-
+		"jonnyw/php-phantomjs": "3.*",
+		"illuminate/html": "~5.0",
+		"laravel/socialite": "~2.0",
+		"graham-campbell/throttle": "~3.0",
+		"predis/predis": "~1.0",
+		"maknz/slack": "1.4.0"
 	},
 	"require-dev": {
-		"way/generators": "2.3",
-		"phpunit/phpunit": "4.4.*"
+		"phpunit/phpunit": "~4.0",
+		"phpspec/phpspec": "~2.1"
 	},
-
-
 	"autoload": {
 		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/models",
-			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php",
-			"app/libraries"
+			"database",
+			"helpers"
+		],
+		"files": [
+		    "helpers/functions.php"
 		],
 		"psr-4": {
-			"Screeenly\\": "app/Screeenly/"
+			"Screeenly\\": "app/"
 		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/TestCase.php"
+		]
 	},
 	"scripts": {
 		"post-install-cmd": [
@@ -42,12 +45,12 @@
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
+			"php -r \"copy('.env.example', '.env');\"",
 			"php artisan key:generate"
 		]
 	},
 	"config": {
 		"preferred-install": "dist",
 		"bin-dir": "bin"
-	},
-	"minimum-stability": "stable"
+	}
 }

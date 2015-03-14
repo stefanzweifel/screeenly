@@ -1,0 +1,282 @@
+/**
+*
+* Main CSS File
+*
+**/
+
+/**
+ * Animate CSS - fadeOutUp
+ * I just need one animation, so I just copied it  ¯\_(ツ)_/¯
+ */
+@charset "UTF-8";
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
+}
+
+
+/**
+ * Bourbon
+ */
+@import "./resources/vendor/bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "./resources/vendor/neat/app/assets/stylesheets/_neat.scss";
+
+@import "_base/variables";
+
+@import "bitters/extends/extends";
+@import "bitters/mixins/mixins";
+@import "bitters/typography";
+@import "bitters/forms";
+@import "bitters/lists";
+@import "bitters/flashes";
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    @include hyphens(auto);
+    font-family: $sans-serif;
+}
+
+figure {
+    margin: 0;
+}
+
+/**
+ * Screeenly V 1.0
+ */
+
+body {
+    background: #fafafa;
+}
+
+.container {
+    @include outer-container;
+
+    .sidebar {
+        @include span-columns(3);
+
+        @include media($mobile) {
+            // display: none;
+        }
+    }
+
+    .page-content {
+        @include span-columns(9);
+        padding-left: 60px;
+        padding-bottom: 100px;
+
+        @include media($mobile) {
+            padding: 20px;
+            // width: 100%;
+        }
+
+    }
+}
+
+/**
+ * Header
+ */
+
+.page-header {
+    min-height: 30px;
+    margin: 50px;
+
+
+    @include media($mobile) {
+        margin: 20px;
+    }
+
+    a {
+        font-size: 18px;
+        font-weight: bold;
+        color: gray;
+    }
+}
+
+/**
+ * Sidebar Naviagation
+ */
+.sidebar-nav {
+
+    ul {
+        text-align: right;
+    }
+
+    li {
+        margin: 10px 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+
+    a {
+        color: $dark-gray;
+        font-weight: bold;
+        font-size: 14px;
+
+        &.active,
+        &:hover {
+            border-bottom: solid 1px $dark-gray;
+        }
+    }
+
+    @include media($mobile) {
+        margin: 10px 0 5px;
+    }
+
+}
+
+/**
+ * Version Tag in Header
+ */
+.version-tag {
+    background: #EEEEEE;
+    padding: 3px 9px;
+    border-radius: 3px;
+    border: 1px solid #C9C9C9;
+    font-size: 12px;
+}
+
+/**
+ * Divider
+ */
+
+.divider {
+
+    margin-left: 50px;
+    border-color: rgb(215, 215, 215);
+}
+
+
+
+/**
+ * Flash Messages
+ */
+
+.flash {
+
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    padding: 10px;
+
+    p {
+        margin: 0;
+    }
+
+    &.flash-success {
+        background: #BDFBAA;
+        border: solid 1px #88DA5A;
+    }
+
+    &.flash-error {
+        background: #FAB5B5;
+        border: solid 1px #EC6161;
+        color: #fff;
+    }
+
+    &.flash-info {
+        background: #D1E9F6;
+        border: solid 1px #44A7F0;
+    }
+
+}
+
+/**
+ * Class which is appended, when flash message should be removed
+ */
+.hide-me {
+    display: none;
+}
+
+
+/**
+ * Code
+ */
+.code {
+
+    background: $light-gray;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 3px;
+    width: 100%;
+    word-wrap: break-word;
+
+}
+
+
+/**
+ * Buttons
+ * Copied from Bitters _buttons.scss
+ */
+
+.button {
+    @include appearance(none);
+    -webkit-font-smoothing: antialiased;
+    background-color: #FF693A;
+    border-radius: $base-border-radius;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $base-font-family;
+    font-size: $base-font-size * 0.9;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        background-color: darken(#FF693A, 15%);
+        color: #fff;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+}

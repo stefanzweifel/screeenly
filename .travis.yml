@@ -8,8 +8,15 @@ php:
 
 sudo: false
 
+services:
+    - mysql
+    - redis-server
+
 before_script:
+  - cp .env.travis .env
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-source --no-interaction --dev
+  - travis_retry composer install --prefer-source --no-interaction
+  - mysql -e 'create database screeenly_test;'
+  - php artisan migrate
 
 script: phpunit

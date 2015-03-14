@@ -20,7 +20,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.0",
-    "particles.js": "~1.0.3"
+    "bourbon": "~4.2.0",
+    "neat": "~1.7.1",
+    "animate-css": "~3.2.3"
   }
 }
