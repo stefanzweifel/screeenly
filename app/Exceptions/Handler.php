@@ -85,7 +85,7 @@ class Handler extends ExceptionHandler {
          */
         if ( $request->is('api/*') && $request->isMethod('post') ) {
 
-            if (!App::environment('testing')) {
+            if (!App::environment('testing') && $code != 404) {
 
                 Slack::attach($attachment)->send('API Error accoured');
 
