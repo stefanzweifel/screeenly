@@ -80,16 +80,14 @@ class Handler extends ExceptionHandler {
             ]
         ];
 
+        if (!App::environment('testing') && $code >= 500) {
+            Slack::attach($attachment)->send('Screeenly Error');
+        }
+
         /**
          * Handle API Errors
          */
         if ( $request->is('api/*') && $request->isMethod('post') ) {
-
-            if (!App::environment('testing') && $code >= 500) {
-
-                Slack::attach($attachment)->send('API Error accoured');
-
-            }
 
             $headers['Access-Control-Allow-Origin'] = '*';
 
@@ -102,7 +100,6 @@ class Handler extends ExceptionHandler {
 
         }
 
-        Slack::attach($attachment)->send('Screeenly Error');
 
         return parent::render($request, $e);
 
