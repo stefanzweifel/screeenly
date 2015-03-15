@@ -127,7 +127,7 @@ class Screenshot {
         try {
             $file = File::get($this->storagePath);
         } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
-            App::abort(500, "Screenshot can't be generated for URL $this->url");
+            App::abort(400, "Screenshot can't be generated for URL $this->url");
         }
 
         $this->bas64 = base64_encode($file);
