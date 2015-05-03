@@ -149,7 +149,6 @@ return [
 
 
 		'Laravel\Socialite\SocialiteServiceProvider',
-		'GrahamCampbell\Throttle\ThrottleServiceProvider',
 		'Maknz\Slack\SlackServiceProvider'
 
 
@@ -206,7 +205,6 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
 
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-        'Throttle'  => 'GrahamCampbell\Throttle\Facades\Throttle',
         'Slack'     => 'Maknz\Slack\Facades\Slack',
 
 	],

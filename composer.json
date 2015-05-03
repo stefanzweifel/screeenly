@@ -10,8 +10,6 @@
 		"jonnyw/php-phantomjs": "3.*",
 		"illuminate/html": "~5.0",
 		"laravel/socialite": "~2.0",
-		"graham-campbell/throttle": "~3.0",
-		"predis/predis": "~1.0",
 		"maknz/slack": "1.4.0"
 	},
 	"require-dev": {

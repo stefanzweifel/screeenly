@@ -11,7 +11,9 @@ class Handler extends ExceptionHandler {
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException'
+        'Symfony\Component\HttpKernel\Exception\HttpException',
+        'Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException',
+        'Screeenly\Exceptions\HostNotFoundException'
     ];
 
     /**
@@ -36,22 +38,64 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $e)
     {
-        $code = 0;
-
         if (method_exists($e, 'getHeaders')) {
             $headers = $e->getHeaders();
         }
 
-        if (method_exists($e, 'getStatusCode')) {
-            $code = $e->getStatusCode();
+        $code = $this->getCode($e);
+
+        if (!App::environment('testing') && $code >= 500) {
+            $this->sendSlackNotification($request, $e, $code);
         }
 
-        if ($code == 0) {
-            $code = 400;
+        /**
+         * Handle API Errors
+         */
+        if ( $request->is('api/*') && $request->isMethod('post') ) {
+
+            $headers['Access-Control-Allow-Origin'] = '*';
+
+            $returnMessage = [
+                'title'   => 'An error accoured',
+                'message' => $e->getMessage()
+            ];
+
+            return Response::json($returnMessage, $code, $headers);
+
         }
 
-        Log::error($e);
+        return parent::render($request, $e);
 
+    }
+
+    /**
+     * Return HTTP Status Code from given Exception
+     * @param  mixed $e
+     * @return itn
+     */
+    private function getCode($e)
+    {
+        if (method_exists($e, 'getStatusCode'))
+        {
+            return $e->getStatusCode();
+        }
+        elseif (method_exists($e, 'getCode'))
+        {
+            return $e->getCode();
+        }
+
+        return 400;
+    }
+
+    /**
+     * Send a Slack Error Notification
+     * @param  Request $request
+     * @param  Exception $e
+     * @param  int $code
+     * @return void
+     */
+    private function sendSlackNotification($request, $e, $code)
+    {
         $attachment = [
             'fallback' => 'An error accoured on Screeenly',
             'text'     => 'An error accoured on Screeenly',
@@ -74,34 +118,13 @@ class Handler extends ExceptionHandler {
                 ],
                 [
                     'title' => 'Input',
-                    'value' => json_encode(\Input::all()),
+                    'value' => json_encode($request->all()),
                     'short' => true
                 ]
             ]
         ];
 
-        if (!App::environment('testing') && $code >= 500) {
-            Slack::attach($attachment)->send('Screeenly Error');
-        }
-
-        /**
-         * Handle API Errors
-         */
-        if ( $request->is('api/*') && $request->isMethod('post') ) {
-
-            $headers['Access-Control-Allow-Origin'] = '*';
-
-            $returnMessage = array(
-                'title'   => 'An error accoured',
-                'message' => $e->getMessage()
-            );
-
-            return Response::json($returnMessage, $code, $headers);
-
-        }
-
-
-        return parent::render($request, $e);
+        Slack::attach($attachment)->send('Screeenly Error');
 
     }
 
