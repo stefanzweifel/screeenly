@@ -1,10 +1,16 @@
-<?php namespace Screeenly\Exceptions;
+<?php
 
-use Exception, Slack, App, Log, Response;
+namespace Screeenly\Exceptions;
+
+use Exception;
+use Slack;
+use App;
+use Log;
+use Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends ExceptionHandler {
-
+class Handler extends ExceptionHandler
+{
     /**
      * A list of the exception types that should not be reported.
      *
@@ -13,7 +19,7 @@ class Handler extends ExceptionHandler {
     protected $dontReport = [
         'Symfony\Component\HttpKernel\Exception\HttpException',
         'Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException',
-        'Screeenly\Exceptions\HostNotFoundException'
+        'Screeenly\Exceptions\HostNotFoundException',
     ];
 
     /**
@@ -21,8 +27,7 @@ class Handler extends ExceptionHandler {
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
-     * @return void
+     * @param \Exception $e
      */
     public function report(Exception $e)
     {
@@ -32,8 +37,9 @@ class Handler extends ExceptionHandler {
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $e
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
@@ -48,39 +54,35 @@ class Handler extends ExceptionHandler {
             $this->sendSlackNotification($request, $e, $code);
         }
 
-        /**
+        /*
          * Handle API Errors
          */
-        if ( $request->is('api/*') && $request->isMethod('post') ) {
-
+        if ($request->is('api/*') && $request->isMethod('post')) {
             $headers['Access-Control-Allow-Origin'] = '*';
 
             $returnMessage = [
-                'title'   => 'An error accoured',
-                'message' => $e->getMessage()
+                'title' => 'An error accoured',
+                'message' => $e->getMessage(),
             ];
 
             return Response::json($returnMessage, $code, $headers);
-
         }
 
         return parent::render($request, $e);
-
     }
 
     /**
-     * Return HTTP Status Code from given Exception
-     * @param  mixed $e
+     * Return HTTP Status Code from given Exception.
+     *
+     * @param mixed $e
+     *
      * @return itn
      */
     private function getCode($e)
     {
-        if (method_exists($e, 'getStatusCode'))
-        {
+        if (method_exists($e, 'getStatusCode')) {
             return $e->getStatusCode();
-        }
-        elseif (method_exists($e, 'getCode'))
-        {
+        } elseif (method_exists($e, 'getCode')) {
             return $e->getCode();
         }
 
@@ -88,44 +90,42 @@ class Handler extends ExceptionHandler {
     }
 
     /**
-     * Send a Slack Error Notification
-     * @param  Request $request
-     * @param  Exception $e
-     * @param  int $code
-     * @return void
+     * Send a Slack Error Notification.
+     *
+     * @param Request   $request
+     * @param Exception $e
+     * @param int       $code
      */
     private function sendSlackNotification($request, $e, $code)
     {
         $attachment = [
             'fallback' => 'An error accoured on Screeenly',
-            'text'     => 'An error accoured on Screeenly',
-            'color'    => '#c0392b',
+            'text' => 'An error accoured on Screeenly',
+            'color' => '#c0392b',
             'fields' => [
                 [
                     'title' => 'Requested URL',
                     'value' => $request->url(),
-                    'short' => true
+                    'short' => true,
                 ],
                 [
                     'title' => 'HTTP Code',
                     'value' => $code,
-                    'short' => true
+                    'short' => true,
                 ],
                 [
                     'title' => 'Exception',
                     'value' => $e->getMessage(),
-                    'short' => true
+                    'short' => true,
                 ],
                 [
                     'title' => 'Input',
                     'value' => json_encode($request->all()),
-                    'short' => true
-                ]
-            ]
+                    'short' => true,
+                ],
+            ],
         ];
 
         Slack::attach($attachment)->send('Screeenly Error');
-
     }
-
 }

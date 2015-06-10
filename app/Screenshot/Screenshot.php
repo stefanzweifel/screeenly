@@ -1,10 +1,14 @@
-<?php namespace Screeenly\Screenshot;
+<?php
+
+namespace Screeenly\Screenshot;
 
 use Screeenly\Screenshot\PhantomJsClient as Client;
-use Config, File, App;
+use Config;
+use File;
+use App;
 
-class Screenshot {
-
+class Screenshot
+{
     public $url;
     public $width;
     public $height;
@@ -28,8 +32,10 @@ class Screenshot {
     }
 
     /**
-     * Core method to create a screenshot
-     * @param  string $url
+     * Core method to create a screenshot.
+     *
+     * @param string $url
+     *
      * @return Screeenly\Screenshot\Screenshot
      */
     public function capture($url)
@@ -45,7 +51,8 @@ class Screenshot {
     }
 
     /**
-     * Set Height (Screenshot)
+     * Set Height (Screenshot).
+     *
      * @param int $height
      */
     public function setHeight($height)
@@ -54,7 +61,8 @@ class Screenshot {
     }
 
     /**
-     * Set Width (Viewport)
+     * Set Width (Viewport).
+     *
      * @param int $width
      */
     public function setWidth($width)
@@ -63,7 +71,8 @@ class Screenshot {
     }
 
     /**
-     * Set Url
+     * Set Url.
+     *
      * @param string $url
      */
     public function setUrl($url)
@@ -72,7 +81,8 @@ class Screenshot {
     }
 
     /**
-     * Set Storage Path
+     * Set Storage Path.
+     *
      * @param string $path
      */
     public function setPath($path)
@@ -81,7 +91,8 @@ class Screenshot {
     }
 
     /**
-     * Set Filename
+     * Set Filename.
+     *
      * @param string $filename
      */
     public function setFilename($filename)
@@ -90,27 +101,30 @@ class Screenshot {
     }
 
     /**
-     * Create new filename
-     * @return void
+     * Create new filename.
      */
     public function generateFilename()
     {
-        $filename = uniqid() . str_random(20) . '.jpg';
+        $filename = uniqid().str_random(20).'.jpg';
+
         return $this->setFilename($filename);
     }
 
     /**
-     * Set Storage and Asset Path
+     * Set Storage and Asset Path.
+     *
      * @param string $filename
      */
     public function setStoragePath($filename)
     {
-        $this->assetPath          = asset($this->path . $filename);
-        return $this->storagePath = public_path() . '/' . $this->path . $filename;
+        $this->assetPath = asset($this->path.$filename);
+
+        return $this->storagePath = public_path().'/'.$this->path.$filename;
     }
 
     /**
-     * Return ViewportHeight
+     * Return ViewportHeight.
+     *
      * @return int
      */
     public function getViewportHeight()
@@ -119,8 +133,7 @@ class Screenshot {
     }
 
     /**
-     * Check if Screenshot Exists in Filesystem
-     * @return void
+     * Check if Screenshot Exists in Filesystem.
      */
     private function doesScreenshotExist()
     {
@@ -132,6 +145,4 @@ class Screenshot {
 
         $this->bas64 = base64_encode($file);
     }
-
-
 }

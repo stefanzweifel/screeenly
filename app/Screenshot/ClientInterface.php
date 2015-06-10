@@ -1,6 +1,6 @@
-<?php namespace Screeenly\Screenshot;
+<?php
 
-use Screeenly\Screenshot\Screenshot;
+namespace Screeenly\Screenshot;
 
 /**
  * Interface description.
@@ -9,16 +9,16 @@ use Screeenly\Screenshot\Screenshot;
  */
 interface ClientInterface
 {
-
     /**
      * Method description.
      *
      * @author  Stefan Zweifel
-     * @param   type   $parameter
+     *
+     * @param type $parameter
+     *
      * @return type
      */
     public function build();
 
     public function capture(Screenshot $screenshot);
-
 }

@@ -1,47 +1,52 @@
-<?php namespace Screeenly\Http\Controllers;
+<?php
+
+namespace Screeenly\Http\Controllers;
 
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\Screenshot\ScreenshotValidator;
 use Screeenly\Services\CheckHostService;
+use Auth;
+use Input;
 
-use Auth, Input;
-
-class PagesController extends Controller {
-
-	/**
-	 * Display Landingpage
-	 * @return Illuminate\View\View
-	 */
-	public function showLandingpage()
-	{
-		if(Auth::check()) {
-			return redirect('/dashboard');
-		}
-		else {
+class PagesController extends Controller
+{
+    /**
+     * Display Landingpage.
+     *
+     * @return Illuminate\View\View
+     */
+    public function showLandingpage()
+    {
+        if (Auth::check()) {
+            return redirect('/dashboard');
+        } else {
             return view('static.landingpage');
-		}
-	}
-
-	/**
-	 * Display User Dashboard
-	 * @return Illuminate\View\View
-	 */
-	public function showDashboard()
-	{
-        return view('app.dashboard');
-	}
-
-	/**
-	 * Display Form to Try API
-	 * @return Illuminate\View\View
-	 */
-	public function showTestingForm()
-	{
-		return view('marketing.tryForm');
-	}
+        }
+    }
 
     /**
-     * Show Settings Screeen
+     * Display User Dashboard.
+     *
+     * @return Illuminate\View\View
+     */
+    public function showDashboard()
+    {
+        return view('app.dashboard');
+    }
+
+    /**
+     * Display Form to Try API.
+     *
+     * @return Illuminate\View\View
+     */
+    public function showTestingForm()
+    {
+        return view('marketing.tryForm');
+    }
+
+    /**
+     * Show Settings Screeen.
+     *
      * @return Illuminate\View\View
      */
     public function showSettings()
@@ -50,7 +55,8 @@ class PagesController extends Controller {
     }
 
     /**
-     * Show Form to store Email
+     * Show Form to store Email.
+     *
      * @return Illuminate\View\View
      */
     public function showEmailForm()
@@ -58,17 +64,20 @@ class PagesController extends Controller {
         return view('app.storeEmail');
     }
 
-	/**
-	 * Create Screenshot and Redirect to Try-Route
-	 * @return Illuminate\Http\RedirectResponse
-	 */
-	public function createTestScreenshot()
-	{
-		$proof = trim(strtolower(Input::get('proof')));
+    /**
+     * Create Screenshot and Redirect to Try-Route.
+     *
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function createTestScreenshot()
+    {
+        $proof = trim(strtolower(Input::get('proof')));
 
-		if ($proof != 'laravel') { return redirect()->route('home.landingpage'); }
+        if ($proof != 'laravel') {
+            return redirect()->route('home.landingpage');
+        }
 
-        $url  = Input::get('url');
+        $url = Input::get('url');
 
         // Validate Input
         $validator = new ScreenshotValidator();
@@ -87,9 +96,8 @@ class PagesController extends Controller {
         $screenshot->setWidth(Input::get('width', 1024));
         $screenshot->capture($url);
 
-		return redirect()
+        return redirect()
             ->route('try')
             ->with('asset', $screenshot->assetPath);
-	}
-
+    }
 }

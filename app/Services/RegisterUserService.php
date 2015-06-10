@@ -1,19 +1,20 @@
-<?php namespace Screeenly\Services;
+<?php
+
+namespace Screeenly\Services;
 
 use Screeenly\User;
-use Slack;
 
-class RegisterUserService {
-
+class RegisterUserService
+{
     public function register($code, $provider, $providerId, $email = '')
     {
         $data = [
-            'email'       => $email,
-            'token'       => $code,
-            'api_key'     => str_random(50),
-            'plan'        => 0,
+            'email' => $email,
+            'token' => $code,
+            'api_key' => str_random(50),
+            'plan' => 0,
             'provider_id' => $providerId,
-            'provider'    => $provider
+            'provider' => $provider,
         ];
 
         $user = User::create($data);
@@ -22,5 +23,4 @@ class RegisterUserService {
 
         return $user;
     }
-
 }

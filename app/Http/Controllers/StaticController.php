@@ -1,12 +1,12 @@
-<?php namespace Screeenly\Http\Controllers;
+<?php
 
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
+namespace Screeenly\Http\Controllers;
 
-class StaticController extends Controller {
-
+class StaticController extends Controller
+{
     /**
-     * Diplsay Terms of Service Page
+     * Diplsay Terms of Service Page.
+     *
      * @return Illuminate\View\View
      */
     public function showTerms()
@@ -15,7 +15,8 @@ class StaticController extends Controller {
     }
 
     /**
-     * Display Imprint Page
+     * Display Imprint Page.
+     *
      * @return Illuminate\View\View
      */
     public function showImprint()
@@ -24,12 +25,12 @@ class StaticController extends Controller {
     }
 
     /**
-     * Show Feedback Page
+     * Show Feedback Page.
+     *
      * @return Illuminate\View\View
      */
     public function showFeedback()
     {
         return view('static.feedback');
     }
-
 }

@@ -1,10 +1,11 @@
-<?php namespace Screeenly\Screenshot;
+<?php
+
+namespace Screeenly\Screenshot;
 
 use JonnyW\PhantomJs\Client;
-use Screeenly\Screenshot\Screenshot;
 
-class PhantomJsClient implements ClientInterface {
-
+class PhantomJsClient implements ClientInterface
+{
     private $client;
 
     public function __construct()
@@ -15,7 +16,7 @@ class PhantomJsClient implements ClientInterface {
     public function build()
     {
         $client = Client::getInstance();
-        $client->setBinDir(base_path() . '/bin');
+        $client->setBinDir(base_path().'/bin');
         $client->addOption('--load-images=true');
         $client->addOption('--ignore-ssl-errors=true');
         $client->addOption('--ssl-protocol=any');
@@ -33,7 +34,7 @@ class PhantomJsClient implements ClientInterface {
         $request->setTimeout(1000);
         $request->setDelay(1); // Delay Rendering for 1 sec (Animations etc.)
 
-        /**
+        /*
          * If height is set by user, crop the image
          */
         if (isset($screenshot->height)) {
@@ -43,5 +44,4 @@ class PhantomJsClient implements ClientInterface {
         $response = $this->client->getMessageFactory()->createResponse();
         $this->client->send($request, $response);
     }
-
 }

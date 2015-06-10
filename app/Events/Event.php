@@ -1,7 +1,8 @@
-<?php namespace Screeenly\Events;
+<?php
 
-abstract class Event {
+namespace Screeenly\Events;
 
-	//
-
+abstract class Event
+{
+    //
 }

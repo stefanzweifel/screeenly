@@ -1,7 +1,8 @@
-<?php namespace Screeenly\Commands;
+<?php
 
-abstract class Command {
+namespace Screeenly\Commands;
 
-	//
-
+abstract class Command
+{
+    //
 }

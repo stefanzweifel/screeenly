@@ -1,60 +1,60 @@
-<?php namespace Screeenly\Http\Controllers;
+<?php
 
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
+namespace Screeenly\Http\Controllers;
 
-use Illuminate\Http\Request;
 
 use Screeenly\User;
 use Screeenly\Services\RegisterUserService;
+use Auth;
+use Socialize;
 
-use Auth, Socialize;
+class OAuthController extends Controller
+{
+    /**
+     * Redirect to Github.com to get Permission.
+     *
+     * @return [type] [description]
+     */
+    public function redirectToProvider()
+    {
+        return Socialize::with('github')->scopes(['user:email'])->redirect();
+    }
 
-class OAuthController extends Controller {
+    /**
+     * Handle Response from Provider.
+     *
+     * @return Illuminate\Html\Redirect
+     */
+    public function handleProviderCallback()
+    {
+        $response = Socialize::with('github')->user();
+        $user = User::where('provider_id', '=', $response->id)->first();
 
-	/**
-	 * Redirect to Github.com to get Permission
-	 * @return [type] [description]
-	 */
-	public function redirectToProvider()
-	{
-	    return Socialize::with('github')->scopes(['user:email'])->redirect();
-	}
+        if (!$user) {
+            $userService = new RegisterUserService();
 
-	/**
-	 * Handle Response from Provider
-	 * @return Illuminate\Html\Redirect
-	 */
-	public function handleProviderCallback()
-	{
-		$response = Socialize::with('github')->user();
-		$user     = User::where('provider_id', '=', $response->id)->first();
-
-	    if (!$user) {
-
-	        $userService = new RegisterUserService();
-
-	        $user = $userService->register(
-	        	$response->token,
-	        	'Github',
-	        	$response->id,
-	        	$response->getEmail()
-	        );
-
-	    }
+            $user = $userService->register(
+                $response->token,
+                'Github',
+                $response->id,
+                $response->getEmail()
+            );
+        }
 
         Auth::login($user);
+
         return redirect('/dashboard');
-	}
+    }
 
-	/**
-	 * Logout User
-	 * @return Illuminate\Html\Redirect
-	 */
-	public function logout()
-	{
+    /**
+     * Logout User.
+     *
+     * @return Illuminate\Html\Redirect
+     */
+    public function logout()
+    {
         Auth::logout();
-        return redirect('/');
-	}
 
+        return redirect('/');
+    }
 }

@@ -1,11 +1,12 @@
-<?php namespace Screeenly;
+<?php
+
+namespace Screeenly;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Screeenly\Screenshot\Screenshot;
-use Screeenly\User;
 
-class APILog extends \Eloquent {
-
+class APILog extends \Eloquent
+{
     use SoftDeletes;
 
     protected $fillable = ['images'];
@@ -23,15 +24,10 @@ class APILog extends \Eloquent {
     }
 
     /**
-    *
-    * Relationships
-    *
-    **/
-
+     * Relationships.
+     **/
     public function user()
     {
         return $this->belongsTo('Screeenly\User', 'user_id');
     }
-
-
 }

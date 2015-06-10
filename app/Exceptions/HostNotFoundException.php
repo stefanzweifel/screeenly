@@ -1,5 +1,9 @@
-<?php namespace Screeenly\Exceptions;
+<?php
+
+namespace Screeenly\Exceptions;
 
 use Exception;
 
-class HostNotFoundException extends Exception {}
+class HostNotFoundException extends Exception
+{
+}

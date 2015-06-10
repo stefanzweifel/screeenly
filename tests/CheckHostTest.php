@@ -2,23 +2,22 @@
 
 use Screeenly\Services\CheckHostService;
 
-class CheckHostTest extends TestCase {
+class CheckHostTest extends TestCase
+{
+    public function testPingForRealUrl()
+    {
+        $service = new CheckHostService();
+        $response = $service->ping('http://www.google.com');
 
-	public function testPingForRealUrl()
-	{
-		$service = new CheckHostService();
-		$response = $service->ping('http://www.google.com');
+        $this->assertEquals(null, $response);
+    }
 
-		$this->assertEquals(null, $response);
-	}
-
-	/**
+    /**
      * @expectedException Exception
      */
-	public function testPingForWrongUrl()
-	{
-		$service = new CheckHostService();
-		$service->ping('http://www.googleisnotavailable.com');
-	}
-
+    public function testPingForWrongUrl()
+    {
+        $service = new CheckHostService();
+        $service->ping('http://www.googleisnotavailable.com');
+    }
 }
