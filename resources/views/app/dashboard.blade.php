@@ -9,6 +9,11 @@
         <h1>Dashboard</h1>
 
         <div class="flash flash-info">
+            <p><b>Important Notice:</b></p>
+            <p>We changed the lifetime of generated screeenshots. Screenshots are now deleted <b>1 hour</b> after their creation!</p>
+        </div>
+
+        <div class="flash flash-info">
             <p>Hi there! Thanks for using Screeenly.</p>
             <p>You find instructions to use the API in our <a href="https://github.com/stefanzweifel/screeenly/wiki/Use-the-API" target="blank">Wiki on Github</a>.</p>
 

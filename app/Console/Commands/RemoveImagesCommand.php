@@ -38,7 +38,7 @@ class RemoveImagesCommand extends Command
      */
     public function handle()
     {
-        $date = Carbon::now()->subHours(12);
+        $date = Carbon::now()->subHours(1);
         $logs = APILog::where('created_at', '<', $date)->get();
 
         foreach ($logs as $log) {

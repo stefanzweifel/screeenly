@@ -24,7 +24,7 @@
 
     <article>
         <h2>What about the screenshots?</h2>
-        <p>All screenshots you create with our API have a lifetime of <strong>12 hours! (Screeenly does not host your images)</strong> After 12 hours the file will be deleted from our server.</p>
+        <p>All screenshots you create with our API have a lifetime of <strong>1 hour! (Screeenly does not host your images)</strong> After 1 hour the file will be deleted from our server.</p>
 
         <p>Concering privacy, Screeenly is hosted on <a href="//uberspace.de">Uberspace</a>, a German hosting solution.</p>
     </article>
