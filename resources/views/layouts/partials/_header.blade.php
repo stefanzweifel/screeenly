@@ -12,8 +12,7 @@
 
         <meta name="description" content="@yield('meta_description', '')" />
 
-        {{-- Basic Stylesheets --}}
-        <link rel="stylesheet" href="{{ URL::asset('assets/main.css') }}">
+        <link rel="stylesheet" href="/assets/main.css">
 
         @yield('styles')
 
@@ -23,7 +22,7 @@
         <link rel="apple-touch-icon" sizes="120x120" href="{{ URL::asset('assets/images/apple-touch-icon-120x120.png') }}" />
         <link rel="apple-touch-icon" sizes="152x152" href="{{ URL::asset('assets/images/apple-touch-icon-152x152.png') }}" />
 
-        <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico?v1') }}">
+        <link rel="shortcut icon" href="/favicon.ico?v1">
 
     </head>
     <body class="@yield('body-class')">
