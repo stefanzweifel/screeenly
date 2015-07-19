@@ -6,12 +6,14 @@ use Config;
 use File;
 use Session;
 use Slack;
-use Screeenly\APILog;
+use Screeenly\ApiLog;
 use Screeenly\Http\Requests\StoreEmailRequest;
+use Illuminate\Http\Request;
+use Screeenly\Http\Requests;
+use Screeenly\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-
     /**
      * Close Account of logged in user.
      *
@@ -20,7 +22,7 @@ class UserController extends Controller
     public function closeAccount()
     {
         $user = auth()->user();
-        $logs = APILog::where('user_id', '=', $user->id)->get();
+        $logs = ApiLog::where('user_id', '=', $user->id)->get();
 
         foreach ($logs as $log) {
             $path = public_path(Config::get('api.storage_path').$log->images);
@@ -29,7 +31,7 @@ class UserController extends Controller
             $log->delete();
         }
 
-        foreach($user->apikeys as $key) {
+        foreach ($user->apikeys as $key) {
             $key->delete();
         }
 

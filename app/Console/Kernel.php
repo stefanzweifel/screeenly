@@ -13,9 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'Screeenly\Console\Commands\Inspire',
-        \Screeenly\Console\Commands\RemoveImagesCommand::class,
-        \Screeenly\Console\Commands\MigrateApiKeys::class
+        Commands\RemoveImagesCommand::class,
+        Commands\ClearApiLogs::class
     ];
 
 	/**
@@ -26,8 +25,8 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('screeenly:clearImages')
-				 ->hourly();
+		$schedule->command('screeenly:clear:images')->hourly();
+        $schedule->command('screeenly:clear:logs')->daily();
 	}
 
 }

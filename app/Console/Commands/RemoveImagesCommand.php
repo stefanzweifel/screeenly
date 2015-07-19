@@ -5,7 +5,7 @@ namespace Screeenly\Console\Commands;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use File;
-use Screeenly\APILog;
+use Screeenly\ApiLog;
 
 class RemoveImagesCommand extends Command
 {
@@ -14,14 +14,14 @@ class RemoveImagesCommand extends Command
      *
      * @var string
      */
-    protected $name = 'screeenly:clearImages';
+    protected $name = 'screeenly:clear:images';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Remove images older than 12 hours.';
+    protected $description = 'Remove images older than 1 hours.';
 
     /**
      * Create a new command instance.
@@ -39,7 +39,7 @@ class RemoveImagesCommand extends Command
     public function handle()
     {
         $date = Carbon::now()->subHours(1);
-        $logs = APILog::where('created_at', '<', $date)->get();
+        $logs = ApiLog::where('created_at', '<', $date)->get();
 
         foreach ($logs as $log) {
             $path = $log->images;
@@ -49,5 +49,8 @@ class RemoveImagesCommand extends Command
         }
 
         $this->info('Removed '.count($logs).' Images.');
+
+        // Removed images from try service
+        File::cleanDirectory(public_path("images/try/"));
     }
 }

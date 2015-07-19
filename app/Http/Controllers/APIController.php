@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Container\Container as App;
 use Illuminate\Contracts\Routing\ResponseFactory as Response;
 use Screeenly\User;
-use Screeenly\APILog;
+use Screeenly\ApiLog;
+use Screeenly\Http\Requests;
+use Screeenly\Http\Controllers\Controller;
 
 class APIController extends Controller
 {
@@ -35,7 +37,7 @@ class APIController extends Controller
      */
     protected $response;
 
-    public function __construct(User $user, App $app, APILog $log, Response $response)
+    public function __construct(User $user, App $app, ApiLog $log, Response $response)
     {
         $this->user = $user;
         $this->app = $app;

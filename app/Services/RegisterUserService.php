@@ -11,7 +11,6 @@ class RegisterUserService
         $data = [
             'email' => $email,
             'token' => $code,
-            'api_key' => str_random(50),
             'plan' => 0,
             'provider_id' => $providerId,
             'provider' => $provider,

@@ -4,10 +4,13 @@ namespace Screeenly\Http\Controllers;
 
 use Auth;
 use Input;
-use Screeenly\APILog;
+use Screeenly\ApiLog;
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\Screenshot\ScreenshotValidator;
 use Screeenly\Services\CheckHostService;
+use Illuminate\Http\Request;
+use Screeenly\Http\Requests;
+use Screeenly\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
@@ -21,10 +24,9 @@ class PagesController extends Controller
         if (Auth::check()) {
             return redirect('/dashboard');
         } else {
+            $screenshots = \Cache::remember('global.screenshot_count', 5, function () {
 
-            $screenshots = \Cache::remember('global.screenshot_count', 5, function() {
-
-                $result = APILog::select('id')->withTrashed()->latest()->first();
+                $result = ApiLog::select('id')->withTrashed()->latest()->first();
 
                 if ($result) {
                     return $result->id;
@@ -84,15 +86,15 @@ class PagesController extends Controller
      *
      * @return Illuminate\Http\RedirectResponse
      */
-    public function createTestScreenshot()
+    public function createTestScreenshot(Request $request)
     {
-        $proof = trim(strtolower(Input::get('proof')));
+        $proof = trim(strtolower($request->get('proof')));
 
         if ($proof != 'laravel') {
             return redirect()->route('home.landingpage');
         }
 
-        $url = Input::get('url');
+        $url = $request->get('url');
 
         // Validate Input
         $validator = new ScreenshotValidator();
@@ -107,8 +109,8 @@ class PagesController extends Controller
         $filename = $screenshot->generateFilename();
         $screenshot->setPath('images/try/');
         $screenshot->setStoragePath($filename);
-        $screenshot->setHeight(Input::get('height'));
-        $screenshot->setWidth(Input::get('width', 1024));
+        $screenshot->setHeight($request->get('height'));
+        $screenshot->setWidth($request->get('width', 1024));
         $screenshot->capture($url);
 
         return redirect()

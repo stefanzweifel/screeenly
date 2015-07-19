@@ -17,7 +17,7 @@
                 {!! Form::input('hidden', 'key', 'this-is-just-a-dummy-key') !!}
 
                 {!! Form::label('url', 'URL of website') !!}
-                {!! Form::input('text', 'url', 'http://google.com', ['required', 'class' => 'block col-12 field rounded-bottom y-group-item mb1']) !!}
+                {!! Form::input('text', 'url', 'http://laravel.com', ['required', 'class' => 'block col-12 field rounded-bottom y-group-item mb1']) !!}
 
                 {!! Form::label('proof', "Proof your human") !!}
                 {!! Form::input('text', 'proof', null, ['required', 'placeholder' => 'Which framework was used to create Screeenly?', 'class' => 'block col-12 field rounded-bottom y-group-item mb2']) !!}

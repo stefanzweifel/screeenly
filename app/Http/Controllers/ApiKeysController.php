@@ -3,7 +3,6 @@
 namespace Screeenly\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use Screeenly\Http\Requests;
 use Screeenly\Http\Controllers\Controller;
 use Screeenly\ApiKey;
@@ -43,7 +42,7 @@ class ApiKeysController extends Controller
         $key = new ApiKey();
         $key->name = $request->get('name');
         $key->key = $key->generateKey();
-        $key->user()->associate( auth()->user() );
+        $key->user()->associate(auth()->user());
 
         $key->save();
 

@@ -7,7 +7,7 @@ use Screeenly\ApiKey;
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\User;
 
-class APILog extends \Eloquent
+class ApiLog extends \Eloquent
 {
     use SoftDeletes;
 

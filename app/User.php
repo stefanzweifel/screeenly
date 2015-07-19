@@ -3,13 +3,13 @@
 namespace Screeenly;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 use Screeenly\ApiKey;
+use Screeenly\ApiLog;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -24,13 +24,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $table = 'users';
 
-/**
- * The attributes that are mass assignable.
- *
- * @var array
- */
-    //protected $fillable = ['name', 'email', 'password'];
-    protected $fillable = ['email', 'token', 'api_key', 'plan', 'provider', 'provider_id'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['email', 'token', 'plan', 'provider', 'provider_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -48,28 +47,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public static function getUserByKey($key)
     {
-        // Check if it's an V1 key, which is attached to the user model
-        $user = self::where('api_key', '=', $key)->first();
+        // Search for key in ApiKey Model
+        $apiKey = ApiKey::whereKey($key)->first();
 
-        if (!$user) {
-
-            // Search for key in ApiKey Model
-            $apiKey = ApiKey::whereKey($key)->first();
-
-            if ($apiKey) {
-
-                return $apiKey->user;
-
-            }
-
+        if ($apiKey) {
+            return $apiKey->user;
         }
-
-        return $user;
     }
 
     public function logs()
     {
-        return $this->hasMany('Screeenly\APILog', 'user_id');
+        return $this->hasMany(ApiLog::class, 'user_id');
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace Screeenly\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Screeenly\Http\Requests;
+use Screeenly\Http\Controllers\Controller;
+
 class StaticController extends Controller
 {
     /**
