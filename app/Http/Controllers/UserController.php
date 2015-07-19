@@ -2,7 +2,6 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Auth;
 use Config;
 use File;
 use Session;
@@ -12,22 +11,6 @@ use Screeenly\Http\Requests\StoreEmailRequest;
 
 class UserController extends Controller
 {
-    /**
-     * Create new API key for logged in user.
-     *
-     * @return Illuminate\Http\RedirectResponse
-     */
-    public function resetAPIKey()
-    {
-        $user = Auth::user();
-        $user->api_key = str_random(50);
-        $user->save();
-
-        Session::flash('message', 'Youre API key was resetet.');
-        Session::flash('message_type', 'success');
-
-        return redirect()->route('app.dashboard');
-    }
 
     /**
      * Close Account of logged in user.
@@ -36,7 +19,7 @@ class UserController extends Controller
      */
     public function closeAccount()
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $logs = APILog::where('user_id', '=', $user->id)->get();
 
         foreach ($logs as $log) {
@@ -46,14 +29,15 @@ class UserController extends Controller
             $log->delete();
         }
 
+        foreach($user->apikeys as $key) {
+            $key->delete();
+        }
+
         $user->delete();
 
         Slack::send('User deleted');
 
-        Session::flash('message', 'Youre account has been closed. Goodbye :)');
-        Session::flash('message_type', 'success');
-
-        return redirect()->route('oauth.logout');
+        return redirect()->route('oauth.logout')->withSuccess("Youre account has been closed. Goodbye :)");
     }
 
     /**
@@ -65,15 +49,12 @@ class UserController extends Controller
      */
     public function storeEmail(StoreEmailRequest $request)
     {
-        $user = Auth::user();
+        $user = auth()->user();
         $user->email = $request->get('email');
         $user->save();
 
         $requestedPath = Session::get('requestedPath', '/settings');
 
-        Session::flash('message', 'Youre email has been updated.');
-        Session::flash('message_type', 'success');
-
-        return redirect($requestedPath);
+        return redirect($requestedPath)->withMessage("Your email has been updated.");
     }
 }

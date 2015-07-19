@@ -33,4 +33,14 @@ class StaticController extends Controller
     {
         return view('static.feedback');
     }
+
+    public function showDonate()
+    {
+        return view('static.donate');
+    }
+
+    public function privacy()
+    {
+        return view('static.privacy');
+    }
 }

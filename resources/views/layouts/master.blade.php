@@ -1,27 +1,21 @@
-{{-- Include Header (Styles, Meta Tags and more) --}}
 @include('layouts.partials._header')
 
-<div class="container">
+<div class="flex flex-column" style="min-height: 100vh;">
 
-    <header class="page-header">
-        <a id="top-link" href="/">screeenly <span class="version-tag">v 1.0</span></a>
-    </header>
+    @include('partials._navigation')
+    @include('partials._messages')
 
-    <aside class="sidebar" id="sidebar">
+    <main class="flex-auto screeenly">
 
-        @include('layouts.partials._navigation')
+        <div class="container">
+            @yield('content')
+        </div>
 
-    </aside>
+    </main>
 
-    <section role="main" class="page-content">
 
-        @include('layouts.partials._flash')
-
-        @yield('content')
-
-    </section>
+    @include('partials._footer')
 
 </div>
 
-{{-- include tail (scripts and end tags) --}}
 @include('layouts.partials._tail')

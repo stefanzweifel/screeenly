@@ -1,6 +1,9 @@
 {
   "devDependencies": {
+    "basscss": "^7.0.0",
+    "basscss-sass": "^2.0.0",
     "gulp": "^3.8.8",
+    "gulp-css-scss": "0.0.2",
     "laravel-elixir": "*"
   }
 }

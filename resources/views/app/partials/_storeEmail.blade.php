@@ -1,12 +1,21 @@
-{!! Form::open(['route' => 'app.storeEmail']) !!}
+{!! Form::model(auth()->user(), ['route' => 'app.storeEmail']) !!}
 
-    <input type="email" name="email" id="email" value="{!! Auth::user()->email; !!}" placeholder="email" required>
-    @if ($errors->any())
-        <small class="error">
-           {{ $errors->first('email') }}
-        </small><br>
-    @endif
 
-    <button class="button small">{{ $submitButtonText }}</button>
+    <div class="clearfix">
+        {!! Form::email('email', null, [
+            'class' => 'block col-12 field rounded-bottom y-group-item',
+            'placeholder' => 'john@appleseed.com',
+            'required'
+        ]) !!}
+
+        @if ($errors->any())
+            <small class="error red">
+               {{ $errors->first('email') }}
+            </small><br>
+        @endif
+
+        <button class="btn btn-primary rounde mt2">{{ $submitButtonText }}</button>
+
+    </div>
 
 {!! Form::close() !!}

@@ -14,17 +14,20 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'Screeenly\Console\Commands\Inspire',
-        'Screeenly\Console\Commands\RemoveImagesCommand',
+        \Screeenly\Console\Commands\RemoveImagesCommand::class,
+        \Screeenly\Console\Commands\MigrateApiKeys::class
     ];
 
-    /**
-     * Define the application's command schedule.
-     *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
-     */
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('inspire')
-                 ->hourly();
-    }
+	/**
+	 * Define the application's command schedule.
+	 *
+	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+	 * @return void
+	 */
+	protected function schedule(Schedule $schedule)
+	{
+		$schedule->command('screeenly:clearImages')
+				 ->hourly();
+	}
+
 }

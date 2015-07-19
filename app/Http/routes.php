@@ -3,6 +3,9 @@
 Route::get('/', ['as' => 'home.landingpage', 'uses' => 'PagesController@showLandingpage']);
 Route::get('terms', ['as' => 'front.terms', 'uses' => 'StaticController@showTerms']);
 Route::get('imprint', ['as' => 'front.imprint', 'uses' => 'StaticController@showImprint']);
+Route::get('donate', ['as' => 'front.donate', 'uses' => 'StaticController@showDonate']);
+
+// Route::get('privacy', ['as' => 'front.privacy', 'uses' => 'StaticController@privacy']);
 
 Route::get('login', ['as' => 'login', 'uses' => 'OAuthController@redirectToProvider']);
 Route::get('handle', ['as' => 'login_handler', 'uses' => 'OAuthController@handleProviderCallback']);
@@ -24,12 +27,13 @@ Route::get('feedback', ['as' => 'app.feedback', 'uses' => 'StaticController@show
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('dashboard', array(
-        'as' => 'app.dashboard',
-        'uses' => 'PagesController@showDashboard',
+        'as'         => 'app.dashboard',
+        'uses'       => 'PagesController@showDashboard',
         'middleware' => 'app.hasEmail',
     ));
 
-    Route::put('reset', ['as' => 'app.resetAPIKey', 'uses' => 'UserController@resetAPIKey']);
+    Route::resource('apikeys', 'ApiKeysController', ['except' => ['index', 'create']]);
+
     Route::delete('close', ['as' => 'app.closeAccount', 'uses' => 'UserController@closeAccount']);
     Route::get('email-setup', ['as' => 'app.storeEmailForm', 'uses' => 'PagesController@showEmailForm']);
     Route::post('email-setup', ['as' => 'app.storeEmail', 'uses' => 'UserController@storeEmail']);

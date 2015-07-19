@@ -12,7 +12,10 @@
 
         <meta name="description" content="@yield('meta_description', '')" />
 
-        <link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="{{ elixir('assets/app.css') }}">
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
         @yield('styles')
 

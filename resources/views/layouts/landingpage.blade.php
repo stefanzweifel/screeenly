@@ -1,7 +1,19 @@
-{{-- Include Header (Styles, Meta Tags and more) --}}
 @include('layouts.partials._header')
 
-@yield('content')
+<div class="flex flex-column" style="min-height: 100vh;">
 
-{{-- include tail (scripts and end tags) --}}
+    @include('partials._messages')
+
+
+    <main class="flex-auto">
+
+        @yield('content')
+
+    </main>
+
+
+    @include('partials._footer')
+
+</div>
+
 @include('layouts.partials._tail')

@@ -7,3 +7,4 @@
 /bin
 .DS_Store
 Thumbs.db
+storage/database.sqlite

@@ -89,10 +89,10 @@ class APIController extends Controller
      */
     private function setRateLimitHeader($request)
     {
-        $limit = \Config::get('api.ratelimit.requests');
-        $time = \Config::get('api.ratelimit.time');
-        $key = sprintf('api:%s', $request->get('key'));
-        $count = \Cache::get($key);
+        $limit     = \Config::get('api.ratelimit.requests');
+        $time      = \Config::get('api.ratelimit.time');
+        $key       = sprintf('api:%s', $request->get('key'));
+        $count     = \Cache::get($key);
         $remaining = ($limit - $count);
 
         array_set($this->header, 'X-RateLimit-Limit', $limit);

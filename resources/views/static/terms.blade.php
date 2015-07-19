@@ -6,20 +6,20 @@
 
 @section('content')
 
+    <div class="col md-col-8">
+
     <h1>Terms of Service</h1>
 
     <article>
         <h2>I have a problem. How can I reach you?</h2>
-        <p>You can always send me an <a href="mailto:hello@screeenly.com">Email</a>, a <a href="http://twitter.com/screeenly">Tweet</a> or leave your Feedback <a href="//docs.google.com/forms/d/1rSfWcUrPCf2Ony3blKh6L3dOQiIanVKU0HZ0Org4eFs/viewform?usp=send_form">here</a>.</p>
+        <p>You can always send us an Email (hello[at]screeenly.com) , a <a href="http://twitter.com/screeenly">Tweet</a> or leave your Feedback <a href="//docs.google.com/forms/d/1rSfWcUrPCf2Ony3blKh6L3dOQiIanVKU0HZ0Org4eFs/viewform?usp=send_form">here</a>.</p>
 
-        <p>Due to the fact that this is just a sideproject I can't guarantee and answer in the next 5 minutes. But I try to answer questions as fast a possible.</p>
+        <p>Due to the fact that this is just a sideproject we can't guarantee and answer in the next 5 minutes. But we try to answer questions as fast a possible.</p>
     </article>
 
     <article>
         <h2>Is this service free?</h2>
-        <p>Yes. Screeenly is free.</p>
-        <p>However, if Screeenly would get really popular and the server would run into problems, I would have to find a solution on how to keep the service alive. Maybe there will come a paid plan (with more features?) but early adopters can use this service for free. Forever.</p>
-        <p>(Or you selfhost it on your own server).</p>
+        <p>Yes. Screeenly is free for everyone, but Screeenlys user base is growing rapitly and creating screenshots is needs power. If we would run into massive server issues, we might have to find a solution to monetize the service. But till then, the service is free.</p>
     </article>
 
     <article>
@@ -40,16 +40,24 @@
         <p>You can do different things:
         <ul>
             <li>Make a pull-request on <a href="//github.com/stefanzweifel/screeenly">Github</a></li>
-            <li>share us on all those social networks</li>
-            <li>Send us <a href="mailto:hello@screeenly.com">emails</a></li>
-            <li>Create a better design / logo / styleguide</li>
+            <li>Developer? Improve the codebase or write some better test.</li>
+            <li>Designer? Create a new logo or a better suitable design</li>
+            <li>Writer? Improve the copy on the site</li>
         </ul>
         </p>
     </article>
 
     <article>
         <h2>Good to know</h2>
-        <p>We also use <a href="//google.com/analytics">Google Analytics</a> on the frontend.</p>
+
+        <ul>
+            <li>Screeenly is built with <a href="http://laravel.com">Laravel</a>. The PHP Framework for artisans</li>
+            <li>We used <a href="http://www.basscss.com/">BASSCSS</a>, a low level CSS toolkit for our frontend</li>
+            <li><a href="//google.com/analytics">Google Analytics</a> is used.</li>
+        </ul>
     </article>
+
+
+    </div>
 
 @stop

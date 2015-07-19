@@ -2,15 +2,6 @@
 
 class RouteTest extends TestCase
 {
-    /**
-     * A basic functional test example.
-     */
-    public function testHomepage()
-    {
-        $crawler = $this->call('GET', '/');
-        $this->assertResponseOk();
-    }
-
     public function testTryPage()
     {
         $crawler = $this->call('GET', '/try');

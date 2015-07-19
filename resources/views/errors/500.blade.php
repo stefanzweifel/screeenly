@@ -1,14 +1,20 @@
 @extends ('layouts.master')
 
 @section('meta_title')
-    Maintenance
+    Server Error
 @stop
 
 @section('content')
 
-    <h1>A Server Error accoured</h1>
-    <p>An action caused a server error. We were notified and will look into it!</p>
+    <div class="clearfix">
+        <div class="col md-col-8">
 
-    <img src="http://media.giphy.com/media/Pok6284jGzyGA/giphy.gif" style="height: 100%; width: 100%">
+            <h1>A Server Error accoured</h1>
+            <p>An action caused a server error. We were notified and we will look into it!</p>
+
+            <img src="http://media.giphy.com/media/Pok6284jGzyGA/giphy.gif">
+
+        </div>
+    </div>
 
 @stop

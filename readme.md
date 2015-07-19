@@ -1,7 +1,6 @@
 # screeenly
 
 [![Build Status](https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master)](https://travis-ci.org/stefanzweifel/screeenly)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 Screeenly is an open sourced web-app / API to create screenshots from websites.
 Sideproject by [Stefan Zweifel](http://stefanzweifel.io).
@@ -19,8 +18,6 @@ If you want to use the API in your PHP project I wrote a simple package. Checkou
 > Coming soon.
 
 ### Asset Management
-
-We switched to Gulp in Version 1.0.
 
 #### local development
 

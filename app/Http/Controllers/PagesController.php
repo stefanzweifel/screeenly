@@ -2,11 +2,12 @@
 
 namespace Screeenly\Http\Controllers;
 
+use Auth;
+use Input;
+use Screeenly\APILog;
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\Screenshot\ScreenshotValidator;
 use Screeenly\Services\CheckHostService;
-use Auth;
-use Input;
 
 class PagesController extends Controller
 {
@@ -20,7 +21,19 @@ class PagesController extends Controller
         if (Auth::check()) {
             return redirect('/dashboard');
         } else {
-            return view('static.landingpage');
+
+            $screenshots = \Cache::remember('global.screenshot_count', 5, function() {
+
+                $result = APILog::select('id')->withTrashed()->latest()->first();
+
+                if ($result) {
+                    return $result->id;
+                }
+
+                return 0;
+            });
+
+            return view('static.landingpage', compact('screenshots'));
         }
     }
 
@@ -31,7 +44,9 @@ class PagesController extends Controller
      */
     public function showDashboard()
     {
-        return view('app.dashboard');
+        $apikeys = auth()->user()->apikeys()->latest()->get();
+
+        return view('app.dashboard', compact('apikeys'));
     }
 
     /**

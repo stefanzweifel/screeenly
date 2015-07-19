@@ -1,16 +1,22 @@
 @extends ('layouts.master')
 
-    @section('meta_title')
-        Email Settings
-    @stop
+@section('meta_title')
+    Email Settings
+@stop
 
-    @section('content')
+@section('content')
 
-        <h1>Email Settings</h1>
+    <div class="clearfix">
+        <div class="col lg-col-8">
 
-        <p>It looks like, we couldn't find any email address in your Account.</p>
-        <p>It would be great if you could leave your email in the form below, so we can reach you if something would change with Screeenly.</p>
+            <h1>Email Settings</h1>
 
-        @include('app.partials._storeEmail', ['submitButtonText' => 'Store and proceed'])
+            <p>It looks like, we couldn't find any email address in your Account.</p>
+            <p>It would be great if you could leave your email in the form below, so we can reach you if something would change with Screeenly.</p>
 
-    @stop
+            @include('app.partials._storeEmail', ['submitButtonText' => 'Store and proceed'])
+
+        </div>
+    </div>
+
+@stop

@@ -4,6 +4,7 @@ namespace Screeenly\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Screeenly\ApiKey;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,11 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(Router $router)
     {
         parent::boot($router);
+
+        $router->bind('apikeys', function($value)
+        {
+            return ApiKey::whereId($value)->where('user_id', auth()->id())->firstOrFail();
+        });
     }
 
     /**

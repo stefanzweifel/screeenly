@@ -13,7 +13,7 @@ class AddProviderIdToUsersTable extends Migration {
 	public function up()
 	{
         Schema::table('users', function(Blueprint $table) {
-            $table->integer('provider_id');
+            $table->integer('provider_id')->nullable();
         });
 	}
 

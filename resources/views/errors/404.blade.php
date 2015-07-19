@@ -6,7 +6,15 @@
 
 @section('content')
 
-    <h1>Error 404 - Here is nothing!</h1>
-    <img src="http://media.giphy.com/media/lPdnkrxkqnS48/giphy.gif" style="height: 100%; width: 100%">
+    <div class="clearfix">
+        <div class="col md-col-8">
+
+            <h1>Error 404 - Page not found!</h1>
+            <p>We couldn't find your request site. Might think it's something important? Let us <a href="https://twitter.com/screeenly">know</a>.</p>
+
+            <img src="http://media.giphy.com/media/lPdnkrxkqnS48/giphy.gif" class="fit">
+
+        </div>
+    </div>
 
 @stop
