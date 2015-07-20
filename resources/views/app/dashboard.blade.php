@@ -17,7 +17,7 @@
         <p>Screeenly supports multiple API keys. Create and manage your keys here.</p>
 
 
-        @if ($apikeys->count() <= 25)
+        @if ($apikeys->count() < 25)
 
             {!! Form::open(['route' => 'apikeys.store']) !!}
 

@@ -65,6 +65,12 @@ class Handler extends ExceptionHandler
                 'message' => $e->getMessage(),
             ];
 
+            if ($code < 100) {
+
+                $code = 400;
+
+            }
+
             return Response::json($returnMessage, $code, $headers);
         }
 

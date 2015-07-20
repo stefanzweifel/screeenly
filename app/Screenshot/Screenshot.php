@@ -119,7 +119,11 @@ class Screenshot
     {
         $this->assetPath = asset($this->path.$filename);
 
-        return $this->storagePath = public_path().'/'.$this->path.$filename;
+        $storagePath = public_path().'/'.$this->path;
+
+        $this->createDirectory($storagePath);
+
+        return $this->storagePath = $storagePath.$filename;
     }
 
     /**
@@ -145,4 +149,19 @@ class Screenshot
 
         $this->bas64 = base64_encode($file);
     }
+
+    /**
+     * Create Storage Directory, if it doesnt exist yet
+     * @param  string $path
+     * @return void
+     */
+    protected function createDirectory($path)
+    {
+        if(!File::exists($path)) {
+
+            File::makeDirectory($path, 0755, true);
+
+        }
+    }
+
 }
