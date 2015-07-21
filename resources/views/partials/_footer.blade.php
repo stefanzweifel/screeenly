@@ -24,8 +24,8 @@
       <div class="col col-6 md-col-3">
         <ul class="list-reset">
           <li><a href="https://twitter.com/screeenly" class="h5 btn block">Twitter</a></li>
+          <li><a href="http://blog.screeenly.com" class="h5 btn block">Blog</a></li>
           <li><a href="mailto:hello@screeenly.com" class="h5 btn block">Email</a></li>
-          <!-- <li><a href="http://blog.screeenly.com" class="h5 btn block">Blog</a></li> -->
         </ul>
       </div>
 
