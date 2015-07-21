@@ -91,7 +91,7 @@ class PagesController extends Controller
         $proof = trim(strtolower($request->get('proof')));
 
         if ($proof != 'laravel') {
-            return redirect()->route('home.landingpage');
+            return back()->withMessage("Wrong answer. Hint: Laravel.");
         }
 
         $url = $request->get('url');

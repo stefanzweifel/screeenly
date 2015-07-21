@@ -5,6 +5,7 @@ namespace Screeenly\Console\Commands;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use File;
+use Storage;
 use Screeenly\ApiLog;
 
 class RemoveImagesCommand extends Command
@@ -51,6 +52,7 @@ class RemoveImagesCommand extends Command
         $this->info('Removed '.count($logs).' Images.');
 
         // Removed images from try service
-        File::cleanDirectory(public_path("images/try/"));
+        $files = Storage::allFiles("images/try");
+        Storage::delete($files);
     }
 }

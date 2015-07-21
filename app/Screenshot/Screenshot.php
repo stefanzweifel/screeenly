@@ -119,7 +119,7 @@ class Screenshot
     {
         $this->assetPath = asset($this->path.$filename);
 
-        $storagePath = public_path().'/'.$this->path;
+        $storagePath = public_path($this->path);
 
         $this->createDirectory($storagePath);
 
