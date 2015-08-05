@@ -32,5 +32,7 @@ class Kernel extends HttpKernel
         'api.auth' => 'Screeenly\Http\Middleware\ApiAuth',
         'api.throttle' => 'Screeenly\Http\Middleware\ApiThrottle',
         'app.hasEmail' => 'Screeenly\Http\Middleware\UserHasEmail',
+
+        'api.accept_json_header' => \Screeenly\Core\Middleware\AddAcceptJsonHeader::class
     ];
 }
