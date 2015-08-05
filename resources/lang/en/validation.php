@@ -74,6 +74,9 @@ return [
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 
+
+	"available_url" => "The :attribute is not publicly available.",
+
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines
