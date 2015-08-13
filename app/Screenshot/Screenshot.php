@@ -147,7 +147,7 @@ class Screenshot
             App::abort(400, "Screenshot can't be generated for URL $this->url");
         }
 
-        $this->bas64 = base64_encode($file);
+        $this->base64 = base64_encode($file);
     }
 
     /**
