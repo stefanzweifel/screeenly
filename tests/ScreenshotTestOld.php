@@ -2,7 +2,7 @@
 
 use Screeenly\Screenshot\Screenshot;
 
-class ScreenshotTest extends TestCase
+class ScreenshotTestOld extends TestCase
 {
     public function testIsInstanceOfScreenshot()
     {
