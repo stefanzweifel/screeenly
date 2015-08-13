@@ -55,4 +55,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['api.auth', 'api.throttle']], 
 
     });
 
+    Route::group(['prefix' => 'v2', 'middleware' => 'api.accept_json_header'], function() {
+
+        Route::post('fullsize', array(
+            'uses' => 'Api\ApiController@captureScreenshot'
+        ));
+
+    });
+
 });

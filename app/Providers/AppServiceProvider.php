@@ -25,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Illuminate\Contracts\Auth\Registrar',
-            'Screeenly\Services\Registrar'
+            Illuminate\Contracts\Auth\Registrar::class,
+            Screeenly\Services\Registrar::class
         );
+
     }
 }

@@ -20,3 +20,10 @@ $factory->define(Screeenly\User::class, function ($faker) {
         'provider_id' => $faker->randomNumber
     ];
 });
+
+$factory->define(Screeenly\ApiKey::class, function ($faker) {
+    return [
+        'name'    => $faker->sentence(3),
+        'key'     => str_random(40)
+    ];
+});
