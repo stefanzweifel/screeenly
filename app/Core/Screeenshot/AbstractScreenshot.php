@@ -3,9 +3,10 @@
 namespace Screeenly\Core\Screeenshot;
 
 use Screeenly\ApiKey;
+use Screeenly\ApiLog;
 use Screeenly\Core\Client\ClientInterface as Client;
-use Config;
 use File;
+use Illuminate\Contracts\Config\Repository as Config;
 
 abstract class AbstractScreenshot implements ScreenshotInterface
 {
@@ -57,7 +58,14 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     protected $key;
 
-    public function __construct(Client $browser, $requestUrl, $key)
+    protected $config;
+
+    public function __construct(Config $config)
+    {
+        $this->config = $config;;
+    }
+
+    public function set(Client $browser, $requestUrl, $key)
     {
         $this->browser = $browser;
 
@@ -176,7 +184,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function setStoragePath($storagePath = null)
     {
         if (is_null($storagePath)) {
-            $storagePath = Config::get('screeenly.core.storage_path');
+            $storagePath = $this->config->get('screeenly.core.storage_path');
         }
 
         return $this->storagePath = $storagePath;
@@ -215,10 +223,12 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function setKey($key)
     {
         if (!is_null($key)) {
+
+            // TODO: Inject "ApiKey" through DI (for better tests)
             $key = ApiKey::whereKey($key)->first();
 
             if (!$key) {
-                throw new \Screeenly\Core\Exception\InvalidApiKeyException("Key not found");
+                throw new \Screeenly\Core\Exception\InvalidApiKeyException("Api-Key not found");
             }
         }
 
@@ -251,6 +261,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function doesScreenshotExist()
     {
         try {
+            // TODO: Should use Flysystem API. Should be injected through DI
             $file = File::get($this->getFullStoragePath());
             return $file;
         } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
@@ -267,8 +278,46 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     {
         $path = public_path($this->getStoragePath());
 
+        // TODO: Should use Flysystem API. Should be injected through DI
         if (!File::exists($path)) {
             File::makeDirectory($path, 0755, true);
         }
     }
+
+
+    /**
+     * Create ApiLog Entry
+     * @return Screeenly\ApiLog
+     */
+    public function createLogEntry()
+    {
+        $path = public_path($this->getFullStoragePath());
+
+        $log = new ApiLog();
+        $log->images = $path;
+
+        if (is_null($this->key)) {
+            $log->user_id    = null;
+            $log->api_key_id = null;
+        } else {
+            $log->user()->associate($this->key->user);
+            $log->apiKey()->associate($this->key);
+        }
+
+        $log->save();
+
+        return $log;
+    }
+
+    /**
+     * Return path to generated image
+     * @return string
+     */
+    public function getResponsePath()
+    {
+        $domain = $this->config->get('app.url');
+
+        return "$domain/{$this->getFullStoragePath()}";
+    }
+
 }

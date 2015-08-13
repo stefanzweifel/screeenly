@@ -3,8 +3,6 @@
 namespace Screeenly\Core\Client;
 
 use JonnyW\PhantomJs\Client;
-use Screeenly\Core\Screeenshot\Screenshot;
-use Config;
 
 class PhantomJsClient extends AbstractClient implements ClientInterface
 {
@@ -14,12 +12,11 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
      */
     protected $client;
 
-    public function __construct()
-    {
-        return $this->build();
-    }
-
-    public function build()
+    /**
+     * Boot Browser
+     * @return JonnyW\PhantomJs\Client
+     */
+    public function boot()
     {
         $client = Client::getInstance();
         $client->setBinDir(base_path().'/bin');
@@ -32,38 +29,65 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
         return $client;
     }
 
+    /**
+     * Capture Screenshot for given URL. Associate Screenshot to given key.
+     * @param  string $url
+     * @param  string $key ApiKey or null
+     * @return Screeenly\Core\Screeenshot\Screenshot
+     */
     public function capture($url, $key = null)
     {
-        $screenshot = new Screenshot($this, $url, $key);
+        $this->screenshot->set($this, $url, $key);
+        $this->screenshot->createDirectory();
 
-        $screenshot->createDirectory();
+        // if (app()->environment() != 'testing') {
 
-        // Execute PhantomJs Browser and create screenshot
-        $this->captureScreenshot($screenshot);
+            $this->captureScreenshot();
 
-        $screenshot->doesScreenshotExist();
-        $screenshot->createLogEntry();
+        // }
 
-        return $screenshot;
+
+        $this->screenshot->doesScreenshotExist();
+        $this->screenshot->createLogEntry();
+
+        return $this->screenshot;
     }
 
-
-    public function captureScreenshot($screenshot)
+    /**
+     * Contains the acutal logic on how to capture a Screenshot with
+     * PhantomJS Headless Browser
+     * @return void
+     */
+    protected function captureScreenshot()
     {
-        $request = $this->client->getMessageFactory()->createCaptureRequest($screenshot->getRequestUrl(), 'GET');
-        $request->setCaptureFile($screenshot->getFullStoragePath());
+        $request = $this->client->getMessageFactory()->createCaptureRequest($this->screenshot->getRequestUrl(), 'GET');
+        $request->setCaptureFile($this->screenshot->getFullStoragePath());
         $request->setViewportSize($this->getWidth(), $this->getViewportHeight());
-        $request->setTimeout(Config::get('screeenly.core.timeout'));
-        $request->setDelay(Config::get('screeenly.core.delay'));
+
+        /**
+         * Add a timeout
+         * Prevent Memory issues
+         */
+        $request->setTimeout($this->config->get('screeenly.core.timeout'));
+
+        /**
+         * Set a Delay
+         * If a website has animations, the content wouldn't be visible on the
+         * Screenshot
+         */
+        $request->setDelay($this->config->get('screeenly.core.delay'));
 
         /*
          * If height is set by user, crop the image
          */
-        $height = $screenshot->getHeight();
+        $height = $this->screenshot->getHeight();
         if (isset($height)) {
-            $request->setCaptureDimensions($screenshot->getWidth(), $screenshot->getHeight(), 0, 0);
+            $request->setCaptureDimensions($this->screenshot->getWidth(), $this->screenshot->getHeight(), 0, 0);
         }
 
+        /**
+         * "Click"
+         */
         $response = $this->client->getMessageFactory()->createResponse();
         $this->client->send($request, $response);
     }

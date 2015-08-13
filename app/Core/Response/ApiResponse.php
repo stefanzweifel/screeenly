@@ -27,7 +27,7 @@ class ApiResponse {
     }
 
 
-    public function setRateLimitHeader($screenshot)
+    public function setRateLimitHeader(Screenshot $screenshot)
     {
         $key = $screenshot->getKey();
 
