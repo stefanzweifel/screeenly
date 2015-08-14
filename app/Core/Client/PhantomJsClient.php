@@ -40,12 +40,8 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
         $this->screenshot->set($this, $url, $key);
         $this->screenshot->createDirectory();
 
-        // if (app()->environment() != 'testing') {
-
-            $this->captureScreenshot();
-
-        // }
-
+        $this->isUrlAvailable();
+        $this->captureScreenshot();
 
         $this->screenshot->doesScreenshotExist();
         $this->screenshot->createLogEntry();

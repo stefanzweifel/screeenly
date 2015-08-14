@@ -7,7 +7,6 @@ use Illuminate\Contracts\Config\Repository as Config;
 
 abstract class AbstractClient implements ClientInterface
 {
-
     /**
      * Config Repository
      * @var Illuminate\Contracts\Config\Repository
@@ -38,7 +37,7 @@ abstract class AbstractClient implements ClientInterface
      */
     protected $viewportHeight = 768;
 
-    public function __construct(Config $config,Screenshot $screenshot)
+    public function __construct(Config $config, Screenshot $screenshot)
     {
         $this->config     = $config;
         $this->screenshot = $screenshot;
@@ -97,4 +96,17 @@ abstract class AbstractClient implements ClientInterface
         return $this->width;
     }
 
+    /**
+     * Check if requested URL is available
+     * @return void
+     */
+    public function isUrlAvailable()
+    {
+        $url = $this->screenshot->getRequestUrl();
+        $ping = app()->make(\Screeenly\Core\Ping::class);
+
+        if ($ping->isUp($url) === false) {
+            throw new \Screeenly\Core\Exception\UnavailableHostException("URL {$url} not reachable.");
+        }
+    }
 }
