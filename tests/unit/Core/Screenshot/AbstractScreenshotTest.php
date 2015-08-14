@@ -1,11 +1,13 @@
 <?php
 
 // use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Contracts\Filesystem\Filesystem as Storage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\ApiKey;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Core\Screeenshot\AbstractScreenshot;
 use Screeenly\Core\Screeenshot\ScreenshotInterface;
-use Illuminate\Contracts\Config\Repository as Config;
 
 class AbstractScreenshotTest extends TestCase
 {
@@ -16,11 +18,15 @@ class AbstractScreenshotTest extends TestCase
     protected function getClass()
     {
         $config = app()->make(Config::class);
+        $storage = app()->make(Storage::class);
+        $apiKey = app()->make(ApiKey::class);
 
         return $this->getMockForAbstractClass(
             AbstractScreenshot::class,
             array(
-                $config
+                $config,
+                $storage,
+                $apiKey
             ));
     }
 

@@ -5,8 +5,8 @@ namespace Screeenly\Core\Screeenshot;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
 use Screeenly\Core\Client\ClientInterface as Client;
-use File;
 use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Contracts\Filesystem\Filesystem as Storage;
 
 abstract class AbstractScreenshot implements ScreenshotInterface
 {
@@ -53,16 +53,34 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     protected $storagePath;
 
     /**
-     * ApiKey Instance
+     * Passed ApiKey model. Used to identify the user
      * @var Screeenly\ApiKey
      */
     protected $key;
 
+    /**
+     * Config instance
+     * @var Illuminate\Contracts\Config\Repository
+     */
     protected $config;
 
-    public function __construct(Config $config)
+    /**
+     * Flysystem Instance
+     * @var Illuminate\Contracts\Filesystem\Filesystem
+     */
+    protected $storage;
+
+    /**
+     * ApiKey Instance
+     * @var Screeenly\ApiKey
+     */
+    protected $apiKey;
+
+    public function __construct(Config $config, Storage $storage, ApiKey $apiKey)
     {
-        $this->config = $config;;
+        $this->config  = $config;
+        $this->storage = $storage;
+        $this->apiKey  = $apiKey;
     }
 
     public function set(Client $browser, $requestUrl, $key)
@@ -224,8 +242,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     {
         if (!is_null($key)) {
 
-            // TODO: Inject "ApiKey" through DI (for better tests)
-            $key = ApiKey::whereKey($key)->first();
+            $key = $this->apiKey->whereKey($key)->first();
 
             if (!$key) {
                 throw new \Screeenly\Core\Exception\InvalidApiKeyException("Api-Key not found");
@@ -261,9 +278,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function doesScreenshotExist()
     {
         try {
-            // TODO: Should use Flysystem API. Should be injected through DI
-            $file = File::get($this->getFullStoragePath());
-            return $file;
+            return $this->storage->get($this->getFullStoragePath());
         } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
             throw new \Screeenly\Core\Exception\ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}");
         }
@@ -278,9 +293,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     {
         $path = public_path($this->getStoragePath());
 
-        // TODO: Should use Flysystem API. Should be injected through DI
-        if (!File::exists($path)) {
-            File::makeDirectory($path, 0755, true);
+        if (!$this->storage->exists($path)) {
+            $this->storage->makeDirectory($path, 0755, true);
         }
     }
 
@@ -319,5 +333,4 @@ abstract class AbstractScreenshot implements ScreenshotInterface
 
         return "$domain/{$this->getFullStoragePath()}";
     }
-
 }
