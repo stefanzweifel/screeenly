@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg)](https://codeclimate.com/github/stefanzweifel/screeenly)
 [![Test Coverage](https://codeclimate.com/github/stefanzweifel/screeenly/badges/coverage.svg)](https://codeclimate.com/github/stefanzweifel/screeenly/coverage)
 
+![Screeenly Logo](https://github.com/stefanzweifel/screeenly/blob/dev/core-changes/readme-image.png)
+
 Screeenly is an Open Source Webapp which lets you create screenshots from websites through a simple intuitive API. Screeenly was built with [Laravel](http://laravel.com), a PHP framework. This is a sideproject and is maintained by [stefanzweifel](http://stefanzweifel.io).
 
 You can checkout the live site at [http://screeenly.com](http://screeenly.com), read the [documentation](https://github.com/stefanzweifel/screeenly/wiki) or follow us on [Twitter](http://twitter.com/screeenly).
