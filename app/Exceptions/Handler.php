@@ -4,7 +4,6 @@ namespace Screeenly\Exceptions;
 
 use Exception;
 use Slack;
-use App;
 use Log;
 use Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -17,9 +16,9 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException',
-        'Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException',
-        'Screeenly\Exceptions\HostNotFoundException',
+        Symfony\Component\HttpKernel\Exception\HttpException::class,
+        Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
+        Screeenly\Exceptions\HostNotFoundException::class,
     ];
 
     /**
@@ -31,6 +30,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        if (app()->environment() === 'production') {
+            Log::error($e); // Will send messages to sentry
+        }
+
         return parent::report($e);
     }
 
@@ -50,7 +53,7 @@ class Handler extends ExceptionHandler
 
         $code = $this->getCode($e);
 
-        if (!App::environment('testing') && $code >= 500) {
+        if (!app()->environment('testing') && $code >= 500) {
             $this->sendSlackNotification($request, $e, $code);
         }
 

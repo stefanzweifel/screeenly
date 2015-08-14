@@ -149,7 +149,8 @@ return [
 
 
 		'Laravel\Socialite\SocialiteServiceProvider',
-		'Maknz\Slack\SlackServiceProvider'
+		'Maknz\Slack\SlackServiceProvider',
+		'Jenssegers\Raven\RavenServiceProvider',
 
 
 
@@ -206,6 +207,7 @@ return [
 
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
         'Slack'     => 'Maknz\Slack\Facades\Slack',
+        'Raven'           => 'Jenssegers\Raven\Facades\Raven',
 
 	],
 

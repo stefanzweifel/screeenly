@@ -11,7 +11,8 @@
 		"illuminate/html": "~5.0",
 		"laravel/socialite": "~2.0",
 		"maknz/slack": "1.4.0",
-        "doctrine/dbal": "~2.5"
+        "doctrine/dbal": "~2.5",
+		"jenssegers/raven": "^1.4"
 	},
 	"require-dev": {
         "fzaninotto/faker": "~1.4",
