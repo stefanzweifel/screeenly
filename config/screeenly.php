@@ -51,7 +51,7 @@ return [
         /**
          * Folder, where screenshots are stored
          */
-        'storage_path' => 'screenshots/',
+        'storage_path' => env('SCREEENLY_STORAGE_PATH', 'images/generated/'),
 
 
         /**
