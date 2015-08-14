@@ -1,6 +1,8 @@
 # screeenly
 
 [![Build Status](https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master)](https://travis-ci.org/stefanzweifel/screeenly)
+[![Code Climate](https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg)](https://codeclimate.com/github/stefanzweifel/screeenly)
+[![Test Coverage](https://codeclimate.com/github/stefanzweifel/screeenly/badges/coverage.svg)](https://codeclimate.com/github/stefanzweifel/screeenly/coverage)
 
 Screeenly is an open sourced web-app / API to create screenshots from websites.
 Sideproject by [Stefan Zweifel](http://stefanzweifel.io).
