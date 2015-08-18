@@ -17,12 +17,27 @@ class ApiResponse {
         return $this->header;
     }
 
+    /**
+     * Return final response Array
+     * We try to implement json-api standard (http://jsonapi.org)
+     * @param  Screenshot $screenshot
+     * @return array
+     */
     public function getResponseArray(Screenshot $screenshot)
     {
         return [
-            'path'       => $screenshot->getResponsePath(),
-            'base64'     => 'data:image/jpg;base64,'.$screenshot->getBase64(),
-            'base64_raw' => $screenshot->getBase64(),
+            "data" => [
+                "type" => "screenshot",
+                "attributes" => [
+                    "path" => $screenshot->getResponsePath(),
+                    'base64'     => 'data:image/jpg;base64,'.$screenshot->getBase64(),
+                    'base64_raw' => $screenshot->getBase64(),
+                ]
+
+            ],
+            "meta" => [
+                "http_status" => 200
+            ]
         ];
     }
 

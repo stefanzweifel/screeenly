@@ -26,7 +26,9 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                 'http_status' => 200
+                "meta" => [
+                    'http_status' => 200
+                ]
              ]);
 
         $this->clearScreenshotFolder();
