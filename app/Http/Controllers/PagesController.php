@@ -3,14 +3,13 @@
 namespace Screeenly\Http\Controllers;
 
 use Auth;
+use Illuminate\Http\Request;
 use Input;
 use Screeenly\ApiLog;
-use Screeenly\Screenshot\Screenshot;
-use Screeenly\Screenshot\ScreenshotValidator;
-use Screeenly\Services\CheckHostService;
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests;
+use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Http\Controllers\Controller;
+use Screeenly\Http\Requests;
+use Screeenly\Screenshot\Screenshot;
 
 class PagesController extends Controller
 {
@@ -82,11 +81,12 @@ class PagesController extends Controller
     }
 
     /**
-     * Create Screenshot and Redirect to Try-Route.
-     *
-     * @return Illuminate\Http\RedirectResponse
+     * Create screenshot through webinterface
+     * @param  Request                                $request
+     * @param  PhantomJsClient $browser
+     * @return redirect
      */
-    public function createTestScreenshot(Request $request)
+    public function createTestScreenshot(Request $request, PhantomJsClient $browser)
     {
         $proof = trim(strtolower($request->get('proof')));
 
@@ -94,27 +94,19 @@ class PagesController extends Controller
             return back()->withMessage("Wrong answer. Hint: Laravel.");
         }
 
-        $url = $request->get('url');
+        try {
+            $browser->boot();
+            $screenshot = $browser->capture($request->get('url'), null);
+            return redirect()
+                ->route('try')
+                ->withAsset($screenshot->getResponsePath());
 
-        // Validate Input
-        $validator = new ScreenshotValidator();
-        $validator->validate(Input::all());
+        } catch (\Exception $e) {
 
-        // Check if Host is available
-        $checkHost = new CheckHostService();
-        $checkHost->ping($url);
+            return redirect()->route('try')->withError("Oh snap! Something went wrong, please try again.");
 
-        // Actually Capture the Screenshot
-        $screenshot = new Screenshot();
-        $filename = $screenshot->generateFilename();
-        $screenshot->setPath('images/try/');
-        $screenshot->setStoragePath($filename);
-        $screenshot->setHeight($request->get('height'));
-        $screenshot->setWidth($request->get('width', 1024));
-        $screenshot->capture($url);
+        }
 
-        return redirect()
-            ->route('try')
-            ->with('asset', $screenshot->assetPath);
+
     }
 }
