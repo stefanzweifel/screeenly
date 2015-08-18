@@ -38,7 +38,7 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
     public function capture($url, $key = null)
     {
         $this->screenshot->set($this, $url, $key);
-        $this->screenshot->createDirectory();
+        $this->screenshot->createDirectory($this->screenshot->getStoragePath());
 
         $this->isUrlAvailable();
         $this->captureScreenshot();
@@ -56,6 +56,13 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
      */
     protected function captureScreenshot()
     {
+        /**
+         * Meh. ¯\_(ツ)_/¯
+         */
+        if (app()->environment('testing')) {
+            return $this->createTestFile($this->screenshot->getFullStoragePath());
+        }
+
         $request = $this->client->getMessageFactory()->createCaptureRequest($this->screenshot->getRequestUrl(), 'GET');
         $request->setCaptureFile($this->screenshot->getFullStoragePath());
         $request->setViewportSize($this->getWidth(), $this->getViewportHeight());

@@ -109,4 +109,16 @@ abstract class AbstractClient implements ClientInterface
             throw new \Screeenly\Core\Exception\UnavailableHostException("URL {$url} not reachable.");
         }
     }
+
+
+    /**
+     * Create an empty file for testing purposes.
+     * (Should be replaced by a virtual file system)
+     * @param  string $path
+     * @return void
+     */
+    public function createTestFile($path)
+    {
+        \File::put(public_path($path), 'foo');
+    }
 }

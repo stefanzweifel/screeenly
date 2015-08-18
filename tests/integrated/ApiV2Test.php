@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ApiV2Test extends TestCase
 {
     /**
-     * TODO: Fix this test!
+     * @test
      */
     public function it_can_create_a_screenshot()
     {
@@ -26,8 +26,10 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                 'base64_raw' => null,
+                 'http_status' => 200
              ]);
+
+        $this->clearScreenshotFolder();
     }
 
     /**
@@ -101,4 +103,25 @@ class ApiV2Test extends TestCase
 
         $this->assertResponseStatus(403);
     }
+
+
+
+
+
+
+    /**
+     * Clear out all screenshots from the screenshot directory
+     * TODO: Should be removed, as soon as the virtual-filesystem is integrated
+     */
+    protected function clearScreenshotFolder()
+    {
+        $screenshot = app()->make(Screeenly\Core\Screeenshot\Screenshot::class);
+        $path = $screenshot->setStoragePath();
+        $files = \Storage::files($path);
+
+        array_filter($files, function($file) {
+            \Storage::delete($file);
+        });
+    }
+
 }

@@ -289,10 +289,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      * Check if set storage path is writable
      * @return void
      */
-    public function createDirectory()
+    public function createDirectory($path)
     {
-        $path = public_path($this->getStoragePath());
-
         if (!$this->storage->exists($path)) {
             $this->storage->makeDirectory($path, 0755, true);
         }
