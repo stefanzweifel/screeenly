@@ -1,0 +1,33 @@
+
+// Converted Variables
+
+$blue: #0076df !default;
+$red: #f95020 !default;
+$green: #00cf26 !default;
+$yellow: #efcc00 !default;
+$dark-gray: #333 !default;
+$mid-gray: #777 !default;
+$light-gray: #ccc !default;
+$lighter-gray: #eee !default;
+$darken-1: rgba(#000,.0625) !default;
+$darken-2: rgba(#000,.125) !default;
+$darken-3: rgba(#000,.25) !default;
+$darken-4: rgba(#000,.5) !default;
+$hover-background-color: $darken-1 !default;
+$border-color: $light-gray !default;
+$border-width: 1px !default;
+$border-radius: 3px !default;
+
+// Custom Media Query Variables
+
+
+/* Basscss Color Buttons */
+
+@import "basscss-button-blue";
+@import "basscss-button-blue-outline";
+@import "basscss-button-red";
+@import "basscss-button-light-gray";
+
+@import "basscss-button-nav-light";
+@import "basscss-button-nav-dark"
+

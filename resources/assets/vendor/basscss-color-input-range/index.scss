@@ -1,0 +1,56 @@
+
+// Converted Variables
+
+
+// Custom Media Query Variables
+
+
+/* Basscss Color Input Range */
+
+.range-light {
+  color: inherit;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+
+.range-light::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: $border-radius;
+  background-color: currentcolor;
+}
+
+.range-light::-moz-range-thumb {
+  border-radius: $border-radius;
+  border-color: transparent;
+  border-width: 0;
+  background-color: currentcolor;
+}
+
+.range-light::-webkit-slider-runnable-track {
+  border-radius: $border-radius;
+  background-color: $darken-3;
+}
+
+.range-light::-moz-range-track {
+  border-radius: $border-radius;
+  background-color: $darken-3;
+}
+
+.range-light:focus {
+  outline: none;
+}
+
+.range-light:focus::-webkit-slider-thumb {
+  outline: none;
+  border: 0;
+  box-shadow: 0 0 1px 2px currentcolor;
+}
+
+.range-light:focus::-moz-range-thumb {
+  outline: none;
+  border: 0;
+  box-shadow: 0 0 0 3px $darken-3;
+}
+
+@import 'basscss-defaults';
+

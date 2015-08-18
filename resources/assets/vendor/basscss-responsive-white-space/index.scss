@@ -1,0 +1,24 @@
+
+// Converted Variables
+
+$space-1: .5rem !default;
+$space-2: 1rem !default;
+$space-3: 2rem !default;
+$space-4: 4rem !default;
+
+// Custom Media Query Variables
+
+$breakpoint-sm: '(min-width: 40em)' !default;
+$breakpoint-md: '(min-width: 52em)' !default;
+$breakpoint-lg: '(min-width: 64em)' !default;
+
+/* Basscss Responsive White Space */
+
+@import "./lib/sm-margins";
+@import "./lib/md-margins";
+@import "./lib/lg-margins";
+
+@import "./lib/sm-padding";
+@import "./lib/md-padding";
+@import "./lib/lg-padding"
+
