@@ -36,7 +36,7 @@ class ApiResponse {
 
             ],
             "meta" => [
-                "http_status" => 200
+                "http_status" => 201
             ]
         ];
     }

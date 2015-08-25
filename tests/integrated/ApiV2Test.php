@@ -27,7 +27,7 @@ class ApiV2Test extends TestCase
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
                 "meta" => [
-                    'http_status' => 200
+                    'http_status' => 201
                 ]
              ]);
 
@@ -66,7 +66,7 @@ class ApiV2Test extends TestCase
     {
         $this->call('GET', '/api/v2/fullsize');
 
-        $this->assertResponseStatus(405);
+        $this->assertResponseStatus(500);
     }
 
     /**
@@ -80,7 +80,6 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                'title' => 'An error accoured',
                 'message' => 'No API Key specified.',
              ]);
 
@@ -99,7 +98,6 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                'title' => 'An error accoured',
                 'message' => 'Access denied.',
              ]);
 

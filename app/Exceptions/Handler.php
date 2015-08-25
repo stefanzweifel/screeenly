@@ -5,7 +5,6 @@ namespace Screeenly\Exceptions;
 use Exception;
 use Log;
 use Mallinus\Exceptions\ExceptionHandler;
-use Response;
 use Screeenly\Core\Exception\ScreeenlyException;
 use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
 use Slack;
@@ -48,9 +47,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        if (app()->environment() === 'production') {
-            Log::error($e); // Will send messages to sentry
-        }
+        Log::error($e); // Will send messages to sentry
 
         return parent::report($e);
     }
@@ -87,12 +84,39 @@ class Handler extends ExceptionHandler
             ];
 
             if ($code < 100) {
-
                 $code = 400;
-
             }
 
-            return Response::json($returnMessage, $code, $headers);
+            return response()->json($returnMessage, $code, $headers);
+        }
+
+        /**
+         * Global Exception Handler for API v2. If everything fails, respond
+         * with a simple message.
+         */
+        if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException) {
+
+            $code = 500;
+            if ($e->getCode() >= 400) {
+                $code = $e->getCode();
+            }
+
+            $message = $e->getMessage();
+            if (empty($message)) {
+                $message = "Oops. An internal server error accoured";
+            }
+
+            return response()->json(
+                [
+                    "error" => [
+                        "message" => $message,
+                        "type" => (new \ReflectionClass($e))->getShortName(),
+                        "code" => $e->getCode()
+                    ]
+                ],
+                $code,
+                []
+            );
         }
 
         return parent::render($request, $e);

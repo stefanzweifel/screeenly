@@ -2,11 +2,14 @@
 
 namespace Screeenly\Core\Screeenshot;
 
+use Illuminate\Contracts\Config\Repository as Config;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Filesystem\Filesystem as Storage;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
 use Screeenly\Core\Client\ClientInterface as Client;
-use Illuminate\Contracts\Config\Repository as Config;
-use Illuminate\Contracts\Filesystem\Filesystem as Storage;
+use Screeenly\Core\Exception\InvalidApiKeyException;
+use Screeenly\Core\Exception\ScreenshotNotExistsException;
 
 abstract class AbstractScreenshot implements ScreenshotInterface
 {
@@ -245,7 +248,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
             $key = $this->apiKey->whereKey($key)->first();
 
             if (!$key) {
-                throw new \Screeenly\Core\Exception\InvalidApiKeyException("Api-Key not found");
+                throw new InvalidApiKeyException("The API Key {$key} is invalid.", 401);
             }
         }
 
@@ -279,8 +282,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     {
         try {
             return $this->storage->get($this->getFullStoragePath());
-        } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
-            throw new \Screeenly\Core\Exception\ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}");
+        } catch (FileNotFoundException $e) {
+            throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 422);
         }
     }
 

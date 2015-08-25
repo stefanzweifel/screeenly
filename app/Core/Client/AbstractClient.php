@@ -2,8 +2,10 @@
 
 namespace Screeenly\Core\Client;
 
-use Screeenly\Core\Screeenshot\Screenshot;
 use Illuminate\Contracts\Config\Repository as Config;
+use Screeenly\Core\Exception\UnavailableHostException;
+use Screeenly\Core\Ping;
+use Screeenly\Core\Screeenshot\Screenshot;
 
 abstract class AbstractClient implements ClientInterface
 {
@@ -103,10 +105,10 @@ abstract class AbstractClient implements ClientInterface
     public function isUrlAvailable()
     {
         $url = $this->screenshot->getRequestUrl();
-        $ping = app()->make(\Screeenly\Core\Ping::class);
+        $ping = app()->make(Ping::class);
 
         if ($ping->isUp($url) === false) {
-            throw new \Screeenly\Core\Exception\UnavailableHostException("URL {$url} not reachable.");
+            throw new UnavailableHostException("The URL {$url} is unavailable.", 422);
         }
     }
 
