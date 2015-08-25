@@ -14,7 +14,8 @@
         "doctrine/dbal": "~2.5",
 		"jenssegers/raven": "^1.4",
 		"codeclimate/php-test-reporter": "^0.1.2",
-		"mikey179/vfsStream": "~1.0"
+		"mikey179/vfsStream": "~1.0",
+		"mallinus/exceptions": "5.1.*"
 	},
 	"require-dev": {
         "fzaninotto/faker": "~1.4",

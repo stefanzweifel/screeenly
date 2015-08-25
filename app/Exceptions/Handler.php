@@ -3,10 +3,12 @@
 namespace Screeenly\Exceptions;
 
 use Exception;
-use Slack;
 use Log;
+use Mallinus\Exceptions\ExceptionHandler;
 use Response;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Screeenly\Core\Exception\ScreeenlyException;
+use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
+use Slack;
 
 class Handler extends ExceptionHandler
 {
@@ -20,6 +22,22 @@ class Handler extends ExceptionHandler
         Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
         Screeenly\Exceptions\HostNotFoundException::class,
     ];
+
+
+    /**
+     * A list of Exception Listeners and their corresponding Exception
+     * This list is used by "mallinus/exceptions"
+     *
+     * @var array
+     */
+    protected $listen = [
+
+        ScreeenlyExceptionListener::class => [
+            ScreeenlyException::class
+        ],
+
+    ];
+
 
     /**
      * Report or log an exception.
@@ -60,7 +78,7 @@ class Handler extends ExceptionHandler
         /*
          * Handle API Errors
          */
-        if ($request->is('api/*') && $request->isMethod('post')) {
+        if ($request->is('api/v1/*') && $request->isMethod('post')) {
             $headers['Access-Control-Allow-Origin'] = '*';
 
             $returnMessage = [
