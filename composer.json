@@ -13,15 +13,15 @@
 		"maknz/slack": "1.4.0",
         "doctrine/dbal": "~2.5",
 		"jenssegers/raven": "^1.4",
-		"codeclimate/php-test-reporter": "^0.1.2",
-		"mikey179/vfsStream": "~1.0",
 		"mallinus/exceptions": "5.1.*"
 	},
 	"require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "mikey179/vfsStream": "~1.0",
+        "codeclimate/php-test-reporter": "^0.1.2"
 	},
 	"autoload": {
 		"classmap": [
