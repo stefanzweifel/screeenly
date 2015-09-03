@@ -45,9 +45,15 @@ Route::group(['middleware' => 'auth'], function () {
 /*
  * API Routes
  */
-Route::group(['prefix' => 'api', 'middleware' => ['api.auth', 'api.throttle']], function () {
+Route::group(['prefix' => 'api'], function () {
 
-    Route::group(['prefix' => 'v1'], function () {
+    /**
+     * API Version 1
+     * - Launched: May 2014
+     * - Depreciated: Dez 2015
+     * - Will be removed: Jan 2016
+     */
+    Route::group(['prefix' => 'v1', 'middleware' => ['api.auth', 'api.throttle']], function () {
 
         Route::post('fullsize', array(
             'as' => 'api.fullsize',
@@ -56,7 +62,11 @@ Route::group(['prefix' => 'api', 'middleware' => ['api.auth', 'api.throttle']], 
 
     });
 
-    Route::group(['prefix' => 'v2', 'middleware' => 'api.accept_json_header'], function() {
+    /**
+     * API Version 2
+     * - Launch: Fall 2015
+     */
+    Route::group(['prefix' => 'v2', 'middleware' => ['api.auth', 'api.throttle', 'api.accept_json_header']], function()  {
 
         Route::post('fullsize', array(
             'uses' => 'Api\ApiController@captureScreenshot'
