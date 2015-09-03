@@ -30,4 +30,28 @@ class ApiRequest extends Request
             'height' => 'integer'
         ];
     }
+
+    public function response(array $errors)
+    {
+        $errorBag = [];
+
+        foreach($errors as $key =>  $error) {
+
+            $errorBag[] = [
+                "status" => "422",
+                "title" => "Validation Error",
+                "detail" => head($error),
+                "meta" => [
+                    "field" => $key,
+                    "all_errors" => $error
+                ]
+            ];
+        }
+
+        $responseArray = [
+            "error" => $errorBag
+        ];
+
+        return response()->json($responseArray, 422);
+    }
 }

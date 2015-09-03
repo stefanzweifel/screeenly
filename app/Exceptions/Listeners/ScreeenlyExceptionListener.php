@@ -16,10 +16,16 @@ class ScreeenlyExceptionListener implements ExceptionListener
     {
         return response()->json(
             [
-                "error" => [
-                    "message" => $exception->getMessage(),
-                    "type"    => $this->getType($exception),
-                    "code"    => $exception->getCode()
+                "error" =>
+                [
+                    [
+                        "title" => "Screeenly Error",
+                        "detail" => $exception->getMessage(),
+                        "status"    => $exception->getCode(),
+                        "meta" => [
+                            "type"    => $this->getType($exception),
+                        ]
+                    ]
                 ]
             ],
             $exception->getCode(),

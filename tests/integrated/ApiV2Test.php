@@ -53,7 +53,7 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                 "url" => ["The url field is required."]
+                 "detail" => "The url field is required."
              ]);
 
         $this->assertResponseStatus(422);
@@ -79,11 +79,10 @@ class ApiV2Test extends TestCase
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
+            ->seeStatusCode(401)
              ->seeJson([
-                'message' => 'No API Key specified.',
+                'detail' => 'No API Key specified.',
              ]);
-
-        $this->assertResponseStatus(401);
     }
 
     /**
@@ -97,11 +96,8 @@ class ApiV2Test extends TestCase
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
-             ->seeJson([
-                'message' => 'Access denied.',
-             ]);
-
-        $this->assertResponseStatus(403);
+            ->seeStatusCode(403)
+            ->seeJson(["detail" => "Access denied."]);
     }
 
 

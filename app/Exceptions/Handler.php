@@ -108,10 +108,16 @@ class Handler extends ExceptionHandler
 
             return response()->json(
                 [
-                    "error" => [
-                        "message" => $message,
-                        "type" => (new \ReflectionClass($e))->getShortName(),
-                        "code" => $e->getCode()
+                    "error" =>
+                    [
+                        [
+                            "title" => "Application Error",
+                            "detail" => $message,
+                            "code" => $e->getCode(),
+                            "meta" => [
+                                "type"    => (new \ReflectionClass($e))->getShortName(),
+                            ]
+                        ]
                     ]
                 ],
                 $code,
