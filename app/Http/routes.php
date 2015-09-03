@@ -20,6 +20,7 @@ Route::post('try', [
 ]);
 
 Route::get('feedback', ['as' => 'app.feedback', 'uses' => 'StaticController@showFeedback']);
+Route::get('faq', ['as' => 'app.faq', 'uses' => 'StaticController@showFaq']);
 
 /*
  * Account Routes

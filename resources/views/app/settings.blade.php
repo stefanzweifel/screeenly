@@ -16,7 +16,7 @@
 
                 <h2>Close account</h2>
                 <p>If you no longer wan't to use Screeenly, just hit that button down there. We will erase all your screenshots and will close your account.</p>
-                <p>We would be pleased to hear why you left us. Just drop a line.</p>
+                <p>We would be pleased to hear why you left us. You can write us an email at <i>hello@screeenly.com</i> or write a <a href="https://twitter.com/screeenly">Tweet</a>.</p>
 
                 @include('app.partials._closeAccount')
 

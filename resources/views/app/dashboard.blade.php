@@ -6,7 +6,7 @@
 
     @section('content')
 
-        <div class="p2 bg-silver mb2">
+        <div class="p2 bg-white border border-black rounded mb2">
             <p><b>Hi there! Thanks for using Screeenly.</b></p>
             You find instructions to use the API in our <a href="https://github.com/stefanzweifel/screeenly/wiki/Use-the-API" target="blank">Wiki on Github</a>.
             <br>PHP Developer? Checkout <a href="https://github.com/stefanzweifel/ScreeenlyClient">wnx/screeenly-client</a>
