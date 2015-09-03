@@ -20,7 +20,7 @@ If you're a PHP Developer and want to use our API in your project, checkout [scr
 
 ## Note from the author
 
-Screeenly is my never ending sideproject. I use it to apply learned PHP patterns and to try out new things. If you're reading through the code, you might think that some parts are "overengineered" or "too complicated". If you think something is bad designed or should be improved, please **[let me know](http://github.com/stefanzweifel/screeenly/issues/new)**.
+Screeenly is a never ending sideproject. I use it to apply learned PHP patterns and to try out new things. If you're reading through the code, you might think that some parts are "overengineered" or "too complicated". If you think something is bad designed or should be improved, please **[let me know](http://github.com/stefanzweifel/screeenly/issues/new)**.
 
 ## Run Screeenly on your local machine
 
