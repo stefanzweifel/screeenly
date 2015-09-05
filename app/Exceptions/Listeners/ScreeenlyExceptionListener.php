@@ -28,7 +28,7 @@ class ScreeenlyExceptionListener implements ExceptionListener
                     ]
                 ]
             ],
-            $exception->getCode(),
+            $this->getCode($exception),
             $this->headers
         );
     }
@@ -41,5 +41,19 @@ class ScreeenlyExceptionListener implements ExceptionListener
     protected function getType(Exception $exception)
     {
         return (new ReflectionClass($exception))->getShortName();
+    }
+
+    /**
+     * Always returns a HTTP client error
+     * @param  Exception $exception
+     * @return integer
+     */
+    protected function getCode(Exception $exception)
+    {
+        if ($exception->getCode() < 500) {
+            return $exception->getCode();
+        }
+
+        return 400;
     }
 }

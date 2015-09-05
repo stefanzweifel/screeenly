@@ -19,7 +19,7 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         Symfony\Component\HttpKernel\Exception\HttpException::class,
         Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
-        Screeenly\Exceptions\HostNotFoundException::class,
+        Screeenly\Exceptions\HostNotFoundException::class
     ];
 
 
@@ -47,8 +47,6 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        Log::error($e); // Will send messages to sentry
-
         return parent::report($e);
     }
 
