@@ -63,7 +63,10 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
             return $this->createTestFile($this->screenshot->getFullStoragePath());
         }
 
-        $request = $this->client->getMessageFactory()->createCaptureRequest($this->screenshot->getRequestUrl(), 'GET');
+        $request = $this->client->getMessageFactory()->createCaptureRequest();
+
+        $request->setMethod('GET');
+        $request->setUrl($this->screenshot->getRequestUrl());
         $request->setCaptureFile($this->screenshot->getFullStoragePath());
         $request->setViewportSize($this->getWidth(), $this->getViewportHeight());
 
@@ -93,5 +96,10 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
          */
         $response = $this->client->getMessageFactory()->createResponse();
         $this->client->send($request, $response);
+
+        /**
+         * TODO: We should store those logs.
+         */
+        // $this->client->getLog();
     }
 }
