@@ -103,6 +103,9 @@ class PagesController extends Controller
 
         } catch (\Exception $e) {
 
+            // If something happens, send error to Sentry
+            \Log::error($e);
+
             return redirect()
                     ->route('try')
                     ->withError("Oh snap! Something went wrong, please try again.")
