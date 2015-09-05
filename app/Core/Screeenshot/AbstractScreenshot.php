@@ -283,7 +283,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
         try {
             return $this->storage->get($this->getFullStoragePath());
         } catch (FileNotFoundException $e) {
-            throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 422);
+            throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 400);
         }
     }
 
