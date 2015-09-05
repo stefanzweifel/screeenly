@@ -25,8 +25,10 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('screeenly:clear:images')->hourly();
-        $schedule->command('screeenly:clear:logs')->daily();
+        $url = env('SCHEDULER_PING_URL');
+
+		$schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
+        $schedule->command('screeenly:clear:logs')->daily()->thenPing($url);
 	}
 
 }

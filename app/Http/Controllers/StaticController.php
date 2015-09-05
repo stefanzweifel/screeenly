@@ -38,6 +38,15 @@ class StaticController extends Controller
         return view('static.feedback');
     }
 
+    /**
+     * Show FAQ Page
+     * @return Illuminate\View\View
+     */
+    public function showFaq()
+    {
+        return view('static.faq');
+    }
+
     public function showDonate()
     {
         return view('static.donate');

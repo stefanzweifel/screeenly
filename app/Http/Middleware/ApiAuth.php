@@ -3,8 +3,10 @@
 namespace Screeenly\Http\Middleware;
 
 use Closure;
-use Screeenly\User;
+use Exception;
 use Illuminate\Foundation\Application;
+use Screeenly\Core\Exception\InvalidApiKeyException;
+use Screeenly\User;
 
 class ApiAuth
 {
@@ -37,12 +39,13 @@ class ApiAuth
     {
         $key = $request->get('key');
 
+
         if (is_null($key)) {
-            return abort(401, 'No API Key specified.');
+            throw new Exception("No API Key specified.", 401);
         }
 
         if (!User::getUserByKey($key)) {
-            return abort(403, 'Access denied.');
+            throw new InvalidApiKeyException("Access denied.", 403);
         }
 
         return $next($request);

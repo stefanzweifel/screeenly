@@ -19,3 +19,11 @@
     </script>
 
 @endif
+
+@if (Session::has('error'))
+
+    <div class="bold center p2 white bg-black">
+        {!! session('error') !!}
+    </div>
+
+@endif

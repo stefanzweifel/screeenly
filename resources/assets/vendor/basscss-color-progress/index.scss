@@ -1,0 +1,32 @@
+
+// Converted Variables
+
+
+// Custom Media Query Variables
+
+
+/* Basscss Color Progress */
+
+.progress {
+  background-color: $darken-2;
+  border: 0;
+  border-radius: 10000px;
+}
+
+.progress::-webkit-progress-bar {
+  -webkit-appearance: none;
+  background-color: $darken-2
+}
+
+.progress::-webkit-progress-value {
+  -webkit-appearance: none;
+  background-color: currentColor;
+}
+
+.progress::-moz-progress-bar {
+  background-color: currentColor;
+}
+
+
+@import 'basscss-defaults';
+

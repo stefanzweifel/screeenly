@@ -2,7 +2,7 @@
 
 use Screeenly\Screenshot\PhantomJsClient;
 
-class PhantomJsClientTest extends TestCase
+class PhantomJsClientTestOld extends TestCase
 {
     public function testIsInstanceOf()
     {

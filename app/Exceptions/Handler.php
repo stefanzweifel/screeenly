@@ -3,11 +3,11 @@
 namespace Screeenly\Exceptions;
 
 use Exception;
-use Slack;
-use App;
 use Log;
-use Response;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Mallinus\Exceptions\ExceptionHandler;
+use Screeenly\Core\Exception\ScreeenlyException;
+use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
+use Slack;
 
 class Handler extends ExceptionHandler
 {
@@ -17,10 +17,26 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException',
-        'Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException',
-        'Screeenly\Exceptions\HostNotFoundException',
+        Symfony\Component\HttpKernel\Exception\HttpException::class,
+        Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
+        Screeenly\Exceptions\HostNotFoundException::class
     ];
+
+
+    /**
+     * A list of Exception Listeners and their corresponding Exception
+     * This list is used by "mallinus/exceptions"
+     *
+     * @var array
+     */
+    protected $listen = [
+
+        ScreeenlyExceptionListener::class => [
+            ScreeenlyException::class
+        ],
+
+    ];
+
 
     /**
      * Report or log an exception.
@@ -50,14 +66,14 @@ class Handler extends ExceptionHandler
 
         $code = $this->getCode($e);
 
-        if (!App::environment('testing') && $code >= 500) {
+        if (!app()->environment('testing') && $code >= 500) {
             $this->sendSlackNotification($request, $e, $code);
         }
 
         /*
          * Handle API Errors
          */
-        if ($request->is('api/*') && $request->isMethod('post')) {
+        if ($request->is('api/v1/*') && $request->isMethod('post')) {
             $headers['Access-Control-Allow-Origin'] = '*';
 
             $returnMessage = [
@@ -66,12 +82,45 @@ class Handler extends ExceptionHandler
             ];
 
             if ($code < 100) {
-
                 $code = 400;
-
             }
 
-            return Response::json($returnMessage, $code, $headers);
+            return response()->json($returnMessage, $code, $headers);
+        }
+
+        /**
+         * Global Exception Handler for API v2. If everything fails, respond
+         * with a simple message.
+         */
+        if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException) {
+
+            $code = 500;
+            if ($e->getCode() >= 400) {
+                $code = $e->getCode();
+            }
+
+            $message = $e->getMessage();
+            if (empty($message)) {
+                $message = "Oops. An internal server error accoured";
+            }
+
+            return response()->json(
+                [
+                    "error" =>
+                    [
+                        [
+                            "title" => "Application Error",
+                            "detail" => $message,
+                            "code" => $e->getCode(),
+                            "meta" => [
+                                "type"    => (new \ReflectionClass($e))->getShortName(),
+                            ]
+                        ]
+                    ]
+                ],
+                $code,
+                []
+            );
         }
 
         return parent::render($request, $e);

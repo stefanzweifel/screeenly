@@ -77,8 +77,8 @@ class APIController extends Controller
 
         $result = [
             'path' => $screenshot->assetPath ,
-            'base64' => 'data:image/jpg;base64,'.$screenshot->bas64,
-            'base64_raw' => $screenshot->bas64,
+            'base64' => 'data:image/jpg;base64,'.$screenshot->base64,
+            'base64_raw' => $screenshot->base64,
         ];
 
         return $this->response->json($result, 201, $this->header);

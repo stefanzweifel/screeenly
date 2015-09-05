@@ -4,6 +4,7 @@
       <div class="col col-6 md-col-3">
         <ul class="list-reset">
           <li><a href="/feedback" class="h5 btn block">Feedback</a></li>
+          <li><a href="/faq" class="h5 btn block">FAQ</a></li>
           <li><a href="//github.com/stefanzweifel/screeenly/wiki" class="h5 btn block">Docs</a></li>
           <li><a href="/donate" class="h5 btn block">Donate</a></li>
         </ul>

@@ -48,4 +48,9 @@ return [
 		'redirect'      => env('GITHUB_REDIRECT_URL'),
 	],
 
+	'raven' => [
+	    'dsn'   => env('RAVEN_DSN'),
+	    'level' => env('RAVEN_LEVEL', 'debug')
+	],
+
 ];

@@ -3,6 +3,7 @@
 namespace Screeenly\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('available_url', 'Screeenly\Core\Validators\AvailableUrlValidator@validate');
     }
 
     /**
@@ -24,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Illuminate\Contracts\Auth\Registrar',
-            'Screeenly\Services\Registrar'
+            Illuminate\Contracts\Auth\Registrar::class,
+            Screeenly\Services\Registrar::class
         );
+
     }
 }
