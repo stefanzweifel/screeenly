@@ -103,7 +103,10 @@ class PagesController extends Controller
 
         } catch (\Exception $e) {
 
-            return redirect()->route('try')->withError("Oh snap! Something went wrong, please try again.");
+            return redirect()
+                    ->route('try')
+                    ->withError("Oh snap! Something went wrong, please try again.")
+                    ->withInput();
 
         }
 
