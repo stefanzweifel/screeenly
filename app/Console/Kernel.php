@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\RemoveImagesCommand::class,
-        Commands\ClearApiLogs::class
+        Commands\RemoveImagesCommand::class
     ];
 
 	/**
@@ -28,7 +27,6 @@ class Kernel extends ConsoleKernel
         $url = env('SCHEDULER_PING_URL');
 
 		$schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
-        $schedule->command('screeenly:clear:logs')->daily()->thenPing($url);
 	}
 
 }
