@@ -7,15 +7,12 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
-    use Authenticatable, CanResetPassword, SoftDeletes;
-
-    protected $dates = ['deleted_at'];
+    use Authenticatable, CanResetPassword;
 
     /**
      * The database table used by the model.

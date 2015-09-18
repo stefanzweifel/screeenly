@@ -2,15 +2,12 @@
 
 namespace Screeenly;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Screeenly\ApiKey;
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\User;
 
 class ApiLog extends \Eloquent
 {
-    use SoftDeletes;
-
     protected $fillable = ['images'];
 
     protected $table = 'api_log';

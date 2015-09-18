@@ -3,14 +3,11 @@
 namespace Screeenly;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Screeenly\User;
 use Screeenly\ApiLog;
 
 class ApiKey extends Model
 {
-    use SoftDeletes;
-
     protected $fillable = ['name', 'key', 'user_id'];
 
     protected $table = 'api_keys';
