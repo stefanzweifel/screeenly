@@ -2,14 +2,13 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Auth;
 use Illuminate\Http\Request;
-use Input;
-use Screeenly\ApiLog;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Http\Controllers\Controller;
 use Screeenly\Http\Requests;
 use Screeenly\Screenshot\Screenshot;
+use Log;
+use Exception;
 
 class PagesController extends Controller
 {
@@ -20,7 +19,7 @@ class PagesController extends Controller
      */
     public function showLandingpage()
     {
-        if (Auth::check()) {
+        if (auth()->check()) {
             return redirect('/dashboard');
         } else {
             return view('static.landingpage');
@@ -34,7 +33,7 @@ class PagesController extends Controller
      */
     public function showDashboard()
     {
-        $apikeys = auth()->user()->apikeys()->latest()->get();
+        $apikeys = auth()->user()->apikeys()->latest()->get(["name", "key", "created_at", "id"]);
 
         return view('app.dashboard', compact('apikeys'));
     }
@@ -90,10 +89,10 @@ class PagesController extends Controller
                 ->route('try')
                 ->withAsset($screenshot->getResponsePath());
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
 
             // If something happens, send error to Sentry
-            \Log::error($e);
+            Log::error($e);
 
             return redirect()
                     ->route('try')

@@ -22,9 +22,10 @@ class UserController extends Controller
     public function closeAccount()
     {
         $user = auth()->user();
-        $logs = ApiLog::where('user_id', '=', $user->id)->get();
+        $logs = ApiLog::where('user_id', $user->id)->get();
 
         foreach ($logs as $log) {
+
             $path = public_path(Config::get('api.storage_path').$log->images);
             File::delete($path);
 

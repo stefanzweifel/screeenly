@@ -4,7 +4,6 @@ namespace Screeenly\Http\Controllers;
 
 use Screeenly\User;
 use Screeenly\Services\RegisterUserService;
-use Auth;
 use Socialize;
 use Illuminate\Http\Request;
 use Screeenly\Http\Requests;
@@ -43,7 +42,7 @@ class OAuthController extends Controller
             );
         }
 
-        Auth::login($user);
+        auth()->login($user);
 
         return redirect('/dashboard');
     }
@@ -55,7 +54,8 @@ class OAuthController extends Controller
      */
     public function logout()
     {
-        Auth::logout();
+        auth()->logout();
+        // Auth::logout();
 
         return redirect('/');
     }
