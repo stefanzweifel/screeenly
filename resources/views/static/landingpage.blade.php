@@ -22,7 +22,6 @@
             <h1 class="h1 h0-responsive mt4 mb0 regular">Screenshot as a Service</h1>
             <p class="h3">Create website screenshots through a simple API. Try it. It's free!</p>
             <a href="/login" class="btn bg-black rounded mt2 mb4 px2 h3"><i class="fa fa-github"></i> Sign up with Github</a>
-            <p class="center caps">Generated screenshots so far: <span class="bold">{{ number_format($screenshots) }}</span></p>
         </div>
     </header>
 

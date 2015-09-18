@@ -23,18 +23,7 @@ class PagesController extends Controller
         if (Auth::check()) {
             return redirect('/dashboard');
         } else {
-            $screenshots = \Cache::remember('global.screenshot_count', 5, function () {
-
-                $result = ApiLog::select('id')->withTrashed()->latest()->first();
-
-                if ($result) {
-                    return $result->id;
-                }
-
-                return 0;
-            });
-
-            return view('static.landingpage', compact('screenshots'));
+            return view('static.landingpage');
         }
     }
 
