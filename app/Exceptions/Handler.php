@@ -4,10 +4,16 @@ namespace Screeenly\Exceptions;
 
 use Exception;
 use Log;
-use Mallinus\Exceptions\ExceptionHandler;
+// use Mallinus\Exceptions\ExceptionHandler;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
 use Screeenly\Core\Exception\ScreeenlyException;
 use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
 use Slack;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Foundation\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -17,7 +23,10 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        Symfony\Component\HttpKernel\Exception\HttpException::class,
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        ValidationException::class,
         Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
         Screeenly\Exceptions\HostNotFoundException::class
     ];
