@@ -1,6 +1,18 @@
 <?php
 
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -113,12 +125,10 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-		'Illuminate\Routing\ControllerServiceProvider',
 		'Illuminate\Cookie\CookieServiceProvider',
 		'Illuminate\Database\DatabaseServiceProvider',
 		'Illuminate\Encryption\EncryptionServiceProvider',
@@ -135,17 +145,17 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Broadcasting\BroadcastServiceProvider',
 
-		'Illuminate\Html\HtmlServiceProvider',
+		Collective\Html\HtmlServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
 		 */
 		'Screeenly\Providers\AppServiceProvider',
-		'Screeenly\Providers\BusServiceProvider',
-		'Screeenly\Providers\ConfigServiceProvider',
 		'Screeenly\Providers\EventServiceProvider',
 		'Screeenly\Providers\RouteServiceProvider',
+		'Screeenly\Providers\AuthServiceProvider',
 
 
 		'Laravel\Socialite\SocialiteServiceProvider',
@@ -202,12 +212,14 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
-		'Form'      => 'Illuminate\Html\FormFacade',
-        'Html'      => 'Illuminate\Html\HtmlFacade',
+		'Form' => Collective\Html\FormFacade::class,
+      	'Html' => Collective\Html\HtmlFacade::class,
 
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
         'Slack'     => 'Maknz\Slack\Facades\Slack',
         'Raven'           => 'Jenssegers\Raven\Facades\Raven',
+        'Gate' => Illuminate\Support\Facades\Gate::class,
+
 
 	],
 
