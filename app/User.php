@@ -52,13 +52,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    /**
+     * Relationship with the ApiLog model.
+     *
+     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function logs()
     {
         return $this->hasMany(ApiLog::class, 'user_id');
     }
 
     /**
-     * Relationship with theApikey model.
+     * Relationship with the ApiKey model.
      *
      * @return    Illuminate\Database\Eloquent\Relations\HasMany
      */
