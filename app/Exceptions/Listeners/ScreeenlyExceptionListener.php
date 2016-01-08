@@ -8,9 +8,7 @@ use Mallinus\Exceptions\ExceptionListener;
 
 class ScreeenlyExceptionListener implements ExceptionListener
 {
-    protected $headers = [
-
-    ];
+    protected $headers = [];
 
     public function handle(Exception $exception)
     {

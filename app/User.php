@@ -46,7 +46,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public static function getUserByKey($key)
     {
-        // Search for key in ApiKey Model
         $apiKey = ApiKey::whereKey($key)->first();
 
         if ($apiKey) {

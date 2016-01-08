@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Screeenly\Model' => 'Screeenly\Policies\ModelPolicy',
+        Screeenly\Model::class => Screeenly\Policies\ModelPolicy::class,
     ];
 
     /**
