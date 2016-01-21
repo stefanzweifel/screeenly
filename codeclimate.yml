@@ -1,8 +1,0 @@
-languages:
-  Ruby: false
-  JavaScript: true
-  PHP: true
-  Python: false
-exclude_paths:
-  - "resources/assets/js/ga.js"
-  - "resources/assets/js/main.js"
