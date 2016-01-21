@@ -115,9 +115,8 @@ class ApiV2Test extends TestCase
         $path = $screenshot->setStoragePath();
         $files = \Storage::files($path);
 
-        array_filter($files, function($file) {
+        array_filter($files, function ($file) {
             \Storage::delete($file);
         });
     }
-
 }

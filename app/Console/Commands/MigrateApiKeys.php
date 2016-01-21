@@ -44,9 +44,7 @@ class MigrateApiKeys extends Command
         $users = User::all();
 
         foreach ($users as $key => $user) {
-
             $this->migrateUser($user);
-
         }
 
 
@@ -85,6 +83,5 @@ class MigrateApiKeys extends Command
 
         $user->api_key = "key-deleted-" . str_random(10);
         $user->save();
-
     }
 }

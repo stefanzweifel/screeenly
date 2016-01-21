@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RoutesTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -82,5 +81,4 @@ class RoutesTest extends TestCase
              ->see('Privacy')
             ->seePageIs('/privacy');
     }
-
 }

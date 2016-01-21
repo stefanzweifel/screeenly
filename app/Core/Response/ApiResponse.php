@@ -6,8 +6,8 @@ use Screeenly\Core\Screeenshot\Screenshot;
 use Config;
 use Cache;
 
-class ApiResponse {
-
+class ApiResponse
+{
     protected $header = [
         'Access-Control-Allow-Origin' => '*',
     ];
@@ -47,9 +47,7 @@ class ApiResponse {
         $key = $screenshot->getKey();
 
         if (!is_null($key)) {
-
             $key       = sprintf('api:%s', $screenshot->getKey()->key);
-
         }
 
         $limit     = Config::get('screeenly.api.ratelimit.requests');
@@ -61,5 +59,4 @@ class ApiResponse {
         array_set($this->header, 'X-RateLimit-Remaining', $remaining);
         array_set($this->header, 'X-RateLimit-Reset', $time);
     }
-
 }

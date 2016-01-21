@@ -88,7 +88,6 @@ class PagesController extends Controller
             return redirect()
                 ->route('try')
                 ->withAsset($screenshot->getResponsePath());
-
         } catch (Exception $e) {
 
             // If something happens, send error to Sentry
@@ -98,9 +97,6 @@ class PagesController extends Controller
                     ->route('try')
                     ->withError("Oh snap! Something went wrong, please try again.")
                     ->withInput();
-
         }
-
-
     }
 }

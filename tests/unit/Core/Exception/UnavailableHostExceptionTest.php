@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\UnavailableHostException;
 
-
 class UnavailableHostExceptionTest extends TestCase
 {
     /**
@@ -16,5 +15,4 @@ class UnavailableHostExceptionTest extends TestCase
             );
         throw new UnavailableHostException('Message', 10);
     }
-
 }

@@ -24,8 +24,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->bind('apikeys', function($value)
-        {
+        $router->bind('apikeys', function ($value) {
             return ApiKey::whereId($value)->where('user_id', auth()->id())->firstOrFail();
         });
 

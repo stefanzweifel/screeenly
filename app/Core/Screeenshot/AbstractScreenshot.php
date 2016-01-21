@@ -244,7 +244,6 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function setKey($key)
     {
         if (!is_null($key)) {
-
             $key = $this->apiKey->whereKey($key)->first();
 
             if (!$key) {

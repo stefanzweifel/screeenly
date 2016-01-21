@@ -8,7 +8,6 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
 use Log;
 use Screeenly\Core\Exception\ScreeenlyException;
 use Screeenly\Exceptions\HostNotFoundException;
@@ -69,7 +68,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-
         if (method_exists($e, 'getHeaders')) {
             $headers = $e->getHeaders();
         }
@@ -100,7 +98,6 @@ class Handler extends ExceptionHandler
          * with a simple message.
          */
         if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException) {
-
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();
@@ -151,5 +148,4 @@ class Handler extends ExceptionHandler
 
         return 400;
     }
-
 }

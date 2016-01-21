@@ -35,8 +35,7 @@ class ApiRequest extends Request
     {
         $errorBag = [];
 
-        foreach($errors as $key =>  $error) {
-
+        foreach ($errors as $key =>  $error) {
             $errorBag[] = [
                 "status" => "422",
                 "title" => "Validation Error",

@@ -23,8 +23,6 @@ class DropDeletedAtFromUsersTable extends Migration
         Schema::table('api_log', function (Blueprint $table) {
             $table->dropColumn('deleted_at');
         });
-
-
     }
 
     /**
@@ -45,6 +43,5 @@ class DropDeletedAtFromUsersTable extends Migration
         Schema::table('api_log', function (Blueprint $table) {
             $table->softDeletes();
         });
-
     }
 }
