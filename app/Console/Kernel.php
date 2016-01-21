@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace Screeenly\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        Commands\RemoveImagesCommand::class
     ];
 
     /**
@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $url = config('services.envoyer.pings.scheduler_ping_url');
+
+        $schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
     }
 }

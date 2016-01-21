@@ -11,11 +11,19 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(Screeenly\User::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
+        'email'       => $faker->email,
+        'token'       => str_random(10),
+        'plan'        => 0,
+        'provider'    => 'Github',
+        'provider_id' => $faker->randomNumber
+    ];
+});
+
+$factory->define(Screeenly\ApiKey::class, function ($faker) {
+    return [
+        'name'    => $faker->sentence(3),
+        'key'     => str_random(40)
     ];
 });

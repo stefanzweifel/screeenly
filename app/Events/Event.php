@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Screeenly\Events;
 
 abstract class Event
 {

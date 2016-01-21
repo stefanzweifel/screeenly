@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Zurich',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     /*
     |--------------------------------------------------------------------------
@@ -151,10 +151,16 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Screeenly\Providers\AppServiceProvider::class,
+        Screeenly\Providers\AuthServiceProvider::class,
+        Screeenly\Providers\EventServiceProvider::class,
+        Screeenly\Providers\RouteServiceProvider::class,
+
+        Collective\Html\HtmlServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Maknz\Slack\SlackServiceProvider::class,
+        Jenssegers\Raven\RavenServiceProvider::class,
+
 
     ],
 
@@ -201,6 +207,13 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Socialize' => Laravel\Socialite\Facades\Socialite::class,
+        'Slack'     => Maknz\Slack\Facades\Slack::class,
+        'Raven'     => Jenssegers\Raven\Facades\Raven::class,
 
     ],
 

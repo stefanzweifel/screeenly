@@ -6,26 +6,41 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "laravelcollective/html": "5.2.*",
+        "jonnyw/php-phantomjs": "3.*",
+        "illuminate/html": "~5.0",
+        "laravel/socialite": "~2.0",
+        "maknz/slack": "1.7.0",
+        "doctrine/dbal": "~2.5",
+        "jenssegers/raven": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "phpunit/phpunit": "5.0",
+        "mikey179/vfsStream": "~1.0",
+        "codeclimate/php-test-reporter": "^0.1.2"
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "helpers"
+        ],
+        "files": [
+            "helpers/functions.php"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "Screeenly\\": "app/"
         }
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/support"
         ]
     },
     "scripts": {
@@ -47,6 +62,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "bin-dir": "bin"
     }
 }

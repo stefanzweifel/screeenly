@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Screeenly\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'Screeenly\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -24,7 +24,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
+        $router->bind('apikeys', function($value)
+        {
+            return ApiKey::whereId($value)->where('user_id', auth()->id())->firstOrFail();
+        });
 
         parent::boot($router);
     }

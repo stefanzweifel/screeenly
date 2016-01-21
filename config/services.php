@@ -30,9 +30,34 @@ return [
     ],
 
     'stripe' => [
-        'model'  => App\User::class,
+        'model'  => Screeenly\User::class,
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+
+    'slack' => [
+        'channel' => env('SLACK_CHANNEL'),
+        'token'   => env('SLACK_TOKEN'),
+        'bot'     => env('SLACK_BOT'),
+        'domain'  => env('SLACK_DOMAIN'),
+        'icon'    => env('SLACK_ICON')
+    ],
+
+    'github' => [
+        'client_id'     => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_SECRET'),
+        'redirect'      => env('GITHUB_REDIRECT_URL'),
+    ],
+
+    'raven' => [
+        'dsn'   => env('RAVEN_DSN'),
+        'level' => env('RAVEN_LEVEL', 'debug')
+    ],
+
+    'envoyer' => [
+        'pings' => [
+            'scheduler_ping_url' => env('SCHEDULER_PING_URL')
+        ]
+    ]
 
 ];

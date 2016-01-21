@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Screeenly\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

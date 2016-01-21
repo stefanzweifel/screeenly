@@ -1,26 +1,49 @@
 <?php
 
-namespace App;
+namespace Screeenly;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['email', 'token', 'plan', 'provider', 'provider_id'];
+
+    protected $hidden = ['password', 'remember_token'];
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * Return User associated with APIKey.
      *
-     * @var array
+     * @param string $key
+     *
+     * @return Screeenly\User
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public static function getUserByKey($key)
+    {
+        $apiKey = ApiKey::whereKey($key)->first();
+
+        if ($apiKey) {
+            return $apiKey->user;
+        }
+    }
+
+    /**
+     * Relationship with the ApiLog model.
+     *
+     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function logs()
+    {
+        return $this->hasMany(ApiLog::class, 'user_id');
+    }
+
+    /**
+     * Relationship with the ApiKey model.
+     *
+     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apikeys()
+    {
+        return $this->hasMany(ApiKey::class);
+    }
+
 }
