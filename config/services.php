@@ -53,4 +53,10 @@ return [
 	    'level' => env('RAVEN_LEVEL', 'debug')
 	],
 
+	'envoyer' => [
+		'pings' => [
+			'scheduler_ping_url' => env('SCHEDULER_PING_URL')
+		]
+	]
+
 ];

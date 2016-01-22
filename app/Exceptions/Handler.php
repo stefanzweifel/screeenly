@@ -3,11 +3,17 @@
 namespace Screeenly\Exceptions;
 
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Validation\ValidationException;
 use Log;
-use Mallinus\Exceptions\ExceptionHandler;
 use Screeenly\Core\Exception\ScreeenlyException;
+use Screeenly\Exceptions\HostNotFoundException;
 use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
 use Slack;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -17,9 +23,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        Symfony\Component\HttpKernel\Exception\HttpException::class,
-        Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException::class,
-        Screeenly\Exceptions\HostNotFoundException::class
+        AuthorizationException::class,
+        HttpException::class,
+        ModelNotFoundException::class,
+        ValidationException::class,
+        TooManyRequestsHttpException::class,
+        HostNotFoundException::class
     ];
 
 
@@ -66,9 +75,6 @@ class Handler extends ExceptionHandler
 
         $code = $this->getCode($e);
 
-        if (!app()->environment('testing') && $code >= 500) {
-            $this->sendSlackNotification($request, $e, $code);
-        }
 
         /*
          * Handle API Errors
@@ -142,45 +148,5 @@ class Handler extends ExceptionHandler
         }
 
         return 400;
-    }
-
-    /**
-     * Send a Slack Error Notification.
-     *
-     * @param Request   $request
-     * @param Exception $e
-     * @param int       $code
-     */
-    private function sendSlackNotification($request, $e, $code)
-    {
-        $attachment = [
-            'fallback' => 'An error accoured on Screeenly',
-            'text' => 'An error accoured on Screeenly',
-            'color' => '#c0392b',
-            'fields' => [
-                [
-                    'title' => 'Requested URL',
-                    'value' => $request->url(),
-                    'short' => true,
-                ],
-                [
-                    'title' => 'HTTP Code',
-                    'value' => $code,
-                    'short' => true,
-                ],
-                [
-                    'title' => 'Exception',
-                    'value' => $e->getMessage(),
-                    'short' => true,
-                ],
-                [
-                    'title' => 'Input',
-                    'value' => json_encode($request->all()),
-                    'short' => true,
-                ],
-            ],
-        ];
-
-        Slack::attach($attachment)->send('Screeenly Error');
     }
 }

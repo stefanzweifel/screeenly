@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-        $url = env('SCHEDULER_PING_URL');
+        $url = config('services.envoyer.pings.scheduler_ping_url');
 
 		$schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
 	}

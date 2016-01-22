@@ -5,8 +5,6 @@ Route::get('terms', ['as' => 'front.terms', 'uses' => 'StaticController@showTerm
 Route::get('imprint', ['as' => 'front.imprint', 'uses' => 'StaticController@showImprint']);
 Route::get('donate', ['as' => 'front.donate', 'uses' => 'StaticController@showDonate']);
 
-// Route::get('privacy', ['as' => 'front.privacy', 'uses' => 'StaticController@privacy']);
-
 Route::get('login', ['as' => 'login', 'uses' => 'OAuthController@redirectToProvider']);
 Route::get('handle', ['as' => 'login_handler', 'uses' => 'OAuthController@handleProviderCallback']);
 Route::get('logout', ['as' => 'oauth.logout', 'uses' => 'OAuthController@logout']);

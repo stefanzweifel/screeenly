@@ -12,11 +12,11 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-        'Illuminate\Cookie\Middleware\EncryptCookies',
-        'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-        'Illuminate\Session\Middleware\StartSession',
-        'Illuminate\View\Middleware\ShareErrorsFromSession',
+        Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        Illuminate\Cookie\Middleware\EncryptCookies::class,
+        Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        Illuminate\Session\Middleware\StartSession::class,
+        Illuminate\View\Middleware\ShareErrorsFromSession::class,
     ];
 
     /**
@@ -25,14 +25,13 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => 'Screeenly\Http\Middleware\Authenticate',
-        'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-        'guest' => 'Screeenly\Http\Middleware\RedirectIfAuthenticated',
-        'csrf' => 'Screeenly\Http\Middleware\VerifyCsrfToken',
-        'api.auth' => 'Screeenly\Http\Middleware\ApiAuth',
-        'api.throttle' => 'Screeenly\Http\Middleware\ApiThrottle',
-        'app.hasEmail' => 'Screeenly\Http\Middleware\UserHasEmail',
-
-        'api.accept_json_header' => \Screeenly\Core\Middleware\AddAcceptJsonHeader::class
+        'auth'                   => Screeenly\Http\Middleware\Authenticate::class,
+        'auth.basic'             => Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest'                  => Screeenly\Http\Middleware\RedirectIfAuthenticated::class,
+        'csrf'                   => Screeenly\Http\Middleware\VerifyCsrfToken::class,
+        'api.auth'               => Screeenly\Http\Middleware\ApiAuth::class,
+        'api.throttle'           => Screeenly\Http\Middleware\ApiThrottle::class,
+        'app.hasEmail'           => Screeenly\Http\Middleware\UserHasEmail::class,
+        'api.accept_json_header' => Screeenly\Core\Middleware\AddAcceptJsonHeader::class
     ];
 }
