@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RoutesTest extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * @test
      */

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiV2Test extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * @test
      */

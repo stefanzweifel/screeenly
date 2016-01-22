@@ -1,9 +1,14 @@
 <?php
 
 use Screeenly\Screenshot\Screenshot;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ScreenshotTestOld extends TestCase
 {
+use DatabaseMigrations, DatabaseTransactions;
+
     public function testIsInstanceOfScreenshot()
     {
         $screenshot = new Screenshot();

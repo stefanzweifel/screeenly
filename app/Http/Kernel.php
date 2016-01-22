@@ -49,13 +49,11 @@ class Kernel extends HttpKernel
         'guest' => \Screeenly\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-
-        // Alte 5.1 Middlewares
-        'api.auth'               => Screeenly\Http\Middleware\ApiAuth::class,
-        'api.throttle'           => Screeenly\Http\Middleware\ApiThrottle::class,
-        'app.hasEmail'           => Screeenly\Http\Middleware\UserHasEmail::class,
-        'api.accept_json_header' => Screeenly\Core\Middleware\AddAcceptJsonHeader::class
-
+        // Old 5.1 middlewares
+        'api.auth'               => \Screeenly\Http\Middleware\ApiAuth::class,
+        'api.throttle'           => \Screeenly\Http\Middleware\ApiThrottle::class,
+        'app.hasEmail'           => \Screeenly\Http\Middleware\UserHasEmail::class,
+        'api.accept_json_header' => \Screeenly\Core\Middleware\AddAcceptJsonHeader::class
 
     ];
 }
