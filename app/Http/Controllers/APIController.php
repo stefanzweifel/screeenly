@@ -2,13 +2,14 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Container\Container as App;
 use Illuminate\Contracts\Routing\ResponseFactory as Response;
-use Screeenly\User;
+use Illuminate\Http\Request;
+use Screeenly\ApiKey;
 use Screeenly\ApiLog;
-use Screeenly\Http\Requests;
 use Screeenly\Http\Controllers\Controller;
+use Screeenly\Http\Requests;
+use Screeenly\User;
 
 class APIController extends Controller
 {
@@ -54,6 +55,7 @@ class APIController extends Controller
     {
         $url = $request->get('url', 'http://screeenly.com');
         $user = $this->user->getUserByKey($request->get('key'));
+        $apiKey = ApiKey::whereKey($request->get('key'))->firstOrFail();
 
         // Validate Input
         $validator = $this->app->make('Screeenly\Screenshot\ScreenshotValidator');
@@ -71,7 +73,7 @@ class APIController extends Controller
         $screenshot->setWidth($request->get('width', 1024));
         $screenshot->capture($url);
 
-        $log = $this->log->store($screenshot, $user);
+        $log = $this->log->store($screenshot, $user, $apiKey);
 
         $this->setRateLimitHeader($request);
 

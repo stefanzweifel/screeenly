@@ -12,11 +12,8 @@ class ApiLog extends \Eloquent
 
     protected $table = 'api_log';
 
-    public static function store(Screenshot $screenshot, User $user)
+    public static function store(Screenshot $screenshot, User $user, ApiKey $apiKey)
     {
-        $key = \Input::get('key', null);
-        $apiKey = ApiKey::whereKey($key)->first();
-
         $log = new self();
         $log->images = $screenshot->storagePath;
         $log->user()->associate($user);
