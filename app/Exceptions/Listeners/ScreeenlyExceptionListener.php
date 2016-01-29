@@ -3,55 +3,36 @@
 namespace Screeenly\Exceptions\Listeners;
 
 use Exception;
+use Mallinus\Exceptions\Catcher;
+use Mallinus\Exceptions\Contracts\ExceptionCatcher;
+use Mallinus\Exceptions\JsonCatcher;
 use ReflectionClass;
-use Mallinus\Exceptions\ExceptionListener;
 
-class ScreeenlyExceptionListener implements ExceptionListener
+
+class ScreeenlyExceptionListener extends Catcher implements ExceptionCatcher
 {
-    protected $headers = [];
+    /**
+     * UnprocessableEntityCatcher constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct(422);
+    }
 
     public function handle(Exception $exception)
     {
-        return response()->json(
+        return response()->json([
+            "error" =>
             [
-                "error" =>
                 [
-                    [
-                        "title" => "Screeenly Error",
-                        "detail" => $exception->getMessage(),
-                        "status"    => $exception->getCode(),
-                        "meta" => [
-                            "type"    => $this->getType($exception),
-                        ]
+                    "title" => "Screeenly Error",
+                    "detail" => $exception->getMessage(),
+                    "status"    => $this->getHttpCode(),
+                    "meta" => [
+                        "type"    => get_class($exception)
                     ]
                 ]
-            ],
-            $this->getCode($exception),
-            $this->headers
-        );
-    }
-
-    /**
-     * Return Class name without namespace
-     * @param  Exception $exception
-     * @return string
-     */
-    protected function getType(Exception $exception)
-    {
-        return (new ReflectionClass($exception))->getShortName();
-    }
-
-    /**
-     * Always returns a HTTP client error
-     * @param  Exception $exception
-     * @return integer
-     */
-    protected function getCode(Exception $exception)
-    {
-        if ($exception->getCode() < 500) {
-            return $exception->getCode();
-        }
-
-        return 400;
+            ]
+        ], $this->getHttpCode(), $this->getHeaders());
     }
 }

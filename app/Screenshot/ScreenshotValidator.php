@@ -21,8 +21,7 @@ class ScreenshotValidator
         $validator = Validator::make($data, static::$rules);
 
         if ($validator->fails()) {
-            $messages = array_flatten($validator->messages());
-            App::abort(400, "Validation Error: $messages[0]", $this->header);
+            App::abort(400, "Validation Error: {$validator->messages()->first()}", $this->header);
         }
     }
 }

@@ -13,7 +13,8 @@
         "laravel/socialite": "~2.0",
         "maknz/slack": "1.7.0",
         "doctrine/dbal": "~2.5",
-        "jenssegers/raven": "^1.4"
+        "jenssegers/raven": "^1.4",
+        "mallinus/exceptions": "1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4892c4c78b9c7277ac279f2fea7f7bb9",
-    "content-hash": "c568aaf7d63d0f0c44703f743e0ff348",
+    "hash": "76f52354f0c8698ea8fde99ec66158f1",
+    "content-hash": "0fa59b89facbb18a4ee2480facc096b1",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1601,6 +1601,46 @@
                 "slack"
             ],
             "time": "2015-06-03 03:35:16"
+        },
+        {
+            "name": "mallinus/exceptions",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mallinus/exceptions.git",
+                "reference": "a6b469462fc0c8fa02fdbbf614716c3ff909dd11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mallinus/exceptions/zipball/a6b469462fc0c8fa02fdbbf614716c3ff909dd11",
+                "reference": "a6b469462fc0c8fa02fdbbf614716c3ff909dd11",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.2.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mallinus\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathias Mallinus",
+                    "email": "mathias.mallinus@gmail.com"
+                }
+            ],
+            "keywords": [
+                "exceptions",
+                "laravel"
+            ],
+            "time": "2016-01-29 10:59:30"
         },
         {
             "name": "monolog/monolog",

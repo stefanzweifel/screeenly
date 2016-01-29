@@ -68,9 +68,7 @@ Route::group(['prefix' => 'api'], function () {
      */
     Route::group(['prefix' => 'v2', 'middleware' => ['api.auth', 'api.throttle', 'api.accept_json_header']], function () {
 
-        Route::post('fullsize', array(
-            'uses' => 'Api\ApiController@captureScreenshot'
-        ));
+        Route::post('fullsize', 'Api\ApiController@captureScreenshot');
 
     });
 

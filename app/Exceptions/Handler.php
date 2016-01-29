@@ -3,16 +3,16 @@
 namespace Screeenly\Exceptions;
 
 use Exception;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 use Log;
+use Mallinus\Exceptions\ExceptionHandler;
 use Screeenly\Core\Exception\ScreeenlyException;
+use Screeenly\Core\Exception\ScreenshotNotExistsException;
 use Screeenly\Exceptions\HostNotFoundException;
 use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
-use Slack;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class Handler extends ExceptionHandler
@@ -32,17 +32,13 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * A list of Exception Listeners and their corresponding Exception
-     * This list is used by "mallinus/exceptions"
-     *
-     * @var array
+     * Used by mallinus/exceptions
      */
-    protected $listen = [
-
+    protected $catchers = [
         ScreeenlyExceptionListener::class => [
-            ScreeenlyException::class
-        ],
-
+            ScreeenlyException::class,
+            ScreenshotNotExistsException::class
+        ]
     ];
 
 
@@ -78,7 +74,9 @@ class Handler extends ExceptionHandler
         /*
          * Handle API Errors
          */
-        if ($request->is('api/v1/*') && $request->isMethod('post')) {
+        if ($request->is('api/v1/*') && $request->isMethod('post'))
+        {
+
             $headers['Access-Control-Allow-Origin'] = '*';
 
             $returnMessage = [
@@ -126,7 +124,6 @@ class Handler extends ExceptionHandler
                 []
             );
         }
-
 
         return parent::render($request, $e);
     }
