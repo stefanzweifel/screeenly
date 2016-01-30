@@ -32,7 +32,7 @@ class PhantomJsClient implements ClientInterface
         $request->setCaptureFile($screenshot->storagePath);
         $request->setViewportSize($screenshot->width, $screenshot->getViewportHeight());
         $request->setTimeout(1000);
-        $request->setDelay(1); // Delay Rendering for 1 sec (Animations etc.)
+        $request->setDelay($screenshot->delay);
 
         /*
          * If height is set by user, crop the image

@@ -2,13 +2,15 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Illuminate\Contracts\Container\Container as App;
 use Illuminate\Contracts\Routing\ResponseFactory as Response;
 use Illuminate\Http\Request;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
 use Screeenly\Http\Controllers\Controller;
 use Screeenly\Http\Requests;
+use Screeenly\Screenshot\Screenshot;
+use Screeenly\Screenshot\ScreenshotValidator;
+use Screeenly\Services\CheckHostService;
 use Screeenly\User;
 
 class APIController extends Controller
@@ -38,10 +40,9 @@ class APIController extends Controller
      */
     protected $response;
 
-    public function __construct(User $user, App $app, ApiLog $log, Response $response)
+    public function __construct(User $user, ApiLog $log, Response $response)
     {
         $this->user = $user;
-        $this->app = $app;
         $this->log = $log;
         $this->response = $response;
     }
@@ -51,26 +52,24 @@ class APIController extends Controller
      *
      * @return Illuminate\Http\Response
      */
-    public function createScreenshot(Request $request)
+    public function createScreenshot(Request $request, ScreenshotValidator $validator, CheckHostService $checkHost, Screenshot $screenshot)
     {
         $url = $request->get('url', 'http://screeenly.com');
         $user = $this->user->getUserByKey($request->get('key'));
         $apiKey = ApiKey::whereKey($request->get('key'))->firstOrFail();
 
         // Validate Input
-        $validator = $this->app->make('Screeenly\Screenshot\ScreenshotValidator');
         $validator->validate($request->all());
 
         // Check if Host is available
-        $checkHost = $this->app->make('Screeenly\Services\CheckHostService');
         $checkHost->ping($url);
 
         // Actually Capture the Screenshot
-        $screenshot = $this->app->make('Screeenly\Screenshot\Screenshot');
         $filename = $screenshot->generateFilename();
         $screenshot->setStoragePath($filename);
         $screenshot->setHeight($request->get('height'));
         $screenshot->setWidth($request->get('width', 1024));
+        $screenshot->setDelay($request->get('delay', 1000));
         $screenshot->capture($url);
 
         $log = $this->log->store($screenshot, $user, $apiKey);
@@ -91,10 +90,10 @@ class APIController extends Controller
      *
      * @param Illuminate\Http\Request $request
      */
-    private function setRateLimitHeader($request)
+    private function setRateLimitHeader(Request $request)
     {
-        $limit     = \Config::get('api.ratelimit.requests');
-        $time      = \Config::get('api.ratelimit.time');
+        $limit     = config('api.ratelimit.requests');
+        $time      = config('api.ratelimit.time');
         $key       = sprintf('api:%s', $request->get('key'));
         $count     = \Cache::get($key);
         $remaining = ($limit - $count);

@@ -8,10 +8,11 @@ use App;
 class ScreenshotValidator
 {
     private static $rules = [
-        'key' => 'required' ,
-        'url' => 'required|url',
-        'width' => 'integer',
+        'key'    => 'required' ,
+        'url'    => 'required|url',
+        'width'  => 'integer',
         'height' => 'integer',
+        'delay'  => 'integer|min:1000|max:10000'
     ];
 
     private $header = ['Access-Control-Allow-Origin' => '*'];

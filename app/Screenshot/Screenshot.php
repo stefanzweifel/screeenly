@@ -12,6 +12,7 @@ class Screenshot
     public $url;
     public $width;
     public $height;
+    public $delay;
     public $path;
     public $filename;
 
@@ -98,6 +99,15 @@ class Screenshot
     public function setFilename($filename)
     {
         return $this->filename = $filename;
+    }
+
+    /**
+     * Set Delay in Seconds
+     * @param integer $delayInMiliSeconds
+     */
+    public function setDelay($delayInMiliSeconds)
+    {
+        return $this->delay = ($delayInMiliSeconds / 1000);
     }
 
     /**
