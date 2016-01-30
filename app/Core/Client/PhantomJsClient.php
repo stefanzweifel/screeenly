@@ -19,10 +19,10 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
     public function boot()
     {
         $client = Client::getInstance();
-        $client->setBinDir(base_path().'/bin');
-        $client->addOption('--load-images=true');
-        $client->addOption('--ignore-ssl-errors=true');
-        $client->addOption('--ssl-protocol=any');
+        $client->getEngine()->setPath(base_path().'/bin/phantomjs-linux');
+        $client->getEngine()->addOption('--load-images=true');
+        $client->getEngine()->addOption('--ignore-ssl-errors=true');
+        $client->getEngine()->addOption('--ssl-protocol=any');
 
         $this->client = $client;
 
@@ -67,21 +67,21 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
 
         $request->setMethod('GET');
         $request->setUrl($this->screenshot->getRequestUrl());
-        $request->setCaptureFile($this->screenshot->getFullStoragePath());
+        $request->setOutputFile($this->screenshot->getFullStoragePath());
         $request->setViewportSize($this->getWidth(), $this->getViewportHeight());
 
         /**
          * Add a timeout
          * Prevent Memory issues
          */
-        $request->setTimeout($this->config->get('screeenly.core.timeout'));
+        $request->setTimeout(config('screeenly.core.timeout'));
 
         /**
          * Set a Delay
          * If a website has animations, the content wouldn't be visible on the
          * Screenshot
          */
-        $request->setDelay($this->config->get('screeenly.core.delay'));
+        $request->setDelay($this->getDelay());
 
         /*
          * If height is set by user, crop the image

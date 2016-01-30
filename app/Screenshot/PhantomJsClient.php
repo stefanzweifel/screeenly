@@ -16,10 +16,10 @@ class PhantomJsClient implements ClientInterface
     public function build()
     {
         $client = Client::getInstance();
-        $client->setBinDir(base_path().'/bin');
-        $client->addOption('--load-images=true');
-        $client->addOption('--ignore-ssl-errors=true');
-        $client->addOption('--ssl-protocol=any');
+        $client->getEngine()->setPath(base_path().'/bin/phantomjs-linux');
+        $client->getEngine()->addOption('--load-images=true');
+        $client->getEngine()->addOption('--ignore-ssl-errors=true');
+        $client->getEngine()->addOption('--ssl-protocol=any');
 
         $this->client = $client;
 
@@ -29,7 +29,7 @@ class PhantomJsClient implements ClientInterface
     public function capture(Screenshot $screenshot)
     {
         $request = $this->client->getMessageFactory()->createCaptureRequest($screenshot->url, 'GET');
-        $request->setCaptureFile($screenshot->storagePath);
+        $request->setOutputFile($screenshot->storagePath);
         $request->setViewportSize($screenshot->width, $screenshot->getViewportHeight());
         $request->setTimeout(1000);
         $request->setDelay($screenshot->delay);
