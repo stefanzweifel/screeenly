@@ -25,9 +25,9 @@ class ApiRequest extends Request
     {
         return [
             'key'    => ['required', 'exists:api_keys,key'],
-            'url'    => ['required', 'url' , 'available_url'], // Is 'active_url' reliable enough?
-            'width'  => 'integer',
-            'height' => 'integer'
+            'url'    => ['required', 'url', 'available_url'], // Is 'active_url' reliable enough?
+            'width'  => ['sometimes', 'required', 'integer'],
+            'height' => ['sometimes', 'required', 'integer']
         ];
     }
 
