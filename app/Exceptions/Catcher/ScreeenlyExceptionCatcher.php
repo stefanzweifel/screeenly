@@ -1,6 +1,6 @@
 <?php
 
-namespace Screeenly\Exceptions\Listeners;
+namespace Screeenly\Exceptions\Catcher;
 
 use Exception;
 use Mallinus\Exceptions\Catcher;
@@ -9,7 +9,7 @@ use Mallinus\Exceptions\JsonCatcher;
 use ReflectionClass;
 
 
-class ScreeenlyExceptionListener extends Catcher implements ExceptionCatcher
+class ScreeenlyExceptionCatcher extends Catcher implements ExceptionCatcher
 {
     /**
      * UnprocessableEntityCatcher constructor.
