@@ -23,14 +23,12 @@ class AbstractScreenshotTest extends TestCase
      */
     protected function getClass()
     {
-        $config = app()->make(Config::class);
         $storage = app()->make(Storage::class);
         $apiKey = app()->make(ApiKey::class);
 
         return $this->getMockForAbstractClass(
             AbstractScreenshot::class,
             array(
-                $config,
                 $storage,
                 $apiKey
             ));
