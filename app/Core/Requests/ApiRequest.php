@@ -2,6 +2,7 @@
 
 namespace Screeenly\Core\Requests;
 
+use Screeenly\ApiKey;
 use Screeenly\Http\Requests\Request;
 
 class ApiRequest extends Request
@@ -11,9 +12,9 @@ class ApiRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(ApiKey $apiKey)
     {
-        return true;
+        return $apiKey->whereKey($this->get("key"))->exists();
     }
 
     /**
