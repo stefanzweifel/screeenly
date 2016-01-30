@@ -98,7 +98,7 @@ class ApiV2Test extends TestCase
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
-            ->seeStatusCode(403)
+            ->seeStatusCode(422)
             ->seeJson(["detail" => "Access denied."]);
     }
 
