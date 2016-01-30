@@ -31,7 +31,10 @@ Route::group(['middleware' => 'web'], function () {
             'middleware' => 'app.hasEmail',
         ]);
 
-        Route::resource('apikeys', 'ApiKeysController', ['except' => ['index', 'create']]);
+        Route::post("apikeys", ["as" => "apikeys.store", "uses" => "ApiKeysController@store"]);
+        Route::get("apikeys/{apikeys}/edit", ["as" => "apikeys.edit", "uses" => "ApiKeysController@edit"]);
+        Route::patch("apikeys/{apikeys}", ["as" => "apikeys.update", "uses" => "ApiKeysController@update"]);
+        Route::delete("apikeys/{apikeys}", ["as" => "apikeys.destroy", "uses" => "ApiKeysController@destroy"]);
 
         Route::delete('close', ['as' => 'app.closeAccount', 'uses' => 'UserController@closeAccount']);
         Route::get('email-setup', ['as' => 'app.storeEmailForm', 'uses' => 'PagesController@showEmailForm']);

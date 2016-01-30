@@ -11,28 +11,6 @@ use Screeenly\Http\Requests\ApiKeyRequest;
 class ApiKeysController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        $apikeys = auth()->user()->apikeys()->latest()->get();
-
-        return view('app.apikeys.index', compact('apikeys'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('app.apikeys.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return Response
