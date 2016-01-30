@@ -4,13 +4,11 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class RoutesTest extends TestCase
+class StaticPagesTest extends TestCase
 {
     use DatabaseMigrations, DatabaseTransactions;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_shows_landingpage()
     {
         $this->visit('/')
@@ -18,9 +16,7 @@ class RoutesTest extends TestCase
             ->seePageIs('/');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_shows_feedback_page()
     {
         $this->visit('/')
@@ -29,9 +25,13 @@ class RoutesTest extends TestCase
             ->seePageIs('/feedback');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
+    public function it_loads_faq_page()
+    {
+        $this->visit('/faq')->see("FAQ")->seePageIs("faq");
+    }
+
+    /** @test */
     public function it_shows_donate_page()
     {
         $this->visit('/')
@@ -40,9 +40,7 @@ class RoutesTest extends TestCase
             ->seePageIs('/donate');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_shows_try_page()
     {
         $this->visit('/')
@@ -51,9 +49,7 @@ class RoutesTest extends TestCase
             ->seePageIs('/try');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_shows_imprint()
     {
         $this->visit('/')
@@ -62,9 +58,7 @@ class RoutesTest extends TestCase
             ->seePageIs('/imprint');
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_shows_terms_of_service()
     {
         $this->visit('/')
