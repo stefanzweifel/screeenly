@@ -2,14 +2,10 @@
 
 namespace Screeenly\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Screeenly\ApiLog;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Core\Requests\ApiRequest;
 use Screeenly\Core\Response\ApiResponse;
 use Screeenly\Http\Controllers\Controller;
-use Screeenly\Http\Requests;
-use Screeenly\User;
 
 class ApiController extends Controller
 {

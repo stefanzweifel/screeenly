@@ -4,29 +4,11 @@ namespace Screeenly\Http\Middleware;
 
 use Closure;
 use Exception;
-use Illuminate\Foundation\Application;
 use Screeenly\Core\Exception\InvalidApiKeyException;
 use Screeenly\User;
 
 class ApiAuth
 {
-    /**
-     * Application implementation.
-     *
-     * @var Illuminate\Foundation\Application
-     */
-    protected $app;
-
-    /**
-     * Create a new filter instance.
-     *
-     * @param Application $app
-     */
-    public function __construct(Application $app)
-    {
-        $this->app = $app;
-    }
-
     /**
      * Handle an incoming request.
      *
