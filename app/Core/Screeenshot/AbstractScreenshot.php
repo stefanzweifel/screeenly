@@ -2,7 +2,6 @@
 
 namespace Screeenly\Core\Screeenshot;
 
-use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Filesystem\Filesystem as Storage;
 use Screeenly\ApiKey;
@@ -62,12 +61,6 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     protected $key;
 
     /**
-     * Config instance
-     * @var Illuminate\Contracts\Config\Repository
-     */
-    protected $config;
-
-    /**
      * Flysystem Instance
      * @var Illuminate\Contracts\Filesystem\Filesystem
      */
@@ -79,9 +72,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     protected $apiKey;
 
-    public function __construct(Config $config, Storage $storage, ApiKey $apiKey)
+    public function __construct(Storage $storage, ApiKey $apiKey)
     {
-        $this->config  = $config;
         $this->storage = $storage;
         $this->apiKey  = $apiKey;
     }
@@ -162,9 +154,9 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function getBase64()
     {
-        $file = $this->doesScreenshotExist();
+        $file = $this->getScreenshotFile();
 
-        return $this->base64 =  base64_encode($file);
+        return $this->base64 = base64_encode($file);
     }
 
     /**
@@ -205,7 +197,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function setStoragePath($storagePath = null)
     {
         if (is_null($storagePath)) {
-            $storagePath = $this->config->get('screeenly.core.storage_path');
+            $storagePath = config('screeenly.core.storage_path');
         }
 
         return $this->storagePath = $storagePath;
@@ -279,13 +271,17 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function doesScreenshotExist()
     {
-        try {
-            return $this->storage->get($this->getFullStoragePath());
-        } catch (FileNotFoundException $e) {
+        $exists = $this->storage->has($this->getFullStoragePath());
+
+        if (!$exists) {
             throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 400);
         }
     }
 
+    public function getScreenshotFile()
+    {
+        return $this->storage->get($this->getFullStoragePath());
+    }
 
     /**
      * Check if set storage path is writable
@@ -329,7 +325,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function getResponsePath()
     {
-        $domain = $this->config->get('app.url');
+        $domain = config('app.url');
 
         return "$domain/{$this->getFullStoragePath()}";
     }
