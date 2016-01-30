@@ -5,13 +5,14 @@ namespace Screeenly\Exceptions;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Log;
 use Mallinus\Exceptions\ExceptionHandler;
 use Screeenly\Core\Exception\ScreeenlyException;
 use Screeenly\Core\Exception\ScreenshotNotExistsException;
+use Screeenly\Exceptions\Catcher\ScreeenlyExceptionCatcher;
 use Screeenly\Exceptions\HostNotFoundException;
-use Screeenly\Exceptions\Listeners\ScreeenlyExceptionListener;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
@@ -35,9 +36,8 @@ class Handler extends ExceptionHandler
      * Used by mallinus/exceptions
      */
     protected $catchers = [
-        ScreeenlyExceptionListener::class => [
-            ScreeenlyException::class,
-            ScreenshotNotExistsException::class
+        ScreeenlyExceptionCatcher::class => [
+            ScreeenlyException::class
         ]
     ];
 
@@ -70,7 +70,6 @@ class Handler extends ExceptionHandler
 
         $code = $this->getCode($e);
 
-
         /*
          * Handle API Errors
          */
@@ -95,7 +94,7 @@ class Handler extends ExceptionHandler
          * Global Exception Handler for API v2. If everything fails, respond
          * with a simple message.
          */
-        if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException) {
+        if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException && !$e instanceof HttpResponseException) {
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();
