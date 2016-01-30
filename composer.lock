@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "76f52354f0c8698ea8fde99ec66158f1",
-    "content-hash": "0fa59b89facbb18a4ee2480facc096b1",
+    "hash": "21ee735af63175ac2108929a6db1a7c5",
+    "content-hash": "beacf505ac74b99b65770144aeb0b535",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -877,16 +877,16 @@
         },
         {
             "name": "jakoch/phantomjs-installer",
-            "version": "1.9.7",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "2431d7001a911c672b2ef04f447222a967134313"
+                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/2431d7001a911c672b2ef04f447222a967134313",
-                "reference": "2431d7001a911c672b2ef04f447222a967134313",
+                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
+                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
                 "shasum": ""
             },
             "require": {
@@ -914,7 +914,7 @@
                 "headless",
                 "phantomjs"
             ],
-            "time": "2014-07-29 09:42:52"
+            "time": "2015-03-08 12:51:25"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1115,20 +1115,20 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "v3.1.5",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jonnnnyw/php-phantomjs.git",
-                "reference": "b2e6985b7362f7699c11823e2956a2d8112728eb"
+                "reference": "8c0c2d72ed3d93f69aeb71e705619f0248b1425f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/b2e6985b7362f7699c11823e2956a2d8112728eb",
-                "reference": "b2e6985b7362f7699c11823e2956a2d8112728eb",
+                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/8c0c2d72ed3d93f69aeb71e705619f0248b1425f",
+                "reference": "8c0c2d72ed3d93f69aeb71e705619f0248b1425f",
                 "shasum": ""
             },
             "require": {
-                "jakoch/phantomjs-installer": "1.9.7",
+                "jakoch/phantomjs-installer": "2.0.0",
                 "php": ">=5.3.0",
                 "symfony/config": "~2.3",
                 "symfony/dependency-injection": "~2.3",
@@ -1137,11 +1137,9 @@
                 "twig/twig": "~1.16"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.0",
+                "zendframework/zendpdf": "~2.0"
             },
-            "bin": [
-                "bin/phantomloader"
-            ],
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -1168,7 +1166,7 @@
                 "phantomjs",
                 "testing"
             ],
-            "time": "2015-02-17 14:23:56"
+            "time": "2016-01-25 22:28:02"
         },
         {
             "name": "laravel/framework",
