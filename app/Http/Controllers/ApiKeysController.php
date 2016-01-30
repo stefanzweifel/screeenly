@@ -46,6 +46,10 @@ class ApiKeysController extends Controller
      */
     public function edit(ApiKey $apikey)
     {
+        if ($apikey->user != auth()->user()) {
+            return app()->abort(404);
+        }
+
         return view('app.apikeys.edit', compact('apikey'));
     }
 
@@ -57,6 +61,10 @@ class ApiKeysController extends Controller
      */
     public function update(ApiKeyRequest $request, ApiKey $apikey)
     {
+        if ($apikey->user != auth()->user()) {
+            return app()->abort(404);
+        }
+
         $apikey->update($request->all());
 
         return redirect()->route('app.dashboard')->withMessage("Key {$apikey->name} saved!");
@@ -70,6 +78,10 @@ class ApiKeysController extends Controller
      */
     public function destroy(ApiKey $apikey)
     {
+        if ($apikey->user != auth()->user()) {
+            return app()->abort(404);
+        }
+
         $apikey->delete();
 
         return redirect()->back()->withMessage("API Key deleted");
