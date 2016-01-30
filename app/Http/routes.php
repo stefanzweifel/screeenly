@@ -50,8 +50,6 @@ Route::group(['prefix' => 'api'], function () {
     /**
      * API Version 1
      * - Launched: May 2014
-     * - Depreciated: Dez 2015
-     * - Will be removed: Jan 2016
      */
     Route::group(['prefix' => 'v1', 'middleware' => ['api.auth', 'api.throttle']], function () {
 
@@ -64,7 +62,6 @@ Route::group(['prefix' => 'api'], function () {
 
     /**
      * API Version 2
-     * - Launch: Fall 2015
      */
     Route::group(['prefix' => 'v2', 'middleware' => ['api.auth', 'api.throttle', 'api.accept_json_header']], function () {
 
