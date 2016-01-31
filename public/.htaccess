@@ -5,8 +5,10 @@
 
     RewriteEngine On
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # Fix 10x redirect on uberspace
+    RewriteBase /
+
+    # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
     # Handle Front Controller...
