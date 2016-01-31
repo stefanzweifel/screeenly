@@ -271,9 +271,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function doesScreenshotExist()
     {
-        $exists = $this->storage->has($this->getFullStoragePath());
-
-        if (!$exists) {
+        if (!$this->storage->has($this->getFullStoragePath())) {
             throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 400);
         }
     }
