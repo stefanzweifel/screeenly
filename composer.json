@@ -8,7 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
-        "jonnyw/php-phantomjs": "~4.0",
+        "jonnyw/php-phantomjs": "dev-patch-1",
         "illuminate/html": "~5.0",
         "laravel/socialite": "~2.0",
         "maknz/slack": "1.7.0",
@@ -16,6 +16,12 @@
         "jenssegers/raven": "^1.4",
         "mallinus/exceptions": "1.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stefanzweifel/php-phantomjs"
+        }
+    ],
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",

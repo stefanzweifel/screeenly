@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21ee735af63175ac2108929a6db1a7c5",
-    "content-hash": "beacf505ac74b99b65770144aeb0b535",
+    "hash": "b6143ae843aede262e60e4422df4a95f",
+    "content-hash": "7d02bd3e626c4226fe8122576b3aa3b8",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -874,16 +874,16 @@
         },
         {
             "name": "jakoch/phantomjs-installer",
-            "version": "2.0.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jakoch/phantomjs-installer.git",
-                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a"
+                "reference": "b8ee2aac9b95f9a9ee30a05a4df4a0984a8a8b85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
-                "reference": "42b85cc0680b56c6ebeb5ced842d547cfd7c616a",
+                "url": "https://api.github.com/repos/jakoch/phantomjs-installer/zipball/b8ee2aac9b95f9a9ee30a05a4df4a0984a8a8b85",
+                "reference": "b8ee2aac9b95f9a9ee30a05a4df4a0984a8a8b85",
                 "shasum": ""
             },
             "require": {
@@ -911,7 +911,7 @@
                 "headless",
                 "phantomjs"
             ],
-            "time": "2015-03-08 12:51:25"
+            "time": "2016-01-25 16:30:30"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1112,20 +1112,20 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "v4.1.0",
+            "version": "dev-patch-1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jonnnnyw/php-phantomjs.git",
-                "reference": "8c0c2d72ed3d93f69aeb71e705619f0248b1425f"
+                "url": "https://github.com/stefanzweifel/php-phantomjs.git",
+                "reference": "440777a2d584dd2dfbe0e9ab5564decd8f292410"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/8c0c2d72ed3d93f69aeb71e705619f0248b1425f",
-                "reference": "8c0c2d72ed3d93f69aeb71e705619f0248b1425f",
+                "url": "https://api.github.com/repos/stefanzweifel/php-phantomjs/zipball/440777a2d584dd2dfbe0e9ab5564decd8f292410",
+                "reference": "440777a2d584dd2dfbe0e9ab5564decd8f292410",
                 "shasum": ""
             },
             "require": {
-                "jakoch/phantomjs-installer": "2.0.0",
+                "jakoch/phantomjs-installer": "~2.1",
                 "php": ">=5.3.0",
                 "symfony/config": "~2.3",
                 "symfony/dependency-injection": "~2.3",
@@ -1146,7 +1146,14 @@
                     "src/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "post-install-cmd": [
+                    "PhantomInstaller\\Installer::installPhantomJS"
+                ],
+                "post-update-cmd": [
+                    "PhantomInstaller\\Installer::installPhantomJS"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1160,10 +1167,13 @@
             "description": "A PHP wrapper for loading pages through PhantomJS",
             "keywords": [
                 "Headless Browser",
-                "phantomjs",
-                "testing"
+                "PhantomJS",
+                "Testing"
             ],
-            "time": "2016-01-25 22:28:02"
+            "support": {
+                "source": "https://github.com/stefanzweifel/php-phantomjs/tree/patch-1"
+            },
+            "time": "2016-01-31 13:00:05"
         },
         {
             "name": "laravel/framework",
@@ -4753,7 +4763,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jonnyw/php-phantomjs": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
