@@ -1,64 +1,76 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
-	"license": "MIT",
-	"type": "project",
-	"require": {
-		"php": ">=5.5.9",
-		"laravel/framework": "5.1.*",
-		"jonnyw/php-phantomjs": "3.*",
-		"illuminate/html": "~5.0",
-		"laravel/socialite": "~2.0",
-		"maknz/slack": "1.4.0",
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*",
+        "laravelcollective/html": "5.2.*",
+        "jonnyw/php-phantomjs": "dev-patch-1",
+        "illuminate/html": "~5.0",
+        "laravel/socialite": "~2.0",
+        "maknz/slack": "1.7.0",
         "doctrine/dbal": "~2.5",
-		"jenssegers/raven": "^1.4",
-		"mallinus/exceptions": "5.1.*"
-	},
-	"require-dev": {
+        "jenssegers/raven": "^1.4",
+        "mallinus/exceptions": "1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stefanzweifel/php-phantomjs"
+        }
+    ],
+    "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "phpunit/phpunit": "5.0",
         "mikey179/vfsStream": "~1.0",
         "codeclimate/php-test-reporter": "^0.1.2"
-	},
-	"autoload": {
-		"classmap": [
-			"database",
-			"helpers"
-		],
-		"files": [
-		    "helpers/functions.php"
-		],
-		"psr-4": {
-			"Screeenly\\": "app/"
-		}
-	},
-	"autoload-dev": {
-		"classmap": [
-			"tests/TestCase.php",
-			"tests/support"
-		]
-	},
-	"scripts": {
-        "post-install-cmd": [
-            "php artisan clear-compiled",
-            "php artisan optimize"
+    },
+    "autoload": {
+        "classmap": [
+            "database",
+            "helpers"
         ],
-        "post-update-cmd": [
-            "php artisan clear-compiled",
-            "php artisan optimize"
+        "files": [
+            "helpers/functions.php"
         ],
+        "psr-4": {
+            "Screeenly\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php",
+            "tests/support"
+        ]
+    },
+    "scripts": {
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "PhantomInstaller\\Installer::installPhantomJS"
+        ],
+        "pre-update-cmd": [
+            "php artisan clear-compiled"
+        ],
+        "post-update-cmd": [
+            "php artisan optimize",
+            "PhantomInstaller\\Installer::installPhantomJS"
         ]
-	},
-	"config": {
-		"preferred-install": "dist",
-		"bin-dir": "bin"
-	}
+    },
+    "config": {
+        "preferred-install": "dist",
+        "bin-dir": "vendor/bin"
+    }
 }

@@ -8,3 +8,5 @@
 .DS_Store
 Thumbs.db
 storage/database.sqlite
+Homestead.yaml
+Homestead.json

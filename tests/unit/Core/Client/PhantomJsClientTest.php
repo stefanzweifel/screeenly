@@ -7,7 +7,6 @@ use Screeenly\Core\Screeenshot\Screenshot;
 
 class PhantomJsClientTest extends TestCase
 {
-
     protected function getMockedClass()
     {
         return \Mockery::mock(PhantomJsClient::class);
@@ -55,5 +54,4 @@ class PhantomJsClientTest extends TestCase
 
         $this->assertInstanceOf(Screenshot::class, $screenshot);
     }
-
 }

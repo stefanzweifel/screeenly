@@ -8,10 +8,11 @@ use App;
 class ScreenshotValidator
 {
     private static $rules = [
-        'key' => 'required' ,
-        'url' => 'required|url',
-        'width' => 'integer',
+        'key'    => 'required' ,
+        'url'    => 'required|url',
+        'width'  => 'integer',
         'height' => 'integer',
+        'delay'  => 'integer|min:1000|max:10000'
     ];
 
     private $header = ['Access-Control-Allow-Origin' => '*'];
@@ -21,8 +22,7 @@ class ScreenshotValidator
         $validator = Validator::make($data, static::$rules);
 
         if ($validator->fails()) {
-            $messages = array_flatten($validator->messages());
-            App::abort(400, "Validation Error: $messages[0]", $this->header);
+            App::abort(400, "Validation Error: {$validator->messages()->first()}", $this->header);
         }
     }
 }

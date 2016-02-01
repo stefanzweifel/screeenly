@@ -1,30 +1,34 @@
 <?php
 
-// use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\Filesystem as Storage;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\ApiKey;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Core\Screeenshot\AbstractScreenshot;
 use Screeenly\Core\Screeenshot\ScreenshotInterface;
 
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+
 class AbstractScreenshotTest extends TestCase
 {
+
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * Return Mocked Abstract Class
      * (Mock by PHPUnit)
      */
     protected function getClass()
     {
-        $config = app()->make(Config::class);
         $storage = app()->make(Storage::class);
         $apiKey = app()->make(ApiKey::class);
 
         return $this->getMockForAbstractClass(
             AbstractScreenshot::class,
             array(
-                $config,
                 $storage,
                 $apiKey
             ));

@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: Screeenly
-        psr4_prefix: Screeenly
-        src_path: app

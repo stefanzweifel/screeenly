@@ -1,7 +1,13 @@
 <?php
 
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 class RouteTest extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     public function testTryPage()
     {
         $crawler = $this->call('GET', '/try');

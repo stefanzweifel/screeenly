@@ -2,37 +2,12 @@
 
 namespace Screeenly;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
-use Screeenly\ApiKey;
-use Screeenly\ApiLog;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Authenticatable
 {
-    use Authenticatable, CanResetPassword;
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['email', 'token', 'plan', 'provider', 'provider_id'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token'];
 
     /**
@@ -44,7 +19,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public static function getUserByKey($key)
     {
-        // Search for key in ApiKey Model
         $apiKey = ApiKey::whereKey($key)->first();
 
         if ($apiKey) {

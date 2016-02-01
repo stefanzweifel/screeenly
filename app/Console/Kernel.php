@@ -16,17 +16,16 @@ class Kernel extends ConsoleKernel
         Commands\RemoveImagesCommand::class
     ];
 
-	/**
-	 * Define the application's command schedule.
-	 *
-	 * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-	 * @return void
-	 */
-	protected function schedule(Schedule $schedule)
-	{
-        $url = env('SCHEDULER_PING_URL');
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $url = config('services.envoyer.pings.scheduler_ping_url');
 
-		$schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
-	}
-
+        $schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
+    }
 }

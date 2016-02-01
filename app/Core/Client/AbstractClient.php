@@ -2,19 +2,13 @@
 
 namespace Screeenly\Core\Client;
 
-use Illuminate\Contracts\Config\Repository as Config;
+
 use Screeenly\Core\Exception\UnavailableHostException;
 use Screeenly\Core\Ping;
 use Screeenly\Core\Screeenshot\Screenshot;
 
 abstract class AbstractClient implements ClientInterface
 {
-    /**
-     * Config Repository
-     * @var Illuminate\Contracts\Config\Repository
-     */
-    protected $config;
-
     /**
      * Screenshot Instance
      * @var Screeenly\Core\Screeenshot\Screenshot
@@ -25,13 +19,13 @@ abstract class AbstractClient implements ClientInterface
      * Browser Height
      * @var int
      */
-    protected $height;
+    protected $height = null;
 
     /**
      * Browser Width
      * @var int
      */
-    protected $width;
+    protected $width = null;
 
     /**
      * Browser Viewport Height
@@ -39,14 +33,21 @@ abstract class AbstractClient implements ClientInterface
      */
     protected $viewportHeight = 768;
 
-    public function __construct(Config $config, Screenshot $screenshot)
+    /**
+     * Delay in Seconds
+     * @var integer
+     */
+    protected $delay = 1;
+
+    public function __construct(Screenshot $screenshot)
     {
-        $this->config     = $config;
         $this->screenshot = $screenshot;
 
         // Set default values for height and width
         $this->setHeight(null);
         $this->setWidth(null);
+
+        $this->setDelay(config('screeenly.core.delay'));
     }
 
     /**
@@ -65,7 +66,7 @@ abstract class AbstractClient implements ClientInterface
     public function setWidth($width)
     {
         if (is_null($width)) {
-            $width = $this->config->get('screeenly.core.screenshot_width');
+            $width = config('screeenly.core.screenshot_width');
         }
 
         return $this->width = $width;
@@ -96,6 +97,24 @@ abstract class AbstractClient implements ClientInterface
     public function getWidth()
     {
         return $this->width;
+    }
+
+    /**
+     * Set Delay
+     * @param integer $delay
+     */
+    public function setDelay($delay)
+    {
+        return $this->delay = $delay;
+    }
+
+    /**
+     * Get Delay
+     * @return integer
+     */
+    public function getDelay()
+    {
+        return $this->delay;
     }
 
     /**

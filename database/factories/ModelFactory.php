@@ -27,3 +27,11 @@ $factory->define(Screeenly\ApiKey::class, function ($faker) {
         'key'     => str_random(40)
     ];
 });
+
+$factory->define(Screeenly\ApiLog::class, function ($faker) {
+    return [
+        'user_id'    => factory(Screeenly\User::class)->create()->id,
+        'api_key_id' => factory(Screeenly\ApiKey::class)->create()->id,
+        'images'     => $faker->file()
+    ];
+});

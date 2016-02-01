@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 5.5
   - 5.6
   - 7
   - hhvm
@@ -10,7 +9,6 @@ php:
 matrix:
     allow_failures:
         - php: hhvm
-        - php: 7
         - php: nightly
 
 sudo: false
@@ -19,6 +17,7 @@ before_script:
   - cp .env.travis .env
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction
+  - php artisan key:generate
 
 script: phpunit --coverage-clover build/logs/clover.xml
 

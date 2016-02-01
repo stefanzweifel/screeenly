@@ -12,13 +12,11 @@ class DropUniqueIndexFromUsersTable extends Migration
      */
     public function up()
     {
-
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
 
             $table->dropUnique('users_api_key_unique');
 
         });
-
     }
 
     /**
@@ -28,11 +26,10 @@ class DropUniqueIndexFromUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
 
             $table->unique('api_key');
 
         });
-
     }
 }

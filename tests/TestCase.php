@@ -1,7 +1,14 @@
 <?php
 
+use Screeenly\User;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+    /**
+     * @var Screeenly\User
+     */
+    protected $user;
+
     /**
      * The base URL to use while testing the application.
      *
@@ -31,16 +38,29 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function setupDatabase()
     {
-        if (File::exists(storage_path('database.sqlite'))) {
-            File::delete(storage_path('database.sqlite'));
+        if (File::exists(database_path('database.sqlite'))) {
+            File::delete(database_path('database.sqlite'));
         }
 
-        File::put(storage_path('database.sqlite'), '');
+        File::put(database_path('database.sqlite'), '');
 
         // `migrate:refresh` is not usable, because it messed up with the
         // migration setup. Before we start testing, we just delete an
         // available sqlite-database and create a new one.
 
-        Artisan::call('migrate');
+        Artisan::call('migrate:install');
+        // Artisan::call('migrate');
     }
+
+    /**
+     * Act as a User
+     * @return void
+     */
+    protected function beUser()
+    {
+        $this->user = factory(User::class)->create();
+
+        $this->actingAs($this->user);
+    }
+
 }

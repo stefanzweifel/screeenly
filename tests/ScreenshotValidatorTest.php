@@ -1,9 +1,14 @@
 <?php
 
 use Screeenly\Screenshot\ScreenshotValidator;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ScreenshotValidatorTest extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     public function testTrueParameters()
     {
         $data = [

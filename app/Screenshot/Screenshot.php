@@ -12,6 +12,7 @@ class Screenshot
     public $url;
     public $width;
     public $height;
+    public $delay;
     public $path;
     public $filename;
 
@@ -101,6 +102,15 @@ class Screenshot
     }
 
     /**
+     * Set Delay in Seconds
+     * @param integer $delayInMiliSeconds
+     */
+    public function setDelay($delayInMiliSeconds)
+    {
+        return $this->delay = ($delayInMiliSeconds / 1000);
+    }
+
+    /**
      * Create new filename.
      */
     public function generateFilename()
@@ -157,11 +167,8 @@ class Screenshot
      */
     protected function createDirectory($path)
     {
-        if(!File::exists($path)) {
-
+        if (!File::exists($path)) {
             File::makeDirectory($path, 0755, true);
-
         }
     }
-
 }

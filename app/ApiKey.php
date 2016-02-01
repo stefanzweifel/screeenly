@@ -40,14 +40,10 @@ class ApiKey extends Model
     {
         $key = str_random(50);
 
-        // If key already exists, create a new one
-        if ( self::whereKey($key)->first() ) {
-
+        if (self::whereKey($key)->first()) {
             return $this->generateKey();
-
         }
 
         return $key;
     }
-
 }

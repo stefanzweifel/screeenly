@@ -2,6 +2,7 @@
 
 namespace Screeenly\Core\Requests;
 
+use Screeenly\ApiKey;
 use Screeenly\Http\Requests\Request;
 
 class ApiRequest extends Request
@@ -11,9 +12,9 @@ class ApiRequest extends Request
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(ApiKey $apiKey)
     {
-        return true;
+        return $apiKey->whereKey($this->get("key"))->exists();
     }
 
     /**
@@ -25,9 +26,9 @@ class ApiRequest extends Request
     {
         return [
             'key'    => ['required', 'exists:api_keys,key'],
-            'url'    => ['required', 'url' , 'available_url'], // Is 'active_url' reliable enough?
-            'width'  => 'integer',
-            'height' => 'integer'
+            'url'    => ['required', 'url', 'available_url'], // Is 'active_url' reliable enough?
+            'width'  => ['sometimes', 'required', 'integer'],
+            'height' => ['sometimes', 'required', 'integer']
         ];
     }
 
@@ -35,8 +36,7 @@ class ApiRequest extends Request
     {
         $errorBag = [];
 
-        foreach($errors as $key =>  $error) {
-
+        foreach ($errors as $key =>  $error) {
             $errorBag[] = [
                 "status" => "422",
                 "title" => "Validation Error",

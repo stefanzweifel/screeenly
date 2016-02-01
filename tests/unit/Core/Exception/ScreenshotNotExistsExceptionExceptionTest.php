@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\ScreenshotNotExistsException;
 
-
 class ScreenshotNotExistsExceptionTest extends TestCase
 {
     /**
@@ -16,5 +15,4 @@ class ScreenshotNotExistsExceptionTest extends TestCase
             );
         throw new ScreenshotNotExistsException('Message', 10);
     }
-
 }

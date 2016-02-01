@@ -14,12 +14,10 @@ class AbstractClientTest extends TestCase
     protected function getClass()
     {
         $screenshot = app()->make(Screenshot::class);
-        $config     = app()->make(Config::class);
 
         return $this->getMockForAbstractClass(
             AbstractClient::class,
             array(
-                $config,
                 $screenshot
             ));
     }

@@ -12,7 +12,7 @@ class AddApiKeyIdToApiLogTable extends Migration
      */
     public function up()
     {
-        Schema::table('api_log', function(Blueprint $table) {
+        Schema::table('api_log', function (Blueprint $table) {
             $table->integer('api_key_id')->after('user_id')->nullable();
         });
     }
@@ -24,7 +24,7 @@ class AddApiKeyIdToApiLogTable extends Migration
      */
     public function down()
     {
-        Schema::table('api_log', function(Blueprint $table) {
+        Schema::table('api_log', function (Blueprint $table) {
             $table->dropColumn('api_key_id');
         });
     }

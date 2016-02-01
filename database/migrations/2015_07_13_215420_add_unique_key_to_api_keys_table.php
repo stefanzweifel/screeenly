@@ -12,7 +12,7 @@ class AddUniqueKeyToApiKeysTable extends Migration
      */
     public function up()
     {
-        Schema::table('api_keys', function(Blueprint $table) {
+        Schema::table('api_keys', function (Blueprint $table) {
 
             $table->unique('key');
 
@@ -26,11 +26,10 @@ class AddUniqueKeyToApiKeysTable extends Migration
      */
     public function down()
     {
-        Schema::table('api_keys', function(Blueprint $table) {
+        Schema::table('api_keys', function (Blueprint $table) {
 
             $table->dropUnique('api_keys_key_unique');
 
         });
-
     }
 }

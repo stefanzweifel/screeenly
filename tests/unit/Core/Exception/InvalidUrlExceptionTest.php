@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\InvalidUrlException;
 
-
 class InvalidUrlExceptionTest extends TestCase
 {
     /**
@@ -16,5 +15,4 @@ class InvalidUrlExceptionTest extends TestCase
             );
         throw new InvalidUrlException('Message', 10);
     }
-
 }

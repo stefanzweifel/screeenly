@@ -7,10 +7,8 @@ use Screeenly\Core\Screeenshot\AbstractScreenshot;
 use Screeenly\Core\Screeenshot\Screenshot;
 use Screeenly\Core\Screeenshot\ScreenshotInterface;
 
-
 class ScreenshotTest extends TestCase
 {
-
     /**
      * Return Mocked Abstract Class
      * (Mock by PHPUnit)
@@ -39,6 +37,4 @@ class ScreenshotTest extends TestCase
 
         $this->assertInstanceOf(ScreenshotInterface::class, $screenshot);
     }
-
-
 }

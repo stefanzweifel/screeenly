@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiV2Test extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * @test
      */
@@ -96,7 +98,7 @@ class ApiV2Test extends TestCase
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
-            ->seeStatusCode(403)
+            ->seeStatusCode(422)
             ->seeJson(["detail" => "Access denied."]);
     }
 
@@ -115,9 +117,8 @@ class ApiV2Test extends TestCase
         $path = $screenshot->setStoragePath();
         $files = \Storage::files($path);
 
-        array_filter($files, function($file) {
+        array_filter($files, function ($file) {
             \Storage::delete($file);
         });
     }
-
 }

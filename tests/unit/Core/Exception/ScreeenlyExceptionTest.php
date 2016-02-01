@@ -3,7 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\ScreeenlyException;
 
-
 class ScreeenlyExceptionTest extends TestCase
 {
     /**
@@ -16,5 +15,4 @@ class ScreeenlyExceptionTest extends TestCase
             );
         throw new ScreeenlyException('Message', 10);
     }
-
 }

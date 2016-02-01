@@ -43,6 +43,8 @@ return [
 
     'core' => [
 
+        'path_to_phantomjs' => env('SCREEENLY_PATH_TO_PHANTOMJS', 'bin/phantomjs'),
+
         /**
          * Default Screenshot Width
          */
