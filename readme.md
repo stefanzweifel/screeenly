@@ -27,7 +27,7 @@ Screeenly is a never ending sideproject. I use it to apply learned PHP patterns 
 *I highly recommend [Homestead](http://github.com/laravel/homestead) for your local PHP / Laravel environment!*
 Your environment must fullfill the following requirements:
 
-- PHP: 5.5.9 or higher
+- PHP: 5.6 or higher
 - Composer must be installed
 - MySQL must be installed
 - CURL must be installed
