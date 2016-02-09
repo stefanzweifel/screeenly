@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Response\ApiResponse;
 
 class ApiResponseTest extends TestCase
@@ -8,7 +7,6 @@ class ApiResponseTest extends TestCase
     protected function getClass()
     {
         return app()->make(ApiResponse::class);
-        ;
     }
 
     /**

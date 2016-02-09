@@ -21,13 +21,12 @@ class ApiAuth
     {
         $key = $request->get('key');
 
-
         if (is_null($key)) {
-            throw new Exception("No API Key specified.", 401);
+            throw new Exception('No API Key specified.', 401);
         }
 
         if (!User::getUserByKey($key)) {
-            throw new InvalidApiKeyException("Access denied.", 403);
+            throw new InvalidApiKeyException('Access denied.', 403);
         }
 
         return $next($request);

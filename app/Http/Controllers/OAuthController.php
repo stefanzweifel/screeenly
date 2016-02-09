@@ -2,12 +2,9 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Screeenly\User;
 use Screeenly\Services\RegisterUserService;
+use Screeenly\User;
 use Socialize;
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
 
 class OAuthController extends Controller
 {

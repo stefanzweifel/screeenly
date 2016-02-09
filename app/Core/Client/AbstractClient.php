@@ -2,7 +2,6 @@
 
 namespace Screeenly\Core\Client;
 
-
 use Screeenly\Core\Exception\UnavailableHostException;
 use Screeenly\Core\Ping;
 use Screeenly\Core\Screeenshot\Screenshot;
@@ -10,32 +9,37 @@ use Screeenly\Core\Screeenshot\Screenshot;
 abstract class AbstractClient implements ClientInterface
 {
     /**
-     * Screenshot Instance
+     * Screenshot Instance.
+     *
      * @var Screeenly\Core\Screeenshot\Screenshot
      */
     protected $screenshot;
 
     /**
-     * Browser Height
+     * Browser Height.
+     *
      * @var int
      */
     protected $height = null;
 
     /**
-     * Browser Width
+     * Browser Width.
+     *
      * @var int
      */
     protected $width = null;
 
     /**
-     * Browser Viewport Height
-     * @var integer
+     * Browser Viewport Height.
+     *
+     * @var int
      */
     protected $viewportHeight = 768;
 
     /**
-     * Delay in Seconds
-     * @var integer
+     * Delay in Seconds.
+     *
+     * @var int
      */
     protected $delay = 1;
 
@@ -51,7 +55,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Set Browser Height
+     * Set Browser Height.
+     *
      * @param int $height
      */
     public function setHeight($height)
@@ -60,7 +65,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Set Browser Width
+     * Set Browser Width.
+     *
      * @param int $width
      */
     public function setWidth($width)
@@ -73,7 +79,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Return Viewport Height
+     * Return Viewport Height.
+     *
      * @return int
      */
     public function getViewportHeight()
@@ -82,7 +89,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Return Height
+     * Return Height.
+     *
      * @return int
      */
     public function getHeight()
@@ -91,7 +99,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Return Width
+     * Return Width.
+     *
      * @return int
      */
     public function getWidth()
@@ -100,8 +109,9 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Set Delay
-     * @param integer $delay
+     * Set Delay.
+     *
+     * @param int $delay
      */
     public function setDelay($delay)
     {
@@ -109,8 +119,9 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Get Delay
-     * @return integer
+     * Get Delay.
+     *
+     * @return int
      */
     public function getDelay()
     {
@@ -118,7 +129,8 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
-     * Check if requested URL is available
+     * Check if requested URL is available.
+     *
      * @return void
      */
     public function isUrlAvailable()
@@ -131,11 +143,12 @@ abstract class AbstractClient implements ClientInterface
         }
     }
 
-
     /**
      * Create an empty file for testing purposes.
-     * (Should be replaced by a virtual file system)
-     * @param  string $path
+     * (Should be replaced by a virtual file system).
+     *
+     * @param string $path
+     *
      * @return void
      */
     public function createTestFile($path)

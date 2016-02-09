@@ -2,9 +2,7 @@
 
 namespace Screeenly;
 
-use Screeenly\ApiKey;
 use Screeenly\Screenshot\Screenshot;
-use Screeenly\User;
 
 class ApiLog extends \Eloquent
 {
@@ -38,7 +36,7 @@ class ApiLog extends \Eloquent
     /**
      * Relationship with the ApiKey model.
      *
-     * @return    Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function apiKey()
     {

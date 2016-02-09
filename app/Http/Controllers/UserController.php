@@ -4,13 +4,10 @@ namespace Screeenly\Http\Controllers;
 
 use Config;
 use File;
-use Session;
-use Slack;
 use Screeenly\ApiLog;
 use Screeenly\Http\Requests\StoreEmailRequest;
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
+use Session;
+use Slack;
 
 class UserController extends Controller
 {
@@ -39,7 +36,7 @@ class UserController extends Controller
 
         Slack::send('User deleted');
 
-        return redirect()->route('oauth.logout')->withSuccess("Youre account has been closed. Goodbye :)");
+        return redirect()->route('oauth.logout')->withSuccess('Youre account has been closed. Goodbye :)');
     }
 
     /**
@@ -57,6 +54,6 @@ class UserController extends Controller
 
         $requestedPath = Session::get('requestedPath', '/settings');
 
-        return redirect($requestedPath)->withMessage("Your email has been updated.");
+        return redirect($requestedPath)->withMessage('Your email has been updated.');
     }
 }

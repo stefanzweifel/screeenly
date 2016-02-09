@@ -2,7 +2,7 @@
 
     return [
 
-        /**
+        /*
          * Path where generated screenshots are stored
          */
 
@@ -10,16 +10,16 @@
 
         'ratelimit' => [
 
-            /**
+            /*
              * Amount of API request a single client can make
              */
             'requests' => env('SCREEENLY_RATE_LIMIT', 1000),
 
-            /**
+            /*
              * Amount of minutes till the request limit is set back to 0
              */
-            'time' => env('SCREEENLY_RATE_LIMIT_TIME=60', 60)
+            'time' => env('SCREEENLY_RATE_LIMIT_TIME=60', 60),
 
-        ]
+        ],
 
     ];

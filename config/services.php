@@ -40,7 +40,7 @@ return [
         'token'   => env('SLACK_TOKEN'),
         'bot'     => env('SLACK_BOT'),
         'domain'  => env('SLACK_DOMAIN'),
-        'icon'    => env('SLACK_ICON')
+        'icon'    => env('SLACK_ICON'),
     ],
 
     'github' => [
@@ -51,13 +51,13 @@ return [
 
     'raven' => [
         'dsn'   => env('RAVEN_DSN'),
-        'level' => env('RAVEN_LEVEL', 'debug')
+        'level' => env('RAVEN_LEVEL', 'debug'),
     ],
 
     'envoyer' => [
         'pings' => [
-            'scheduler_ping_url' => env('SCHEDULER_PING_URL')
-        ]
-    ]
+            'scheduler_ping_url' => env('SCHEDULER_PING_URL'),
+        ],
+    ],
 
 ];

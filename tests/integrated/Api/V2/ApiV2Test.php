@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -23,14 +22,14 @@ class ApiV2Test extends TestCase
 
         $arguments = [
             'key' => $key->key,
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                "meta" => [
-                    'http_status' => 201
-                ]
+                'meta' => [
+                    'http_status' => 201,
+                ],
              ]);
 
         $this->clearScreenshotFolder();
@@ -55,7 +54,7 @@ class ApiV2Test extends TestCase
 
         $this->post('/api/v2/fullsize', $arguments)
              ->seeJson([
-                 "detail" => "The url field is required."
+                 'detail' => 'The url field is required.',
              ]);
 
         $this->assertResponseStatus(422);
@@ -77,7 +76,7 @@ class ApiV2Test extends TestCase
     public function it_does_need_an_api_key()
     {
         $arguments = [
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
@@ -94,22 +93,17 @@ class ApiV2Test extends TestCase
     {
         $arguments = [
             'key' => 'nope',
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v2/fullsize', $arguments)
             ->seeStatusCode(422)
-            ->seeJson(["detail" => "Access denied."]);
+            ->seeJson(['detail' => 'Access denied.']);
     }
-
-
-
-
-
 
     /**
      * Clear out all screenshots from the screenshot directory
-     * TODO: Should be removed, as soon as the virtual-filesystem is integrated
+     * TODO: Should be removed, as soon as the virtual-filesystem is integrated.
      */
     protected function clearScreenshotFolder()
     {

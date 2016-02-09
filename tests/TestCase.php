@@ -33,7 +33,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Create SQLite Database and Migrate everything
+     * Create SQLite Database and Migrate everything.
+     *
      * @return void
      */
     public function setupDatabase()
@@ -53,7 +54,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     }
 
     /**
-     * Act as a User
+     * Act as a User.
+     *
      * @return void
      */
     protected function beUser()
@@ -62,5 +64,4 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         $this->actingAs($this->user);
     }
-
 }

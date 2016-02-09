@@ -9,11 +9,11 @@ class RegisterUserService
     public function register($code, $provider, $providerId, $email = '')
     {
         $data = [
-            'email' => $email,
-            'token' => $code,
-            'plan' => 0,
+            'email'       => $email,
+            'token'       => $code,
+            'plan'        => 0,
             'provider_id' => $providerId,
-            'provider' => $provider,
+            'provider'    => $provider,
         ];
 
         $user = User::create($data);

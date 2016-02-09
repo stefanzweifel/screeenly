@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -17,8 +16,8 @@ class RouteTest extends TestCase
     public function testTryWithWrongProof()
     {
         $response = $this->call('POST', '/try', [
-                'url' => 'http://google.com',
-                'key' => 'something',
+                'url'   => 'http://google.com',
+                'key'   => 'something',
                 'proof' => 'something',
         ]);
 
@@ -31,8 +30,8 @@ class RouteTest extends TestCase
         $token = csrf_token();
 
         $response = $this->call('POST', '/try', [
-                'url' => 'http://google.com',
-                'key' => 'something',
+                'url'   => 'http://google.com',
+                'key'   => 'something',
                 'proof' => 'laravel',
         ]);
 

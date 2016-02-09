@@ -2,11 +2,11 @@
 
 namespace Screeenly\Console\Commands;
 
-use Illuminate\Console\Command;
 use Carbon\Carbon;
 use File;
-use Storage;
+use Illuminate\Console\Command;
 use Screeenly\ApiLog;
+use Storage;
 
 class RemoveImagesCommand extends Command
 {
@@ -52,7 +52,7 @@ class RemoveImagesCommand extends Command
         $this->info('Removed '.count($logs).' Images.');
 
         // Removed images from try service
-        $files = Storage::allFiles("images/try");
+        $files = Storage::allFiles('images/try');
         Storage::delete($files);
     }
 }

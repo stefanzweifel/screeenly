@@ -6,7 +6,6 @@ use Illuminate\Contracts\Routing\ResponseFactory as Response;
 use Illuminate\Http\Request;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
-use Screeenly\Http\Controllers\Controller;
 use Screeenly\Http\Requests;
 use Screeenly\Screenshot\Screenshot;
 use Screeenly\Screenshot\ScreenshotValidator;
@@ -77,8 +76,8 @@ class APIController extends Controller
         $this->setRateLimitHeader($request);
 
         $result = [
-            'path' => $screenshot->assetPath ,
-            'base64' => 'data:image/jpg;base64,'.$screenshot->base64,
+            'path'       => $screenshot->assetPath,
+            'base64'     => 'data:image/jpg;base64,'.$screenshot->base64,
             'base64_raw' => $screenshot->base64,
         ];
 
@@ -92,10 +91,10 @@ class APIController extends Controller
      */
     private function setRateLimitHeader(Request $request)
     {
-        $limit     = config('api.ratelimit.requests');
-        $time      = config('api.ratelimit.time');
-        $key       = sprintf('api:%s', $request->get('key'));
-        $count     = \Cache::get($key);
+        $limit = config('api.ratelimit.requests');
+        $time = config('api.ratelimit.time');
+        $key = sprintf('api:%s', $request->get('key'));
+        $count = \Cache::get($key);
         $remaining = ($limit - $count);
 
         array_set($this->header, 'X-RateLimit-Limit', $limit);

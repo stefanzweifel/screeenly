@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Screeenly\ApiKey;
 use Screeenly\User;
 
@@ -15,24 +14,23 @@ class ApiKeysTest extends TestCase
     {
         $this->beUser();
 
-        $this->visit("/")
-            ->type("Foo", "name")
-            ->press("Create key")
-            ->seePageIs("/dashboard")
-            ->seeInDatabase("api_keys", [
-                "name" => "Foo",
-                "user_id" => $this->user->id
+        $this->visit('/')
+            ->type('Foo', 'name')
+            ->press('Create key')
+            ->seePageIs('/dashboard')
+            ->seeInDatabase('api_keys', [
+                'name'    => 'Foo',
+                'user_id' => $this->user->id,
             ]);
-
     }
 
     /** @test */
     public function it_loads_edit_view_for_my_api_key()
     {
         $this->beUser();
-        $apiKey = factory(ApiKey::class)->create(["user_id" => $this->user->id]);
+        $apiKey = factory(ApiKey::class)->create(['user_id' => $this->user->id]);
 
-        $this->visit("/")->click("Edit")->see("Edit API Key");
+        $this->visit('/')->click('Edit')->see('Edit API Key');
     }
 
     /** @test */
@@ -40,24 +38,24 @@ class ApiKeysTest extends TestCase
     {
         $this->beUser();
         $anotherUser = factory(User::class)->create();
-        $myApiKey    = factory(ApiKey::class, 5)->create(["user_id" => $this->user->id]);
-        $otherApiKey = factory(ApiKey::class)->create(["user_id" => $anotherUser->id]);
+        $myApiKey = factory(ApiKey::class, 5)->create(['user_id' => $this->user->id]);
+        $otherApiKey = factory(ApiKey::class)->create(['user_id' => $anotherUser->id]);
 
-        $this->visit("/apikeys/{$otherApiKey->id}/edit")->seePageIs("/dashboard");
+        $this->visit("/apikeys/{$otherApiKey->id}/edit")->seePageIs('/dashboard');
     }
 
     /** @test */
     public function it_updates_my_api_key()
     {
         $this->beUser();
-        $apiKey = factory(ApiKey::class)->create(["user_id" => $this->user->id]);
+        $apiKey = factory(ApiKey::class)->create(['user_id' => $this->user->id]);
 
-        $this->visit("/")
-            ->click("Edit")
-            ->type("Foo", "name")
-            ->press("Save changes")
-            ->seePageIs("/dashboard")
-            ->seeInDatabase("api_keys", ["name" => "Foo"]);
+        $this->visit('/')
+            ->click('Edit')
+            ->type('Foo', 'name')
+            ->press('Save changes')
+            ->seePageIs('/dashboard')
+            ->seeInDatabase('api_keys', ['name' => 'Foo']);
     }
 
     /** @test */
@@ -65,10 +63,10 @@ class ApiKeysTest extends TestCase
     {
         $this->beUser();
         $anotherUser = factory(User::class)->create();
-        $myApiKey    = factory(ApiKey::class, 5)->create(["user_id" => $this->user->id]);
-        $otherApiKey = factory(ApiKey::class)->create(["user_id" => $anotherUser->id]);
+        $myApiKey = factory(ApiKey::class, 5)->create(['user_id' => $this->user->id]);
+        $otherApiKey = factory(ApiKey::class)->create(['user_id' => $anotherUser->id]);
 
-        $this->patch("/apikeys/{$otherApiKey->id}", ["name" => "foo"]);
+        $this->patch("/apikeys/{$otherApiKey->id}", ['name' => 'foo']);
 
         $this->assertResponseStatus(302);
     }
@@ -77,12 +75,12 @@ class ApiKeysTest extends TestCase
     public function it_deletes_my_api_key()
     {
         $this->beUser();
-        $apiKey = factory(ApiKey::class)->create(["user_id" => $this->user->id]);
+        $apiKey = factory(ApiKey::class)->create(['user_id' => $this->user->id]);
 
-        $this->visit("/")
-            ->press("Delete")
-            ->seePageIs("/dashboard")
-            ->dontSeeInDatabase("api_keys", ["name" => $apiKey->name]);
+        $this->visit('/')
+            ->press('Delete')
+            ->seePageIs('/dashboard')
+            ->dontSeeInDatabase('api_keys', ['name' => $apiKey->name]);
     }
 
     /** @test */
@@ -90,10 +88,10 @@ class ApiKeysTest extends TestCase
     {
         $this->beUser();
         $anotherUser = factory(User::class)->create();
-        $myApiKey    = factory(ApiKey::class, 5)->create(["user_id" => $this->user->id]);
-        $otherApiKey = factory(ApiKey::class)->create(["user_id" => $anotherUser->id]);
+        $myApiKey = factory(ApiKey::class, 5)->create(['user_id' => $this->user->id]);
+        $otherApiKey = factory(ApiKey::class)->create(['user_id' => $anotherUser->id]);
 
-        $this->delete("/apikeys/{$otherApiKey->id}", ["name" => "foo"]);
+        $this->delete("/apikeys/{$otherApiKey->id}", ['name' => 'foo']);
 
         $this->assertResponseStatus(302);
     }

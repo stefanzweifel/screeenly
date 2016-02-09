@@ -1,25 +1,19 @@
 <?php
 
-use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Contracts\Filesystem\Filesystem as Storage;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\ApiKey;
-use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Core\Screeenshot\AbstractScreenshot;
 use Screeenly\Core\Screeenshot\ScreenshotInterface;
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
-
 class AbstractScreenshotTest extends TestCase
 {
-
     use DatabaseMigrations, DatabaseTransactions;
 
     /**
      * Return Mocked Abstract Class
-     * (Mock by PHPUnit)
+     * (Mock by PHPUnit).
      */
     protected function getClass()
     {
@@ -28,10 +22,10 @@ class AbstractScreenshotTest extends TestCase
 
         return $this->getMockForAbstractClass(
             AbstractScreenshot::class,
-            array(
+            [
                 $storage,
-                $apiKey
-            ));
+                $apiKey,
+            ]);
     }
 
     /**
@@ -77,9 +71,9 @@ class AbstractScreenshotTest extends TestCase
      */
     public function it_overrides_default_storage_path()
     {
-        $screenshot  = $this->getClass();
+        $screenshot = $this->getClass();
         $defaultPath = \Config::get('screeenly.core.storage_path');
-        $newPath     = "images/will/be/stored/here/";
+        $newPath = 'images/will/be/stored/here/';
 
         $screenshot->setStoragePath($newPath);
 
@@ -87,14 +81,13 @@ class AbstractScreenshotTest extends TestCase
         $this->assertNotEquals($defaultPath, $screenshot->getStoragePath());
     }
 
-
     /**
      * @test
      */
     public function it_sets_api_key_to_null()
     {
         $screenshot = $this->getClass();
-        $apiKey     = null;
+        $apiKey = null;
 
         $screenshot->setKey($apiKey);
 
@@ -120,7 +113,7 @@ class AbstractScreenshotTest extends TestCase
         $screenshot = $this->getClass();
 
         // will throw exception
-        $screenshot->setKey("this-key-does-not-exist");
+        $screenshot->setKey('this-key-does-not-exist');
     }
 
     /**

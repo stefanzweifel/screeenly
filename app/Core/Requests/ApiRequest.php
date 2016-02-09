@@ -14,7 +14,7 @@ class ApiRequest extends Request
      */
     public function authorize(ApiKey $apiKey)
     {
-        return $apiKey->whereKey($this->get("key"))->exists();
+        return $apiKey->whereKey($this->get('key'))->exists();
     }
 
     /**
@@ -28,7 +28,7 @@ class ApiRequest extends Request
             'key'    => ['required', 'exists:api_keys,key'],
             'url'    => ['required', 'url', 'available_url'], // Is 'active_url' reliable enough?
             'width'  => ['sometimes', 'required', 'integer'],
-            'height' => ['sometimes', 'required', 'integer']
+            'height' => ['sometimes', 'required', 'integer'],
         ];
     }
 
@@ -38,18 +38,18 @@ class ApiRequest extends Request
 
         foreach ($errors as $key =>  $error) {
             $errorBag[] = [
-                "status" => "422",
-                "title" => "Validation Error",
-                "detail" => head($error),
-                "meta" => [
-                    "field" => $key,
-                    "all_errors" => $error
-                ]
+                'status' => '422',
+                'title'  => 'Validation Error',
+                'detail' => head($error),
+                'meta'   => [
+                    'field'      => $key,
+                    'all_errors' => $error,
+                ],
             ];
         }
 
         $responseArray = [
-            "error" => $errorBag
+            'error' => $errorBag,
         ];
 
         return response()->json($responseArray, 422);

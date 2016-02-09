@@ -16,7 +16,7 @@ class PhantomJsClient implements ClientInterface
     public function build()
     {
         $client = Client::getInstance();
-        $client->getEngine()->setPath(base_path() . config('screeenly.core.path_to_phantomjs'));
+        $client->getEngine()->setPath(base_path().config('screeenly.core.path_to_phantomjs'));
         $client->getEngine()->addOption('--load-images=true');
         $client->getEngine()->addOption('--ignore-ssl-errors=true');
         $client->getEngine()->addOption('--ssl-protocol=any');

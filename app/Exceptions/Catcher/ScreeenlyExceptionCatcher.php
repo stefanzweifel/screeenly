@@ -5,9 +5,6 @@ namespace Screeenly\Exceptions\Catcher;
 use Exception;
 use Mallinus\Exceptions\Catcher;
 use Mallinus\Exceptions\Contracts\ExceptionCatcher;
-use Mallinus\Exceptions\JsonCatcher;
-use ReflectionClass;
-
 
 class ScreeenlyExceptionCatcher extends Catcher implements ExceptionCatcher
 {
@@ -22,17 +19,16 @@ class ScreeenlyExceptionCatcher extends Catcher implements ExceptionCatcher
     public function handle(Exception $exception)
     {
         return response()->json([
-            "error" =>
-            [
+            'error' => [
                 [
-                    "title" => "Screeenly Error",
-                    "detail" => $exception->getMessage(),
-                    "status"    => $this->getHttpCode(),
-                    "meta" => [
-                        "type"    => get_class($exception)
-                    ]
-                ]
-            ]
+                    'title'     => 'Screeenly Error',
+                    'detail'    => $exception->getMessage(),
+                    'status'    => $this->getHttpCode(),
+                    'meta'      => [
+                        'type'    => get_class($exception),
+                    ],
+                ],
+            ],
         ], $this->getHttpCode(), $this->getHeaders());
     }
 }

@@ -44,16 +44,16 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Screeenly\Http\Middleware\Authenticate::class,
+        'auth'       => \Screeenly\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \Screeenly\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'guest'      => \Screeenly\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         // Old 5.1 middlewares
         'api.auth'               => \Screeenly\Http\Middleware\ApiAuth::class,
         'api.throttle'           => \Screeenly\Http\Middleware\ApiThrottle::class,
         'app.hasEmail'           => \Screeenly\Http\Middleware\UserHasEmail::class,
-        'api.accept_json_header' => \Screeenly\Core\Middleware\AddAcceptJsonHeader::class
+        'api.accept_json_header' => \Screeenly\Core\Middleware\AddAcceptJsonHeader::class,
 
     ];
 }
