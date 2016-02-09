@@ -28,7 +28,7 @@ class OAuthController extends Controller
         $response = Socialize::with('github')->user();
         $user = User::where('provider_id', '=', $response->id)->first();
 
-        if (!$user) {
+        if (! $user) {
             $userService = new RegisterUserService();
 
             $user = $userService->register(

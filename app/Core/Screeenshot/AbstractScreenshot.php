@@ -258,10 +258,10 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function setKey($key)
     {
-        if (!is_null($key)) {
+        if (! is_null($key)) {
             $key = $this->apiKey->whereKey($key)->first();
 
-            if (!$key) {
+            if (! $key) {
                 throw new InvalidApiKeyException("The API Key {$key} is invalid.", 401);
             }
         }
@@ -297,7 +297,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function doesScreenshotExist()
     {
-        if (!$this->storage->has($this->getFullStoragePath())) {
+        if (! $this->storage->has($this->getFullStoragePath())) {
             throw new ScreenshotNotExistsException("Screenshot can't be generated for URL {$this->getRequestUrl()}.", 400);
         }
     }
@@ -314,7 +314,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
      */
     public function createDirectory($path)
     {
-        if (!$this->storage->exists($path)) {
+        if (! $this->storage->exists($path)) {
             $this->storage->makeDirectory($path, 0755, true);
         }
     }

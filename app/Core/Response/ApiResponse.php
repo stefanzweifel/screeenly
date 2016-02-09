@@ -46,7 +46,7 @@ class ApiResponse
     {
         $key = $screenshot->getKey();
 
-        if (!is_null($key)) {
+        if (! is_null($key)) {
             $key = sprintf('api:%s', $screenshot->getKey()->key);
         }
 
