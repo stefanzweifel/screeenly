@@ -170,7 +170,7 @@ class Screenshot
      */
     protected function createDirectory($path)
     {
-        if (!File::exists($path)) {
+        if (! File::exists($path)) {
             File::makeDirectory($path, 0755, true);
         }
     }

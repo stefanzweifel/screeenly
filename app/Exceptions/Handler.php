@@ -91,7 +91,7 @@ class Handler extends ExceptionHandler
          * Global Exception Handler for API v2. If everything fails, respond
          * with a simple message.
          */
-        if ($request->is('api/v2/*') && !$e instanceof ScreeenlyException && !$e instanceof HttpResponseException) {
+        if ($request->is('api/v2/*') && ! $e instanceof ScreeenlyException && ! $e instanceof HttpResponseException) {
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();

@@ -16,7 +16,7 @@ class ApiLog extends \Eloquent
         $log->images = $screenshot->storagePath;
         $log->user()->associate($user);
 
-        if (!is_null($apiKey)) {
+        if (! is_null($apiKey)) {
             $log->apiKey()->associate($apiKey);
         }
 
