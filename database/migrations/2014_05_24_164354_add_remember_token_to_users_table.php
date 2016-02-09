@@ -17,7 +17,6 @@ class AddRememberTokenToUsersTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *

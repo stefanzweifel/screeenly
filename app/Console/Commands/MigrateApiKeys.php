@@ -3,8 +3,8 @@
 namespace Screeenly\Console\Commands;
 
 use Illuminate\Console\Command;
-use Screeenly\User;
 use Screeenly\ApiKey;
+use Screeenly\User;
 
 class MigrateApiKeys extends Command
 {
@@ -47,17 +47,17 @@ class MigrateApiKeys extends Command
             $this->migrateUser($user);
         }
 
-
-        $this->info("Migration completed");
+        $this->info('Migration completed');
     }
 
     /**
-     * Migrate Users API Key to it's own model
+     * Migrate Users API Key to it's own model.
      *
      * - Create new Model
      * - Delete old value
      *
-     * @param  User   $user
+     * @param User $user
+     *
      * @return void
      */
     protected function migrateUser(User $user)
@@ -74,14 +74,13 @@ class MigrateApiKeys extends Command
         $newKey->user()->associate($user);
         $newKey->save();
 
-
         // $newKey = ApiKey::create([
         //     'key'     => $apiKey,
         //     'user_id' => $user->id,
         //     'name'    => 'Default key'
         // ]);
 
-        $user->api_key = "key-deleted-" . str_random(10);
+        $user->api_key = 'key-deleted-'.str_random(10);
         $user->save();
     }
 }

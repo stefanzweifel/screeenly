@@ -2,9 +2,9 @@
 
 namespace Screeenly\Core\Response;
 
-use Screeenly\Core\Screeenshot\Screenshot;
-use Config;
 use Cache;
+use Config;
+use Screeenly\Core\Screeenshot\Screenshot;
 
 class ApiResponse
 {
@@ -19,24 +19,26 @@ class ApiResponse
 
     /**
      * Return final response Array
-     * We try to implement json-api standard (http://jsonapi.org)
-     * @param  Screenshot $screenshot
+     * We try to implement json-api standard (http://jsonapi.org).
+     *
+     * @param Screenshot $screenshot
+     *
      * @return array
      */
     public function getResponseArray(Screenshot $screenshot)
     {
         return [
-            "data" => [
-                "type" => "screenshot",
-                "attributes" => [
-                    "path"       => $screenshot->getResponsePath(),
+            'data' => [
+                'type'       => 'screenshot',
+                'attributes' => [
+                    'path'       => $screenshot->getResponsePath(),
                     'base64'     => "data:image/jpg;base64,{$screenshot->getBase64()}",
                     'base64_raw' => $screenshot->getBase64(),
-                ]
+                ],
             ],
-            "meta" => [
-                "http_status" => 201
-            ]
+            'meta' => [
+                'http_status' => 201,
+            ],
         ];
     }
 
@@ -45,12 +47,12 @@ class ApiResponse
         $key = $screenshot->getKey();
 
         if (!is_null($key)) {
-            $key       = sprintf('api:%s', $screenshot->getKey()->key);
+            $key = sprintf('api:%s', $screenshot->getKey()->key);
         }
 
-        $limit     = Config::get('screeenly.api.ratelimit.requests');
-        $time      = Config::get('screeenly.api.ratelimit.time');
-        $count     = Cache::get($key);
+        $limit = Config::get('screeenly.api.ratelimit.requests');
+        $time = Config::get('screeenly.api.ratelimit.time');
+        $count = Cache::get($key);
         $remaining = ($limit - $count);
 
         array_set($this->header, 'X-RateLimit-Limit', $limit);

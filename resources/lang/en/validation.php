@@ -77,7 +77,7 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'url'                  => 'The :attribute format is invalid.',
 
-    "available_url" => "The :attribute is not publicly available.",
+    'available_url' => 'The :attribute is not publicly available.',
 
     /*
     |--------------------------------------------------------------------------

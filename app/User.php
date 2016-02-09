@@ -29,7 +29,7 @@ class User extends Authenticatable
     /**
      * Relationship with the ApiLog model.
      *
-     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function logs()
     {
@@ -39,7 +39,7 @@ class User extends Authenticatable
     /**
      * Relationship with the ApiKey model.
      *
-     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function apikeys()
     {

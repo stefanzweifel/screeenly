@@ -10,10 +10,12 @@ use Screeenly\Http\Controllers\Controller;
 class ApiController extends Controller
 {
     /**
-     * Capture Screenshot for a given URL
-     * @param  ApiRequest      $request  Validates ApiKey "on the fly"
-     * @param  PhantomJsClient $browser  Browser used to capture Screenshot
-     * @param  ApiResponse     $response Do Response Stuff
+     * Capture Screenshot for a given URL.
+     *
+     * @param ApiRequest      $request  Validates ApiKey "on the fly"
+     * @param PhantomJsClient $browser  Browser used to capture Screenshot
+     * @param ApiResponse     $response Do Response Stuff
+     *
      * @return json
      */
     public function captureScreenshot(ApiRequest $request, PhantomJsClient $browser, ApiResponse $response)

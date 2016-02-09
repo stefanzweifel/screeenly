@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -28,7 +27,7 @@ class StaticPagesTest extends TestCase
     /** @test */
     public function it_loads_faq_page()
     {
-        $this->visit('/faq')->see("FAQ")->seePageIs("faq");
+        $this->visit('/faq')->see('FAQ')->seePageIs('faq');
     }
 
     /** @test */

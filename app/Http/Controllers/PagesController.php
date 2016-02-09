@@ -2,13 +2,12 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Screeenly\Core\Client\PhantomJsClient;
-use Screeenly\Http\Controllers\Controller;
-use Screeenly\Http\Requests;
-use Screeenly\Screenshot\Screenshot;
-use Log;
 use Exception;
+use Illuminate\Http\Request;
+
+use Log;
+use Screeenly\Core\Client\PhantomJsClient;
+use Screeenly\Screenshot\Screenshot;
 
 class PagesController extends Controller
 {
@@ -33,7 +32,7 @@ class PagesController extends Controller
      */
     public function showDashboard()
     {
-        $apikeys = auth()->user()->apikeys()->latest()->get(["name", "key", "created_at", "id"]);
+        $apikeys = auth()->user()->apikeys()->latest()->get(['name', 'key', 'created_at', 'id']);
 
         return view('app.dashboard', compact('apikeys'));
     }
@@ -69,9 +68,11 @@ class PagesController extends Controller
     }
 
     /**
-     * Create screenshot through webinterface
-     * @param  Request                                $request
-     * @param  PhantomJsClient $browser
+     * Create screenshot through webinterface.
+     *
+     * @param Request         $request
+     * @param PhantomJsClient $browser
+     *
      * @return redirect
      */
     public function createTestScreenshot(Request $request, PhantomJsClient $browser)
@@ -79,12 +80,13 @@ class PagesController extends Controller
         $proof = trim(strtolower($request->get('proof')));
 
         if ($proof != 'laravel') {
-            return back()->withMessage("Wrong answer. Hint: Laravel.");
+            return back()->withMessage('Wrong answer. Hint: Laravel.');
         }
 
         try {
             $browser->boot();
             $screenshot = $browser->capture($request->get('url'), null);
+
             return redirect()
                 ->route('try')
                 ->withAsset($screenshot->getResponsePath());
@@ -95,7 +97,7 @@ class PagesController extends Controller
 
             return redirect()
                     ->route('try')
-                    ->withError("Oh snap! Something went wrong, please try again.")
+                    ->withError('Oh snap! Something went wrong, please try again.')
                     ->withInput();
         }
     }

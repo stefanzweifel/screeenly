@@ -2,7 +2,6 @@
 
 
 // use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Screeenshot\AbstractScreenshot;
 use Screeenly\Core\Screeenshot\Screenshot;
 use Screeenly\Core\Screeenshot\ScreenshotInterface;
@@ -11,7 +10,7 @@ class ScreenshotTest extends TestCase
 {
     /**
      * Return Mocked Abstract Class
-     * (Mock by PHPUnit)
+     * (Mock by PHPUnit).
      */
     protected function getClass()
     {

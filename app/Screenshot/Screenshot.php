@@ -2,10 +2,10 @@
 
 namespace Screeenly\Screenshot;
 
-use Screeenly\Screenshot\PhantomJsClient as Client;
+use App;
 use Config;
 use File;
-use App;
+use Screeenly\Screenshot\PhantomJsClient as Client;
 
 class Screenshot
 {
@@ -102,8 +102,9 @@ class Screenshot
     }
 
     /**
-     * Set Delay in Seconds
-     * @param integer $delayInMiliSeconds
+     * Set Delay in Seconds.
+     *
+     * @param int $delayInMiliSeconds
      */
     public function setDelay($delayInMiliSeconds)
     {
@@ -161,8 +162,10 @@ class Screenshot
     }
 
     /**
-     * Create Storage Directory, if it doesnt exist yet
-     * @param  string $path
+     * Create Storage Directory, if it doesnt exist yet.
+     *
+     * @param string $path
+     *
      * @return void
      */
     protected function createDirectory($path)

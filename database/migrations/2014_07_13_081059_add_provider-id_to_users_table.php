@@ -17,7 +17,6 @@ class AddProviderIdToUsersTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\ScreenshotNotExistsException;
 
 class ScreenshotNotExistsExceptionTest extends TestCase

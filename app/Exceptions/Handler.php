@@ -10,9 +10,7 @@ use Illuminate\Validation\ValidationException;
 use Log;
 use Mallinus\Exceptions\ExceptionHandler;
 use Screeenly\Core\Exception\ScreeenlyException;
-use Screeenly\Core\Exception\ScreenshotNotExistsException;
 use Screeenly\Exceptions\Catcher\ScreeenlyExceptionCatcher;
-use Screeenly\Exceptions\HostNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
@@ -29,25 +27,25 @@ class Handler extends ExceptionHandler
         ModelNotFoundException::class,
         ValidationException::class,
         TooManyRequestsHttpException::class,
-        HostNotFoundException::class
+        HostNotFoundException::class,
     ];
 
     /**
-     * Used by mallinus/exceptions
+     * Used by mallinus/exceptions.
      */
     protected $catchers = [
         ScreeenlyExceptionCatcher::class => [
-            ScreeenlyException::class
-        ]
+            ScreeenlyException::class,
+        ],
     ];
-
 
     /**
      * Report or log an exception.
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param \Exception $e
+     *
      * @return void
      */
     public function report(Exception $e)
@@ -58,8 +56,9 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $e
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
@@ -73,13 +72,11 @@ class Handler extends ExceptionHandler
         /*
          * Handle API Errors
          */
-        if ($request->is('api/v1/*') && $request->isMethod('post'))
-        {
-
+        if ($request->is('api/v1/*') && $request->isMethod('post')) {
             $headers['Access-Control-Allow-Origin'] = '*';
 
             $returnMessage = [
-                'title' => 'An error accoured',
+                'title'   => 'An error accoured',
                 'message' => $e->getMessage(),
             ];
 
@@ -90,11 +87,11 @@ class Handler extends ExceptionHandler
             return response()->json($returnMessage, $code, $headers);
         }
 
-        /**
+        /*
          * Global Exception Handler for API v2. If everything fails, respond
          * with a simple message.
          */
-        if ($request->is("api/v2/*") && !$e instanceof ScreeenlyException && !$e instanceof HttpResponseException) {
+        if ($request->is('api/v2/*') && !$e instanceof ScreeenlyException && !$e instanceof HttpResponseException) {
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();
@@ -102,22 +99,21 @@ class Handler extends ExceptionHandler
 
             $message = $e->getMessage();
             if (empty($message)) {
-                $message = "Oops. An internal server error accoured";
+                $message = 'Oops. An internal server error accoured';
             }
 
             return response()->json(
                 [
-                    "error" =>
-                    [
+                    'error' => [
                         [
-                            "title" => "Application Error",
-                            "detail" => $message,
-                            "code" => $e->getCode(),
-                            "meta" => [
-                                "type"    => (new \ReflectionClass($e))->getShortName(),
-                            ]
-                        ]
-                    ]
+                            'title'  => 'Application Error',
+                            'detail' => $message,
+                            'code'   => $e->getCode(),
+                            'meta'   => [
+                                'type'    => (new \ReflectionClass($e))->getShortName(),
+                            ],
+                        ],
+                    ],
                 ],
                 $code,
                 []

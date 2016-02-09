@@ -2,8 +2,6 @@
 
 namespace Screeenly\Http\Requests;
 
-use Screeenly\Http\Requests\Request;
-
 class ApiKeyRequest extends Request
 {
     /**
@@ -24,7 +22,7 @@ class ApiKeyRequest extends Request
     public function rules()
     {
         return [
-            'name' => ['required', 'string']
+            'name' => ['required', 'string'],
         ];
     }
 }

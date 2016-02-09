@@ -2,7 +2,6 @@
 
 namespace Screeenly\Core\Screeenshot;
 
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Filesystem\Filesystem as Storage;
 use Screeenly\ApiKey;
 use Screeenly\ApiLog;
@@ -13,61 +12,71 @@ use Screeenly\Core\Exception\ScreenshotNotExistsException;
 abstract class AbstractScreenshot implements ScreenshotInterface
 {
     /**
-     * Height of Screenshot
+     * Height of Screenshot.
+     *
      * @var int
      */
     protected $height;
 
     /**
-     * Width of Screenshot
+     * Width of Screenshot.
+     *
      * @var int
      */
     protected $width;
 
     /**
-     * Filename of Screenshot File
+     * Filename of Screenshot File.
+     *
      * @var string
      */
     protected $filename;
 
     /**
-     * URL where Screenshot is generated from
+     * URL where Screenshot is generated from.
+     *
      * @var string
      */
     protected $requestUrl;
 
     /**
-     * Base64 Encoded String of File
+     * Base64 Encoded String of File.
+     *
      * @var string
      */
     protected $base64;
 
     /**
-     * Combined storagePath and filename
+     * Combined storagePath and filename.
+     *
      * @var string
      */
     protected $fullStoragePath;
 
     /**
-     * Folderpath where screenshot is stored
+     * Folderpath where screenshot is stored.
+     *
      * @var string
      */
     protected $storagePath;
 
     /**
-     * Passed ApiKey model. Used to identify the user
+     * Passed ApiKey model. Used to identify the user.
+     *
      * @var Screeenly\ApiKey
      */
     protected $key;
 
     /**
-     * Flysystem Instance
+     * Flysystem Instance.
+     *
      * @var Illuminate\Contracts\Filesystem\Filesystem
      */
     protected $storage;
 
     /**
-     * ApiKey Instance
+     * ApiKey Instance.
+     *
      * @var Screeenly\ApiKey
      */
     protected $apiKey;
@@ -75,7 +84,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     public function __construct(Storage $storage, ApiKey $apiKey)
     {
         $this->storage = $storage;
-        $this->apiKey  = $apiKey;
+        $this->apiKey = $apiKey;
     }
 
     public function set(Client $browser, $requestUrl, $key)
@@ -95,7 +104,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Height of Screenshot
+     * Set Height of Screenshot.
+     *
      * @param int $height
      */
     public function setHeight($height)
@@ -104,7 +114,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return Height
+     * Return Height.
+     *
      * @return int
      */
     public function getHeight()
@@ -113,7 +124,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Width
+     * Set Width.
+     *
      * @return int
      */
     public function getWidth()
@@ -122,7 +134,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return Width
+     * Return Width.
+     *
      * @param int $width
      */
     public function setWidth($width)
@@ -131,7 +144,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Request Url
+     * Set Request Url.
+     *
      * @param string $requestUrl
      */
     public function setRequestUrl($requestUrl)
@@ -140,7 +154,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return Request Url
+     * Return Request Url.
+     *
      * @return string
      */
     public function getRequestUrl()
@@ -149,7 +164,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Encode File into base64
+     * Encode File into base64.
+     *
      * @return string
      */
     public function getBase64()
@@ -160,7 +176,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Filename
+     * Set Filename.
+     *
      * @param string $filename
      */
     public function setFilename($filename)
@@ -169,7 +186,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Get Filename
+     * Get Filename.
+     *
      * @return string
      */
     public function getFilename()
@@ -178,7 +196,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Generate a new unique filename
+     * Generate a new unique filename.
+     *
      * @return string
      */
     public function generateFilename()
@@ -191,7 +210,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Storage Path
+     * Set Storage Path.
+     *
      * @param string $storagePath Optional override to default value
      */
     public function setStoragePath($storagePath = null)
@@ -204,7 +224,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return storage path
+     * Return storage path.
+     *
      * @return string
      */
     public function getStoragePath()
@@ -213,7 +234,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return full storage path
+     * Return full storage path.
+     *
      * @return string
      */
     public function getFullStoragePath()
@@ -222,7 +244,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set full storage path
+     * Set full storage path.
      */
     public function setFullStoragePath()
     {
@@ -230,7 +252,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Set Api Key
+     * Set Api Key.
+     *
      * @param mixed (string|null) $key
      */
     public function setKey($key)
@@ -247,7 +270,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return ApiKey Model
+     * Return ApiKey Model.
+     *
      * @return mixed (string|null)
      */
     public function getKey()
@@ -256,7 +280,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Clone Browser dimensions to Screenshot Object
+     * Clone Browser dimensions to Screenshot Object.
+     *
      * @return void
      */
     public function cloneDimensions()
@@ -266,7 +291,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Test if screenshot exists
+     * Test if screenshot exists.
+     *
      * @return stream
      */
     public function doesScreenshotExist()
@@ -282,7 +308,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Check if set storage path is writable
+     * Check if set storage path is writable.
+     *
      * @return void
      */
     public function createDirectory($path)
@@ -292,9 +319,9 @@ abstract class AbstractScreenshot implements ScreenshotInterface
         }
     }
 
-
     /**
-     * Create ApiLog Entry
+     * Create ApiLog Entry.
+     *
      * @return Screeenly\ApiLog
      */
     public function createLogEntry()
@@ -305,7 +332,7 @@ abstract class AbstractScreenshot implements ScreenshotInterface
         $log->images = $path;
 
         if (is_null($this->key)) {
-            $log->user_id    = null;
+            $log->user_id = null;
             $log->api_key_id = null;
         } else {
             $log->user()->associate($this->key->user);
@@ -318,7 +345,8 @@ abstract class AbstractScreenshot implements ScreenshotInterface
     }
 
     /**
-     * Return path to generated image
+     * Return path to generated image.
+     *
      * @return string
      */
     public function getResponsePath()

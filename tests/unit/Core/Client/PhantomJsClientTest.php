@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Client\ClientInterface;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Core\Screeenshot\Screenshot;
@@ -11,7 +10,6 @@ class PhantomJsClientTest extends TestCase
     {
         return \Mockery::mock(PhantomJsClient::class);
     }
-
 
     public function testInitializeClass()
     {
@@ -36,7 +34,7 @@ class PhantomJsClientTest extends TestCase
      */
     public function it_captures_screenshot()
     {
-        /**
+        /*
          * The capture() method it self is not really testable. The method is
          * just a collection of other methods which are called. Mostly on the
          * Screenshot object.
@@ -50,7 +48,7 @@ class PhantomJsClientTest extends TestCase
 
         $browser->boot();
 
-        $screenshot = $browser->capture("http://google.com");
+        $screenshot = $browser->capture('http://google.com');
 
         $this->assertInstanceOf(Screenshot::class, $screenshot);
     }

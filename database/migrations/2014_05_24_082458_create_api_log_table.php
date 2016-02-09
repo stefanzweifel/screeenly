@@ -24,7 +24,6 @@ class CreateApiLogTable extends Migration
         });
     }
 
-
     /**
      * Reverse the migrations.
      *

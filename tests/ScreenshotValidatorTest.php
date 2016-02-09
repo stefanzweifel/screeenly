@@ -1,9 +1,8 @@
 <?php
 
-use Screeenly\Screenshot\ScreenshotValidator;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Screenshot\ScreenshotValidator;
 
 class ScreenshotValidatorTest extends TestCase
 {
@@ -12,10 +11,10 @@ class ScreenshotValidatorTest extends TestCase
     public function testTrueParameters()
     {
         $data = [
-            'key' => 'some-api-key',
-            'url' => 'http://google.com',
+            'key'    => 'some-api-key',
+            'url'    => 'http://google.com',
             'height' => 500,
-            'width' => 500,
+            'width'  => 500,
         ];
 
         $validator = new ScreenshotValidator();
@@ -29,9 +28,9 @@ class ScreenshotValidatorTest extends TestCase
     public function testNoKey()
     {
         $data = [
-            'url' => 'http://google.com',
+            'url'    => 'http://google.com',
             'height' => 500,
-            'width' => 500,
+            'width'  => 500,
         ];
 
         $validator = new ScreenshotValidator();
@@ -45,9 +44,9 @@ class ScreenshotValidatorTest extends TestCase
     public function testNoUrl()
     {
         $data = [
-            'key' => 'some-key',
+            'key'    => 'some-key',
             'height' => 500,
-            'width' => 500,
+            'width'  => 500,
         ];
 
         $validator = new ScreenshotValidator();
@@ -76,8 +75,8 @@ class ScreenshotValidatorTest extends TestCase
     public function testHeightIsNotInteger()
     {
         $data = [
-            'key' => 'some-key',
-            'url' => 'http://google.com',
+            'key'    => 'some-key',
+            'url'    => 'http://google.com',
             'height' => 'string',
         ];
 
@@ -92,8 +91,8 @@ class ScreenshotValidatorTest extends TestCase
     public function testWidthIsNotInteger()
     {
         $data = [
-            'key' => 'some-key',
-            'url' => 'http://google.com',
+            'key'   => 'some-key',
+            'url'   => 'http://google.com',
             'width' => 'string',
         ];
 

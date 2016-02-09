@@ -2,8 +2,8 @@
 
 namespace Screeenly\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 use Session;
 
 class UserHasEmail

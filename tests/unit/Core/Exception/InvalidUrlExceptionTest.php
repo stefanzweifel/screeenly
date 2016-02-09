@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Core\Exception\InvalidUrlException;
 
 class InvalidUrlExceptionTest extends TestCase

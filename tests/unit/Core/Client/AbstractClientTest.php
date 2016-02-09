@@ -3,13 +3,12 @@
 use Screeenly\Core\Client\AbstractClient;
 use Screeenly\Core\Client\ClientInterface;
 use Screeenly\Core\Screeenshot\Screenshot;
-use Illuminate\Contracts\Config\Repository as Config;
 
 class AbstractClientTest extends TestCase
 {
     /**
      * Return Mocked Abstract Class
-     * (Mock by PHPUnit)
+     * (Mock by PHPUnit).
      */
     protected function getClass()
     {
@@ -17,9 +16,9 @@ class AbstractClientTest extends TestCase
 
         return $this->getMockForAbstractClass(
             AbstractClient::class,
-            array(
-                $screenshot
-            ));
+            [
+                $screenshot,
+            ]);
     }
 
     public function testSettersandGetters()

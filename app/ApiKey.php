@@ -3,8 +3,6 @@
 namespace Screeenly;
 
 use Illuminate\Database\Eloquent\Model;
-use Screeenly\User;
-use Screeenly\ApiLog;
 
 class ApiKey extends Model
 {
@@ -15,7 +13,7 @@ class ApiKey extends Model
     /**
      * Relationship with the User model.
      *
-     * @return    Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
@@ -25,7 +23,7 @@ class ApiKey extends Model
     /**
      * Relationship with the ApiLog model.
      *
-     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function apiLogs()
     {
@@ -33,7 +31,8 @@ class ApiKey extends Model
     }
 
     /**
-     * Generate a new unique API key
+     * Generate a new unique API key.
+     *
      * @return string
      */
     public function generateKey()

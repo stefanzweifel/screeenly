@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -23,7 +22,7 @@ class ApiV1Test extends TestCase
 
         $arguments = [
             'key' => $key->key,
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v1/fullsize', $arguments)
@@ -51,7 +50,7 @@ class ApiV1Test extends TestCase
 
         $this->post('/api/v1/fullsize', $arguments)
              ->seeJson([
-                 "message" => "Validation Error: The url field is required."
+                 'message' => 'Validation Error: The url field is required.',
              ]);
     }
 
@@ -71,12 +70,12 @@ class ApiV1Test extends TestCase
     public function it_does_need_an_api_key()
     {
         $arguments = [
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v1/fullsize', $arguments)
              ->seeJson([
-                'title' => 'An error accoured',
+                'title'   => 'An error accoured',
                 'message' => 'No API Key specified.',
              ]);
 
@@ -90,12 +89,12 @@ class ApiV1Test extends TestCase
     {
         $arguments = [
             'key' => 'nope',
-            'url' => 'http://google.com'
+            'url' => 'http://google.com',
         ];
 
         $this->post('/api/v1/fullsize', $arguments)
              ->seeJson([
-                'title' => 'An error accoured',
+                'title'   => 'An error accoured',
                 'message' => 'Access denied.',
              ]);
 

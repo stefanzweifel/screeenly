@@ -2,10 +2,6 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
-
 class StaticController extends Controller
 {
     /**
@@ -39,7 +35,8 @@ class StaticController extends Controller
     }
 
     /**
-     * Show FAQ Page
+     * Show FAQ Page.
+     *
      * @return Illuminate\View\View
      */
     public function showFaq()

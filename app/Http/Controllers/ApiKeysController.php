@@ -2,9 +2,6 @@
 
 namespace Screeenly\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests;
-use Screeenly\Http\Controllers\Controller;
 use Screeenly\ApiKey;
 use Screeenly\Http\Requests\ApiKeyRequest;
 
@@ -24,13 +21,14 @@ class ApiKeysController extends Controller
 
         $key->save();
 
-        return back()->withMessage("New API key added!");
+        return back()->withMessage('New API key added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  ApiKey $apikey
+     * @param ApiKey $apikey
+     *
      * @return Response
      */
     public function show(ApiKey $apikey)
@@ -41,13 +39,14 @@ class ApiKeysController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  ApiKey $apikey
+     * @param ApiKey $apikey
+     *
      * @return Response
      */
     public function edit(ApiKey $apikey)
     {
         if ($apikey->user->id != auth()->id()) {
-            return redirect("/");
+            return redirect('/');
         }
 
         return view('app.apikeys.edit', compact('apikey'));
@@ -56,13 +55,14 @@ class ApiKeysController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  ApiKey $apikey
+     * @param ApiKey $apikey
+     *
      * @return Response
      */
     public function update(ApiKeyRequest $request, ApiKey $apikey)
     {
         if ($apikey->user->id != auth()->id()) {
-            return redirect("/");
+            return redirect('/');
         }
 
         $apikey->update($request->all());
@@ -73,17 +73,18 @@ class ApiKeysController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  ApiKey $apikey
+     * @param ApiKey $apikey
+     *
      * @return Response
      */
     public function destroy(ApiKey $apikey)
     {
         if ($apikey->user->id != auth()->id()) {
-            return redirect("/");
+            return redirect('/');
         }
 
         $apikey->delete();
 
-        return redirect()->back()->withMessage("API Key deleted");
+        return redirect()->back()->withMessage('API Key deleted');
     }
 }

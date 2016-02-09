@@ -5,9 +5,11 @@ namespace Screeenly\Core;
 class Ping
 {
     /**
-     * Check if given URL is available
-     * @param  string  $url
-     * @return boolean
+     * Check if given URL is available.
+     *
+     * @param string $url
+     *
+     * @return bool
      */
     public function isUp($url)
     {
