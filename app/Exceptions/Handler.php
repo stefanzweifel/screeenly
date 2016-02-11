@@ -50,6 +50,9 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        if (config('env') == 'production') {
+            Log::error($e);
+        }
         parent::report($e);
     }
 

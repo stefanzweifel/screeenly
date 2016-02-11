@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master)](https://travis-ci.org/stefanzweifel/screeenly)
 [![Code Climate](https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg)](https://codeclimate.com/github/stefanzweifel/screeenly)
 [![Test Coverage](https://codeclimate.com/github/stefanzweifel/screeenly/badges/coverage.svg)](https://codeclimate.com/github/stefanzweifel/screeenly/coverage)
+[![StyleCI](https://styleci.io/repos/21797405/shield)](https://styleci.io/repos/21797405)
 
 ![Screeenly Logo](https://raw.githubusercontent.com/stefanzweifel/screeenly/master/readme-image.png)
 

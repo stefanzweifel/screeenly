@@ -159,7 +159,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maknz\Slack\SlackServiceProvider::class,
-        // Jenssegers\Raven\RavenServiceProvider::class,
+        Jenssegers\Raven\RavenServiceProvider::class,
 
     ],
 
