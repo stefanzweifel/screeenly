@@ -1,30 +1,16 @@
 @extends ('layouts.landingpage')
 
-@section('body-class')body--landingpage @stop
-
 @section('content')
 
-    <header class="white bg-orange">
-        <nav class="clearfix white">
-            <div class="container">
-                <div class="sm-col">
-                    <a href="/" class="btn py2">screeenly</a>
-                    <a class="btn py2 m0 {!! setActive('try') !!}" href="/try">Try it</a>
-                    <a href="/login" class="md-hide btn py2 regular">Sign In</a>
-                </div>
-                <div class="sm-col-right md-show">
-                    <a href="/login" class="btn py2 regular">Sign In</a>
-                </div>
+    @include('partials._navigation')
 
-            </div>
-        </nav>
+    <header class="white bg-orange">
         <div class="center px2 py4">
             <h1 class="h1 h0-responsive mt4 mb0 regular">Screenshot as a Service</h1>
             <p class="h3">Create website screenshots through a simple API. Try it. It's free!</p>
             <a href="/login" class="btn bg-black rounded mt2 mb4 px2 h3"><i class="fa fa-github"></i> Sign up with Github</a>
         </div>
     </header>
-
 
     <section class="container px2 py3">
         <div class="clearfix mxn2">
@@ -56,10 +42,6 @@
             <div class="sm-col sm-col-4 px2">
                 <h2 class="mb1"><i class="fa fa-key"></i> Multiple API Keys</h2>
                 <p>You like your stuff organized? Create up to 25 personal API keys.</p>
-            </div>
-            <div class="sm-col sm-col-4 px2">
-                <h2 class="mb1"><i class="fa fa-retweet"></i> Webhooks (planned)</h2>
-                <p>Don't have the time to wait till your screenshot is ready? Setup webhooks and we will send you a request with your screenshot.</p>
             </div>
         </div>
     </section>

@@ -1,16 +1,17 @@
-<div class="relative clearfix white bg-orange">
+<nav class="relative clearfix white bg-orange">
 
     <div class="container">
 
         <div class="left">
-            <a href="/" class="btn py2 m0">screeenly</a>
+            {!! link_to_route('home.landingpage', 'screeenly', [], ['class' => 'btn py2 m0']) !!}
         </div>
         <div class="left md-show">
 
             @if (Auth::check())
                 <a class="btn py2 m0 {!! setActive('app.dashboard') !!}" href="/dashboard">Dashboard</a>
+            @else
+                <a href="/try" class="btn py2 m0 {!! setActive('try') !!}">Try it</a>
             @endif
-
         </div>
 
         <div class="right md-show">
@@ -20,7 +21,6 @@
             @else
                 <a class="btn py2 m0 {!! setActive('oauth.login') !!}" href="/login">Login</a>
             @endif
-
         </div>
 
         <div class="right md-hide">
@@ -45,4 +45,4 @@
 
     </div>
 
-</div>
+</nav>
