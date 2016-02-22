@@ -51,7 +51,7 @@ class PhantomJsClient implements ClientInterface
 
     /**
      * Load our custom PhantomJS Procedures
-     * Let's us directly manipulate the PhantomJS Instance
+     * Let's us directly manipulate the PhantomJS Instance.
      *
      * @see http://jonnnnyw.github.io/php-phantomjs/4.0/custom-scripts/
      * @return JonnyW\PhantomJs\Procedure\ProcedureLoader
@@ -63,5 +63,4 @@ class PhantomJsClient implements ClientInterface
 
         return $serviceContainer->get('procedure_loader_factory')->createProcedureLoader($location);
     }
-
 }
