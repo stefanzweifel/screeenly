@@ -1,0 +1,4 @@
+
+page.settings.resourceTimeout = {{ input.getTimeout() }};
+
+page.settings.userAgent = 'screeenly-bot';
