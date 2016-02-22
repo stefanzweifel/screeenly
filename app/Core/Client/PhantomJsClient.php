@@ -3,6 +3,7 @@
 namespace Screeenly\Core\Client;
 
 use JonnyW\PhantomJs\Client;
+use JonnyW\PhantomJs\DependencyInjection\ServiceContainer;
 
 class PhantomJsClient extends AbstractClient implements ClientInterface
 {
@@ -21,6 +22,9 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
     public function boot()
     {
         $client = Client::getInstance();
+
+        $client->getProcedureLoader()->addLoader($this->loadProcedurePartials());
+
         $client->getEngine()->setPath(base_path().config('screeenly.core.path_to_phantomjs'));
         $client->getEngine()->addOption('--load-images=true');
         $client->getEngine()->addOption('--ignore-ssl-errors=true');
@@ -51,6 +55,21 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
         $this->screenshot->createLogEntry();
 
         return $this->screenshot;
+    }
+
+    /**
+     * Load our custom PhantomJS Procedures
+     * Let's us directly manipulate the PhantomJS Instance.
+     *
+     * @see http://jonnnnyw.github.io/php-phantomjs/4.0/custom-scripts/
+     * @return JonnyW\PhantomJs\Procedure\ProcedureLoader
+     */
+    public function loadProcedurePartials()
+    {
+        $location = app_path('Core/Procedures/');
+        $serviceContainer = ServiceContainer::getInstance();
+
+        return $serviceContainer->get('procedure_loader_factory')->createProcedureLoader($location);
     }
 
     /**
