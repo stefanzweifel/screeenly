@@ -59,7 +59,7 @@ class PhantomJsClient extends AbstractClient implements ClientInterface
 
     /**
      * Load our custom PhantomJS Procedures
-     * Let's us directly manipulate the PhantomJS Instance
+     * Let's us directly manipulate the PhantomJS Instance.
      *
      * @see http://jonnnnyw.github.io/php-phantomjs/4.0/custom-scripts/
      * @return JonnyW\PhantomJs\Procedure\ProcedureLoader
