@@ -4,7 +4,6 @@
 
     @include('partials._messages')
 
-
     <main class="flex-auto">
 
         @yield('content')
