@@ -159,7 +159,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maknz\Slack\SlackServiceProvider::class,
-        Jenssegers\Raven\RavenServiceProvider::class,
+        Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
 
     ],
 
@@ -211,7 +211,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Socialize' => Laravel\Socialite\Facades\Socialite::class,
         'Slack'     => Maknz\Slack\Facades\Slack::class,
-        'Raven'     => Jenssegers\Raven\Facades\Raven::class,
+        'Bugsnag'   => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
 
     ],
 

@@ -4,7 +4,6 @@ namespace Screeenly\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-use Log;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Screenshot\Screenshot;
 
@@ -90,9 +89,9 @@ class PagesController extends Controller
                 ->route('try')
                 ->withAsset($screenshot->getResponsePath());
         } catch (Exception $e) {
-
-            // If something happens, send error to Sentry
-            Log::error($e);
+            if (app()->bound('bugsnag')) {
+                app('bugsnag')->notifyException($e, null, 'error');
+            }
 
             return redirect()
                     ->route('try')

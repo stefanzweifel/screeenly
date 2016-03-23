@@ -50,10 +50,16 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        if (config('env') == 'production') {
-            Log::error($e);
+        // Copied from Bugsnag\BugsnagLaravel\BugsnagExceptionHandler::class
+        foreach ($this->dontReport as $type) {
+            if ($e instanceof $type) {
+                return parent::report($e);
+            }
         }
-        parent::report($e);
+
+        if (app()->bound('bugsnag')) {
+            app('bugsnag')->notifyException($e, null, 'error');
+        }
     }
 
     /**
