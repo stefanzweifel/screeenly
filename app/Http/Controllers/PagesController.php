@@ -91,8 +91,9 @@ class PagesController extends Controller
                 ->withAsset($screenshot->getResponsePath());
         } catch (Exception $e) {
 
-            // If something happens, send error to Sentry
-            Log::error($e);
+            if (app()->bound('bugsnag')) {
+                app('bugsnag')->notifyException($e, null, "error");
+            }
 
             return redirect()
                     ->route('try')
