@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
         }
 
         if (app()->bound('bugsnag')) {
-            app('bugsnag')->notifyException($e, null, "error");
+            app('bugsnag')->notifyException($e, null, 'error');
         }
     }
 
