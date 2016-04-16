@@ -2,7 +2,7 @@
     <div class="white bg-blue">
         <div class="p2 container center">
             <p>Sponsored by</p>
-            <a href="http://busgnag.com" target="blank">
+            <a href="http://bugsnag.com" target="blank">
                 <img src="/assets/images/bgsnag-logo.png" class="" style="max-width: 200px;" alt="">
             </a>
         </div>
