@@ -16,12 +16,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email', 100);
             $table->text('token');
-            $table->string('api_key', 50);
-            $table->unique('api_key');
             $table->integer('plan')->default(0);
             $table->string('provider', 50);
+            $table->integer('provider_id')->nullable();
+            $table->string('remember_token', 100)->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
