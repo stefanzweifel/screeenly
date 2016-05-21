@@ -9,7 +9,6 @@ use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Log;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Screeenly\Core\Exception\ScreeenlyException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
@@ -91,7 +90,6 @@ class Handler extends ExceptionHandler
          * with a simple message.
          */
         if ($request->is('api/v2/*') && ! $e instanceof HttpResponseException) {
-
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();
