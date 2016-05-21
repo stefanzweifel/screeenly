@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Log;
-use Mallinus\Exceptions\ExceptionHandler;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Screeenly\Core\Exception\ScreeenlyException;
-use Screeenly\Exceptions\Catcher\ScreeenlyExceptionCatcher;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
@@ -28,15 +27,6 @@ class Handler extends ExceptionHandler
         ValidationException::class,
         TooManyRequestsHttpException::class,
         HostNotFoundException::class,
-    ];
-
-    /**
-     * Used by mallinus/exceptions.
-     */
-    protected $catchers = [
-        ScreeenlyExceptionCatcher::class => [
-            ScreeenlyException::class,
-        ],
     ];
 
     /**
@@ -100,7 +90,8 @@ class Handler extends ExceptionHandler
          * Global Exception Handler for API v2. If everything fails, respond
          * with a simple message.
          */
-        if ($request->is('api/v2/*') && ! $e instanceof ScreeenlyException && ! $e instanceof HttpResponseException) {
+        if ($request->is('api/v2/*') && ! $e instanceof HttpResponseException) {
+
             $code = 500;
             if ($e->getCode() >= 400) {
                 $code = $e->getCode();
