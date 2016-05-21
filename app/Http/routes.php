@@ -46,7 +46,7 @@ Route::group(['middleware' => 'web'], function () {
 /*
  * API Routes
  */
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api', 'middleware' => 'gamp.tracking'], function () {
 
     /*
      * API Version 1
