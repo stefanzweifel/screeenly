@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "218f2a47f58f1f1db12e3d52b2d94bbf",
-    "content-hash": "d2511e5f491adf05684e4fe50247baf3",
+    "hash": "f3487087254974e181873f96ab265a5a",
+    "content-hash": "f3a75710e31deec093bb196296c10248",
     "packages": [
         {
             "name": "bugsnag/bugsnag",
@@ -1155,25 +1155,25 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "dev-patch-1",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/stefanzweifel/php-phantomjs.git",
-                "reference": "440777a2d584dd2dfbe0e9ab5564decd8f292410"
+                "url": "https://github.com/jonnnnyw/php-phantomjs.git",
+                "reference": "1e09977d6fac345b438049594a894b0c87c16177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanzweifel/php-phantomjs/zipball/440777a2d584dd2dfbe0e9ab5564decd8f292410",
-                "reference": "440777a2d584dd2dfbe0e9ab5564decd8f292410",
+                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/1e09977d6fac345b438049594a894b0c87c16177",
+                "reference": "1e09977d6fac345b438049594a894b0c87c16177",
                 "shasum": ""
             },
             "require": {
-                "jakoch/phantomjs-installer": "~2.1",
+                "jakoch/phantomjs-installer": "2.1.1",
                 "php": ">=5.3.0",
-                "symfony/config": "~2.3",
-                "symfony/dependency-injection": "~2.3",
-                "symfony/filesystem": "~2.3",
-                "symfony/yaml": "~2.3",
+                "symfony/config": "~2.3|~3.0",
+                "symfony/dependency-injection": "~2.3|~3.0",
+                "symfony/filesystem": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0",
                 "twig/twig": "~1.16"
             },
             "require-dev": {
@@ -1189,14 +1189,7 @@
                     "src/"
                 ]
             },
-            "scripts": {
-                "post-install-cmd": [
-                    "PhantomInstaller\\Installer::installPhantomJS"
-                ],
-                "post-update-cmd": [
-                    "PhantomInstaller\\Installer::installPhantomJS"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1210,13 +1203,10 @@
             "description": "A PHP wrapper for loading pages through PhantomJS",
             "keywords": [
                 "Headless Browser",
-                "PhantomJS",
-                "Testing"
+                "phantomjs",
+                "testing"
             ],
-            "support": {
-                "source": "https://github.com/stefanzweifel/php-phantomjs/tree/patch-1"
-            },
-            "time": "2016-01-31 13:00:05"
+            "time": "2016-05-02 09:25:10"
         },
         {
             "name": "laravel/framework",
@@ -4764,9 +4754,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "jonnyw/php-phantomjs": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
