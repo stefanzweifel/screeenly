@@ -17,7 +17,7 @@ class TrackWithGamp
      */
     public function handle($request, Closure $next)
     {
-        /**
+        /*
          * Check if the current Request has a "Do not Track"-Header.
          * If there's no header or the value is 0, we track the request.
          */
@@ -28,9 +28,8 @@ class TrackWithGamp
         return $next($request);
     }
 
-
     /**
-     * Send Analytics Events to Google Analytics
+     * Send Analytics Events to Google Analytics.
      *
      * Client-ID is a UUID (generated from the Client IP)
      * UserAgent is overriden with data from current request
@@ -40,8 +39,8 @@ class TrackWithGamp
     {
         $clientIp = $request->server('REMOTE_ADDR', 'no-remote_addr');
 
-        $gamp = GAMP::setClientId( Uuid::generate(5, $clientIp, Uuid::NS_DNS)->string );
-        $gamp->setDocumentPath( "/" . $request->path() );
+        $gamp = GAMP::setClientId(Uuid::generate(5, $clientIp, Uuid::NS_DNS)->string);
+        $gamp->setDocumentPath('/'.$request->path());
         $gamp->setDocumentReferrer($request->server('HTTP_REFERER', 'no-referrer'));
         $gamp->setIpOverride($clientIp);
         $gamp->setUserAgentOverride($request->server('HTTP_USER_AGENT', 'no-user_agent'));
