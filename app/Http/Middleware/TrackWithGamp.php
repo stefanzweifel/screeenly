@@ -46,8 +46,8 @@ class TrackWithGamp
         $gamp->setUserAgentOverride($request->server('HTTP_USER_AGENT', 'no-user_agent'));
         $gamp->sendPageview();
 
-        $gamp->setEventCategory('Screenshot');
-        $gamp->setEventAction('Create');
-        $gamp->sendEvent();
+        // $gamp->setEventCategory('Screenshot');
+        // $gamp->setEventAction('Create');
+        // $gamp->sendEvent();
     }
 }
