@@ -13,7 +13,9 @@
         "laravel/socialite": "~2.0",
         "maknz/slack": "1.7.0",
         "doctrine/dbal": "~2.5",
-        "bugsnag/bugsnag-laravel": "1.*"
+        "bugsnag/bugsnag-laravel": "1.*",
+        "irazasyed/laravel-gamp": "^1.0",
+        "webpatser/laravel-uuid": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

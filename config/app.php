@@ -160,6 +160,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maknz\Slack\SlackServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider::class,
+        Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider::class,
 
     ],
 
@@ -212,6 +213,8 @@ return [
         'Socialize' => Laravel\Socialite\Facades\Socialite::class,
         'Slack'     => Maknz\Slack\Facades\Slack::class,
         'Bugsnag'   => Bugsnag\BugsnagLaravel\BugsnagFacade::class,
+        'GAMP'      => Irazasyed\LaravelGAMP\Facades\GAMP::class,
+        'Uuid'      => Webpatser\Uuid\Uuid::class,
 
     ],
 

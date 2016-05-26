@@ -49,6 +49,8 @@ class Kernel extends HttpKernel
         'guest'      => \Screeenly\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
+        'gamp.tracking' => \Screeenly\Http\Middleware\TrackWithGamp::class,
+
         // Old 5.1 middlewares
         'api.auth'               => \Screeenly\Http\Middleware\ApiAuth::class,
         'api.throttle'           => \Screeenly\Http\Middleware\ApiThrottle::class,
