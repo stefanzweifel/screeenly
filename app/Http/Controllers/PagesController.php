@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Screeenly\Core\Client\PhantomJsClient;
 use Screeenly\Screenshot\Screenshot;
+use Screeenly\Http\Requests\TryRequest;
 
 class PagesController extends Controller
 {
@@ -73,7 +74,7 @@ class PagesController extends Controller
      *
      * @return redirect
      */
-    public function createTestScreenshot(Request $request, PhantomJsClient $browser)
+    public function createTestScreenshot(TryRequest $request, PhantomJsClient $browser)
     {
         $proof = trim(strtolower($request->get('proof')));
 
