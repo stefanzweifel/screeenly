@@ -75,6 +75,10 @@ Get ready for production:
 $ gulp --production
 ```
 
+# Security
+
+If you discover a security vulnerability within this package, please e-mail us at hello@stefanzweifel.io. All security vulnerabilities will be promptly addressed.
+
 # LICENSE
 
 MIT
