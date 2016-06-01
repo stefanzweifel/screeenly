@@ -2,8 +2,6 @@
 
 namespace Screeenly\Http\Requests;
 
-use Screeenly\Http\Requests\Request;
-
 class TryRequest extends Request
 {
     /**
@@ -25,7 +23,7 @@ class TryRequest extends Request
     {
         return [
             'proof' => 'required',
-            'url' => 'required|url'
+            'url' => 'required|url',
         ];
     }
 }

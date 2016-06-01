@@ -19,7 +19,6 @@ class CreateApiKeysTable extends Migration
             $table->unique('key');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
-
         });
     }
 

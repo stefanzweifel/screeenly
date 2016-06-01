@@ -1,7 +1,6 @@
 <?php
 
 Route::group(['middleware' => 'web'], function () {
-
     Route::get('/', ['as' => 'home.landingpage', 'uses' => 'PagesController@showLandingpage']);
     Route::get('terms', ['as' => 'front.terms', 'uses' => 'StaticController@showTerms']);
     Route::get('imprint', ['as' => 'front.imprint', 'uses' => 'StaticController@showImprint']);
@@ -22,7 +21,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('faq', ['as' => 'app.faq', 'uses' => 'StaticController@showFaq']);
 
     Route::group(['middleware' => 'auth'], function () {
-
         Route::get('dashboard', [
             'as'         => 'app.dashboard',
             'uses'       => 'PagesController@showDashboard',
@@ -38,9 +36,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('email-setup', ['as' => 'app.storeEmailForm', 'uses' => 'PagesController@showEmailForm']);
         Route::post('email-setup', ['as' => 'app.storeEmail', 'uses' => 'UserController@storeEmail']);
         Route::get('settings', ['as' => 'app.settings', 'uses' => 'PagesController@showSettings']);
-
     });
-
 });
 
 /*
@@ -53,21 +49,16 @@ Route::group(['prefix' => 'api', 'middleware' => 'gamp.tracking'], function () {
      * - Launched: May 2014
      */
     Route::group(['prefix' => 'v1', 'middleware' => ['api.auth', 'api.throttle']], function () {
-
         Route::post('fullsize', [
             'as'   => 'api.fullsize',
             'uses' => 'APIController@createScreenshot',
         ]);
-
     });
 
     /*
      * API Version 2
      */
     Route::group(['prefix' => 'v2', 'middleware' => ['api.auth', 'api.throttle', 'api.accept_json_header']], function () {
-
         Route::post('fullsize', "Api\ApiController@captureScreenshot");
-
     });
-
 });
