@@ -12,6 +12,14 @@
             <h1>Try Screeenly right now!</h1>
             <p>Just enter a public accessible URL and we generate a screenshot for you. Depending on the size of the entered page, the rendering can take some seconds.</p>
 
+            @if (isset($errors) && $errors->has())
+                <div class="mb2 p1 bg-red white">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}<br>
+                    @endforeach
+                </div>
+            @endif
+
             {!! Form::open(['url' => 'try', 'method' => 'POST']) !!}
 
                 {!! Form::input('hidden', 'key', 'this-is-just-a-dummy-key') !!}
