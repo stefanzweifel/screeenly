@@ -748,6 +748,7 @@
                 "rest",
                 "web service"
             ],
+            "abandoned": "guzzlehttp/guzzle",
             "time": "2014-01-28 22:29:15"
         },
         {
@@ -965,6 +966,7 @@
                     "email": "taylorotwell@gmail.com"
                 }
             ],
+            "abandoned": "laravelcollective/html",
             "time": "2015-01-01 16:31:18"
         },
         {
@@ -1211,16 +1213,16 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "v4.4.0",
+            "version": "v4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jonnnnyw/php-phantomjs.git",
-                "reference": "1e09977d6fac345b438049594a894b0c87c16177"
+                "reference": "cf8d9a221f4c624aa1537c55a2e181f4b50367d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/1e09977d6fac345b438049594a894b0c87c16177",
-                "reference": "1e09977d6fac345b438049594a894b0c87c16177",
+                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/cf8d9a221f4c624aa1537c55a2e181f4b50367d7",
+                "reference": "cf8d9a221f4c624aa1537c55a2e181f4b50367d7",
                 "shasum": ""
             },
             "require": {
@@ -1234,6 +1236,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0",
+                "smalot/pdfparser": "~0.9",
                 "zendframework/zendpdf": "~2.0"
             },
             "type": "library",
@@ -1262,7 +1265,7 @@
                 "phantomjs",
                 "testing"
             ],
-            "time": "2016-05-02 09:25:10"
+            "time": "2016-06-28 16:00:15"
         },
         {
             "name": "laravel/framework",
