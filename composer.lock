@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6aecc317b93b2d47d0b118b744b83183",
-    "content-hash": "6c4a091f88ed14e0a5dd17802c0f5302",
+    "hash": "610d00c6fcd55d039a3f9db1d69e6ff3",
+    "content-hash": "35e53588e6aad328f706536e1e4192f2",
     "packages": [
         {
             "name": "bugsnag/bugsnag",
@@ -1221,16 +1221,16 @@
         },
         {
             "name": "jonnyw/php-phantomjs",
-            "version": "v4.5.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jonnnnyw/php-phantomjs.git",
-                "reference": "cf8d9a221f4c624aa1537c55a2e181f4b50367d7"
+                "url": "https://github.com/stefanzweifel/php-phantomjs.git",
+                "reference": "f62b510156bc4adafa44852a5140c417f3c07bd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnnnyw/php-phantomjs/zipball/cf8d9a221f4c624aa1537c55a2e181f4b50367d7",
-                "reference": "cf8d9a221f4c624aa1537c55a2e181f4b50367d7",
+                "url": "https://api.github.com/repos/stefanzweifel/php-phantomjs/zipball/f62b510156bc4adafa44852a5140c417f3c07bd4",
+                "reference": "f62b510156bc4adafa44852a5140c417f3c07bd4",
                 "shasum": ""
             },
             "require": {
@@ -1273,7 +1273,7 @@
                 "phantomjs",
                 "testing"
             ],
-            "time": "2016-06-28 16:00:15"
+            "time": "2016-06-28 16:51:21"
         },
         {
             "name": "laravel/framework",
@@ -5055,7 +5055,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jonnyw/php-phantomjs": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
