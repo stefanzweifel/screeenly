@@ -4,11 +4,17 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/stefanzweifel/php-phantomjs"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "5.2.*",
-        "jonnyw/php-phantomjs": "4.*",
+        "jonnyw/php-phantomjs": "dev-master",
         "illuminate/html": "~5.0",
         "laravel/socialite": "~2.0",
         "maknz/slack": "1.7.0",
