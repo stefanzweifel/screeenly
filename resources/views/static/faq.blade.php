@@ -20,14 +20,14 @@
 
         <article>
             <h2>Is this service free?</h2>
-            <p>Yes. Screeenly is free for everyone, but Screeenlys user base is growing rapitly and creating screenshots is needs power. If we would run into massive server issues, we might have to find a solution to monetize the service. But till then, the service is free.</p>
+            <p>Yes. Screeenly is free for everyone, but Screeenlys user base is growing rapitly and creating screenshots needs power. If we would run into massive server issues, we might have to find a solution to monetize the service. But till then, the service is free.</p>
         </article>
 
         <article>
             <h2>What about the screenshots?</h2>
-            <p>All screenshots you create with our API have a lifetime of <strong>1 hour! (Screeenly does not host your images)</strong> After 1 hour the file will be deleted from our server.</p>
+            <p>All screenshots you create with our API have a lifetime of <strong>1 hour! (Screeenly does not host your images forever)</strong> After 1 hour the file will be deleted from our server.</p>
 
-            <p>Concering privacy, Screeenly is hosted on <a href="//uberspace.de">Uberspace</a>, a German hosting solution.</p>
+            <p>Concering privacy, Screeenly is hosted on <a href="https://digitalocean.com">Digital Ocean</a> within the region FRA1.</p>
         </article>
 
         <article>
@@ -41,7 +41,7 @@
             <p>You can do different things:
             <ul>
                 <li>Make a pull-request on <a href="//github.com/stefanzweifel/screeenly">Github</a></li>
-                <li>Developer? Improve the codebase or write some better test.</li>
+                <li>Developer? Improve the codebase with pull requests.</li>
                 <li>Designer? Create a new logo or a better suitable design</li>
                 <li>Writer? Improve the copy on the site</li>
             </ul>
@@ -52,9 +52,9 @@
             <h2>Good to know</h2>
 
             <ul>
-                <li>Screeenly is built with <a href="http://laravel.com">Laravel</a>. The PHP Framework for artisans</li>
+                <li>Screeenly is built with <a href="http://laravel.com">Laravel</a></li>
                 <li>We used <a href="http://www.basscss.com/">BASSCSS</a>, a low level CSS toolkit for our frontend</li>
-                <li><a href="//google.com/analytics">Google Analytics</a> is used.</li>
+                <li><a href="//google.com/analytics">Google Analytics</a> is used to track User Engangement on the site and API usage.</li>
             </ul>
         </article>
 
