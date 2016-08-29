@@ -3,11 +3,13 @@ language: php
 php:
   - 5.6
   - 7
+  - 7.1
   - hhvm
   - nightly
 
 matrix:
     allow_failures:
+        - php: 5.6
         - php: hhvm
         - php: nightly
 
@@ -19,7 +21,7 @@ before_script:
   - travis_retry composer install --prefer-source --no-interaction
   - php artisan key:generate
 
-script: phpunit --coverage-clover build/logs/clover.xml
+script: phpunit
 
 after_script:
   - ./bin/test-reporter
