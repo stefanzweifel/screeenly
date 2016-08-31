@@ -19,6 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+
+            $table->text('token'); // OAuth Token?
+            $table->string('provider', 50); // Which OAuth Provider was used
+            $table->integer('provider_id')->nullable(); // User ID from Provider
+
             $table->timestamps();
         });
     }
