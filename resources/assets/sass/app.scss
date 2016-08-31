@@ -1,10 +1,9 @@
 
-// Import BASSCSS
-@import "defaults";
-@import "./node_modules/basscss-sass/basscss.scss";
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-.screeenly {
+// Variables
+@import "variables";
 
-    padding: 1em;
-
-}
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";

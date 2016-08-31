@@ -1,48 +1,29 @@
 <?php
 
-namespace Screeenly;
+namespace App;
 
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $fillable = ['email', 'token', 'plan', 'provider', 'provider_id'];
-
-    protected $hidden = ['password', 'remember_token'];
+    use Notifiable;
 
     /**
-     * Return User associated with APIKey.
+     * The attributes that are mass assignable.
      *
-     * @param string $key
-     *
-     * @return Screeenly\User
+     * @var array
      */
-    public static function getUserByKey($key)
-    {
-        $apiKey = ApiKey::whereKey($key)->first();
-
-        if ($apiKey) {
-            return $apiKey->user;
-        }
-    }
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
 
     /**
-     * Relationship with the ApiLog model.
+     * The attributes that should be hidden for arrays.
      *
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     * @var array
      */
-    public function logs()
-    {
-        return $this->hasMany(ApiLog::class, 'user_id');
-    }
-
-    /**
-     * Relationship with the ApiKey model.
-     *
-     * @return Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function apikeys()
-    {
-        return $this->hasMany(ApiKey::class);
-    }
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 }

@@ -11,27 +11,13 @@
 |
 */
 
-$factory->define(Screeenly\User::class, function ($faker) {
-    return [
-        'email'       => $faker->email,
-        'token'       => str_random(10),
-        'plan'        => 0,
-        'provider'    => 'Github',
-        'provider_id' => $faker->randomNumber,
-    ];
-});
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $password;
 
-$factory->define(Screeenly\ApiKey::class, function ($faker) {
     return [
-        'name'    => $faker->sentence(3),
-        'key'     => str_random(40),
-    ];
-});
-
-$factory->define(Screeenly\ApiLog::class, function ($faker) {
-    return [
-        'user_id'    => factory(Screeenly\User::class)->create()->id,
-        'api_key_id' => factory(Screeenly\ApiKey::class)->create()->id,
-        'images'     => $faker->file(),
+        'name' => $faker->name,
+        'email' => $faker->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
     ];
 });

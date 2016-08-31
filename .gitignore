@@ -1,12 +1,7 @@
-/vendor
 /node_modules
-.env
-/resources/vendor
-/public/images/generated
-/public/images/try
-/bin
-.DS_Store
-Thumbs.db
-storage/database.sqlite
-Homestead.yaml
+/public/storage
+/vendor
+/.idea
 Homestead.json
+Homestead.yaml
+.env
