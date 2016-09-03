@@ -1,0 +1,28 @@
+language: php
+
+php:
+  - 5.6
+  - 7
+  - 7.1
+  - hhvm
+  - nightly
+
+matrix:
+    allow_failures:
+        - php: 5.6
+        - php: 7.1
+        - php: hhvm
+        - php: nightly
+
+sudo: false
+
+before_script:
+  - cp .env.travis .env
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
+  - php artisan key:generate
+
+script: phpunit
+
+after_script:
+  - ./bin/test-reporter
