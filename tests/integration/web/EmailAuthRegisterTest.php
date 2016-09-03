@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EmailAuthRegisterTest extends TestCase
 {
@@ -29,5 +26,4 @@ class EmailAuthRegisterTest extends TestCase
     {
         // it displays forgot password link
     }
-
 }

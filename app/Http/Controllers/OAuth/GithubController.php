@@ -21,11 +21,11 @@ class GithubController extends Controller
     public function __construct(Socialite $socialite, User $user)
     {
         $this->socialite = $socialite;
-        $this->user      = $user;
+        $this->user = $user;
     }
 
     /**
-     * Redirect User to Github to approve OAuth Handshake
+     * Redirect User to Github to approve OAuth Handshake.
      * @return Redirect
      */
     public function redirect()
@@ -36,7 +36,7 @@ class GithubController extends Controller
     /**
      * Handle Return Request from Github OAuth API
      * If the user already exists, log  in;
-     * If not, create a new user
+     * If not, create a new user.
      * @return Redirect
      */
     public function handle()
@@ -44,7 +44,6 @@ class GithubController extends Controller
         $user = $this->socialite->driver('github')->user();
 
         if ($this->user->githubUserExists($user->id)) {
-
             $user = $this->user->getByProviderId($user->id);
 
             auth()->login($user);
@@ -59,9 +58,8 @@ class GithubController extends Controller
 
             return redirect()->route('setup.email.create', [
                 'provider_id' => $user->id,
-                'token' => $user->token
+                'token' => $user->token,
             ]);
-
         }
 
         $user = $this->user->createNewUserFromGithub($user);

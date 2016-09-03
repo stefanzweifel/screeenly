@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserSettingsTest extends TestCase
 {
@@ -42,5 +39,4 @@ class UserSettingsTest extends TestCase
     {
         // it deletes account and deletes all api keys
     }
-
 }
