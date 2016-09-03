@@ -11,13 +11,43 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+
         'email' => $faker->safeEmail,
+        'token' => str_random(15),
+        'provider' => 'Github',
+        'provider_id' => $faker->randomNumber(7),
+
+        // Auth Stuff
+        'name' => $faker->name,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
+});
+
+
+$factory->define(App\Models\ApiKey::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => $faker->word,
+        'key' => str_random(10),
+        'user_id' => factory(App\Models\User::class)->create()->id
+    ];
+
+});
+$factory->define(App\Models\ApiLog::class, function (Faker\Generator $faker) {
+
+    $user = factory(App\Models\User::class)->create();
+
+    $imagePath = storage_path('app/public');
+
+    return [
+        'user_id' => $user,
+        'api_key_id' => factory(App\Models\ApiKey::class)->create(['user_id' => $user->id])->id,
+        'images' => $faker->image($imagePath, $width = 640, $height = 480)
+    ];
+
 });
