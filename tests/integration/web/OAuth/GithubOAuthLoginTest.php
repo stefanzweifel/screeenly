@@ -9,17 +9,17 @@ class GithubOAuthLoginTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Mock the Socialite Factory, so we can hijack the Github Request
+     * Mock the Socialite Factory, so we can hijack the Github Request.
      * @param  string  $email
      * @param  string  $token
-     * @param  integer $id
+     * @param  int $id
      * @return void
      */
     public function mockSocialiteFacade($email = 'foo@bar.com', $token = 'foo', $id = 1)
     {
-        $socialiteUser        = $this->createMock(Laravel\Socialite\Two\User::class);
+        $socialiteUser = $this->createMock(Laravel\Socialite\Two\User::class);
         $socialiteUser->token = $token;
-        $socialiteUser->id    = $id;
+        $socialiteUser->id = $id;
         $socialiteUser->email = $email;
 
         $provider = $this->createMock(Laravel\Socialite\Two\GithubProvider::class);
@@ -51,7 +51,7 @@ class GithubOAuthLoginTest extends TestCase
             ->seePageIs('/dashboard');
 
         $this->seeInDatabase('users', [
-            'email' => 'foo@bar.com'
+            'email' => 'foo@bar.com',
         ]);
     }
 
@@ -74,5 +74,4 @@ class GithubOAuthLoginTest extends TestCase
         $this->visit('/oauth/github/handle')
             ->seePageIs('/setup/email?provider_id=12345&token=secret_token');
     }
-
 }

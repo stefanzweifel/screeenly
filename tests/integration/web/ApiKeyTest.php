@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiKeyTest extends TestCase
 {
@@ -25,5 +22,4 @@ class ApiKeyTest extends TestCase
     public function it_lets_user_delete_an_api_key()
     {
     }
-
 }

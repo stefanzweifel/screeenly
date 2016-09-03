@@ -30,16 +30,13 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\Models\ApiKey::class, function (Faker\Generator $faker) {
-
     return [
         'name' => $faker->word,
         'key' => str_random(10),
-        'user_id' => factory(App\Models\User::class)->create()->id
+        'user_id' => factory(App\Models\User::class)->create()->id,
     ];
-
 });
 $factory->define(App\Models\ApiLog::class, function (Faker\Generator $faker) {
-
     $user = factory(App\Models\User::class)->create();
 
     $imagePath = storage_path('app/public');
@@ -47,7 +44,6 @@ $factory->define(App\Models\ApiLog::class, function (Faker\Generator $faker) {
     return [
         'user_id' => $user,
         'api_key_id' => factory(App\Models\ApiKey::class)->create(['user_id' => $user->id])->id,
-        'images' => $faker->image($imagePath, $width = 640, $height = 480)
+        'images' => $faker->image($imagePath, $width = 640, $height = 480),
     ];
-
 });

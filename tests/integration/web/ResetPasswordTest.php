@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ResetPasswordTest extends TestCase
 {
@@ -11,6 +8,4 @@ class ResetPasswordTest extends TestCase
     {
         $this->visit('/password/reset');
     }
-
-
 }

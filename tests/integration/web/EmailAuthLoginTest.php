@@ -1,12 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EmailAuthLoginTest extends TestCase
 {
-
     /** @test */
     public function it_shows_login_form()
     {
@@ -24,5 +20,4 @@ class EmailAuthLoginTest extends TestCase
     {
         // it lets user login with email and password
     }
-
 }

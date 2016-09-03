@@ -20,7 +20,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
-        /**
+        /*
          * Run Migrations with Artisan
          * DatabaseMigrations Trait does not work, because
          * we have one migration where we alter a table

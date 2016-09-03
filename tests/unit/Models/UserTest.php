@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class UserTest extends TestCase
 {
@@ -52,10 +51,10 @@ class UserTest extends TestCase
     /** @test */
     public function it_creates_new_user_from_socialite_user_object()
     {
-        $stub           = $this->createMock(Laravel\Socialite\Two\User::class);
-        $stub->token    = 'randomToken';
-        $stub->id       = 2;
-        $stub->email    = 'foo@bar.com';
+        $stub = $this->createMock(Laravel\Socialite\Two\User::class);
+        $stub->token = 'randomToken';
+        $stub->id = 2;
+        $stub->email = 'foo@bar.com';
 
         $user = User::createNewUserFromGithub($stub);
 
@@ -69,9 +68,9 @@ class UserTest extends TestCase
     {
         $this->expectException(PDOException::class);
 
-        $stub           = $this->createMock(Laravel\Socialite\Two\User::class);
-        $stub->token    = 'randomToken';
-        $stub->id       = 2;
+        $stub = $this->createMock(Laravel\Socialite\Two\User::class);
+        $stub->token = 'randomToken';
+        $stub->id = 2;
 
         $user = User::createNewUserFromGithub($stub);
     }
