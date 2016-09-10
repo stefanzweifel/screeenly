@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class EmailController extends Controller
 {
     /**
-     * Show View to store Email Address
+     * Show View to store Email Address.
      * @param  Request $request
      * @return view
      */
@@ -23,7 +23,7 @@ class EmailController extends Controller
     }
 
     /**
-     * Store Email Address to current logged in user
+     * Store Email Address to current logged in user.
      * @param  SetupEmail $request
      * @return Redirect
      */

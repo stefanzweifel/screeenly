@@ -10,7 +10,6 @@ class ApiLog extends Model
 
     protected $table = 'api_log';
 
-
     /**
      * Relationship with the ApiKey model.
      *

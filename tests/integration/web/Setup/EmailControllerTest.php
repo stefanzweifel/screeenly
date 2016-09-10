@@ -41,5 +41,4 @@ class EmailControllerTest extends TestCase
                  ->press('Update Account')
                  ->seePageIs('/dashboard');
     }
-
 }
