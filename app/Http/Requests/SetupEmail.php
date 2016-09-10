@@ -24,7 +24,7 @@ class SetupEmail extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['email', 'required', 'unique:users']
+            'email' => ['email', 'required', 'unique:users'],
         ];
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
 Route::get('/', function () {
-
-    if (!auth()->check()) {
+    if (! auth()->check()) {
         return view('welcome');
     }
-    return redirect('dashboard');
 
+    return redirect('dashboard');
 });
 
 Auth::routes();
@@ -21,17 +20,12 @@ Route::get('setup/email/', 'Setup\EmailController@create')->name('setup.email.cr
 Route::post('setup/email', 'Setup\EmailController@store')->name('setup.email.store');
 
 
-Route::group(['middleware' => 'auth'], function(){
-
-
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
-
         return view('app.dashboard');
-
     })->middleware(['hasEmail'])->name('app.dashboard');
 
     Route::get('settings', 'SettingsController@show')->name('app.settings.show');
     Route::post('settings', 'SettingsController@update')->name('app.settings.update');
     Route::delete('settings/account', 'SettingsController@delete')->name('app.settings.delete');
-
 });

@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Requests\SetupEmail;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
     /**
-     * Show Settings Page
+     * Show Settings Page.
      * @return View
      */
     public function show()
@@ -18,14 +17,14 @@ class SettingsController extends Controller
     }
 
     /**
-     * Update User Account
+     * Update User Account.
      * @param  SetupEmail $request
      * @return Redirect
      */
     public function update(SetupEmail $request)
     {
         auth()->user()->update([
-            'email' => $request->email
+            'email' => $request->email,
         ]);
 
         $request->session()->flash('message', 'Account updated.');
@@ -34,7 +33,7 @@ class SettingsController extends Controller
     }
 
     /**
-     * Delete Account and remove all remaining ApiLogs and ApiKeys
+     * Delete Account and remove all remaining ApiLogs and ApiKeys.
      * @param  Request $request
      * @return Redirect
      */
@@ -59,5 +58,4 @@ class SettingsController extends Controller
 
         return redirect('/');
     }
-
 }

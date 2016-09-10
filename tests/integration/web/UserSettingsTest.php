@@ -40,7 +40,7 @@ class UserSettingsTest extends TestCase
             ->see('Account updated.');
 
         $this->seeInDatabase('users', [
-            'email' => 'foo@bar.com'
+            'email' => 'foo@bar.com',
         ]);
     }
 
@@ -57,7 +57,7 @@ class UserSettingsTest extends TestCase
             ->see('already been taken');
 
         $this->seeInDatabase('users', [
-            'email' => 'test@bar.com'
+            'email' => 'test@bar.com',
         ]);
     }
 
