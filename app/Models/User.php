@@ -52,15 +52,15 @@ class User extends Authenticatable
 
     /**
      * Create a new User from a Laravel Socialite User.
-     * @param  \Laravel\Socialite\Two\User $user
+     * @param  string $email
+     * @param  string $providerId
      * @return App\Models\User
      */
-    public static function createNewUserFromGithub(\Laravel\Socialite\Two\User $user)
+    public static function createNewUserFromGithub($email, $providerId)
     {
         $user = self::create([
-            'token' => $user->token,
-            'email' => $user->email,
-            'provider_id' => $user->id,
+            'email' => $email,
+            'provider_id' => $providerId,
             'provider' => 'Github',
         ]);
 
@@ -68,4 +68,25 @@ class User extends Authenticatable
 
         return $user;
     }
+
+    /**
+     * Relationship with the ApiKey model.
+     *
+     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apiKeys()
+    {
+        return $this->hasMany(ApiKey::class);
+    }
+
+    /**
+     * Relationship with the ApiLog model.
+     *
+     * @return    Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apiLogs()
+    {
+        return $this->hasMany(ApiLog::class);
+    }
+
 }

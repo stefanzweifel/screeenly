@@ -48,7 +48,7 @@ class GithubController extends Controller
 
             auth()->login($user);
 
-            return redirect('dashboard');
+            return redirect()->route('app.dashboard');
         }
 
         if (is_null($user->email)) {
@@ -58,14 +58,13 @@ class GithubController extends Controller
 
             return redirect()->route('setup.email.create', [
                 'provider_id' => $user->id,
-                'token' => $user->token,
             ]);
         }
 
-        $user = $this->user->createNewUserFromGithub($user);
+        $user = $this->user->createNewUserFromGithub($user->email, $user->id);
 
         auth()->login($user);
 
-        return redirect('dashboard');
+        return redirect()->route('app.dashboard');
     }
 }

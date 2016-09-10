@@ -17,7 +17,7 @@ matrix:
 sudo: false
 
 before_script:
-  - cp .env.travis .env
+  # - cp .env.travis .env
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction
   - php artisan key:generate

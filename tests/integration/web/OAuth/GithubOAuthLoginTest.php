@@ -48,7 +48,8 @@ class GithubOAuthLoginTest extends TestCase
         $this->mockSocialiteFacade();
 
         $this->visit('/oauth/github/handle')
-            ->seePageIs('/dashboard');
+            ->seePageIs('/dashboard')
+            ->see('Dashboard');
 
         $this->seeInDatabase('users', [
             'email' => 'foo@bar.com',
@@ -63,7 +64,8 @@ class GithubOAuthLoginTest extends TestCase
         $this->mockSocialiteFacade($user->email, $user->token, $user->provider_id);
 
         $this->visit('/oauth/github/handle')
-            ->seePageIs('/dashboard');
+            ->seePageIs('/dashboard')
+            ->see('Dashboard');
     }
 
     /** @test */
@@ -72,6 +74,6 @@ class GithubOAuthLoginTest extends TestCase
         $this->mockSocialiteFacade(null, 'secret_token', '12345');
 
         $this->visit('/oauth/github/handle')
-            ->seePageIs('/setup/email?provider_id=12345&token=secret_token');
+            ->seePageIs('/setup/email?provider_id=12345');
     }
 }
