@@ -7,7 +7,7 @@ class EmailControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function createUser()
+    public function createUserWithoutEmail()
     {
         return factory(User::class)->create(['email' => '']);
     }
@@ -15,7 +15,7 @@ class EmailControllerTest extends TestCase
     /** @test */
     public function it_loads_view()
     {
-        $this->actingAs($this->createUser())
+        $this->actingAs($this->createUserWithoutEmail())
                 ->visit('/setup/email');
     }
 
@@ -24,7 +24,7 @@ class EmailControllerTest extends TestCase
     {
         factory(User::class)->create(['email' => 'foo@bar.com']);
 
-        $this->actingAs($this->createUser())
+        $this->actingAs($this->createUserWithoutEmail())
                 ->visit('/setup/email')
                 ->type('foo@bar.com', 'email')
                 ->press('Update Account')
@@ -35,10 +35,10 @@ class EmailControllerTest extends TestCase
     /** @test */
     public function it_stores_email_adress_and_redirects_to_dashboard()
     {
-        $this->actingAs($this->createUser())
+        $this->actingAs($this->createUserWithoutEmail())
                 ->visit('/setup/email')
-                 ->type('foo@bar.com', 'email')
-                 ->press('Update Account')
-                 ->seePageIs('/dashboard');
+                ->type('foo@bar.com', 'email')
+                ->press('Update Account')
+                ->seePageIs('/dashboard');
     }
 }

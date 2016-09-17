@@ -15,7 +15,7 @@ class MarketingPageTest extends TestCase
     public function it_shows_github_signup_button()
     {
         $this->visit('/')
-            ->see('Sign up with Github');
+            ->see('Github');
     }
 
     /** @test */

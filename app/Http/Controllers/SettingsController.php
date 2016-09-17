@@ -52,9 +52,9 @@ class SettingsController extends Controller
             $key->delete();
         }
 
-        $user->delete();
-
         auth()->logout();
+
+        $user->delete();
 
         return redirect('/');
     }

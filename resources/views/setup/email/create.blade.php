@@ -16,8 +16,8 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" required class="form-control" placeholder="You're email address goese here">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required class="form-control" placeholder="You're email address goese here">
             </div>
             @if ($errors->has('email'))
                 <span class="help-block">

@@ -4,10 +4,18 @@ namespace App\Http\Controllers\Setup;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SetupEmail;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
+    protected $user;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
     /**
      * Show View to store Email Address.
      * @param  Request $request
@@ -29,7 +37,9 @@ class EmailController extends Controller
      */
     public function store(SetupEmail $request)
     {
-        $user->createNewUserFromGithub($request->email, session('provider_id'));
+        $user = $this->user->createNewUserFromGithub($request->email, session('provider_id'));
+
+        auth()->login($user);
 
         return redirect('dashboard');
     }

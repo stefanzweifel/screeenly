@@ -52,15 +52,13 @@ class UserTest extends TestCase
     public function it_creates_new_user_from_socialite_user_object()
     {
         $stub = $this->createMock(Laravel\Socialite\Two\User::class);
-        $stub->token = 'randomToken';
         $stub->id = 2;
         $stub->email = 'foo@bar.com';
 
-        $user = User::createNewUserFromGithub($stub);
+        $user = User::createNewUserFromGithub($stub->email, $stub->id);
 
         $this->assertEquals(2, $user->provider_id);
         $this->assertEquals('foo@bar.com', $user->email);
-        $this->assertEquals('randomToken', $user->token);
     }
 
     /** @test */
@@ -69,9 +67,8 @@ class UserTest extends TestCase
         $this->expectException(PDOException::class);
 
         $stub = $this->createMock(Laravel\Socialite\Two\User::class);
-        $stub->token = 'randomToken';
         $stub->id = 2;
 
-        $user = User::createNewUserFromGithub($stub);
+        $user = User::createNewUserFromGithub($stub->email, $stub->id);
     }
 }
