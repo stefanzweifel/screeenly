@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EmailAuthRegisterTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @test */
     public function it_shows_register_form()
     {
