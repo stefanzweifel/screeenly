@@ -90,7 +90,21 @@
         </div>
     @endif
 
-    @yield('content')
+    <div class="container">
+        @yield('content')
+    </div>
+
+    <div class="container">
+
+        <ul class="list-unstyled">
+            <li><a href="/imprint">Imprint</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/about">About / FAQ</a></li>
+        </ul>
+
+    </div>
+
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

@@ -20,4 +20,10 @@ class StaticPageTest extends TestCase
     {
         $this->visit('/imprint');
     }
+
+    /** @test */
+    public function it_loads_privacy_page()
+    {
+        $this->visit('/privacy');
+    }
 }
