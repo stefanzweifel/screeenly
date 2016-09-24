@@ -19,7 +19,7 @@ class ApiKeyController extends Controller
     }
 
     /**
-     * Store ApiKey to Storage
+     * Store ApiKey to Storage.
      * @param  CreateApiKeyRequest $request
      * @return Redirect
      */
@@ -28,14 +28,14 @@ class ApiKeyController extends Controller
         $this->apiKey->create([
             'name' => $request->get('name'),
             'key' => $this->apiKey->generateKey(),
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ]);
 
-        return redirect()->back()->withMessage("Your new API Key has been created.");
+        return redirect()->back()->withMessage('Your new API Key has been created.');
     }
 
     /**
-     * Delete ApiKey from Storage
+     * Delete ApiKey from Storage.
      * @param  DeleteApiKeyRequest $request
      * @param  ApiKey              $apiKey
      * @return Redirect
@@ -44,6 +44,6 @@ class ApiKeyController extends Controller
     {
         $apiKey->delete();
 
-        return redirect()->back()->withMessage("API Key destroyed.");
+        return redirect()->back()->withMessage('API Key destroyed.');
     }
 }
