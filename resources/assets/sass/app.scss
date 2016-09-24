@@ -7,3 +7,11 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.Footer {
+    border-top: solid 1px $laravel-border-color;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    font-size: .9em;
+    margin-top: 5em;
+}

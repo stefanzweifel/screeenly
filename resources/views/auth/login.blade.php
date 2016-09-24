@@ -7,6 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-4">
+                            <a href="/oauth/github/redirect" class="btn btn-primary">Github</a>
+                        </div>
+                    </div>
+
+                    <hr>
+
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
