@@ -27,4 +27,21 @@ class ApiKey extends Model
     {
         return $this->hasMany(ApiLog::class);
     }
+
+    /**
+     * Generate a new unique API key.
+     *
+     * @return string
+     */
+    public function generateKey()
+    {
+        $key = str_random(50);
+
+        if (self::whereKey($key)->first()) {
+            return $this->generateKey();
+        }
+
+        return $key;
+    }
+
 }
