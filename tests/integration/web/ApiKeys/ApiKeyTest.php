@@ -34,7 +34,7 @@ class ApiKeyTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/dashboard')
-            ->see("You currently doesn't have an API key setup");
+            ->see("You currently doesn't have an API keys.");
     }
 
     /** @test */

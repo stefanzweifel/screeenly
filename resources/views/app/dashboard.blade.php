@@ -31,7 +31,7 @@
 
         @else
             <div class="alert alert-warning">
-                <span>You currently doesn't have an API key setup</span>
+                <span>You currently doesn't have an API keys.</span>
             </div>
         @endif
 

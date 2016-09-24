@@ -26,7 +26,7 @@ class UserSettingsTest extends TestCase
     {
         $this->login()
             ->visit('/settings')
-            ->see('Update Email Address');
+            ->see('Account');
     }
 
     /** @test */
