@@ -19,12 +19,12 @@ class ApiKeyTest extends TestCase
         $user = factory(User::class)->create();
         $apiKey = factory(ApiKey::class)->create([
             'user_id' => $user->id,
-            'name' => 'This is my test API Key'
+            'name' => 'This is my test API Key',
         ]);
 
         $this->actingAs($user)
             ->visit('/dashboard')
-            ->see("This is my test API Key");
+            ->see('This is my test API Key');
     }
 
     /** @test */
@@ -44,16 +44,16 @@ class ApiKeyTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/dashboard')
-            ->see("Name for your new API Key")
+            ->see('Name for your new API Key')
             ->type('FooBar', 'name')
             ->press('Create API Key')
             ->seePageIs('/dashboard')
-            ->see("Your new API Key has been created.");
+            ->see('Your new API Key has been created.');
 
 
         $this->seeInDatabase('api_keys', [
             'name' => 'FooBar',
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
     }
 
@@ -67,7 +67,7 @@ class ApiKeyTest extends TestCase
             ->visit('/dashboard')
             ->press('Delete')
             ->seePageIs('/dashboard')
-            ->see("API Key destroyed.");
+            ->see('API Key destroyed.');
 
         $this->assertNull(ApiKey::find($apiKey->id));
     }

@@ -22,7 +22,6 @@ Route::post('setup/email', 'Setup\EmailController@store')->name('setup.email.sto
 
 // Routes which require a logged in user
 Route::group(['middleware' => 'auth'], function () {
-
     Route::get('dashboard', 'DashboardController@index')->middleware(['hasEmail'])->name('app.dashboard');
 
     Route::post('apikeys', 'ApiKeyController@store')->name('app.apikeys.store');

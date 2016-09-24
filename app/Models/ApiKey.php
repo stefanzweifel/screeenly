@@ -43,5 +43,4 @@ class ApiKey extends Model
 
         return $key;
     }
-
 }
