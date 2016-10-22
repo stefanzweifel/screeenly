@@ -26,6 +26,13 @@
         <env name="DB_CONNECTION" value="sqlite_testing"/>
         <env name="MAIL_DRIVER" value="log"/>
         <env name="APP_DEBUG" value="false"/>
-
     </php>
+    <logging>
+        <log type="tap" target="build/report.tap"/>
+        <log type="junit" target="build/report.junit.xml"/>
+        <log type="coverage-html" target="build/coverage" charset="UTF-8" yui="true" highlight="true"/>
+        <log type="coverage-text" target="build/coverage.txt"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+
 </phpunit>

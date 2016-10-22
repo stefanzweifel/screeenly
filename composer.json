@@ -11,9 +11,9 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
+        "php": "~7.0",
+        "laravel/framework": "5.3.*",
+        "laravelcollective/html": "5.3.*",
         "jonnyw/php-phantomjs": "dev-master",
         "illuminate/html": "~5.0",
         "laravel/socialite": "~2.0",
@@ -63,7 +63,7 @@
             "PhantomInstaller\\Installer::installPhantomJS"
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled"
+            ""
         ],
         "post-update-cmd": [
             "php artisan optimize",
