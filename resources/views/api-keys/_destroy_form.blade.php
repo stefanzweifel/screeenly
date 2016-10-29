@@ -2,6 +2,6 @@
 
     {{ csrf_field() }}
     {{ method_field('DELETE') }}
-    <button type="submit" id="apiKey--{{ $key->id }}" class="btn btn-danger">Delete</button>
+    <button type="submit" id="apiKey--{{ $key->id }}" class="btn btn-sm btn-danger">Delete</button>
 
 </form>

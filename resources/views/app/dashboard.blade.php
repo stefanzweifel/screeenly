@@ -17,7 +17,7 @@
             <div class="panel-heading">Create new API Keys</div>
 
             <div class="panel-body">
-                @include('apiKeys._form')
+                @include('api-keys._form')
             </div>
         </div>
 
@@ -26,7 +26,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">API Keys</div>
-                @include('apiKeys._table')
+                @include('api-keys._table')
             </div>
 
         @else
