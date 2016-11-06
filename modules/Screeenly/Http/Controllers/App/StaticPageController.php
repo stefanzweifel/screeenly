@@ -8,21 +8,21 @@ class StaticPageController extends Controller
 {
     public function imprint()
     {
-        return view('static.imprint');
+        return view('screeenly::static.imprint');
     }
 
     public function terms()
     {
-        return view('static.terms');
+        return view('screeenly::static.terms');
     }
 
     public function privacy()
     {
-        return view('static.privacy');
+        return view('screeenly::static.privacy');
     }
 
     public function about()
     {
-        return view('static.about');
+        return view('screeenly::static.about');
     }
 }

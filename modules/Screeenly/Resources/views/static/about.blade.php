@@ -51,7 +51,6 @@
 
             <ul>
                 <li>Screeenly is built with <a href="http://laravel.com">Laravel</a></li>
-                <li>We used <a href="http://www.basscss.com/">BASSCSS</a>, a low level CSS toolkit for our frontend</li>
                 <li><a href="//google.com/analytics">Google Analytics</a> is used to track User Engangement on the site and API usage.</li>
             </ul>
         </article>

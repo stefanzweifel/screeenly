@@ -17,6 +17,8 @@ class ScreeenlyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app['view']->addNamespace('screeenly', base_path() . '/modules/Screeenly/Resources/views');
+
         $this->app->bind(CanCaptureScreenshot::class, PhantomsJsBrowser::class);
 
         auth()->extend('screeenly-token', function ($app, $name, array $config) {

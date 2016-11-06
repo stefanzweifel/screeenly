@@ -17,7 +17,7 @@ class TryController extends Controller
      */
     public function index()
     {
-        return view('app.try');
+        return view('screeenly::try');
     }
 
     /**

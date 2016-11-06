@@ -19,7 +19,7 @@
             <div class="panel-heading">Create new API Keys</div>
 
             <div class="panel-body">
-                @include('api-keys._form')
+                @include('screeenly::api-keys._form')
             </div>
         </div>
 
@@ -28,7 +28,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">API Keys</div>
-                @include('api-keys._table')
+                @include('screeenly::api-keys._table')
             </div>
 
         @else

@@ -12,7 +12,7 @@
             <td>{{ $key->name }}</td>
             <td><code>{{ $key->key }}</code></td>
             <td>
-                @include('api-keys._destroy_form')
+                @include('screeenly::api-keys._destroy_form')
             </td>
         </tr>
         @endforeach

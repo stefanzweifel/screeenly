@@ -4,10 +4,9 @@
 
 @section('content')
 
-    <div class="clearfix">
-        <div class="col md-col-8">
-
-            <h1>Privacy</h1>
+    <div class="panel panel-default">
+        <div class="panel-heading">Privacy</div>
+        <div class="panel-body">
 
             <p>If you have any concerns about privacy, let me help you.</p>
             <p>Screeenly doesn't store ...</p>
@@ -18,8 +17,8 @@
                 <li>...</li>
             </ul>
 
-
         </div>
+
     </div>
 
 @stop

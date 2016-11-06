@@ -24,3 +24,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('settings', 'SettingsController@update')->name('app.settings.update');
     Route::delete('settings/account', 'SettingsController@delete')->name('app.settings.delete');
 });
+
+
+// Static Pages
+Route::get('imprint', 'StaticPageController@imprint');
+Route::get('terms', 'StaticPageController@terms');
+Route::get('about', 'StaticPageController@about');
+Route::get('about', 'StaticPageController@about');
+Route::get('privacy', 'StaticPageController@privacy');

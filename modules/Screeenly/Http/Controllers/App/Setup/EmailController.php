@@ -27,7 +27,7 @@ class EmailController extends Controller
 
         session(['provider_id' => $provider_id]);
 
-        return view('setup.email.create');
+        return view('screeenly::setup.email.create');
     }
 
     /**

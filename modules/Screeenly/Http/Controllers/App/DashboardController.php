@@ -10,6 +10,6 @@ class DashboardController extends Controller
     {
         $apiKeys = auth()->user()->apiKeys;
 
-        return view('app.dashboard', compact('apiKeys'));
+        return view('screeenly::dashboard', compact('apiKeys'));
     }
 }

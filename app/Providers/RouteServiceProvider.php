@@ -83,5 +83,17 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require base_path('routes/api.php');
         });
+
+        /**
+         * Screeenly Routes
+         */
+        Route::group([
+            'prefix' => 'api',
+            'middleware' => 'api',
+            'namespace' => 'Screeenly\Http\Controllers\Api',
+        ], function ($router) {
+            require base_path('modules/Screeenly/Http/routes/api.php');
+        });
+
     }
 }

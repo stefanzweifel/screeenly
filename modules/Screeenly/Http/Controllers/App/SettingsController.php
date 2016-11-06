@@ -14,7 +14,7 @@ class SettingsController extends Controller
      */
     public function show()
     {
-        return view('app.settings');
+        return view('screeenly::settings');
     }
 
     /**

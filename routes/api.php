@@ -12,5 +12,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-require_once base_path('modules/Screeenly/Http/routes/api.php');

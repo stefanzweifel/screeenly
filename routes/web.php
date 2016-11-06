@@ -10,12 +10,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Looking for Route specific to Screeenly?
+// They moved here:
+// /modules/Screeenly/Http/routes/
 
-
-
-// Static Pages
-Route::get('imprint', 'StaticPageController@imprint');
-Route::get('terms', 'StaticPageController@terms');
-Route::get('about', 'StaticPageController@about');
-Route::get('about', 'StaticPageController@about');
-Route::get('privacy', 'StaticPageController@privacy');

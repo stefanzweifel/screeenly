@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default hidden">
     <div class="panel-heading">Changelog</div>
     <div class="panel-body">
         <span>This could be a News Message</span>
