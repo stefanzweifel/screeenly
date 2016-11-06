@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EmailControllerTest extends TestCase

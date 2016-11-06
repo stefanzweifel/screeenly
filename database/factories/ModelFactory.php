@@ -1,5 +1,9 @@
 <?php
 
+use Screeenly\Models\ApiKey;
+use Screeenly\Models\ApiLog;
+use Screeenly\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,7 +15,7 @@
 |
 */
 
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -29,21 +33,21 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Models\ApiKey::class, function (Faker\Generator $faker) {
+$factory->define(ApiKey::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'key' => str_random(10),
-        'user_id' => factory(App\Models\User::class)->create()->id,
+        'user_id' => factory(User::class)->create()->id,
     ];
 });
-$factory->define(App\Models\ApiLog::class, function (Faker\Generator $faker) {
-    $user = factory(App\Models\User::class)->create();
+$factory->define(ApiLog::class, function (Faker\Generator $faker) {
+    $user = factory(User::class)->create();
 
     $imagePath = storage_path('app/public');
 
     return [
         'user_id' => $user,
-        'api_key_id' => factory(App\Models\ApiKey::class)->create(['user_id' => $user->id])->id,
+        'api_key_id' => factory(ApiKey::class)->create(['user_id' => $user->id])->id,
         'images' => $faker->image($imagePath, $width = 640, $height = 480),
     ];
 });

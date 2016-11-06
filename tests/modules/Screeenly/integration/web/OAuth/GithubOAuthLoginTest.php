@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 

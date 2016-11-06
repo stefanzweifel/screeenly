@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="jumbotron">
         <h1>screeenly</h1>
         <p>Screenshot as a Service</p>

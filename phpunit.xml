@@ -16,6 +16,11 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./modules</directory>
+            <exclude>
+                <directory suffix="blade.php">./modules</directory>
+                <directory suffix="php">./modules/Screeenly/Http/routes</directory>
+            </exclude>
         </whitelist>
     </filter>
     <php>
