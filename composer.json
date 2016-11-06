@@ -23,8 +23,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Screeenly\\": "modules/Screeenly/",
-            "Core\\": "modules/Core"
+            "Screeenly\\": "modules/Screeenly/"
         }
     },
     "autoload-dev": {
