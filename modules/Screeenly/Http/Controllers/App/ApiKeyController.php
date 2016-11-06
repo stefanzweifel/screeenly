@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Screeenly\Http\Controllers\App;
 
-use App\Models\ApiKey;
 use Screeenly\Http\Requests\CreateApiKeyRequest;
 use Screeenly\Http\Requests\DeleteApiKeyRequest;
+use Screeenly\Models\ApiKey;
+use App\Http\Controllers\Controller;
 
 class ApiKeyController extends Controller
 {

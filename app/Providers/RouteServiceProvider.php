@@ -38,8 +38,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapApiRoutes();
-
-        //
     }
 
     /**
@@ -56,6 +54,16 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
         ], function ($router) {
             require base_path('routes/web.php');
+        });
+
+        /**
+         * Screeenly Routes
+         */
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => 'Screeenly\Http\Controllers\App',
+        ], function ($router) {
+            require base_path('modules/Screeenly/Http/routes/web.php');
         });
     }
 

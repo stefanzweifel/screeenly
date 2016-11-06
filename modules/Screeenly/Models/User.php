@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace Screeenly\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Screeenly\Models\ApiKey;
+use Screeenly\Models\ApiLog;
 
 class User extends Authenticatable
 {

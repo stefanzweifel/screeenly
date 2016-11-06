@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Screeenly\Http\Controllers\App;
 
 use Illuminate\Http\Request;
 use Screeenly\Http\Requests\SetupEmail;
+use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {

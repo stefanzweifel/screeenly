@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Screeenly\Http\Controllers\App;
+
+use App\Http\Controllers\Controller;
 
 class StaticPageController extends Controller
 {

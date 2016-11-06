@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Setup;
+namespace Screeenly\Http\Controllers\App\Setup;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SetupEmail;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Screeenly\Http\Requests\SetupEmail;
+use Screeenly\Models\User;
 
 class EmailController extends Controller
 {

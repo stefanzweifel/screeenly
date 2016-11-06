@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\OAuth;
+namespace Screeenly\Http\Controllers\App\OAuth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Screeenly\Models\User;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 
 class GithubController extends Controller

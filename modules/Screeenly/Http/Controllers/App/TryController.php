@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Screeenly\Http\Controllers\App;
 
 use Illuminate\Http\Request;
 use Screeenly\Entities\Url;
 use Screeenly\Http\Requests\TryRequest;
 use Screeenly\Services\CaptureService;
+use Exception;
+use App\Http\Controllers\Controller;
 
 class TryController extends Controller
 {
