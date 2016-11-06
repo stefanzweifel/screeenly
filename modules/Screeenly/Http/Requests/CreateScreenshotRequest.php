@@ -2,6 +2,7 @@
 
 namespace Screeenly\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateScreenshotRequest extends FormRequest
@@ -29,5 +30,23 @@ class CreateScreenshotRequest extends FormRequest
             'width'  => ['sometimes', 'required', 'integer'],
             'height' => ['sometimes', 'required', 'integer'],
         ];
+    }
+
+    /**
+     * Format the errors from the given Validator instance.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return array
+     */
+    protected function formatErrors(Validator $validator)
+    {
+        if ($this->is('api/v1/*')) {
+            return [
+                'title'   => 'An error accoured',
+                'message' => 'Validation Error: ' . $validator->getMessageBag()->first()
+            ];
+        }
+
+        return $validator->getMessageBag()->toArray();
     }
 }

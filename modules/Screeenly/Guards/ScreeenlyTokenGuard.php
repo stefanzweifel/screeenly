@@ -21,20 +21,6 @@ class ScreeenlyTokenGuard implements Guard
     protected $request;
 
     /**
-     * The name of the query string item from the request containing the API token.
-     *
-     * @var string
-     */
-    protected $inputKey;
-
-    /**
-     * The name of the token "column" in persistent storage.
-     *
-     * @var string
-     */
-    protected $storageKey;
-
-    /**
      * Create a new authentication guard.
      *
      * @param  \Illuminate\Contracts\Auth\UserProvider  $provider
@@ -43,10 +29,8 @@ class ScreeenlyTokenGuard implements Guard
      */
     public function __construct(UserProvider $provider, Request $request)
     {
-        $this->request = $request;
         $this->provider = $provider;
-        $this->inputKey = 'key';
-        $this->storageKey = 'key';
+        $this->request = $request;
     }
 
     public function user()

@@ -12,6 +12,7 @@ use Screeenly\Services\PhantomsJsBrowser;
 class CaptureServiceTest extends TestCase
 {
     use DatabaseTransactions;
+    use InteractsWithBrowser;
 
     /** @test */
     public function it_lets_you_set_the_height_of_the_screenshot()
@@ -57,14 +58,7 @@ class CaptureServiceTest extends TestCase
     /** @test */
     public function it_captures_screenshot_and_returns_screenshot_instance()
     {
-        $stub = $this->createMock(PhantomsJsBrowser::class);
-        $stub->expects($this->any())
-            ->method('capture')
-            ->willReturn(new Screenshot(storage_path('testing/test-screenshot.jpg')));
-
-        $this->app->bind(CanCaptureScreenshot::class, function () use ($stub) {
-            return $stub;
-        });
+        $this->replaceBinding();
 
         $service = app(CaptureService::class);
         $url = new Url('http://foo.com');
