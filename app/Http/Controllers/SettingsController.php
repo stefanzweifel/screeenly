@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SetupEmail;
 use Illuminate\Http\Request;
+use Screeenly\Http\Requests\SetupEmail;
 
 class SettingsController extends Controller
 {

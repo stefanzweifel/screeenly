@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Screeenly\Http\Requests;;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SetupEmail extends FormRequest
+class DeleteApiKeyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class SetupEmail extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return $this->route('apiKey')->user->id == auth()->id();
     }
 
     /**
@@ -24,7 +24,7 @@ class SetupEmail extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['email', 'required', 'unique:users'],
+            //
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateApiKeyRequest;
-use App\Http\Requests\DeleteApiKeyRequest;
 use App\Models\ApiKey;
+use Screeenly\Http\Requests\CreateApiKeyRequest;
+use Screeenly\Http\Requests\DeleteApiKeyRequest;
 
 class ApiKeyController extends Controller
 {
@@ -31,7 +31,7 @@ class ApiKeyController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect()->back()->withMessage('Your new API Key has been created.');
+        return redirect()->back()->withSuccess('Your new API Key has been created.');
     }
 
     /**

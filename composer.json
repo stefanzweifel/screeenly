@@ -21,7 +21,9 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Screeenly\\": "modules/Screeenly/",
+            "Core\\": "modules/Core"
         }
     },
     "autoload-dev": {
