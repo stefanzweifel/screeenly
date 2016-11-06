@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Screeenly</title>
+    <title>@yield('title', 'screeenly')</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -28,6 +29,14 @@
         <div class="container">
             <div class="alert alert-info">
                 {{ session('message') }}
+            </div>
+        </div>
+    @endif
+
+    @if(session('success'))
+        <div class="container">
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
         </div>
     @endif

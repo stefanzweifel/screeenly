@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Privacy')
+
 @section('content')
 
     <div class="clearfix">

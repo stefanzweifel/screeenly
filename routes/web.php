@@ -12,6 +12,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('try', 'TryController@index')->name('app.try.index');
+Route::post('try', 'TryController@store')->name('app.try.store');
+
 Route::get('oauth/github/redirect', 'OAuth\GithubController@redirect')->name('oauth.github.redirect');
 Route::get('oauth/github/handle', 'OAuth\GithubController@handle')->name('oauth.github.handle');
 

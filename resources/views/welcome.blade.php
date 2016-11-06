@@ -15,7 +15,7 @@
             <h1>screeenly</h1>
             <h2>Screenshot as a Service</h2>
 
-            <a href="/oauth/github/redirect" class="btn btn-default">Github</a>
+            <a href="/oauth/github/redirect" data-turbolinks="false" class="btn btn-default">Github</a>
         </div>
 
         <ul>

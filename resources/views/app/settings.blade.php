@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Settings')
+
 @section('content')
 
 
@@ -10,7 +12,7 @@
 
             <div class="panel-body">
 
-                <form method="post" action="/settings/">
+                <form method="post" action="/settings">
 
                     <p>Feel free to change your email address here. We won't bother you with marketing emails. We will only notice you, if something is changing with screeenly.</p>
 
@@ -18,7 +20,7 @@
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" required class="form-control" placeholder="You're email address goese here">
+                        <input type="email" name="email" required class="form-control" placeholder="{{ Auth::user()->email }}">
                     </div>
                     @if ($errors->has('email'))
                         <span class="help-block">

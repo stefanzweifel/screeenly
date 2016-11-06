@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ApiLog extends Model
 {
-    protected $fillable = ['images'];
+    protected $fillable = ['images', 'user_id'];
 
     protected $table = 'api_log';
 

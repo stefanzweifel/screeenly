@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'screeenly-token',
             'provider' => 'users',
         ],
     ],
