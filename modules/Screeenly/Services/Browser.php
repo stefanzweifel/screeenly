@@ -17,7 +17,7 @@ class Browser
     /**
      * @var integer
      */
-    public $width = null;
+    public $width = 1024;
 
     /**
      * @var integer

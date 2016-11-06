@@ -10,11 +10,16 @@ use Screeenly\Entities\Url;
 
 class PhantomsJsBrowser extends Browser implements CanCaptureScreenshot
 {
+    /**
+     * Capture Url and store image in given Path
+     * @param  Url    $url
+     * @param  string $storageUrl
+     * @return Screeenly\Entities\Screenshot
+     */
     public function capture(Url $url, $storageUrl)
     {
-        $location = base_path('modules/Screeenly/Procedures/');
         $serviceContainer = ServiceContainer::getInstance();
-        $serviceContainer->get('procedure_loader_factory')->createProcedureLoader($location);
+        $serviceContainer->get('procedure_loader_factory')->createProcedureLoader(base_path('modules/Screeenly/Procedures/'));
 
         $client = Client::getInstance();
 

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => env('STORAGE_DISK', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,11 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+        ],
+
+        'testing' => [
+            'driver' => 'local',
+            'root' => storage_path('testing'),
         ],
 
         'public' => [

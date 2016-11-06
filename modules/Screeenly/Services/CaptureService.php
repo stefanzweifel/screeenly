@@ -75,7 +75,8 @@ class CaptureService
     {
         $this->isUrlOnline();
 
-        $storageUrl = storage_path('app/public/screenshot.jpg');
+        $filename = uniqid() . "_" . str_random(30);
+        $storageUrl = storage_path("app/public/{$filename}.jpg");
 
         return $this->browser->capture(
             $this->url,

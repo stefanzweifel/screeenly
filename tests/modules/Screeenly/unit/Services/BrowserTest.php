@@ -37,7 +37,7 @@ class BrowserTest extends TestCase
     /** @test */
     public function it_throws_an_error_if_width_is_greater_than_5000_pixels()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage("Screenshot width can not exceed 5000 Pixels");
 
         $browser = app(Browser::class);
@@ -58,7 +58,7 @@ class BrowserTest extends TestCase
     /** @test */
     public function it_throws_an_error_if_delay_is_greater_than_10_seconds()
     {
-        $this->expectException(\Exception::class);
+        $this->expectException(Exception::class);
         $this->expectExceptionMessage("Delay can not exceed 10 seconds / 10000 miliseconds");
 
         $browser = app(Browser::class);
@@ -72,25 +72,8 @@ class BrowserTest extends TestCase
         $browser = app(Browser::class);
 
         $this->assertEquals(null, $browser->height);
-        $this->assertEquals(null, $browser->width);
-        $this->assertEquals(1000, $browser->delay);
-    }
-
-    /** @test */
-    public function it_captures_screenshot_from_given_url()
-    {
-        $browser = app(Browser::class);
-        $url = new Url("http://foo.com");
-
-        $result = $browser->capture($url);
-
-        $this->assertInstanceOf(Screenshot::class, $result);
-    }
-
-    /** @test */
-    public function it_throws_error_if_screenshot_could_not_be_created()
-    {
-        // it throws error if screenshot could not be created
+        $this->assertEquals(1024, $browser->width);
+        $this->assertEquals(1, $browser->delay);
     }
 
 }

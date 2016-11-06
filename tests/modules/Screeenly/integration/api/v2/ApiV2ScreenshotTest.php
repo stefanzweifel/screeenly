@@ -1,7 +1,7 @@
 <?php
 
 
-class ScreenshotTest extends TestCase
+class ApiV2ScreenshotTest extends TestCase
 {
     /** @test */
     public function it_shows_error_message_if_no_api_key_is_provided()

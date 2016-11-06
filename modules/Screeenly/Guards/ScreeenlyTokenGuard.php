@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Http\Request;
+use Screeenly\Models\User;
 
 class ScreeenlyTokenGuard implements Guard
 {
@@ -62,7 +63,7 @@ class ScreeenlyTokenGuard implements Guard
         $token = $this->request->get($this->inputKey);
 
         if (! empty($token)) {
-            $user = \App\Models\User::whereHas('apiKeys', function ($q) use ($token) {
+            $user = User::whereHas('apiKeys', function ($q) use ($token) {
                 return $q->whereKey($token);
             })->first();
         }

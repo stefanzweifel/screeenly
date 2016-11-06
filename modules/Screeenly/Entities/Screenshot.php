@@ -2,6 +2,9 @@
 
 namespace Screeenly\Entities;
 
+use Exception;
+use Illuminate\Support\Facades\Storage;
+
 class Screenshot
 {
     /**
@@ -24,14 +27,13 @@ class Screenshot
      */
     protected $publicUrl;
 
-    // TODO: Maybe we should pass the File Object here.
     public function __construct($absolutePath)
     {
         $this->doesScreenshotExist($absolutePath);
-        $this->path = $absolutePath;
-        $this->filename = basename($absolutePath);
-        $this->publicUrl = asset(\Storage::url('public/screenshot.jpg'));
-        $this->base64 = base64_encode(\Storage::get('public/screenshot.jpg'));
+        $this->path      = $absolutePath;
+        $this->filename  = basename($absolutePath);
+        $this->publicUrl = asset(Storage::url($this->filename));
+        $this->base64    = base64_encode(Storage::get($this->filename));
     }
 
     /**
@@ -66,10 +68,15 @@ class Screenshot
         return $this->publicUrl;
     }
 
+    /**
+     * Test if a file is available
+     * @param  string $absolutePath
+     * @return void
+     */
     protected function doesScreenshotExist($absolutePath)
     {
-        if (! \Storage::has('public/screenshot.jpg')) {
-            throw new \Exception("Screenshot can't be generated for URL {URL}.", 400);
+        if (file_exists($absolutePath) == false) {
+            throw new Exception("Screenshot can't be generated for given URL");
         }
     }
 }
