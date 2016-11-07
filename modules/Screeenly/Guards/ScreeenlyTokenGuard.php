@@ -44,7 +44,7 @@ class ScreeenlyTokenGuard implements Guard
 
         $user = null;
 
-        $token = $this->request->get($this->inputKey);
+        $token = $this->request->get('key');
 
         if (! empty($token)) {
             $user = User::whereHas('apiKeys', function ($q) use ($token) {
