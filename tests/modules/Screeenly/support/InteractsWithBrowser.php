@@ -4,10 +4,8 @@ use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Screenshot;
 use Screeenly\Services\PhantomsJsBrowser;
 
-
 trait InteractsWithBrowser
 {
-
     public function replaceBinding()
     {
         $stub = $this->createMock(PhantomsJsBrowser::class);
@@ -24,5 +22,4 @@ trait InteractsWithBrowser
     {
         return Storage::get('test-screenshot.jpg');
     }
-
 }

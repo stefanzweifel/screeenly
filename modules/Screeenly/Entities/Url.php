@@ -15,7 +15,7 @@ class Url
     }
 
     /**
-     * Return the sanitized Url
+     * Return the sanitized Url.
      * @return string
      */
     public function getUrl()
@@ -24,7 +24,7 @@ class Url
     }
 
     /**
-     * Sanitize the URl
+     * Sanitize the URl.
      * @param  string $url
      * @return string
      */

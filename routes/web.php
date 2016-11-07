@@ -13,4 +13,3 @@ Auth::routes();
 // Looking for Route specific to Screeenly?
 // They moved here:
 // /modules/Screeenly/Http/routes/
-

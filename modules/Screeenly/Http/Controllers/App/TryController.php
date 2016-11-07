@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class TryController extends Controller
 {
     /**
-     * Show View to let user enter URL to create a new screenshot
+     * Show View to let user enter URL to create a new screenshot.
      * @return View
      */
     public function index()
@@ -21,7 +21,7 @@ class TryController extends Controller
     }
 
     /**
-     * Try to capture website screenshot
+     * Try to capture website screenshot.
      * @param  TryRequest     $request        Form Request to Validate Input
      * @param  CaptureService $captureService Service Class which handles capturing websites
      * @return Redirect
@@ -29,7 +29,6 @@ class TryController extends Controller
     public function store(TryRequest $request, CaptureService $captureService)
     {
         try {
-
             $screenshot = $captureService
                 ->width(1024)
                 ->delay(1)
@@ -37,7 +36,6 @@ class TryController extends Controller
                 ->capture();
 
             return redirect('try')->with('base64', $screenshot->getBase64());
-
         } catch (Exception $e) {
             return redirect('try')->with('fatal-error', true);
         }

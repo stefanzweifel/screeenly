@@ -30,14 +30,14 @@ class Screenshot
     public function __construct($absolutePath)
     {
         $this->doesScreenshotExist($absolutePath);
-        $this->path      = $absolutePath;
-        $this->filename  = basename($absolutePath);
+        $this->path = $absolutePath;
+        $this->filename = basename($absolutePath);
         $this->publicUrl = asset(Storage::url($this->filename));
-        $this->base64    = base64_encode(Storage::get($this->filename));
+        $this->base64 = base64_encode(Storage::get($this->filename));
     }
 
     /**
-     * Return base64 representation of the Screenshot
+     * Return base64 representation of the Screenshot.
      * @return string
      */
     public function getBase64()
@@ -46,7 +46,7 @@ class Screenshot
     }
 
     /**
-     * Return the filename of the Screenshot
+     * Return the filename of the Screenshot.
      * @return string
      */
     public function getFilename()
@@ -60,7 +60,7 @@ class Screenshot
     }
 
     /**
-     * Return the public Url to the screenshot image
+     * Return the public Url to the screenshot image.
      * @return string
      */
     public function getPublicUrl()
@@ -69,7 +69,7 @@ class Screenshot
     }
 
     /**
-     * Test if a file is available
+     * Test if a file is available.
      * @param  string $absolutePath
      * @return void
      */

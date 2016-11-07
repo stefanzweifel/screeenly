@@ -43,7 +43,7 @@ class CreateScreenshotRequest extends FormRequest
         if ($this->is('api/v1/*')) {
             return [
                 'title'   => 'An error accoured',
-                'message' => 'Validation Error: ' . $validator->getMessageBag()->first()
+                'message' => 'Validation Error: '.$validator->getMessageBag()->first(),
             ];
         }
 

@@ -1,13 +1,9 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Screenshot;
 use Screeenly\Entities\Url;
 use Screeenly\Services\CaptureService;
-use Screeenly\Services\PhantomsJsBrowser;
 
 class CaptureServiceTest extends TestCase
 {
@@ -80,6 +76,4 @@ class CaptureServiceTest extends TestCase
 
         $response = $service->url($url);
     }
-
-
 }
