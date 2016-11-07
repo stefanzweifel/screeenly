@@ -4,7 +4,6 @@ namespace Screeenly\Services;
 
 use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Url;
-use Screeenly\Services\Browser;
 
 class CaptureService
 {
@@ -24,58 +23,62 @@ class CaptureService
     }
 
     /**
-     * Set Height
-     * @param  integer $height
+     * Set Height.
+     * @param  int $height
      * @return Screeenly\Services\CaptureService
      */
     public function height($height)
     {
         $this->browser->height($height);
+
         return $this;
     }
 
     /**
-     * Set Width, defaults to 100%
-     * @param  integer $width
+     * Set Width, defaults to 100%.
+     * @param  int $width
      * @return Screeenly\Services\CaptureService
      */
     public function width($width)
     {
         $this->browser->width($width);
+
         return $this;
     }
 
     /**
-     * Set Delay in milliseconds, defaults to 1000
-     * @param  integer $delay
+     * Set Delay in milliseconds, defaults to 1000.
+     * @param  int $delay
      * @return Screeenly\Services\CaptureService
      */
     public function delay($delay)
     {
         $this->browser->delay($delay);
+
         return $this;
     }
 
     /**
-     * Set Url to capture
+     * Set Url to capture.
      * @param  Screeenly\Models\Url    $url
      * @return Screeenly\Services\CaptureService
      */
     public function url(Url $url)
     {
         $this->url = $url;
+
         return $this;
     }
 
     /**
-     * Trigger capture action
+     * Trigger capture action.
      * @return Screeenly\Entities\Screenshot
      */
     public function capture()
     {
         $this->isUrlOnline();
 
-        $filename = uniqid() . "_" . str_random(30);
+        $filename = uniqid().'_'.str_random(30);
         $storageUrl = storage_path("app/public/{$filename}.jpg");
 
         return $this->browser->capture(

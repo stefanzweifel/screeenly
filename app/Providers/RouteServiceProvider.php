@@ -56,7 +56,7 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/web.php');
         });
 
-        /**
+        /*
          * Screeenly Routes
          */
         Route::group([
@@ -84,7 +84,7 @@ class RouteServiceProvider extends ServiceProvider
             require base_path('routes/api.php');
         });
 
-        /**
+        /*
          * Screeenly Routes
          */
         Route::group([
@@ -94,6 +94,5 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require base_path('modules/Screeenly/Http/routes/api.php');
         });
-
     }
 }

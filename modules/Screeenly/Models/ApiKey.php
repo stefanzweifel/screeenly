@@ -3,8 +3,6 @@
 namespace Screeenly\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Screeenly\Models\ApiLog;
-use Screeenly\Models\User;
 
 class ApiKey extends Model
 {

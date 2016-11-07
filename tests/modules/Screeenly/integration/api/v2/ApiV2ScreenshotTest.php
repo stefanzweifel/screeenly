@@ -1,15 +1,12 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Screeenly\Models\ApiKey;
 
 class ApiV2ScreenshotTest extends TestCase
 {
     use DatabaseTransactions;
     use InteractsWithBrowser;
-
 
     /** @test */
     public function it_shows_error_message_if_no_api_key_is_provided()
@@ -18,7 +15,6 @@ class ApiV2ScreenshotTest extends TestCase
             ->seeJson([
                 'error' => 'Unauthenticated.',
             ]);
-
     }
 
     /** @test */
@@ -27,7 +23,7 @@ class ApiV2ScreenshotTest extends TestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v2/screenshot', [
-                'key' => $apiKey->key
+                'key' => $apiKey->key,
             ])
             ->seeJson([
                 'url' => ['The url field is required.'],
@@ -41,7 +37,7 @@ class ApiV2ScreenshotTest extends TestCase
 
         $this->json('POST', '/api/v2/screenshot', [
                 'key' => $apiKey->key,
-                'url' => 'Foo'
+                'url' => 'Foo',
             ])
             ->seeJson([
                 'url' => ['The url format is invalid.'],
@@ -55,7 +51,7 @@ class ApiV2ScreenshotTest extends TestCase
 
         $this->json('POST', '/api/v2/screenshot', [
                 'key' => $apiKey->key,
-                'url' => 'http://google.com'
+                'url' => 'http://google.com',
             ]);
     }
 }

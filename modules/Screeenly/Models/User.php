@@ -4,8 +4,6 @@ namespace Screeenly\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Screeenly\Models\ApiKey;
-use Screeenly\Models\ApiLog;
 
 class User extends Authenticatable
 {

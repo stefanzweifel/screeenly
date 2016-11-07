@@ -7,7 +7,6 @@ use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Guards\ScreeenlyTokenGuard;
 use Screeenly\Services\PhantomsJsBrowser;
 
-
 class ScreeenlyServiceProvider extends ServiceProvider
 {
     /**
@@ -17,7 +16,7 @@ class ScreeenlyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['view']->addNamespace('screeenly', base_path() . '/modules/Screeenly/Resources/views');
+        $this->app['view']->addNamespace('screeenly', base_path().'/modules/Screeenly/Resources/views');
 
         $this->app->bind(CanCaptureScreenshot::class, PhantomsJsBrowser::class);
 
@@ -27,8 +26,6 @@ class ScreeenlyServiceProvider extends ServiceProvider
                 $this->app['request']
             );
         });
-
-
     }
 
     /**

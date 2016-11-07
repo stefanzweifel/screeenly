@@ -11,7 +11,7 @@ use Screeenly\Entities\Url;
 class PhantomsJsBrowser extends Browser implements CanCaptureScreenshot
 {
     /**
-     * Capture Url and store image in given Path
+     * Capture Url and store image in given Path.
      * @param  Url    $url
      * @param  string $storageUrl
      * @return Screeenly\Entities\Screenshot
