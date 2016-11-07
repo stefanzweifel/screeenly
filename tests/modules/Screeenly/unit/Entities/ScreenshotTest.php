@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Screeenly\Entities\Screenshot;
 
 class ScreenshotTest extends TestCase

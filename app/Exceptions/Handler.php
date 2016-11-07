@@ -45,18 +45,17 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($request->is('api/*') && app()->environment('production')) {
-
             if ($request->is('api/v1/*')) {
                 return response()->json([
                     'title' => 'An error accoured',
-                    'message' => 'An internal error accoured.'
+                    'message' => 'An internal error accoured.',
                 ], 400);
             }
 
             return response()->json([
                 'errors' => [
-                    $exception->getMessage()
-                ]
+                    $exception->getMessage(),
+                ],
             ], 400);
         }
 
@@ -73,14 +72,11 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->is('api/v1/*')) {
-
             return response()->json([
                 'title' => 'An error accoured',
-                'message' => 'No API Key specified.'
+                'message' => 'No API Key specified.',
             ], 401);
-
-        }
-        else if ($request->is('api/v2/*')) {
+        } elseif ($request->is('api/v2/*')) {
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 

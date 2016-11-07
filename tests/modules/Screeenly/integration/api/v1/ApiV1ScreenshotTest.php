@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Screeenly\Models\ApiKey;
 
 class ApiV1ScreenshotTest extends TestCase
@@ -10,14 +8,13 @@ class ApiV1ScreenshotTest extends TestCase
     use DatabaseTransactions;
     use InteractsWithBrowser;
 
-
     /** @test */
     public function it_return_an_error_if_no_api_key_was_passed_to_the_api()
     {
         $this->json('POST', '/api/v1/fullsize', [])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
-                'message' => 'No API Key specified.'
+                'message' => 'No API Key specified.',
             ]);
     }
 
@@ -27,11 +24,11 @@ class ApiV1ScreenshotTest extends TestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key
+                'key' => $apiKey->key,
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
-                'message' => 'Validation Error: The url field is required.'
+                'message' => 'Validation Error: The url field is required.',
             ]);
     }
 
@@ -42,14 +39,13 @@ class ApiV1ScreenshotTest extends TestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'foo.com'
+                'url' => 'foo.com',
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
-                'message' => 'Validation Error: The url format is invalid.'
+                'message' => 'Validation Error: The url format is invalid.',
             ]);
     }
-
 
     /** @test */
     public function it_returns_path_and_base64_representation_of_to_image_on_successful_request()
@@ -59,14 +55,14 @@ class ApiV1ScreenshotTest extends TestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.com'
+                'url' => 'http://foo.com',
             ])
             ->seeJsonStructure([
                 'data' => [
                     'path',
                     'base64',
-                    'base64_raw'
-                ]
+                    'base64_raw',
+                ],
             ]);
             // ->seeJsonContains([
             //     'data' => [
@@ -76,5 +72,4 @@ class ApiV1ScreenshotTest extends TestCase
             //     ]
             // ]);
     }
-
 }
