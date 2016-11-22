@@ -42,7 +42,7 @@ class EmailAuthRegisterTest extends TestCase
             ->see('Logout');
 
         $this->seeInDatabase('users', [
-            'email' => 'foo@domain.com'
+            'email' => 'foo@domain.com',
         ]);
     }
 
