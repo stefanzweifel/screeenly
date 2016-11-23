@@ -39,7 +39,7 @@ class EmailAuthLoginTest extends TestCase
     {
         factory(User::class)->create([
             'email' => 'foo@bar.com',
-            'password' => bcrypt('Password1234')
+            'password' => bcrypt('Password1234'),
         ]);
 
         $this->visit('/login')
