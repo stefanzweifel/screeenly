@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Screeenly\Models\ApiKey;
 
 class ApiV2GeneralTest extends TestCase
 {
@@ -12,7 +11,7 @@ class ApiV2GeneralTest extends TestCase
     {
         $this->json('POST', '/api/v2/does-not-exist')
             ->seeJsonStructure([
-                'errors'
+                'errors',
             ]);
     }
 }
