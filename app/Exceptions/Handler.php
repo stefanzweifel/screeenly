@@ -48,8 +48,8 @@ class Handler extends ExceptionHandler
         if (
             $request->is('api/*')
             && (app()->environment('production')) || app()->environment('testing')
-            && !is_a($exception, AuthenticationException::class)
-            && !is_a($exception, ValidationException::class)
+            && ! is_a($exception, AuthenticationException::class)
+            && ! is_a($exception, ValidationException::class)
         ) {
             if ($request->is('api/v1/*')) {
                 return response()->json([

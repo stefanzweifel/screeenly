@@ -79,7 +79,7 @@ class ApiV1ScreenshotTest extends TestCase
         $this->json('POST', '/api/v1/does-not-exist', [])
             ->seeJson([
                 'title' => 'An error accoured',
-                'message' => 'An internal error accoured.'
+                'message' => 'An internal error accoured.',
             ]);
     }
 }
