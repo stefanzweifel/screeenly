@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Screeenly\Models\ApiKey;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiV1ScreenshotTest extends TestCase
 {

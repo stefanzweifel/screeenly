@@ -2,10 +2,10 @@
 
 namespace Screeenly\Http\Controllers\Api\v2;
 
-use App\Http\Controllers\Controller;
 use Screeenly\Entities\Url;
-use Screeenly\Http\Requests\CreateScreenshotRequest;
+use App\Http\Controllers\Controller;
 use Screeenly\Services\CaptureService;
+use Screeenly\Http\Requests\CreateScreenshotRequest;
 
 class ScreenshotController extends Controller
 {
