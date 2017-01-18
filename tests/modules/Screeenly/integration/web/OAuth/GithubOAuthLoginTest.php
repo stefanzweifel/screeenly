@@ -9,7 +9,7 @@ class GithubOAuthLoginTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Mock the Socialite Factory, so we can hijack the Github Request.
+     * Mock the Socialite Factory, so we can hijack the OAuth Request.
      * @param  string  $email
      * @param  string  $token
      * @param  int $id
@@ -39,7 +39,9 @@ class GithubOAuthLoginTest extends TestCase
     /** @test */
     public function it_redirects_to_github()
     {
-        // See: http://stackoverflow.com/a/36799824
+        $response = $this->call('GET', '/oauth/github/redirect');
+
+        $this->assertContains('github.com/login/oauth', $response->getTargetUrl());
     }
 
     /** @test */
