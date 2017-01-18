@@ -1,11 +1,9 @@
 @include('layouts._head')
 <body>
     @include('layouts._navigation')
+    @include('layouts._messages')
 
-    <div class="container" style="margin-top: 2em;">
-        @include('layouts._messages')
-        @yield('content')
-    </div>
+    @yield('content')
 
     @include('layouts._footer')
 

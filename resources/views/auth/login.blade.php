@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="col-md-6 col-md-offset-4">
-                    <a href="/oauth/github/redirect" data-turbolinks="false" class="btn btn-success">Sign in with Github</a>
+                    <a href="/oauth/github/redirect" data-turbolinks="false" class="btn btn-black">Sign in with Github</a>
                 </div>
             </div>
 

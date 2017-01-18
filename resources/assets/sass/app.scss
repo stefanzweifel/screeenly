@@ -1,17 +1,73 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
 @import "variables";
-
-// Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-.Footer {
-    border-top: solid 1px $laravel-border-color;
+
+$blue: #3F51B5 !default;
+$black: #212121 !default;
+
+body {
+    padding-top: 51px;
+}
+
+.c-footer {
     padding-top: 2em;
     padding-bottom: 2em;
     font-size: .9em;
-    margin-top: 5em;
+
+    a {
+        color: $black;
+    }
+}
+
+.t-sponsored {
+    background-color: $blue;
+    color: #fff;
+    text-align: center;
+
+    padding: 2em;
+}
+
+.u-background--primary {
+    background-color: $brand-primary;
+}
+
+.u-white {
+    color: #fff;
+}
+
+.c-hero {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.c-feature-set {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    padding-left: 2em;
+    padding-right: 2em;
+
+}
+
+.u-fs--ultra {
+    font-size: 2em;
+
+    @media (min-width: $screen-sm-min) {
+    // width: $container-sm;
+    }
+    @media (min-width: $screen-md-min) {
+        font-size: 3em;
+    }
+    @media (min-width: $screen-lg-min) {
+        font-size: 4em;
+    }
+}
+
+.btn-black {
+    @include button-variant(#fff, $black, $black);
 }

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
 
@@ -10,23 +10,15 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                screeenly
+                <img alt="Brand" src="/favicon.ico?v1" style="max-width: 20px; display: inline"> screeenly
             </a>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav visible-xs-block">
-                <li>
-                    <a href="/dashboard">Dashboard</a>
-                </li>
+            <ul class="nav navbar-nav">
                 <li>
                     <a href="/try">Take Screenshot</a>
-                </li>
-                <li>
-                    <a href="/settings">Settings</a>
                 </li>
             </ul>
 
@@ -37,7 +29,9 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
-
+                    <li>
+                        <a href="/settings">Settings</a>
+                    </li>
                     <li>
                         <a href="{{ url('/logout') }}"
                             onclick="event.preventDefault();
@@ -49,7 +43,6 @@
                             {{ csrf_field() }}
                         </form>
                     </li>
-
                 @endif
             </ul>
         </div>
