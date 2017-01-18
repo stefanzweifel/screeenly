@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
 
-            $table->text('token')->nullable(); // OAuth Token?
+            $table->text('token')->nullable()->default(null); // OAuth Token?
             $table->string('provider', 50)->nullable(); // Which OAuth Provider was used
             $table->integer('provider_id')->nullable(); // User ID from Provider
 

@@ -16,7 +16,14 @@ class AddAuthFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable();
             $table->string('password')->nullable();
-            $table->rememberToken();
+            // $table->rememberToken();
+
+            $table->dateTime('created_at')->nullable()->default(NULL)->change();
+            $table->dateTime('updated_at')->nullable()->default(NULL)->change();
+
+            $table->string('provider')->nullable()->default(null)->change();
+            $table->string('provider_id')->nullable()->default(null)->change();
+            $table->string('token')->nullable()->default(null)->change();
         });
     }
 
@@ -30,7 +37,7 @@ class AddAuthFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->dropColumn('password');
-            $table->dropColumn('remember_token');
+            // $table->dropColumn('remember_token');
         });
     }
 }
