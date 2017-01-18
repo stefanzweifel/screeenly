@@ -18,8 +18,8 @@ class AddAuthFieldsToUsersTable extends Migration
             $table->string('password')->nullable();
             // $table->rememberToken();
 
-            $table->dateTime('created_at')->nullable()->default(NULL)->change();
-            $table->dateTime('updated_at')->nullable()->default(NULL)->change();
+            $table->dateTime('created_at')->nullable()->default(null)->change();
+            $table->dateTime('updated_at')->nullable()->default(null)->change();
 
             $table->string('provider')->nullable()->default(null)->change();
             $table->string('provider_id')->nullable()->default(null)->change();
