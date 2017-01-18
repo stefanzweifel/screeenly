@@ -5,14 +5,6 @@ use Screeenly\Entities\Url;
 class UrlTest extends TestCase
 {
     /** @test */
-    public function throws_error_if_no_url_is_provied()
-    {
-        $this->expectException(Exception::class);
-
-        $url = new Url();
-    }
-
-    /** @test */
     public function it_returns_sanitized_url()
     {
         $url = new Url('http://foo.com');
