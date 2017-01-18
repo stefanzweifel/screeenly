@@ -1,8 +1,8 @@
 <?php
 
-use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Screenshot;
 use Screeenly\Services\PhantomsJsBrowser;
+use Screeenly\Contracts\CanCaptureScreenshot;
 
 trait InteractsWithBrowser
 {

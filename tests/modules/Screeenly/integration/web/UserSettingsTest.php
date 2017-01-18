@@ -1,7 +1,7 @@
 <?php
 
-use Screeenly\Models\ApiKey;
 use Screeenly\Models\User;
+use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserSettingsTest extends TestCase

@@ -2,11 +2,11 @@
 
 namespace Screeenly\Services;
 
-use JonnyW\PhantomJs\Client;
-use JonnyW\PhantomJs\DependencyInjection\ServiceContainer;
-use Screeenly\Contracts\CanCaptureScreenshot;
-use Screeenly\Entities\Screenshot;
 use Screeenly\Entities\Url;
+use JonnyW\PhantomJs\Client;
+use Screeenly\Entities\Screenshot;
+use Screeenly\Contracts\CanCaptureScreenshot;
+use JonnyW\PhantomJs\DependencyInjection\ServiceContainer;
 
 class PhantomsJsBrowser extends Browser implements CanCaptureScreenshot
 {

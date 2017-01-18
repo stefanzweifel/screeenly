@@ -3,8 +3,8 @@
 namespace Screeenly\Http\Controllers\App;
 
 use Illuminate\Http\Request;
-use Screeenly\Http\Requests\SetupEmail;
 use App\Http\Controllers\Controller;
+use Screeenly\Http\Requests\SetupEmail;
 
 class SettingsController extends Controller
 {
