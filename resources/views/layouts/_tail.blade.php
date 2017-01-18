@@ -1,3 +1,3 @@
-    <script async src="/js/app.js"></script>
+    <script async src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>
