@@ -1,7 +1,7 @@
 <?php
 
-use Screeenly\Entities\Screenshot;
 use Screeenly\Services\Browser;
+use Screeenly\Entities\Screenshot;
 
 class BrowserTest extends TestCase
 {

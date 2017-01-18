@@ -2,8 +2,8 @@
 
 namespace Screeenly\Services;
 
-use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Url;
+use Screeenly\Contracts\CanCaptureScreenshot;
 
 class CaptureService
 {

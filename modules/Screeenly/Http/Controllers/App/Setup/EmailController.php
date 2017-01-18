@@ -2,10 +2,10 @@
 
 namespace Screeenly\Http\Controllers\App\Setup;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Screeenly\Http\Requests\SetupEmail;
 use Screeenly\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Screeenly\Http\Requests\SetupEmail;
 
 class EmailController extends Controller
 {

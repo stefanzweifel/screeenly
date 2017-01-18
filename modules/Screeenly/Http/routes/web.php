@@ -12,7 +12,6 @@ Route::get('oauth/github/handle', 'OAuth\GithubController@handle')->name('oauth.
 Route::get('setup/email/', 'Setup\EmailController@create')->name('setup.email.create');
 Route::post('setup/email', 'Setup\EmailController@store')->name('setup.email.store');
 
-
 // Routes which require a logged in user
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'DashboardController@index')->middleware(['hasEmail'])->name('app.dashboard');
@@ -24,7 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('settings', 'SettingsController@update')->name('app.settings.update');
     Route::delete('settings/account', 'SettingsController@delete')->name('app.settings.delete');
 });
-
 
 // Static Pages
 Route::get('imprint', 'StaticPageController@imprint');

@@ -1,7 +1,7 @@
 <?php
 
-use Screeenly\Models\ApiKey;
 use Screeenly\Models\User;
+use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiKeyTest extends TestCase
@@ -49,7 +49,6 @@ class ApiKeyTest extends TestCase
             ->press('Create API Key')
             ->seePageIs('/dashboard')
             ->see('Your new API Key has been created.');
-
 
         $this->seeInDatabase('api_keys', [
             'name' => 'FooBar',

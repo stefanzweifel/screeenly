@@ -1,8 +1,8 @@
 <?php
 
+use Screeenly\Models\User;
 use Screeenly\Models\ApiKey;
 use Screeenly\Models\ApiLog;
-use Screeenly\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,6 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
-
 
 $factory->define(ApiKey::class, function (Faker\Generator $faker) {
     return [
