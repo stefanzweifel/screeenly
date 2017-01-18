@@ -16,7 +16,7 @@ class AddAuthFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable();
             $table->string('password')->nullable();
-            // $table->rememberToken();
+            $table->rememberToken();
 
             $table->dateTime('created_at')->nullable()->default(null)->change();
             $table->dateTime('updated_at')->nullable()->default(null)->change();
