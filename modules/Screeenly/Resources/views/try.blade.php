@@ -21,7 +21,7 @@
 
                     <div class="form-group">
                         <label>URL of Website</label>
-                        <input type="text" class="form-control" name="url" required placeholder="http://laravel.com" value="http://20min.ch">
+                        <input type="text" class="form-control" name="url" required placeholder="https://theguardian.com" value="https://theguardian.com">
                     </div>
 {{--                     <div class="form-group">
                         <label for="">Proof your Human</label>
