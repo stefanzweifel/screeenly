@@ -2,12 +2,13 @@
 
 namespace Screeenly\Http\Controllers\App;
 
-use Exception;
-use Screeenly\Entities\Url;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Screeenly\Services\CaptureService;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use Exception;
+use Illuminate\Http\Request;
+use Screeenly\Entities\Url;
 use Screeenly\Http\Requests\TryRequest;
+use Screeenly\Services\CaptureService;
 
 class TryController extends Controller
 {
@@ -37,6 +38,7 @@ class TryController extends Controller
 
             return redirect('try')->with('base64', $screenshot->getBase64());
         } catch (Exception $e) {
+            Bugsnag::notifyException($e);
             return redirect('try')->with('fatal-error', true);
         }
     }

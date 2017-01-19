@@ -10,7 +10,8 @@
         "laravel/socialite": "^2.0",
         "jonnyw/php-phantomjs": "^4.5",
         "doctrine/dbal": "^2.5",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "bugsnag/bugsnag-laravel": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
