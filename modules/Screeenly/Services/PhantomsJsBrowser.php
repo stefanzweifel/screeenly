@@ -36,8 +36,7 @@ class PhantomsJsBrowser extends Browser implements CanCaptureScreenshot
         $request->setTimeout(1000);
         $request->setDelay($this->delay);
 
-
-        if (!is_null($this->height)) {
+        if (! is_null($this->height)) {
             $request->setCaptureDimensions($this->width, $this->height, 0, 0);
         }
 
