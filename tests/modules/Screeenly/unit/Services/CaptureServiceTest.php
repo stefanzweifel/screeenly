@@ -69,10 +69,10 @@ class CaptureServiceTest extends TestCase
     /** @test */
     public function it_throws_an_exception_if_passed_url_is_not_available()
     {
-        $this->markTestIncomplete('Implement logic to test if an URL is online.');
+        $this->expectException(\Exception::class);
 
         $service = app(CaptureService::class);
-        $url = new Url('http://foo.com');
+        $url = new Url('http://foo_bar');
 
         $response = $service->url($url);
     }

@@ -2,6 +2,8 @@
 
 namespace Screeenly\Entities;
 
+use Exception;
+
 class Url
 {
     /**
@@ -11,7 +13,9 @@ class Url
 
     public function __construct($url)
     {
-        $this->url = $this->sanitizeUrl($url);
+        $this->url = $url;
+
+        $this->isValid();
     }
 
     /**
@@ -24,13 +28,13 @@ class Url
     }
 
     /**
-     * Sanitize the URl.
-     * @param  string $url
-     * @return string
+     * Test if the passed URL has a valid format
+     * @return boolean
      */
-    protected function sanitizeUrl($url)
+    protected function isValid()
     {
-        // TODO: Sanitize Url
-        return $url;
+        if (!filter_var($this->url, FILTER_VALIDATE_URL)) {
+            throw new Exception("The URL {$this->url} is invalid.");
+        }
     }
 }
