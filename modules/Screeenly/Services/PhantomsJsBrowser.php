@@ -32,17 +32,14 @@ class PhantomsJsBrowser extends Browser implements CanCaptureScreenshot
         $request->setMethod('GET');
         $request->setUrl($url->getUrl());
         $request->setOutputFile($storageUrl);
-        $request->setViewportSize($this->width, $this->height);
+        $request->setViewportSize($this->width, is_null($this->height) ? 768 : $this->height);
         $request->setTimeout(1000);
         $request->setDelay($this->delay);
 
-        /*
-         * If height is set by user, crop the image
-         */
-        // $height = $this->screenshot->getHeight();
-        // if (isset($height)) {
-        //     // $request->setCaptureDimensions($this->screenshot->getWidth(), $this->screenshot->getHeight(), 0, 0);
-        // }
+
+        if (!is_null($this->height)) {
+            $request->setCaptureDimensions($this->width, $this->height, 0, 0);
+        }
 
         $response = $client->getMessageFactory()->createResponse();
         $client->send($request, $response);
