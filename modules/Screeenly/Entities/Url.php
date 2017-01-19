@@ -28,12 +28,12 @@ class Url
     }
 
     /**
-     * Test if the passed URL has a valid format
-     * @return boolean
+     * Test if the passed URL has a valid format.
+     * @return bool
      */
     protected function isValid()
     {
-        if (!filter_var($this->url, FILTER_VALIDATE_URL)) {
+        if (! filter_var($this->url, FILTER_VALIDATE_URL)) {
             throw new Exception("The URL {$this->url} is invalid.");
         }
     }
