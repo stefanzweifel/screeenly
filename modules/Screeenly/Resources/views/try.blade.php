@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Try screeenly')
+
 @section('content')
 
         @if (Session::has('fatal-error'))

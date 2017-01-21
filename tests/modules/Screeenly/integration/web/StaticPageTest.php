@@ -1,6 +1,5 @@
 <?php
 
-
 class StaticPageTest extends TestCase
 {
     /** @test */
@@ -19,11 +18,5 @@ class StaticPageTest extends TestCase
     public function it_loads_imprint_page()
     {
         $this->visit('/imprint');
-    }
-
-    /** @test */
-    public function it_loads_privacy_page()
-    {
-        $this->visit('/privacy');
     }
 }

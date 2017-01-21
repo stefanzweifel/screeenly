@@ -16,11 +16,6 @@ class StaticPageController extends Controller
         return view('screeenly::static.terms');
     }
 
-    public function privacy()
-    {
-        return view('screeenly::static.privacy');
-    }
-
     public function about()
     {
         return view('screeenly::static.about');

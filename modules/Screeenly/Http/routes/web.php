@@ -29,4 +29,3 @@ Route::get('imprint', 'StaticPageController@imprint');
 Route::get('terms', 'StaticPageController@terms');
 Route::get('about', 'StaticPageController@about');
 Route::get('about', 'StaticPageController@about');
-Route::get('privacy', 'StaticPageController@privacy');

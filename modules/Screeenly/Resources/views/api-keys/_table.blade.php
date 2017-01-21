@@ -1,4 +1,5 @@
-<table class="table table-striped">
+<div class="table-responsive">
+    <table class="table table-striped">
     <thead>
         <tr>
             <th>Name</th>
@@ -18,3 +19,5 @@
         @endforeach
     </tbody>
 </table>
+
+</div>
