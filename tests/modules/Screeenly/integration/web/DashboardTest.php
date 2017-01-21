@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Screeenly\Models\ApiKey;
 use Screeenly\Models\User;
+use Screeenly\Models\ApiKey;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class DashboardTest extends TestCase
 {
