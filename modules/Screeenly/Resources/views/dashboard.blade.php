@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <div class="content">
 
         <div class="panel panel-default">
@@ -15,6 +14,7 @@
             </div>
         </div>
 
+        @if ($apiKeys->count() < 10)
         <div class="panel panel-default">
             <div class="panel-heading">Create new API Keys</div>
 
@@ -22,20 +22,21 @@
                 @include('screeenly::api-keys._form')
             </div>
         </div>
-
-
-        @if (count($apiKeys) > 0)
-
-            <div class="panel panel-default">
-                <div class="panel-heading">API Keys</div>
-                @include('screeenly::api-keys._table')
-            </div>
-
         @else
             <div class="alert alert-warning">
-                <span>You currently doesn't have an API keys.</span>
+                <i>You've reached the limit of active API keys.</i>
             </div>
         @endif
 
+        @if ($apiKeys->count() > 0)
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ $apiKeys->count() }} / 10 API Keys</div>
+                @include('screeenly::api-keys._table')
+            </div>
+        @else
+            <div class="alert alert-warning">
+                <span>You currently don't have an API keys.</span>
+            </div>
+        @endif
     </div>
 @stop

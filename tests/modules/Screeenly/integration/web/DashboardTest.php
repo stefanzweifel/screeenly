@@ -1,7 +1,8 @@
 <?php
 
-use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Models\ApiKey;
+use Screeenly\Models\User;
 
 class DashboardTest extends TestCase
 {
@@ -56,5 +57,17 @@ class DashboardTest extends TestCase
                 ->visit('/')
                 ->seePageIs('dashboard')
                 ->see('Dashboard');
+    }
+
+    /** @test */
+    public function it_shows_message_if_user_reached_limit_of_active_api_key()
+    {
+        $user = factory(User::class)->create();
+        $apiKeys = factory(ApiKey::class, 10)->create(['user_id' => $user->id]);
+
+        $this->actingAs($user)
+                ->visit('/')
+                ->seePageIs('dashboard')
+                ->see("You've reached the limit of active API keys.");
     }
 }
