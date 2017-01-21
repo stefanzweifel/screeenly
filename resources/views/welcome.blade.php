@@ -50,11 +50,12 @@
     <div class="t-sponsored">
 
         <p>Sponsored by</p>
-        <a href="http://bugsnag.com" target="blank">
-            <img src="/images/bgsnag-logo.png" class="" style="max-width: 200px;" alt="">
+        <a href="http://bugsnag.com" target="_blank" rel="noopener noreferrer">
+            @php
+                include (public_path('images/bgsnag-logo.svg'))
+            @endphp
         </a>
 
     </div>
-
 
 @stop
