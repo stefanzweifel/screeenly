@@ -1,7 +1,9 @@
 <?php
 
-use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Contracts\CanCaptureScreenshot;
+use Screeenly\Models\ApiKey;
+use Screeenly\Services\InMemoryBrowser;
 
 class ApiV2ScreenshotTest extends TestCase
 {
@@ -49,9 +51,18 @@ class ApiV2ScreenshotTest extends TestCase
     {
         $apiKey = factory(ApiKey::class)->create();
 
+        $this->app->bind(CanCaptureScreenshot::class, function ($app) {
+            return new InMemoryBrowser('http://foo.bar', '/path/to/storage');
+        });
+
         $this->json('POST', '/api/v2/screenshot', [
                 'key' => $apiKey->key,
                 'url' => 'http://google.com',
-            ]);
+            ])
+        ->seeJsonStructure([
+            'data' => [
+                'path', 'base64'
+            ]
+        ]);
     }
 }

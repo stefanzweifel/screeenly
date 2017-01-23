@@ -49,6 +49,38 @@ class ApiV1ScreenshotTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_an_error_if_delay_is_over_10_seconds()
+    {
+        $apiKey = factory(ApiKey::class)->create();
+
+        $this->json('POST', '/api/v1/fullsize', [
+                'key' => $apiKey->key,
+                'url' => 'http://foo.bar',
+                'delay' => '15'
+            ])
+            ->seeJsonEquals([
+                'title' => 'An error accoured',
+                'message' => 'Validation Error: The delay may not be greater than 10.',
+            ]);
+    }
+
+    /** @test */
+    public function it_returns_an_error_if_delay_key_is_in_request_but_no_value()
+    {
+        $apiKey = factory(ApiKey::class)->create();
+
+        $this->json('POST', '/api/v1/fullsize', [
+                'key' => $apiKey->key,
+                'url' => 'http://foo.bar',
+                'delay' => ''
+            ])
+            ->seeJsonEquals([
+                'title' => 'An error accoured',
+                'message' => 'Validation Error: The delay field is required.',
+            ]);
+    }
+
+    /** @test */
     public function it_returns_an_errof_if_url_has_no_protocol_prefix()
     {
         $apiKey = factory(ApiKey::class)->create();
