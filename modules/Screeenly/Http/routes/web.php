@@ -1,7 +1,5 @@
 <?php
 
-Route::get('/home', 'HomeController@index');
-
 Route::get('try', 'TryController@index')->name('app.try.index');
 Route::post('try', 'TryController@store')->name('app.try.store');
 
