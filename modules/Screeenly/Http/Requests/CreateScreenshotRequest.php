@@ -29,7 +29,7 @@ class CreateScreenshotRequest extends FormRequest
             'url'    => ['required', 'url'], // Is 'active_url' reliable enough?
             'width'  => ['sometimes', 'required', 'integer', 'max:2000'],
             'height' => ['sometimes', 'required', 'integer'],
-            'delay'  => ['sometimes', 'required', 'integer', 'max:10', 'min:0']
+            'delay'  => ['sometimes', 'required', 'integer', 'max:10', 'min:0'],
         ];
     }
 

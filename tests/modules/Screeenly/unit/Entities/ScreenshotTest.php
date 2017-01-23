@@ -35,7 +35,6 @@ class ScreenshotTest extends TestCase
         $screenshot = new Screenshot($path);
     }
 
-
     /** @test */
     public function it_deletes_screenshot_from_disk()
     {
@@ -46,5 +45,4 @@ class ScreenshotTest extends TestCase
 
         $this->assertTrue($screenshot->delete());
     }
-
 }
