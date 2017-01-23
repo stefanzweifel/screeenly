@@ -50,10 +50,4 @@ class EmailAuthLoginTest extends TestCase
             ->see('Documentation')
             ->see('Logout');
     }
-
-    /** @test */
-    public function it_shows_error_if_user_tries_to_login_with_email_and_password_if_he_has_signed_up_with_github()
-    {
-        // it shows error if user tries to login with email and password if he has signed up with github
-    }
 }
