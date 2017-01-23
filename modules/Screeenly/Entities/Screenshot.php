@@ -81,8 +81,8 @@ class Screenshot
     }
 
     /**
-     * Delete Screenshot File from Storage
-     * @return boolean
+     * Delete Screenshot File from Storage.
+     * @return bool
      */
     public function delete()
     {

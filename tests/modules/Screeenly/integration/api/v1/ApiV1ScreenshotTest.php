@@ -40,7 +40,7 @@ class ApiV1ScreenshotTest extends TestCase
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
                 'url' => 'http://foo.bar',
-                'width' => '5000'
+                'width' => '5000',
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
@@ -56,7 +56,7 @@ class ApiV1ScreenshotTest extends TestCase
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
                 'url' => 'http://foo.bar',
-                'delay' => '15'
+                'delay' => '15',
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
@@ -72,7 +72,7 @@ class ApiV1ScreenshotTest extends TestCase
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
                 'url' => 'http://foo.bar',
-                'delay' => ''
+                'delay' => '',
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
