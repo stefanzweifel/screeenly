@@ -33,6 +33,22 @@ class ApiV1ScreenshotTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_an_error_if_width_is_to_big()
+    {
+        $apiKey = factory(ApiKey::class)->create();
+
+        $this->json('POST', '/api/v1/fullsize', [
+                'key' => $apiKey->key,
+                'url' => 'http://foo.bar',
+                'width' => '5000'
+            ])
+            ->seeJsonEquals([
+                'title' => 'An error accoured',
+                'message' => 'Validation Error: The width may not be greater than 2000.',
+            ]);
+    }
+
+    /** @test */
     public function it_returns_an_errof_if_url_has_no_protocol_prefix()
     {
         $apiKey = factory(ApiKey::class)->create();
