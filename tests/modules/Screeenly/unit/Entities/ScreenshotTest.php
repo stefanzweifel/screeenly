@@ -34,4 +34,17 @@ class ScreenshotTest extends TestCase
         $path = storage_path('foo.jpg');
         $screenshot = new Screenshot($path);
     }
+
+
+    /** @test */
+    public function it_deletes_screenshot_from_disk()
+    {
+        Storage::copy('test-screenshot.jpg', 'test-screenshot-to-delete.jpg');
+
+        $path = storage_path('testing/test-screenshot-to-delete.jpg');
+        $screenshot = new Screenshot($path);
+
+        $this->assertTrue($screenshot->delete());
+    }
+
 }

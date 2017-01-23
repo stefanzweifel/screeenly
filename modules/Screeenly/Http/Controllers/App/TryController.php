@@ -36,6 +36,8 @@ class TryController extends Controller
                 ->url(new Url($request->url))
                 ->capture();
 
+            $screenshot->delete();
+
             return redirect('try')->with('base64', $screenshot->getBase64());
         } catch (Exception $e) {
             Bugsnag::notifyException($e);

@@ -79,4 +79,13 @@ class Screenshot
             throw new Exception("Screenshot can't be generated for given URL");
         }
     }
+
+    /**
+     * Delete Screenshot File from Storage
+     * @return boolean
+     */
+    public function delete()
+    {
+        return Storage::delete($this->filename);
+    }
 }
