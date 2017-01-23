@@ -24,8 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('screeenly:cleanup')->hourly();
     }
 
     /**
@@ -35,6 +34,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        require base_path('routes/console.php');
+        // require base_path('routes/console.php');
+        require base_path('modules/Screeenly/Http/routes/console.php');
     }
 }

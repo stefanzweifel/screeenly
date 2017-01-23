@@ -3,6 +3,7 @@
 namespace Screeenly\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Screeenly\Entities\Screenshot;
 
 class ApiLog extends Model
 {
@@ -28,5 +29,10 @@ class ApiLog extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function screenshot()
+    {
+        return new Screenshot($this->images);
     }
 }
