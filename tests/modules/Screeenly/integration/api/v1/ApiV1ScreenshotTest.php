@@ -112,7 +112,6 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
                 'base64_raw',
             ],
         ]);
-
     }
 
     /** @test */
