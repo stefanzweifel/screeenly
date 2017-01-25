@@ -47,8 +47,8 @@ class ScreeenlyTokenGuard implements Guard
 
         if (! empty($token)) {
             $user = User::whereHas('apiKeys', function ($q) use ($token) {
-                return $q->whereKey($token);
-            })->first();
+                return $q->where('key', $token);
+            })->get();
         }
 
         return $this->user = $user;
