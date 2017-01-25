@@ -4,7 +4,7 @@ use Screeenly\Models\User;
 use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserSettingsTest extends TestCase
+class UserSettingsTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

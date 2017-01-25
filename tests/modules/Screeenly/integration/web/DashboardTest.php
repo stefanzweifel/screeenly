@@ -4,7 +4,7 @@ use Screeenly\Models\User;
 use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class DashboardTest extends TestCase
+class DashboardTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

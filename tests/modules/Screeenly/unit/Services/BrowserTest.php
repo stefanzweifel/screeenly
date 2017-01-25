@@ -3,7 +3,7 @@
 use Screeenly\Services\Browser;
 use Screeenly\Entities\Screenshot;
 
-class BrowserTest extends TestCase
+class BrowserTest extends BrowserKitTestCase
 {
     /** @test */
     public function it_sets_height()

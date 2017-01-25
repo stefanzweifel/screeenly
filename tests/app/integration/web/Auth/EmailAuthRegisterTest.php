@@ -3,7 +3,7 @@
 use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class EmailAuthRegisterTest extends TestCase
+class EmailAuthRegisterTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

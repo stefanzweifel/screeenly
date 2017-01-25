@@ -1,6 +1,6 @@
 <?php
 
-class StaticPageTest extends TestCase
+class StaticPageTest extends BrowserKitTestCase
 {
     /** @test */
     public function it_loads_terms_of_service_page()

@@ -3,7 +3,7 @@
 use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ResetPasswordTest extends TestCase
+class ResetPasswordTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

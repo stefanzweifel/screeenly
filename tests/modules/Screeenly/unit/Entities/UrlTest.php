@@ -2,7 +2,7 @@
 
 use Screeenly\Entities\Url;
 
-class UrlTest extends TestCase
+class UrlTest extends BrowserKitTestCase
 {
     /** @test */
     public function it_returns_url()

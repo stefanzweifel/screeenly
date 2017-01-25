@@ -2,7 +2,7 @@
 
 use Screeenly\Entities\Screenshot;
 
-class ScreenshotTest extends TestCase
+class ScreenshotTest extends BrowserKitTestCase
 {
     /** @test */
     public function it_sets_properties_on_screenshot()

@@ -5,7 +5,7 @@ use Screeenly\Entities\Screenshot;
 use Screeenly\Services\CaptureService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CaptureServiceTest extends TestCase
+class CaptureServiceTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
     use InteractsWithBrowser;

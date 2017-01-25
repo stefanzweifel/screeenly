@@ -1,9 +1,9 @@
 <?php
 
-use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Models\User;
 
-class EmailAuthLoginTest extends TestCase
+class EmailAuthLoginTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

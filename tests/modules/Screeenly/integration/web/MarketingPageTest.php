@@ -1,7 +1,7 @@
 <?php
 
 
-class MarketingPageTest extends TestCase
+class MarketingPageTest extends BrowserKitTestCase
 {
     /** @test */
     public function it_loads_marketing_page_and_shows_product_name()

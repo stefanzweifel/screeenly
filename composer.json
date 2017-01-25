@@ -6,14 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravel/socialite": "^2.0",
+        "laravel/framework": "5.4.*",
+        "laravel/socialite": "^3.0",
         "jonnyw/php-phantomjs": "^4.5",
         "doctrine/dbal": "^2.5",
         "filp/whoops": "^2.1",
         "bugsnag/bugsnag-laravel": "^2.0"
     },
     "require-dev": {
+        "laravel/browser-kit-testing": "^1.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
@@ -32,6 +33,7 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php",
+            "tests/BrowserKitTestCase.php",
             "tests/modules/Screeenly/support/InteractsWithBrowser.php"
         ]
     },

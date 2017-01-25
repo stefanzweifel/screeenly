@@ -4,7 +4,7 @@ use Screeenly\Models\User;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GithubOAuthLoginTest extends TestCase
+class GithubOAuthLoginTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ApiV2GeneralTest extends TestCase
+class ApiV2GeneralTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
 

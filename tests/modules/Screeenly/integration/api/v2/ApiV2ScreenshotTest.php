@@ -5,7 +5,7 @@ use Screeenly\Services\InMemoryBrowser;
 use Screeenly\Contracts\CanCaptureScreenshot;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ApiV2ScreenshotTest extends TestCase
+class ApiV2ScreenshotTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
     use InteractsWithBrowser;

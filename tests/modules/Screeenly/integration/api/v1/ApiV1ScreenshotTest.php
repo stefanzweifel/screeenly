@@ -3,7 +3,7 @@
 use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ApiV1ScreenshotTest extends TestCase
+class ApiV1ScreenshotTest extends BrowserKitTestCase
 {
     use DatabaseTransactions;
     use InteractsWithBrowser;
@@ -101,24 +101,18 @@ class ApiV1ScreenshotTest extends TestCase
         $apiKey = factory(ApiKey::class)->create();
         $this->replaceBinding();
 
-        $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'http://foo.com',
-            ])
-            ->seeJsonStructure([
-                'data' => [
-                    'path',
-                    'base64',
-                    'base64_raw',
-                ],
-            ]);
-            // ->seeJsonContains([
-            //     'data' => [
-            //         'path' => 'http://localhost/storage/test-screenshot.jpg',
-            //         'base64' => 'data:image/jpg;base64,' . base64_encode($this->getTestScreenshotFile()),
-            //         'base64_raw' => base64_encode($this->getTestScreenshotFile())
-            //     ]
-            // ]);
+        $response = $this->json('POST', '/api/v1/fullsize', [
+            'key' => $apiKey->key,
+            'url' => 'http://foo.com',
+        ]);
+        $this->seeJsonStructure([
+            'data' => [
+                'path',
+                'base64',
+                'base64_raw',
+            ],
+        ]);
+
     }
 
     /** @test */
