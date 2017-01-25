@@ -16,8 +16,8 @@ sudo: false
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --prefer-source --no-interaction
-  - php artisan key:generate
-  - php artisan config:clear
+  - php artisan key:generate --force
+  - php artisan config:clear --force
 
 script: phpunit
 
