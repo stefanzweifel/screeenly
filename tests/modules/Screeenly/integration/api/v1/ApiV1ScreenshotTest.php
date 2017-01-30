@@ -106,11 +106,9 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
             'url' => 'http://foo.com',
         ]);
         $this->seeJsonStructure([
-            'data' => [
-                'path',
-                'base64',
-                'base64_raw',
-            ],
+            'path',
+            'base64',
+            'base64_raw',
         ]);
     }
 

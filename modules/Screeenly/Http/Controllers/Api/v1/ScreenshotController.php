@@ -36,11 +36,9 @@ class ScreenshotController extends Controller
         ]);
 
         return response()->json([
-            'data' => [
-                'path'       => $screenshot->getPublicUrl(),
-                'base64'     => 'data:image/jpg;base64,'.base64_encode($screenshot->getBase64()),
-                'base64_raw' => $screenshot->getBase64(),
-            ],
+            'path'       => $screenshot->getPublicUrl(),
+            'base64'     => 'data:image/jpg;base64,'.base64_encode($screenshot->getBase64()),
+            'base64_raw' => $screenshot->getBase64(),
         ]);
     }
 }
