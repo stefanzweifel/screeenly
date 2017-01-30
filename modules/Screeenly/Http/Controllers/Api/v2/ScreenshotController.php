@@ -19,6 +19,11 @@ class ScreenshotController extends Controller
         $this->captureService = $captureService;
     }
 
+    /**
+     * Create a new Screenshot
+     * @param  CreateScreenshotRequest $request
+     * @return Illuminate\Http\Response
+     */
     public function store(CreateScreenshotRequest $request)
     {
         $apiKey = $request->user()->first()->apiKeys()->where('key', $request->key)->first();
