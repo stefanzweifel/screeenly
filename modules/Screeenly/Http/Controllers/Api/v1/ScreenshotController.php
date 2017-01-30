@@ -2,11 +2,11 @@
 
 namespace Screeenly\Http\Controllers\Api\v1;
 
+use Exception;
 use Screeenly\Entities\Url;
 use App\Http\Controllers\Controller;
 use Screeenly\Services\CaptureService;
 use Screeenly\Http\Requests\CreateScreenshotRequest;
-use Exception;
 
 class ScreenshotController extends Controller
 {
@@ -21,7 +21,7 @@ class ScreenshotController extends Controller
     }
 
     /**
-     * Create a new Screenshot
+     * Create a new Screenshot.
      * @param  CreateScreenshotRequest $request
      * @return Illuminate\Http\Response
      */
@@ -30,7 +30,6 @@ class ScreenshotController extends Controller
         $apiKey = $request->user()->first()->apiKeys()->where('key', $request->key)->first();
 
         try {
-
             $screenshot = $this->captureService
                             ->height($request->get('height', null))
                             ->width($request->get('width', null))
@@ -48,20 +47,15 @@ class ScreenshotController extends Controller
                 'base64'     => 'data:image/jpg;base64,'.base64_encode($screenshot->getBase64()),
                 'base64_raw' => $screenshot->getBase64(),
             ]);
-
         } catch (Exception $e) {
-
             return response()->json([
                 'title' => 'An error accoured',
                 'message' => 'An internal error accoured.',
                 'error' => [
                     'status' => 500,
                     'detail' => $e->getMessage(),
-                ]
+                ],
             ], 500);
-
         }
-
-
     }
 }
