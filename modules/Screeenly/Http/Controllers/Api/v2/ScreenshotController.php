@@ -20,7 +20,7 @@ class ScreenshotController extends Controller
     }
 
     /**
-     * Create a new Screenshot
+     * Create a new Screenshot.
      * @param  CreateScreenshotRequest $request
      * @return Illuminate\Http\Response
      */
