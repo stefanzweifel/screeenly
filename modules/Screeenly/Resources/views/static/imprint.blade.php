@@ -5,17 +5,14 @@
 @section('content')
 
 <div class="panel panel-default">
-    <div class="panel-heading">Imprint</div>
+    <div class="panel-heading">Imprint / Owner</div>
     <div class="panel-body">
-
-        <p>You can reach us via Email at <a href="mailto:hello@screeenly.com">hello@screeenly.com</a> if you have any questions, concerns, feedback, news, love you want to share with us.</p>
-
-        <h3>Owner</h3>
         <p>
             Stefan Zweifel <br>
             Boulevard Lilienthal 54 <br>
             CH-8152 Glattpark
         </p>
+        <a href="mailto:hello@stefanzweifel.io">hello@stefanzweifel.io</a>
 
     </div>
 </div>

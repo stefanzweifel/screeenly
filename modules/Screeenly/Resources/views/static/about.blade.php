@@ -5,57 +5,70 @@
 @section('content')
 
 <div class="panel panel-default">
-    <div class="panel-heading">FAQ</div>
+    <div class="panel-heading">About</div>
     <div class="panel-body">
 
 
-        <article>
-            <h3>I have a problem. How can I reach you?</h3>
-            <p>You can always send us an Email (hello[at]screeenly.com) , a <a href="http://twitter.com/screeenly">Tweet</a> or leave your Feedback <a href="//docs.google.com/forms/d/1rSfWcUrPCf2Ony3blKh6L3dOQiIanVKU0HZ0Org4eFs/viewform?usp=send_form">here</a>.</p>
+            <dl>
+                <dt>I have a problem. How can I reach you?</dt>
+                <dd>
+                     <p>
+                        The best way is to send us an email at <a href="mailto:hello@stefanzweifel.io">hello@stefanzweifel.io</a> or Tweet us at <a href="http://twitter.com/screeenly">@screeenly</a>
+                    </p>
+                    <p>
+                        Due to the fact that this is just a sideproject we can't guarantee and answer in the next 5 minutes (But we try to answer questions as soon as possible)
+                    </p>
+                </dd>
+                <dt>Is this service free?</dt>
+                <dd>
+                    Yes. Screeenly <b>is free for everyone</b>!
+                </dd>
 
-            <p>Due to the fact that this is just a sideproject we can't guarantee and answer in the next 5 minutes. But we try to answer questions as fast a possible.</p>
-        </article>
+                <dt>What about the screenshots?</dt>
+                <dd>
+                    All screenshots created have a lifetime of up to 60 minutes. After 60 minutes the files are being deleted from the server.
+                </dd>
+                <dt>Where is screeenly.com hosted?</dt>
+                <dd>
+                    The application is currendly hosted on a <a href="https://digitalocean.com">Digital Ocean</a> Droplet in the FRA1 region.
+                </dd>
 
-        <article>
-            <h3>Is this service free?</h3>
-            <p>Yes. Screeenly is free for everyone, but Screeenlys user base is growing rapitly and creating screenshots needs power. If we would run into massive server issues, we might have to find a solution to monetize the service. But till then, the service is free.</p>
-        </article>
+                <dt>Why does this service exist?</dt>
+                <dd>
+                    I created screeenly because I wasn't happy with current solutions.
+                    So I wrote my own public API and with the help of Laravel and other Open Source Packages screeenly was born.
+                </dd>
 
-        <article>
-            <h3>What about the screenshots?</h3>
-            <p>All screenshots you create with our API have a lifetime of <strong>1 hour! (Screeenly does not host your images forever)</strong> After 1 hour the file will be deleted from our server.</p>
+                <dt>Is screeenly Open Source?</dt>
+                <dd>
+                    <p>Yes, screeenly is Open Source. You can find the Source Code on <a href="//github.com/stefanzweifel/screeenly">Github</a>.</p>
+                    <p>The app is written PHP and built upon the Laravel Framework.</p>
+                </dd>
 
-            <p>Concering privacy, Screeenly is hosted on <a href="https://digitalocean.com">Digital Ocean</a> within the region FRA1.</p>
-        </article>
+                <dt>Which data is stored (or not stored) when using the API?</dt>
+                <dd>
+                    <h5>Stored (temporarily)</h5>
+                    <ul>
+                        <li>API Key used to generate Screenshot</li>
+                    </ul>
 
-        <article>
-            <h3>Why does this service exist?</h3>
-            <p>I created Screeenly because I wasn't happy with other solutions on the internet. So I wrote my own public API and with the help of Laravel and other Open Source Packages Screeenly was born.</p>
-            <p>Screeenly is also <a href="//github.com/stefanzweifel/screeenly">Open Source</a>! So you could selfhost the whole application. You just need PHP and MySQL.</p>
-        </article>
+                    <h5>Never stored</h5>
 
-        <article>
-            <h3>How can I support you?</h3>
-            <p>You can do different things:
-            <ul>
-                <li>Make a pull-request on <a href="//github.com/stefanzweifel/screeenly">Github</a></li>
-                <li>Developer? Improve the codebase with pull requests.</li>
-                <li>Designer? Create a new logo or a better suitable design</li>
-                <li>Writer? Improve the copy on the site</li>
-            </ul>
-            </p>
-        </article>
+                    <ul>
+                        <li>URL for which Screenshot is generated</li>
+                    </ul>
+                </dd>
 
-        <article>
-            <h3>Good to know</h3>
-
-            <ul>
-                <li>Screeenly is built with <a href="http://laravel.com">Laravel</a></li>
-                <li><a href="//google.com/analytics">Google Analytics</a> is used to track User Engangement on the site and API usage.</li>
-            </ul>
-        </article>
-
-
+                <dt>How can I support the project?</dt>
+                <dd>
+                    <ul>
+                        <li>Open Issues on <a href="//github.com/stefanzweifel/screeenly">Github</a> if you found a Bug</li>
+                        <li>Open a Pull Request on <a href="//github.com/stefanzweifel/screeenly">Github</a></li>
+                        <li>If you're a designer, you could design a new logo</li>
+                        <li>If you're a writer, you could improve the copy text within the application or in our documentation</li>
+                    </ul>
+                </dd>
+            </dl>
     </div>
 </div>
 
