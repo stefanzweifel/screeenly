@@ -34,7 +34,7 @@ class ApiKeyTest extends BrowserKitTestCase
 
         $this->actingAs($user)
             ->visit('/dashboard')
-            ->see("You currently don't have an API keys.");
+            ->see("You currently don't have any API keys.");
     }
 
     /** @test */

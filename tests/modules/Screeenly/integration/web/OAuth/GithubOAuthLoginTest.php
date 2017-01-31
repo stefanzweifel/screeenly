@@ -50,7 +50,7 @@ class GithubOAuthLoginTest extends BrowserKitTestCase
         $this->mockSocialiteFacade();
 
         $this->visit('/oauth/github/handle')
-            ->seePageIs('/dashboard')
+            ->seePageIs('/dashboard?signup-github')
             ->see('Dashboard');
 
         $this->seeInDatabase('users', [
@@ -66,7 +66,7 @@ class GithubOAuthLoginTest extends BrowserKitTestCase
         $this->mockSocialiteFacade($user->email, $user->token, $user->provider_id);
 
         $this->visit('/oauth/github/handle')
-            ->seePageIs('/dashboard')
+            ->seePageIs('/dashboard?login-github')
             ->see('Dashboard');
     }
 

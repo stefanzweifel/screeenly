@@ -38,7 +38,7 @@ class EmailAuthRegisterTest extends BrowserKitTestCase
             ->type('Password1234', 'password')
             ->type('Password1234', 'password_confirmation')
             ->press('Register')
-            ->seePageIs('/dashboard')
+            ->seePageIs('/dashboard?signup-email')
             ->see('Logout');
 
         $this->seeInDatabase('users', [
