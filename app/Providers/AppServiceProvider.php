@@ -1,9 +1,8 @@
 <?php
 
-namespace Screeenly\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('available_url', 'Screeenly\Core\Validators\AvailableUrlValidator@validate');
+        //
     }
 
     /**
@@ -24,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->alias('bugsnag.multi', \Illuminate\Contracts\Logging\Log::class);
+        $this->app->alias('bugsnag.multi', \Psr\Log\LoggerInterface::class);
     }
 }

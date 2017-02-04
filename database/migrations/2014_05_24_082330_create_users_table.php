@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
 {
@@ -14,12 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 100);
-            $table->text('token');
-            $table->integer('plan')->default(0);
-            $table->string('provider', 50);
-            $table->integer('provider_id')->nullable();
-            $table->string('remember_token', 100)->nullable();
+            $table->string('email')->unique();
+
+            $table->text('token')->nullable()->default(null); // OAuth Token?
+            $table->string('provider', 50)->nullable(); // Which OAuth Provider was used
+            $table->integer('provider_id')->nullable(); // User ID from Provider
+
             $table->timestamps();
         });
     }

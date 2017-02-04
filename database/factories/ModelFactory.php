@@ -1,5 +1,9 @@
 <?php
 
+use Screeenly\Models\User;
+use Screeenly\Models\ApiKey;
+use Screeenly\Models\ApiLog;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,27 +15,38 @@
 |
 */
 
-$factory->define(Screeenly\User::class, function ($faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
+    static $password;
+
     return [
-        'email'       => $faker->email,
-        'token'       => str_random(10),
-        'plan'        => 0,
-        'provider'    => 'Github',
-        'provider_id' => $faker->randomNumber,
+
+        'email' => $faker->safeEmail,
+        'token' => str_random(15),
+        'provider' => 'Github',
+        'provider_id' => $faker->randomNumber(7),
+
+        // Auth Stuff
+        'name' => $faker->name,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
     ];
 });
 
-$factory->define(Screeenly\ApiKey::class, function ($faker) {
+$factory->define(ApiKey::class, function (Faker\Generator $faker) {
     return [
-        'name'    => $faker->sentence(3),
-        'key'     => str_random(40),
+        'name' => $faker->word,
+        'key' => str_random(10),
+        'user_id' => factory(User::class)->create()->id,
     ];
 });
+$factory->define(ApiLog::class, function (Faker\Generator $faker) {
+    $user = factory(User::class)->create();
 
-$factory->define(Screeenly\ApiLog::class, function ($faker) {
+    $imagePath = storage_path('app/public');
+
     return [
-        'user_id'    => factory(Screeenly\User::class)->create()->id,
-        'api_key_id' => factory(Screeenly\ApiKey::class)->create()->id,
-        'images'     => $faker->file(),
+        'user_id' => $user,
+        'api_key_id' => factory(ApiKey::class)->create(['user_id' => $user->id])->id,
+        'images' => $faker->image($imagePath, $width = 640, $height = 480),
     ];
 });

@@ -1,16 +1,11 @@
 <?php
 
-namespace Screeenly\Exceptions;
+namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Exception\HttpResponseException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
-use Log;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -20,12 +15,12 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
-        TooManyRequestsHttpException::class,
-        HostNotFoundException::class,
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Session\TokenMismatchException::class,
+        \Illuminate\Validation\ValidationException::class,
     ];
 
     /**
@@ -33,109 +28,86 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param \Exception $e
-     *
+     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Exception $exception)
     {
-        // Copied from Bugsnag\BugsnagLaravel\BugsnagExceptionHandler::class
-        foreach ($this->dontReport as $type) {
-            if ($e instanceof $type) {
-                return parent::report($e);
-            }
-        }
-
-        if (app()->bound('bugsnag')) {
-            app('bugsnag')->notifyException($e, null, 'error');
-        }
+        parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Exception               $e
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        if (method_exists($e, 'getHeaders')) {
-            $headers = $e->getHeaders();
-        }
-
-        $code = $this->getCode($e);
-
-        /*
-         * Handle API Errors
-         */
-        if ($request->is('api/v1/*') && $request->isMethod('post')) {
-            $headers['Access-Control-Allow-Origin'] = '*';
-
-            $returnMessage = [
-                'title'   => 'An error accoured',
-                'message' => $e->getMessage(),
-            ];
-
-            if ($code < 100) {
-                $code = 400;
+        if (
+            $request->is('api/*')
+            && (app()->environment('production')) || app()->environment('testing')
+            && ! is_a($exception, AuthenticationException::class)
+            && ! is_a($exception, ValidationException::class)
+        ) {
+            if ($request->is('api/v1/*')) {
+                return response()->json([
+                    'title' => 'An error accoured',
+                    'message' => 'An internal error accoured.',
+                ], 400);
             }
 
-            return response()->json($returnMessage, $code, $headers);
-        }
-
-        /*
-         * Global Exception Handler for API v2. If everything fails, respond
-         * with a simple message.
-         */
-        if ($request->is('api/v2/*') && ! $e instanceof HttpResponseException) {
-            $code = 500;
-            if ($e->getCode() >= 400) {
-                $code = $e->getCode();
-            }
-
-            $message = $e->getMessage();
-            if (empty($message)) {
-                $message = 'Oops. An internal server error accoured';
-            }
-
-            return response()->json(
-                [
-                    'error' => [
-                        [
-                            'title'  => 'Application Error',
-                            'detail' => $message,
-                            'code'   => $e->getCode(),
-                            'meta'   => [
-                                'type'    => (new \ReflectionClass($e))->getShortName(),
-                            ],
-                        ],
-                    ],
+            return response()->json([
+                'errors' => [
+                    $exception->getMessage(),
                 ],
-                $code,
-                []
-            );
+            ], 400);
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 
     /**
-     * Return HTTP Status Code from given Exception.
+     * Convert an authentication exception into an unauthenticated response.
      *
-     * @param mixed $e
-     *
-     * @return itn
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\Response
      */
-    private function getCode($e)
+    protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if (method_exists($e, 'getStatusCode')) {
-            return $e->getStatusCode();
-        } elseif (method_exists($e, 'getCode')) {
-            return $e->getCode();
+        if ($request->is('api/v1/*')) {
+            return response()->json([
+                'title' => 'An error accoured',
+                'message' => 'No API Key specified.',
+            ], 401);
+        } elseif ($request->is('api/v2/*')) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return 400;
+        return redirect()->guest('login');
+    }
+
+    /**
+     * Create a Symfony response for the given exception.
+     *
+     * @param  \Exception  $e
+     * @return mixed
+     */
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        if (config('app.debug')) {
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+
+            return response()->make(
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
+        }
+
+        return parent::convertExceptionToResponse($e);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Screeenly\Console;
+namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -13,20 +13,28 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\RemoveImagesCommand::class,
+        //
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
-     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
-        $url = config('services.envoyer.pings.scheduler_ping_url');
+        $schedule->command('screeenly:cleanup')->hourly();
+    }
 
-        $schedule->command('screeenly:clear:images')->hourly()->thenPing($url);
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        // require base_path('routes/console.php');
+        require base_path('modules/Screeenly/Http/routes/console.php');
     }
 }
