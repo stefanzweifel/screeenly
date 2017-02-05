@@ -2,11 +2,12 @@
 
 namespace Screeenly\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Exception;
 use Screeenly\Entities\Url;
-use App\Http\Controllers\Controller;
-use Screeenly\Services\CaptureService;
 use Screeenly\Http\Requests\CreateScreenshotRequest;
+use Screeenly\Services\CaptureService;
 
 class ScreenshotController extends Controller
 {
@@ -48,6 +49,9 @@ class ScreenshotController extends Controller
                 'base64_raw' => $screenshot->getBase64(),
             ]);
         } catch (Exception $e) {
+
+            Bugsnag::notifyException($e);
+
             return response()->json([
                 'title' => 'An error accoured',
                 'message' => 'An internal error accoured.',
