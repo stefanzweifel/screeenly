@@ -2,12 +2,12 @@
 
 namespace Screeenly\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use Exception;
 use Screeenly\Entities\Url;
-use Screeenly\Http\Requests\CreateScreenshotRequest;
+use App\Http\Controllers\Controller;
 use Screeenly\Services\CaptureService;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use Screeenly\Http\Requests\CreateScreenshotRequest;
 
 class ScreenshotController extends Controller
 {
@@ -49,7 +49,6 @@ class ScreenshotController extends Controller
                 'base64_raw' => $screenshot->getBase64(),
             ]);
         } catch (Exception $e) {
-
             Bugsnag::notifyException($e);
 
             return response()->json([
