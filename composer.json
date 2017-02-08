@@ -48,12 +48,14 @@
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "PhantomInstaller\\Installer::installPhantomJS",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan storage:link"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "PhantomInstaller\\Installer::installPhantomJS",
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan storage:link"
         ]
     },
     "config": {
