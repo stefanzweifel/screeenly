@@ -28,12 +28,10 @@ Screeenly is a never ending sideproject. I use it to apply learned PHP patterns 
 *I highly recommend [Homestead](http://github.com/laravel/homestead) for your local PHP / Laravel environment!*
 Your environment must fullfill the following requirements:
 
-- PHP: 5.6 or higher
+- PHP: 7.0 or higher
 - Composer must be installed
 - MySQL must be installed
-- CURL must be installed
 - node.js must be installed
-- Gulp.js must be installed
 
 Clone the project:
 
@@ -53,27 +51,7 @@ Install PHP dependencies:
 $ composer install --dev
 ```
 
-Install node dependencies:
 
-```
-$ sudo npm install
-```
-
-### CSS and Javascript asset management
-
-Screeenly uses [Laravel Elixir](http://github.com/laravel/elixir) to manage CSS and Javascript assets. We use [basscss](http://basscss.com) as our CSS-Toolkit. Checkout our [gulpfile.js](https://github.com/stefanzweifel/screeenly/blob/master/gulpfile.js) for more information
-
-Local development (auto-compile everything when files chagne):
-
-```
-$ gulp watch
-```
-
-Get ready for production:
-
-```
-$ gulp --production
-```
 
 # Security
 
