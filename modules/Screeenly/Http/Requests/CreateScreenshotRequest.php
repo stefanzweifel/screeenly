@@ -27,8 +27,8 @@ class CreateScreenshotRequest extends FormRequest
         return [
             'key'    => ['required', 'exists:api_keys,key'],
             'url'    => ['required', 'url'], // Is 'active_url' reliable enough?
-            'width'  => ['sometimes', 'required', 'integer', 'max:2000'],
-            'height' => ['sometimes', 'required', 'integer'],
+            'width'  => ['sometimes', 'required', 'integer', 'max:2000', 'min:10'],
+            'height' => ['sometimes', 'required', 'integer', 'min:10'],
             'delay'  => ['sometimes', 'required', 'integer', 'max:10', 'min:0'],
         ];
     }

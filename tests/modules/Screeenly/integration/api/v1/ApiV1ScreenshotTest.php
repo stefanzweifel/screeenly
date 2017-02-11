@@ -49,6 +49,38 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     }
 
     /** @test */
+    public function it_returns_an_errof_if_width_is_lower_than_minimum()
+    {
+        $apiKey = factory(ApiKey::class)->create();
+
+        $this->json('POST', '/api/v1/fullsize', [
+                'key' => $apiKey->key,
+                'url' => 'http://foo.bar',
+                'width' => '5',
+            ])
+            ->seeJsonEquals([
+                'title' => 'An error accoured',
+                'message' => 'Validation Error: The width must be at least 10.',
+            ]);
+    }
+
+    /** @test */
+    public function it_returns_an_errof_if_height_is_lower_than_minimum()
+    {
+        $apiKey = factory(ApiKey::class)->create();
+
+        $this->json('POST', '/api/v1/fullsize', [
+                'key' => $apiKey->key,
+                'url' => 'http://foo.bar',
+                'height' => '5',
+            ])
+            ->seeJsonEquals([
+                'title' => 'An error accoured',
+                'message' => 'Validation Error: The height must be at least 10.',
+            ]);
+    }
+
+    /** @test */
     public function it_returns_an_error_if_delay_is_over_10_seconds()
     {
         $apiKey = factory(ApiKey::class)->create();
