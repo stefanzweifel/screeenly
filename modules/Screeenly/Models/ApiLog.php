@@ -32,7 +32,7 @@ class ApiLog extends Model
     }
 
     /**
-     * Returns a Screenshot Instance for the generated image
+     * Returns a Screenshot Instance for the generated image.
      * @return Screeenly\Entities\Screenshot
      */
     public function screenshot()
