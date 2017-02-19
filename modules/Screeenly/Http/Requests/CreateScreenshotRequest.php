@@ -50,4 +50,18 @@ class CreateScreenshotRequest extends FormRequest
 
         return $validator->getMessageBag()->toArray();
     }
+
+    /**
+     * Override the `expectsJson` Value for all API Requests
+     * Through that we always return a JSON Error Response
+     *
+     * TODO: The application should reject all Requests which aren't json requests
+     * (Accept: application/json)
+     *
+     * @return boolean
+     */
+    public function expectsJson()
+    {
+        return true;
+    }
 }
