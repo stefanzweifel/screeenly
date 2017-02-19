@@ -31,6 +31,10 @@ class ApiLog extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Returns a Screenshot Instance for the generated image
+     * @return Screeenly\Entities\Screenshot
+     */
     public function screenshot()
     {
         return new Screenshot($this->images);

@@ -54,6 +54,9 @@ class ScreeenlyTokenGuard implements Guard
         return $this->user = $user;
     }
 
+    /**
+     * @todo Implement this method
+     */
     public function validate(array $credentials = [])
     {
         dd($credentials);
