@@ -1,16 +1,28 @@
 # screeenly - Screenshot as a service
 
 <div align="center">
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/stefanzweifel/screeenly/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master)](https://travis-ci.org/stefanzweifel/screeenly)
-[![Code Climate](https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg)](https://codeclimate.com/github/stefanzweifel/screeenly)
-[![StyleCI](https://styleci.io/repos/21797405/shield)](https://styleci.io/repos/21797405)
-[![Release](https://img.shields.io/github/release/stefanzweifel/screeenly.svg?style=flat-square)](https://github.com/stefanzweifel/screeenly/releases)
+    <a href="https://github.com/stefanzweifel/screeenly/blob/master/LICENSE" title="License">
+        <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License">
+    </a>
+    <a href="https://travis-ci.org/stefanzweifel/screeenly" title="Build Status">
+        <img src="https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master" alt="Build Status">
+    </a>
+
+    <a href="https://codeclimate.com/github/stefanzweifel/screeenly" title="Code Climate">
+        <img src="https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg" alt="Code Climate">
+    </a>
+
+    <a href="https://styleci.io/repos/21797405" title="StyleCI">
+        <img src="https://styleci.io/repos/21797405/shield" alt="StyleCI">
+    </a>
+    <a href="https://github.com/stefanzweifel/screeenly/releases" title="Releases">
+        <img src="https://img.shields.io/github/release/stefanzweifel/screeenly.svg?style=flat-square" alt="Releases">
+    </a>
 </div>
 
 ![Screeenly Logo](https://raw.githubusercontent.com/stefanzweifel/screeenly/master/readme-image.png)
 
-screeenly is an open source web application which lets users create website screenshots through a simple API. 
+screeenly is an open source web application which lets users create website screenshots through a simple API.
 It's built with [Laravel](http://laravel.com).
 
 The latest version is hosted on [screeenly.com](http://screeenly.com). You can follow us on [Twitter](https://twitter.com/screeenly)
