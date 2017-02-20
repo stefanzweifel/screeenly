@@ -1,56 +1,35 @@
-# Screeenly - Screenshot as a service
+# screeenly - Screenshot as a service
 
+<div align="center">
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/stefanzweifel/screeenly/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master)](https://travis-ci.org/stefanzweifel/screeenly)
 [![Code Climate](https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg)](https://codeclimate.com/github/stefanzweifel/screeenly)
-[![Test Coverage](https://codeclimate.com/github/stefanzweifel/screeenly/badges/coverage.svg)](https://codeclimate.com/github/stefanzweifel/screeenly/coverage)
 [![StyleCI](https://styleci.io/repos/21797405/shield)](https://styleci.io/repos/21797405)
+[![Release](https://img.shields.io/github/release/stefanzweifel/screeenly.svg?style=flat-square)](https://github.com/stefanzweifel/screeenly/releases)
+</div>
 
 ![Screeenly Logo](https://raw.githubusercontent.com/stefanzweifel/screeenly/master/readme-image.png)
 
-Screeenly is an Open Source Webapp which lets you create screenshots from websites through a simple intuitive API. Screeenly was built with [Laravel](http://laravel.com), a PHP framework. This is a sideproject and is maintained by [stefanzweifel](http://stefanzweifel.io).
+screeenly is an open source web application which lets users create website screenshots through a simple API. 
+It's built with [Laravel](http://laravel.com).
 
-You can checkout the live site at [http://screeenly.com](http://screeenly.com), read the [documentation](https://github.com/stefanzweifel/screeenly/wiki) or follow us on [Twitter](http://twitter.com/screeenly).
+The latest version is hosted on [screeenly.com](http://screeenly.com). You can follow us on [Twitter](https://twitter.com/screeenly)
 
-## Features and "Things to know"
+The project is currently maintained by [@_stefanzweifel](https://twitter.com/_stefanzweifel).
 
-- Create screenshots through JSON API with a valid API key
-- Screenshots are stored 1 hour
-- Screenshot is returned as a path or as base64 encoded string
+> Note: The project is currently not in active development. If major bugs come up we will try to fix them.
 
-If you're a PHP Developer and want to use our API in your project, checkout [screeenly-client](https://github.com/stefanzweifel/ScreeenlyClient) for more information.
 
-## Note from the author
 
-Screeenly is a never ending sideproject. I use it to apply learned PHP patterns and to try out new things. If you're reading through the code, you might think that some parts are "overengineered" or "too complicated". If you think something is bad designed or should be improved, please **[let me know](http://github.com/stefanzweifel/screeenly/issues/new)**.
+## Documentation and more
 
-## Run Screeenly on your local machine
+The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentation.
 
-*I highly recommend [Homestead](http://github.com/laravel/homestead) for your local PHP / Laravel environment!*
-Your environment must fullfill the following requirements:
+- [API specification](https://github.com/stefanzweifel/screeenly/wiki/Use-the-API)
+- [Self Hosting Guide](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install)
+- [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
 
-- PHP: 7.0 or higher
-- Composer must be installed
-- MySQL must be installed
-- node.js must be installed
-
-Clone the project:
-
-```
-$ git clone https://github.com/stefanzweifel/screeenly.git && cd screeenly
-```
-
-Copy the environment file:
-
-```
-$ cp .env.example .env
-```
-
-Install PHP dependencies:
-
-```
-$ composer install --dev
-```
-
+If you're a PHP Developer and want to consume the API in your project checkout [screeenly-client](https://github.com/stefanzweifel/ScreeenlyClient).
 
 
 # Security
