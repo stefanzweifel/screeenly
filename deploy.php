@@ -1,11 +1,11 @@
 <?php
+
 namespace Deployer;
 
 require 'recipe/laravel.php';
 
-
-require __DIR__ . '/vendor/autoload.php';
-$dotenv = new \Dotenv\Dotenv(__DIR__ . "/");
+require __DIR__.'/vendor/autoload.php';
+$dotenv = new \Dotenv\Dotenv(__DIR__.'/');
 $dotenv->load();
 
 // Configuration
@@ -16,7 +16,6 @@ add('shared_files', []);
 add('shared_dirs', []);
 add('writable_dirs', []);
 
-
 // Hosts
 
 host('screeenly.com')
@@ -26,7 +25,6 @@ host('screeenly.com')
 host('stage.screeenly.com')
     ->stage('stage')
     ->set('deploy_path', getenv('DEPLOY_PATH_STAGE'));
-
 
 // Tasks
 
