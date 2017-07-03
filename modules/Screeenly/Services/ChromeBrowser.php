@@ -2,11 +2,10 @@
 
 namespace Screeenly\Services;
 
-use Screeenly\Contracts\CanCaptureScreenshot;
-use Screeenly\Entities\Screenshot;
 use Screeenly\Entities\Url;
-use Screeenly\Services\Browser;
+use Screeenly\Entities\Screenshot;
 use Spatie\Browsershot\Browsershot;
+use Screeenly\Contracts\CanCaptureScreenshot;
 
 class ChromeBrowser extends Browser implements CanCaptureScreenshot
 {
@@ -21,5 +20,4 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
 
         return new Screenshot($storageUrl);
     }
-
 }
