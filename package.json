@@ -15,6 +15,7 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
+    "puppeteer": "^0.13.0",
     "turbolinks": "^5.0.0"
   }
 }
