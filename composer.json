@@ -12,7 +12,7 @@
         "doctrine/dbal": "^2.5",
         "filp/whoops": "^2.1",
         "bugsnag/bugsnag-laravel": "^2.0",
-        "spatie/browsershot": "^2.0"
+        "spatie/browsershot": "^3.0"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "^1.0",
