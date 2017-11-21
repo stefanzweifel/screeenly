@@ -11,12 +11,18 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
 {
     public function capture(Url $url, $storageUrl)
     {
-        Browsershot::url($url->getUrl())
+        $browser = Browsershot::url($url->getUrl())
+            ->ignoreHttpsErrors()
             ->windowSize($this->width, is_null($this->height) ? 768 : $this->height)
             ->timeout(10)
-            // ->delay($this->delay)
-            ->userAgent('screeenly-bot 2.0')
-            ->save($storageUrl);
+            ->setDelay($this->delay * 100)
+            ->userAgent('screeenly-bot 2.0');
+
+        if (is_null($this->height)) {
+            $browser->fullPage();
+        }
+
+        $browser->save($storageUrl);
 
         return new Screenshot($storageUrl);
     }
