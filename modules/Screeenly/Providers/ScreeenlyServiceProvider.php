@@ -4,7 +4,7 @@ namespace Screeenly\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Screeenly\Guards\ScreeenlyTokenGuard;
-use Screeenly\Services\PhantomsJsBrowser;
+use Screeenly\Services\ChromeBrowser;
 use Screeenly\Contracts\CanCaptureScreenshot;
 
 class ScreeenlyServiceProvider extends ServiceProvider
@@ -18,7 +18,7 @@ class ScreeenlyServiceProvider extends ServiceProvider
     {
         $this->app['view']->addNamespace('screeenly', base_path().'/modules/Screeenly/Resources/views');
 
-        $this->app->bind(CanCaptureScreenshot::class, PhantomsJsBrowser::class);
+        $this->app->bind(CanCaptureScreenshot::class, ChromeBrowser::class);
 
         auth()->extend('screeenly-token', function ($app, $name, array $config) {
             return new ScreeenlyTokenGuard(
