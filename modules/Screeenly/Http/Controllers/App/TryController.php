@@ -31,7 +31,7 @@ class TryController extends Controller
     {
         try {
             $screenshot = $captureService
-                ->width(1024)
+                ->width(1440)
                 ->delay(1)
                 ->url(new Url($request->url))
                 ->capture();

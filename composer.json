@@ -8,10 +8,10 @@
         "php": ">=7.0.0",
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
-        "jonnyw/php-phantomjs": "^4.5",
         "doctrine/dbal": "^2.5",
         "filp/whoops": "^2.1",
-        "bugsnag/bugsnag-laravel": "^2.0"
+        "bugsnag/bugsnag-laravel": "^2.0",
+        "spatie/browsershot": "^3.0"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "^1.0",
@@ -47,13 +47,11 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "PhantomInstaller\\Installer::installPhantomJS",
             "php artisan optimize",
             "php artisan storage:link"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "PhantomInstaller\\Installer::installPhantomJS",
             "php artisan optimize",
             "php artisan storage:link"
         ]
