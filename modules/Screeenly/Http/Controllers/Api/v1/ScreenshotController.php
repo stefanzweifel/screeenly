@@ -33,7 +33,7 @@ class ScreenshotController extends Controller
         try {
             $screenshot = $this->captureService
                             ->height($request->get('height', null))
-                            ->width($request->get('width', null))
+                            ->width($request->get('width', 1024))
                             ->delay($request->get('delay', 1))
                             ->url(new Url($request->url))
                             ->capture();
