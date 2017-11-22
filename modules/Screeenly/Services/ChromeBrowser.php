@@ -14,7 +14,7 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
         $browser = Browsershot::url($url->getUrl())
             ->ignoreHttpsErrors()
             ->windowSize($this->width, is_null($this->height) ? 768 : $this->height)
-            ->timeout(10)
+            ->timeout(30)
             ->setDelay($this->delay * 100)
             ->userAgent('screeenly-bot 2.0');
 
