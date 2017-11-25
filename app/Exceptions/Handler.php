@@ -45,8 +45,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (
-            $request->is('api/*')
+        if ($request->is('api/*')
             && (app()->environment('production')) || app()->environment('testing')
             && ! is_a($exception, AuthenticationException::class)
             && ! is_a($exception, ValidationException::class)
