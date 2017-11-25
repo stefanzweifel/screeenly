@@ -129,13 +129,12 @@ class Handler extends ExceptionHandler
         if ($request->is('api/v1/*')) {
             $json = [
                 'title'   => 'An error accoured',
-                'message' => 'Validation Error: ' . collect($exception->errors())->flatten()->first()
+                'message' => 'Validation Error: '.collect($exception->errors())->flatten()->first(),
             ];
         } else {
             $json = $exception->errors();
         }
-        
+
         return response()->json($json, $exception->status);
     }
-
 }
