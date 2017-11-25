@@ -32,8 +32,8 @@ class Screenshot
         $this->doesScreenshotExist($absolutePath);
         $this->path = $absolutePath;
         $this->filename = basename($absolutePath);
-        $this->publicUrl = asset(Storage::url($this->filename));
-        $this->base64 = base64_encode(Storage::get($this->filename));
+        $this->publicUrl = asset(Storage::disk('public')->url($this->filename));
+        $this->base64 = base64_encode(Storage::disk('public')->get($this->filename));
     }
 
     /**
@@ -86,6 +86,6 @@ class Screenshot
      */
     public function delete()
     {
-        return Storage::delete($this->filename);
+        return Storage::disk('public')->delete($this->filename);
     }
 }

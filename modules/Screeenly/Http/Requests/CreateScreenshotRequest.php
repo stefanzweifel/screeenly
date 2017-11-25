@@ -32,18 +32,4 @@ class CreateScreenshotRequest extends FormRequest
             'delay'  => ['sometimes', 'required', 'integer', 'max:10', 'min:0'],
         ];
     }
-
-    /**
-     * Override the `expectsJson` Value for all API Requests
-     * Through that we always return a JSON Error Response.
-     *
-     * TODO: The application should reject all Requests which aren't json requests
-     * (Accept: application/json)
-     *
-     * @return bool
-     */
-    public function expectsJson()
-    {
-        return true;
-    }
 }
