@@ -8,7 +8,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.0",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "doctrine/dbal": "^2.5",
@@ -24,7 +24,7 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "codeclimate/php-test-reporter": "^0.4.2",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "~2.0"
     },
     "autoload": {
         "classmap": [
