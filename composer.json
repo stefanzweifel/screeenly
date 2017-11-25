@@ -1,26 +1,30 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "doctrine/dbal": "^2.5",
-        "filp/whoops": "^2.1",
         "bugsnag/bugsnag-laravel": "^2.0",
-        "spatie/browsershot": "^3.0"
+        "spatie/browsershot": "^3.0",
+        "fideloper/proxy": "~3.3"
     },
     "require-dev": {
-        "laravel/browser-kit-testing": "^1.0",
+        "laravel/browser-kit-testing": "^2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "codeclimate/php-test-reporter": "^0.4.2"
+        "codeclimate/php-test-reporter": "^0.4.2",
+        "filp/whoops": "^2.1"
     },
     "autoload": {
         "classmap": [
@@ -54,9 +58,18 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize",
             "php artisan storage:link"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
     "config": {
         "preferred-install": "dist"
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
     }
 }
