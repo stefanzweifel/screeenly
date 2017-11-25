@@ -1,4 +1,5 @@
 language: php
+dist: trusty
 
 php:
   - 7.1
@@ -12,13 +13,10 @@ matrix:
 sudo: false
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - cp .env.example .env
-  - travis_retry composer self-update
-  - travis_retry composer install --prefer-source --no-interaction
+  - travis_retry composer install --prefer-dist --no-interaction
   - php artisan key:generate --force
   - php artisan config:clear
 
 script: phpunit
-
-after_script:
-  - ./bin/test-reporter
