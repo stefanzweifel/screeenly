@@ -31,7 +31,7 @@
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_DATABASE" value=":memory:"/>
-        <env name="STORAGE_DISK" value="testing"/>
+        <env name="FILESYSTEM_DRIVER" value="testing"/>
     </php>
 
     <logging>
