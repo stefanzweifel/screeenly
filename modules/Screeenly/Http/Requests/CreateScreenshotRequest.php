@@ -34,24 +34,6 @@ class CreateScreenshotRequest extends FormRequest
     }
 
     /**
-     * Format the errors from the given Validator instance.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return array
-     */
-    protected function formatErrors(Validator $validator)
-    {
-        if ($this->is('api/v1/*')) {
-            return [
-                'title'   => 'An error accoured',
-                'message' => 'Validation Error: '.$validator->getMessageBag()->first(),
-            ];
-        }
-
-        return $validator->getMessageBag()->toArray();
-    }
-
-    /**
      * Override the `expectsJson` Value for all API Requests
      * Through that we always return a JSON Error Response.
      *

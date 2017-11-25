@@ -114,4 +114,28 @@ class Handler extends ExceptionHandler
 
         return parent::convertExceptionToResponse($e);
     }
+
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Validation\ValidationException  $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        // Override JSON Error Response for API v1
+        // It's a terrible format but I don't want to break the API ¯\_(ツ)_/¯
+        if ($request->is('api/v1/*')) {
+            $json = [
+                'title'   => 'An error accoured',
+                'message' => 'Validation Error: ' . collect($exception->errors())->flatten()->first()
+            ];
+        } else {
+            $json = $exception->errors();
+        }
+        
+        return response()->json($json, $exception->status);
+    }
+
 }
