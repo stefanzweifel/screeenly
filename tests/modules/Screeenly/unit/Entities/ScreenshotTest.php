@@ -13,7 +13,8 @@ class ScreenshotTest extends BrowserKitTestCase
 
         $this->assertEquals(
             base64_encode($file),
-            $screenshot->getBase64());
+            $screenshot->getBase64()
+        );
 
         $this->assertEquals(
             'test-screenshot.jpg',

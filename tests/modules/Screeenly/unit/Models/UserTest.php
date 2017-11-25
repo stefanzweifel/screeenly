@@ -1,6 +1,6 @@
 <?php
 
-use  Screeenly\Models\User;
+use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserTest extends BrowserKitTestCase

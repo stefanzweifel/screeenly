@@ -10,17 +10,22 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        \Illuminate\Auth\AuthenticationException::class,
-        \Illuminate\Auth\Access\AuthorizationException::class,
-        \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
-        \Illuminate\Session\TokenMismatchException::class,
-        \Illuminate\Validation\ValidationException::class,
+        //
+    ];
+
+    /**
+     * A list of the inputs that are never flashed for validation exceptions.
+     *
+     * @var array
+     */
+    protected $dontFlash = [
+        'password',
+        'password_confirmation',
     ];
 
     /**
@@ -45,8 +50,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (
-            $request->is('api/*')
+        if ($request->is('api/*')
             && (app()->environment('production')) || app()->environment('testing')
             && ! is_a($exception, AuthenticationException::class)
             && ! is_a($exception, ValidationException::class)
@@ -109,5 +113,28 @@ class Handler extends ExceptionHandler
         }
 
         return parent::convertExceptionToResponse($e);
+    }
+
+    /**
+     * Convert a validation exception into a JSON response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Validation\ValidationException  $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        // Override JSON Error Response for API v1
+        // It's a terrible format but I don't want to break the API ¯\_(ツ)_/¯
+        if ($request->is('api/v1/*')) {
+            $json = [
+                'title'   => 'An error accoured',
+                'message' => 'Validation Error: '.collect($exception->errors())->flatten()->first(),
+            ];
+        } else {
+            $json = $exception->errors();
+        }
+
+        return response()->json($json, $exception->status);
     }
 }
