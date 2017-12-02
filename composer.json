@@ -15,7 +15,8 @@
         "bugsnag/bugsnag-laravel": "^2.0",
         "spatie/browsershot": "^3.0",
         "fideloper/proxy": "~3.3",
-        "wnx/laravel-stats": "^1.4"
+        "wnx/laravel-stats": "^1.4",
+        "pragmarx/version": "^0.2.0"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "^2.0",
