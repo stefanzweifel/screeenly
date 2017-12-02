@@ -6,6 +6,5 @@
         <li class="hidden-xs">|</li>
         <li>Project by <a href="https://stefanzweifel.io" target="_blank" rel="noopener noreferrer">Stefan Zweifel</a></li>
         <li>Source on <a href="https://github.com/stefanzweifel/screeenly" target="_blank" rel="noopener noreferrer">Github</a></li>
-        <li>@version('full')</li>
     </ul>
 </div>
