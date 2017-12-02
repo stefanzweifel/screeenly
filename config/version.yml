@@ -1,4 +1,4 @@
-version_source: config # "config", "git-local" or "git-remote"
+version_source: git-local # "config", "git-local" or "git-remote"
 current:
   major: 1
   minor: 0
@@ -9,9 +9,9 @@ cache:
   key: pragmarx-version
   time: 525600 #minutes = 1 year
 build:
-  mode: number # "number", "git-local" or "git-remote"
+  mode: git-local # "number", "git-local" or "git-remote"
   number: 701031
-  length: 6
+  length: 8
   increment_by: 1
 git:
   git-local: "git rev-parse --verify HEAD"
@@ -19,7 +19,7 @@ git:
   branch: "refs/heads/master"
   repository: "{{ env('VERSION_GIT_REMOTE_REPOSITORY') }}"
   version:
-    git-local: "git describe"
+    git-local: "git describe --tags"
     git-remote: "git ls-remote {$repository} | grep tags/ | grep -v {} | cut -d \/ -f 3 | sort --version-sort | tail -1"
     matcher: "/[V|v]*[ersion]*\\s*\\.*(\\d+)\\.(\\d+)\\.(\\d+)\\.*(\\w*)/"
 format:
@@ -28,6 +28,6 @@ format:
   patch: "{$patch}"
   build: "{$build}"
   version: "{$major}.{$minor}.{$patch} (build {$build})"
-  full: "version {{'format.version'}}"
+  full: "Version {{'format.version'}}"
   compact: "v{$major}.{$minor}.{$patch}-{$build}"
   ## add as many formats as you need !!!!
