@@ -7,11 +7,6 @@
 <a href="https://travis-ci.org/stefanzweifel/screeenly" title="Build Status">
     <img src="https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master" alt="Build Status">
 </a>
-
-<a href="https://codeclimate.com/github/stefanzweifel/screeenly" title="Code Climate">
-    <img src="https://codeclimate.com/github/stefanzweifel/screeenly/badges/gpa.svg" alt="Code Climate">
-</a>
-
 <a href="https://styleci.io/repos/21797405" title="StyleCI">
     <img src="https://styleci.io/repos/21797405/shield" alt="StyleCI">
 </a>
