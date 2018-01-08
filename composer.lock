@@ -5405,16 +5405,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v3.4.2",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "dc847845c66fa68ad4522ed27e62b9b9dd12ab3b"
+                "reference": "09bd97b844b3151fab82f2fdd62db9c464b3910a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/dc847845c66fa68ad4522ed27e62b9b9dd12ab3b",
-                "reference": "dc847845c66fa68ad4522ed27e62b9b9dd12ab3b",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/09bd97b844b3151fab82f2fdd62db9c464b3910a",
+                "reference": "09bd97b844b3151fab82f2fdd62db9c464b3910a",
                 "shasum": ""
             },
             "require": {
@@ -5457,7 +5457,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-12-14T19:40:10+00:00"
+            "time": "2018-01-03T07:37:34+00:00"
         },
         {
             "name": "symfony/filesystem",
