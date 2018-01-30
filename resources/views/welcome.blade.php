@@ -28,7 +28,9 @@
             </div>
             <div class="col-sm-4">
                 <h3>Free</h3>
-                <p>Screeenly is free to use. If you like the project you can donate some money, so we can keep the servers up running.</p>
+                <p>
+                    There are no hidden fees or monthly plans. If you like the project you can <a href="https://buymeacoff.ee/3oQ64YW" target="_blank" ref="noopener">buy us a coffee</a> and help keep the servers running.
+                </p>
             </div>
         </div>
 
