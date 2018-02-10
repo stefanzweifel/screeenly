@@ -9,12 +9,12 @@
     "type": "project",
     "require": {
         "php": ">=7.1.0",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "5.6.*",
         "laravel/socialite": "^3.0",
         "doctrine/dbal": "^2.5",
         "bugsnag/bugsnag-laravel": "^2.0",
         "spatie/browsershot": "^3.0",
-        "fideloper/proxy": "~3.3",
+        "fideloper/proxy": "~4.0",
         "wnx/laravel-stats": "^1.4"
     },
     "require-dev": {
@@ -25,7 +25,8 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.4.*",
         "codeclimate/php-test-reporter": "^0.4.2",
-        "filp/whoops": "~2.0"
+        "filp/whoops": "~2.0",
+        "nunomaduro/collision": "~1.1"
     },
     "autoload": {
         "classmap": [
