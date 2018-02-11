@@ -29,7 +29,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database/seeds",
+            "database/factories"
         ],
         "psr-4": {
             "App\\": "app/",
@@ -41,7 +42,10 @@
             "tests/TestCase.php",
             "tests/BrowserKitTestCase.php",
             "tests/modules/Screeenly/support/InteractsWithBrowser.php"
-        ]
+        ],
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-root-package-install": [
@@ -52,12 +56,10 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize",
             "php artisan storage:link"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize",
             "php artisan storage:link"
         ],
         "post-autoload-dump": [
