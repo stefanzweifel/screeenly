@@ -33,7 +33,7 @@ class Screenshot
         $this->path = $absolutePath;
         $this->filename = basename($absolutePath);
         $this->publicUrl = asset(Storage::url($this->filename));
-        $this->base64 = base64_encode(Storage::get($this->filename));
+        $this->base64 = base64_encode(Storage::disk('public')->get($this->filename));
     }
 
     /**
