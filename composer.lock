@@ -3365,29 +3365,29 @@
         },
         {
             "name": "wnx/laravel-stats",
-            "version": "v1.4.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stefanzweifel/laravel-stats.git",
-                "reference": "4f6483a319b8f028ea4606d5e4bb097c83996230"
+                "reference": "4ddddcf728a2cb547946d68effc9522e7f70f458"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/4f6483a319b8f028ea4606d5e4bb097c83996230",
-                "reference": "4f6483a319b8f028ea4606d5e4bb097c83996230",
+                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/4ddddcf728a2cb547946d68effc9522e7f70f458",
+                "reference": "4ddddcf728a2cb547946d68effc9522e7f70f458",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "5.5.*",
-                "illuminate/support": "5.5.*",
+                "illuminate/console": "~5.5.0|~5.6.0",
+                "illuminate/support": "~5.5.0|~5.6.0",
                 "php": ">=7.0.0",
-                "phploc/phploc": "^4.0",
-                "symfony/finder": "^3.3"
+                "phploc/phploc": "~4.0",
+                "symfony/finder": "~3.3|~4.0"
             },
             "require-dev": {
-                "laravel/browser-kit-testing": "^2.0",
-                "laravel/dusk": "^2.0",
-                "orchestra/testbench": "^3.5",
+                "laravel/browser-kit-testing": "~2.0",
+                "laravel/dusk": "~2.0|~3.0",
+                "orchestra/testbench": "~3.5",
                 "phpunit/phpunit": "6.*"
             },
             "type": "library",
@@ -3423,7 +3423,7 @@
                 "stats",
                 "wnx"
             ],
-            "time": "2017-12-01T19:27:41+00:00"
+            "time": "2018-02-07T19:52:53+00:00"
         }
     ],
     "packages-dev": [
