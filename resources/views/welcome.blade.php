@@ -19,34 +19,25 @@
         <div class="row">
             <div class="col-sm-4">
                 <h3>Simple</h3>
-                <p>Our API is quite simple. You just send your API key and the URL of the website. Then we do some magic and send you a fresh screenshot back. No refresh tokens. No OAuth hassle.</p>
+                <p>
+                    Just send your API key and a URL to our API and we create a fresh screenshot for you.
+                </p>
+                <p>
+                    Screenshots come as a file path or as a base64 encoded string. <b>Keep in mind that screenshots are deleted from our server after 1 hour.</b>
+                </p>
             </div>
             <div class="col-sm-4">
                 <h3>Open Source</h3>
                 <p>The whole platform is Open Source. You can checkout the source code on <a href="https://github.com/stefanzweifel/screeenly">Github</a>.</p>
-                <p>We currently write some docs, so you can easily boot up your own version of Screeenly.</p>
             </div>
             <div class="col-sm-4">
                 <h3>Free</h3>
                 <p>
-                    There are no hidden fees or monthly plans. If you like the project you can <a href="https://buymeacoff.ee/3oQ64YW" target="_blank" ref="noopener">buy us a coffee</a> and help keep the servers running.
+                    There are no paid plans or other fees. screeenly currently runs on a 15$ server. If you want to support us you can <a href="https://buymeacoff.ee/3oQ64YW" target="_blank" ref="noopener">buy us a coffee</a> or use <a href="https://m.do.co/c/b8270043ffd3">this link</a> to create your next DigitalOcean Account.
                 </p>
             </div>
         </div>
 
-    </section>
-    <section class="container c-feature-set">
-
-        <div class="row">
-            <div class="col-sm-6">
-                <h3>BASE64 Encoded / Filepath</h3>
-                <p>You receive your screenshot either as a file path or as base64 encoded string. <b>Keep in mind, your generated screenshot will be deleted from our servers 1 hour after it's creation.</b></p>
-            </div>
-            <div class="col-sm-6">
-                <h3>Multiple API Keys</h3>
-                <p>You like your stuff organized? Create up to 25 personal API keys.</p>
-            </div>
-        </div>
     </section>
 
     <div class="t-sponsored">
