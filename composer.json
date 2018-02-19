@@ -25,7 +25,7 @@
         "symfony/css-selector": "~4.0",
         "symfony/dom-crawler": "~4.0",
         "filp/whoops": "~2.0",
-        "nunomaduro/collision": "~1.1"
+        "nunomaduro/collision": "~2.0"
     },
     "autoload": {
         "classmap": [
