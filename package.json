@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "puppeteer": "^1.0.0",
-    "turbolinks": "^5.0.0"
+    "turbolinks": "^5.1.1"
   }
 }
