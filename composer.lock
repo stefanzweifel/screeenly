@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a4152586db1c7c37196c7cf84a5093f",
+    "content-hash": "1eb75a47250dc4c85c038411af707ec3",
     "packages": [
         {
             "name": "bugsnag/bugsnag",
@@ -3362,16 +3362,16 @@
         },
         {
             "name": "wnx/laravel-stats",
-            "version": "v1.6.1",
+            "version": "v1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stefanzweifel/laravel-stats.git",
-                "reference": "4ddddcf728a2cb547946d68effc9522e7f70f458"
+                "reference": "99846dafd50b6cf3af9c15eb81a9ee89ab47df01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/4ddddcf728a2cb547946d68effc9522e7f70f458",
-                "reference": "4ddddcf728a2cb547946d68effc9522e7f70f458",
+                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/99846dafd50b6cf3af9c15eb81a9ee89ab47df01",
+                "reference": "99846dafd50b6cf3af9c15eb81a9ee89ab47df01",
                 "shasum": ""
             },
             "require": {
@@ -3420,7 +3420,7 @@
                 "stats",
                 "wnx"
             ],
-            "time": "2018-02-07T19:52:53+00:00"
+            "time": "2018-03-30T10:08:05+00:00"
         }
     ],
     "packages-dev": [
