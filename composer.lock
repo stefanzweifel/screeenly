@@ -3726,16 +3726,16 @@
         },
         {
             "name": "laravel/browser-kit-testing",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/browser-kit-testing.git",
-                "reference": "3ea22c4da537ca8af83746d583360e8e00081a01"
+                "reference": "d70283fd29ee9ec09d07a9c94cc5518b569cfeaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/3ea22c4da537ca8af83746d583360e8e00081a01",
-                "reference": "3ea22c4da537ca8af83746d583360e8e00081a01",
+                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/d70283fd29ee9ec09d07a9c94cc5518b569cfeaf",
+                "reference": "d70283fd29ee9ec09d07a9c94cc5518b569cfeaf",
                 "shasum": ""
             },
             "require": {
@@ -3770,7 +3770,7 @@
                 "laravel",
                 "testing"
             ],
-            "time": "2018-02-08T16:44:18+00:00"
+            "time": "2018-03-13T18:07:36+00:00"
         },
         {
             "name": "mockery/mockery",
