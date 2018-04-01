@@ -7240,9 +7240,9 @@ vue-loader@^13.7.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
-vue-resource@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.4.0.tgz#97b562a24b1e407be80077250e6ab73f7391cc32"
+vue-resource@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/vue-resource/-/vue-resource-1.5.0.tgz#ba0c6ef7af2eeace03cf24a91f529471be974c72"
   dependencies:
     got "^8.0.3"
 
