@@ -37,7 +37,7 @@
         </div>
 
         <div class="panel panel-danger">
-            <div class="panel-heading">Dangerzone</div>
+            <div class="panel-heading">Danger Zone</div>
 
             <div class="panel-body">
 
