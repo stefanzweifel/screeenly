@@ -33,7 +33,7 @@
             <div class="col-sm-4">
                 <h3>Free</h3>
                 <p>
-                    There are no paid plans or other fees. screeenly currently runs on a 15$ server. If you want to support us you can <a href="https://buymeacoff.ee/3oQ64YW" target="_blank" ref="noopener">buy us a coffee</a> or use <a href="https://m.do.co/c/b8270043ffd3">this link</a> to create your next DigitalOcean Account.
+                    There are no paid plans or other fees. screeenly currently runs on a 15$ server. If you want to support me you can <a href="https://buymeacoff.ee/3oQ64YW" target="_blank" ref="noopener">buy me a coffee</a> or use <a href="https://m.do.co/c/b8270043ffd3">this link</a> to create your next DigitalOcean Account.
                 </p>
             </div>
         </div>
