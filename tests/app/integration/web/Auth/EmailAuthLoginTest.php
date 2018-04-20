@@ -46,7 +46,7 @@ class EmailAuthLoginTest extends BrowserKitTestCase
             ->type('foo@bar.com', 'email')
             ->type('Password1234', 'password')
             ->press('Login')
-            ->seePageIs('/dashboard?login-email')
+            ->seePageIs('/dashboard')
             ->see('Documentation')
             ->see('Logout');
     }
