@@ -48,7 +48,7 @@ class GithubController extends Controller
 
             auth()->login($user);
 
-            return redirect()->route('app.dashboard', ['login-github']);
+            return redirect()->route('app.dashboard');
         }
 
         if (is_null($user->email)) {
@@ -65,6 +65,6 @@ class GithubController extends Controller
 
         auth()->login($user);
 
-        return redirect()->route('app.dashboard', ['signup-github']);
+        return redirect()->route('app.dashboard');
     }
 }
