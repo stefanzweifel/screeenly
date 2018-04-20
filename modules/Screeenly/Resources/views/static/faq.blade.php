@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="panel panel-default">
-    <div class="panel-heading">About</div>
+    <div class="panel-heading">FAQ</div>
     <div class="panel-body">
 
         <h3>I have a problem. How can I reach you?</h3>

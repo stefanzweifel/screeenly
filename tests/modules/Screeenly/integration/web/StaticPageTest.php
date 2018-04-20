@@ -9,9 +9,9 @@ class StaticPageTest extends BrowserKitTestCase
     }
 
     /** @test */
-    public function it_loads_aboug_page()
+    public function it_loads_faq_page()
     {
-        $this->visit('/about');
+        $this->visit('/faq');
     }
 
     /** @test */

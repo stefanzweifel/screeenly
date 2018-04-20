@@ -22,8 +22,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('settings/account', 'SettingsController@delete')->name('app.settings.delete');
 });
 
-// Static Pages
-Route::get('imprint', 'StaticPageController@imprint');
-Route::get('terms', 'StaticPageController@terms');
-Route::get('about', 'StaticPageController@about');
-Route::get('about', 'StaticPageController@about');
+Route::view('imprint', 'screeenly::static.imprint');
+Route::view('terms', 'screeenly::static.terms');
+Route::view('faq', 'screeenly::static.faq');
