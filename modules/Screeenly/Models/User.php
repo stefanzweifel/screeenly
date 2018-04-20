@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'token', 'provider_id', 'provider',
+        'name', 'email', 'password', 'provider_id', 'provider',
     ];
 
     /**
@@ -63,8 +63,6 @@ class User extends Authenticatable
             'provider_id' => $providerId,
             'provider' => 'Github',
         ]);
-
-        // Raise NewGithubUserCreated
 
         return $user;
     }
