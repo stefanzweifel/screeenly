@@ -14,7 +14,7 @@
     "laravel-mix": "^2.1.11"
   },
   "dependencies": {
-    "puppeteer": "^1.4.0",
+    "puppeteer": "^1.5.0",
     "turbolinks": "^5.1.1"
   }
 }
