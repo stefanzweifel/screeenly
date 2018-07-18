@@ -14,8 +14,7 @@
         "doctrine/dbal": "^2.5",
         "bugsnag/bugsnag-laravel": "^2.0",
         "spatie/browsershot": "^3.0",
-        "fideloper/proxy": "~4.0",
-        "wnx/laravel-stats": "~1.7.0"
+        "fideloper/proxy": "~4.0"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "~4.0",
@@ -25,7 +24,8 @@
         "symfony/css-selector": "~4.0",
         "symfony/dom-crawler": "~4.0",
         "filp/whoops": "~2.0",
-        "nunomaduro/collision": "~2.0"
+        "nunomaduro/collision": "~2.0",
+        "wnx/laravel-stats": "^1.7"
     },
     "autoload": {
         "classmap": [
