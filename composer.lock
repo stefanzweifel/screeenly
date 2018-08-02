@@ -1106,16 +1106,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.4.1",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "3603dbcc9a17d307533473246a6c58c31cf17919"
+                "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/3603dbcc9a17d307533473246a6c58c31cf17919",
-                "reference": "3603dbcc9a17d307533473246a6c58c31cf17919",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e82d274f786e3d4b866a59b173f42e716f0783eb",
+                "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb",
                 "shasum": ""
             },
             "require": {
@@ -1135,7 +1135,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "2.4-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1172,7 +1172,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2017-09-21T16:29:17+00:00"
+            "time": "2018-05-29T14:19:03+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2168,16 +2168,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.22.1",
+            "version": "3.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "1f4ff79f3674919d676e34d672e4e5ae1d4ba010"
+                "reference": "18502c8a4b8841fc203d5993144067e7abb4885d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/1f4ff79f3674919d676e34d672e4e5ae1d4ba010",
-                "reference": "1f4ff79f3674919d676e34d672e4e5ae1d4ba010",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/18502c8a4b8841fc203d5993144067e7abb4885d",
+                "reference": "18502c8a4b8841fc203d5993144067e7abb4885d",
                 "shasum": ""
             },
             "require": {
@@ -2220,20 +2220,20 @@
                 "screenshot",
                 "webpage"
             ],
-            "time": "2018-04-20T10:24:16+00:00"
+            "time": "2018-07-12T21:55:12+00:00"
         },
         {
             "name": "spatie/image",
-            "version": "1.4.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "9ac824e02ae9ebcb6a74160d6dd9ab73a42f0e4f"
+                "reference": "d4cb6afff1b98fd6e17396d91e0e584c3d91bb23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image/zipball/9ac824e02ae9ebcb6a74160d6dd9ab73a42f0e4f",
-                "reference": "9ac824e02ae9ebcb6a74160d6dd9ab73a42f0e4f",
+                "url": "https://api.github.com/repos/spatie/image/zipball/d4cb6afff1b98fd6e17396d91e0e584c3d91bb23",
+                "reference": "d4cb6afff1b98fd6e17396d91e0e584c3d91bb23",
                 "shasum": ""
             },
             "require": {
@@ -2244,6 +2244,7 @@
                 "symfony/process": "^3.0|^4.0"
             },
             "require-dev": {
+                "larapack/dd": "^1.1",
                 "phpunit/phpunit": "^6.0|^7.0",
                 "symfony/var-dumper": "^3.2"
             },
@@ -2271,20 +2272,20 @@
                 "image",
                 "spatie"
             ],
-            "time": "2018-02-08T09:09:05+00:00"
+            "time": "2018-05-05T21:44:52+00:00"
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.0.11",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "12eacb85a70158f64d60f39d32a2a86d84ff6b89"
+                "reference": "1530d6cf72070068eecab150ffb73466c3806bdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/12eacb85a70158f64d60f39d32a2a86d84ff6b89",
-                "reference": "12eacb85a70158f64d60f39d32a2a86d84ff6b89",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/1530d6cf72070068eecab150ffb73466c3806bdd",
+                "reference": "1530d6cf72070068eecab150ffb73466c3806bdd",
                 "shasum": ""
             },
             "require": {
@@ -2320,27 +2321,27 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2018-02-08T14:45:11+00:00"
+            "time": "2018-06-05T07:36:17+00:00"
         },
         {
             "name": "spatie/temporary-directory",
-            "version": "1.1.3",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/temporary-directory.git",
-                "reference": "e3da5b7a00c6610bc0b18480815fe09adf73383b"
+                "reference": "5e1799fa2297363ebfb4df296fea90afbd4ef9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/e3da5b7a00c6610bc0b18480815fe09adf73383b",
-                "reference": "e3da5b7a00c6610bc0b18480815fe09adf73383b",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/5e1799fa2297363ebfb4df296fea90afbd4ef9b7",
+                "reference": "5e1799fa2297363ebfb4df296fea90afbd4ef9b7",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "5.*"
+                "phpunit/phpunit": "^6.3"
             },
             "type": "library",
             "autoload": {
@@ -2366,7 +2367,7 @@
                 "spatie",
                 "temporary-directory"
             ],
-            "time": "2017-09-11T08:51:13+00:00"
+            "time": "2018-04-12T09:34:43+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3028,16 +3029,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.1.2",
+            "version": "v4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "1d1677391ecf00d1c5b9482d6050c0c27aa3ac3a"
+                "reference": "f01fc7a4493572f7f506c49dcb50ad01fb3a2f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/1d1677391ecf00d1c5b9482d6050c0c27aa3ac3a",
-                "reference": "1d1677391ecf00d1c5b9482d6050c0c27aa3ac3a",
+                "url": "https://api.github.com/repos/symfony/process/zipball/f01fc7a4493572f7f506c49dcb50ad01fb3a2f56",
+                "reference": "f01fc7a4493572f7f506c49dcb50ad01fb3a2f56",
                 "shasum": ""
             },
             "require": {
@@ -3073,7 +3074,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2018-05-31T10:17:53+00:00"
+            "time": "2018-07-26T11:24:31+00:00"
         },
         {
             "name": "symfony/routing",
