@@ -34,9 +34,6 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 - [Self Hosting Guide](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install)
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
 
-If you're a PHP Developer and want to consume the API in your project checkout [screeenly-client](https://github.com/stefanzweifel/ScreeenlyClient).
-
-
 # Security
 
 If you discover a security vulnerability within this package, please e-mail us at hello@stefanzweifel.io. All security vulnerabilities will be promptly addressed.
