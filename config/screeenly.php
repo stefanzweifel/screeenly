@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      * Disable Chrome Sandbox
      * See https://github.com/stefanzweifel/screeenly/issues/174#issuecomment-423438612
      */
