@@ -18,6 +18,11 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
             ->setDelay($this->delay * 100)
             ->userAgent('screeenly-bot 2.0');
 
+
+        if (config('screeenly.disable_sandbox')) {
+            $browser->noSandbox();
+        }
+
         if (is_null($this->height)) {
             $browser->fullPage();
         }
