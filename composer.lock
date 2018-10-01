@@ -3740,19 +3740,20 @@
         },
         {
             "name": "laravel/browser-kit-testing",
-            "version": "v4.0.1",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/browser-kit-testing.git",
-                "reference": "d70283fd29ee9ec09d07a9c94cc5518b569cfeaf"
+                "reference": "efe038f40fb8ad06655ddfcb64e8b603e9e1f999"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/d70283fd29ee9ec09d07a9c94cc5518b569cfeaf",
-                "reference": "d70283fd29ee9ec09d07a9c94cc5518b569cfeaf",
+                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/efe038f40fb8ad06655ddfcb64e8b603e9e1f999",
+                "reference": "efe038f40fb8ad06655ddfcb64e8b603e9e1f999",
                 "shasum": ""
             },
             "require": {
+                "illuminate/support": "^5.6",
                 "php": ">=7.1.3",
                 "phpunit/phpunit": "~7.0",
                 "symfony/css-selector": "~4.0",
@@ -3784,7 +3785,7 @@
                 "laravel",
                 "testing"
             ],
-            "time": "2018-03-13T18:07:36+00:00"
+            "time": "2018-09-26T13:42:46+00:00"
         },
         {
             "name": "mockery/mockery",
