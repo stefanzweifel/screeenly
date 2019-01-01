@@ -2369,7 +2369,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -2438,16 +2438,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.0.0",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62"
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/4a33574d5771f4b04334cd4f7d43de96a92efb62",
-                "reference": "4a33574d5771f4b04334cd4f7d43de96a92efb62",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/1aa7ab2429c3d594dd70689604b5cf7421254cdf",
+                "reference": "1aa7ab2429c3d594dd70689604b5cf7421254cdf",
                 "shasum": ""
             },
             "require": {
@@ -2502,7 +2502,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2018-10-31T08:00:32+00:00"
+            "time": "2018-12-05T08:06:11+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -3828,33 +3828,34 @@
         },
         {
             "name": "jakub-onderka/php-console-highlighter",
-            "version": "v0.3.2",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
+                "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/9f7a229a69d52506914b4bc61bfdb199d90c5547",
+                "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547",
                 "shasum": ""
             },
             "require": {
-                "jakub-onderka/php-console-color": "~0.1",
-                "php": ">=5.3.0"
+                "ext-tokenizer": "*",
+                "jakub-onderka/php-console-color": "~0.2",
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "jakub-onderka/php-code-style": "~1.0",
-                "jakub-onderka/php-parallel-lint": "~0.5",
+                "jakub-onderka/php-parallel-lint": "~1.0",
                 "jakub-onderka/php-var-dump-check": "~0.1",
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "JakubOnderka\\PhpConsoleHighlighter": "src/"
+                "psr-4": {
+                    "JakubOnderka\\PhpConsoleHighlighter\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3868,7 +3869,8 @@
                     "homepage": "http://www.acci.cz/"
                 }
             ],
-            "time": "2015-04-20T18:58:01+00:00"
+            "description": "Highlight PHP code in terminal",
+            "time": "2018-09-29T18:48:56+00:00"
         },
         {
             "name": "laravel/browser-kit-testing",
@@ -4035,26 +4037,27 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "1149ad9f36f61b121ae61f5f6de820fc77b51e6b"
+                "reference": "b5feb0c0d92978ec7169232ce5d70d6da6b29f63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/1149ad9f36f61b121ae61f5f6de820fc77b51e6b",
-                "reference": "1149ad9f36f61b121ae61f5f6de820fc77b51e6b",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/b5feb0c0d92978ec7169232ce5d70d6da6b29f63",
+                "reference": "b5feb0c0d92978ec7169232ce5d70d6da6b29f63",
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "^2.1.4",
-                "jakub-onderka/php-console-highlighter": "0.3.*",
+                "jakub-onderka/php-console-highlighter": "0.3.*|0.4.*",
                 "php": "^7.1",
                 "symfony/console": "~2.8|~3.3|~4.0"
             },
             "require-dev": {
                 "laravel/framework": "5.7.*",
+                "nunomaduro/larastan": "^0.3.0",
                 "phpstan/phpstan": "^0.10",
                 "phpunit/phpunit": "~7.3"
             },
@@ -4094,7 +4097,7 @@
                 "php",
                 "symfony"
             ],
-            "time": "2018-10-03T20:01:54+00:00"
+            "time": "2018-11-21T21:40:54+00:00"
         },
         {
             "name": "phar-io/manifest",
