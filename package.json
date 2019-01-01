@@ -11,7 +11,7 @@
     "bootstrap-sass": "^3.4.0",
     "cross-env": "^5.2.0",
     "jquery": "^3.3.1",
-    "laravel-mix": "^3.0.0"
+    "laravel-mix": "^4.0.12"
   },
   "dependencies": {
     "puppeteer": "^1.11.0",
