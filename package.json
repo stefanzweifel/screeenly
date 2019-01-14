@@ -11,9 +11,14 @@
     "bootstrap-sass": "^3.4.0",
     "cross-env": "^5.2.0",
     "jquery": "^3.3.1",
-    "laravel-mix": "^3.0.0"
+    "laravel-mix": "^4.0.12",
+    "resolve-url-loader": "2.3.1",
+    "sass": "^1.16.0",
+    "sass-loader": "7.*",
+    "vue-template-compiler": "^2.5.22"
   },
   "dependencies": {
+    "laravel-mix-purgecss": "^4.0.0",
     "puppeteer": "^1.11.0",
     "turbolinks": "^5.2.0"
   }
