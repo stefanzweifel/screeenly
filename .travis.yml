@@ -19,4 +19,4 @@ before_script:
   - php artisan key:generate --force
   - php artisan config:clear
 
-script: phpunit
+script: ./vendor/bin/phpunit
