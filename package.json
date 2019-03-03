@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "laravel-mix-purgecss": "^4.1.0",
-    "puppeteer": "^1.11.0",
+    "puppeteer": "^1.12.2",
     "turbolinks": "^5.2.0"
   }
 }
