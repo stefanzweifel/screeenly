@@ -23,4 +23,7 @@ mix.js('resources/js/app.js', 'public/js')
             /st1/
         ],
     })
+   .options({
+        processCssUrls: false
+    })
    .version();
