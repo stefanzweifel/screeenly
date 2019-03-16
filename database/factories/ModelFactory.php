@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Str;
 use Screeenly\Models\User;
 use Screeenly\Models\ApiKey;
 use Screeenly\Models\ApiLog;
@@ -21,21 +22,21 @@ $factory->define(User::class, function (Faker\Generator $faker) {
     return [
 
         'email' => $faker->safeEmail,
-        'token' => str_random(15),
+        'token' => Str::random(15),
         'provider' => 'Github',
         'provider_id' => $faker->randomNumber(7),
 
         // Auth Stuff
         'name' => $faker->name,
         'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'remember_token' => Str::random(10),
     ];
 });
 
 $factory->define(ApiKey::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
-        'key' => str_random(10),
+        'key' => Str::random(10),
         'user_id' => factory(User::class)->create()->id,
     ];
 });
