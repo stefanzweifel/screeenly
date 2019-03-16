@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Str;
 use Screeenly\Models\User;
+use Illuminate\Support\Str;
 use Screeenly\Models\ApiKey;
 use Screeenly\Models\ApiLog;
 
