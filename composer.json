@@ -26,7 +26,7 @@
         "symfony/css-selector": "~4.0",
         "symfony/dom-crawler": "~4.0",
         "filp/whoops": "^2.0",
-        "nunomaduro/collision": "^2.0",
+        "nunomaduro/collision": "^3.0",
         "beyondcode/laravel-dump-server": "^1.0"
     },
     "autoload": {
