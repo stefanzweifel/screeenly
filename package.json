@@ -13,7 +13,7 @@
     "jquery": "^3.3.1",
     "laravel-mix": "^4.0.14",
     "resolve-url-loader": "3.0.1",
-    "sass": "^1.17.2",
+    "sass": "^1.17.3",
     "sass-loader": "7.*",
     "vue-template-compiler": "^2.6.8"
   },
