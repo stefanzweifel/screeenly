@@ -19,7 +19,7 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
-        "laravel/browser-kit-testing": "~4.0",
+        "laravel/browser-kit-testing": "~5.1",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^7.5",
