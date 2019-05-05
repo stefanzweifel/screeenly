@@ -4758,10 +4758,10 @@ resolve-from@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
 
-resolve-url-loader@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/resolve-url-loader/-/resolve-url-loader-3.0.1.tgz#91f798812bce467336404806864b288090aab58c"
-  integrity sha512-oBFayx/K2hUKdQ47USSHsmjP8+oQlNG5Vx+OYpTba+M1LNBCcMXc5/mR16RLDCtbM68rk0Rc9cDJfHT+BipAXQ==
+resolve-url-loader@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/resolve-url-loader/-/resolve-url-loader-3.1.0.tgz#54d8181d33cd1b66a59544d05cadf8e4aa7d37cc"
+  integrity sha512-2QcrA+2QgVqsMJ1Hn5NnJXIGCX1clQ1F6QJTqOeiaDw9ACo1G2k+8/shq3mtqne03HOFyskAClqfxKyFBriXZg==
   dependencies:
     adjust-sourcemap-loader "2.0.0"
     camelcase "5.0.0"
