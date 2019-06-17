@@ -39,7 +39,7 @@ class TryController extends Controller
 
             return redirect('try')->with('base64', $screenshot->getBase64());
         } catch (Exception $e) {
-            //
+            \Sentry\captureException($e);
 
             return redirect('try')->with('fatal-error', true);
         }
