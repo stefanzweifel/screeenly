@@ -40,15 +40,4 @@
 
     </section>
 
-    <div class="t-sponsored">
-
-        <p>Sponsored by</p>
-        <a href="http://bugsnag.com" target="_blank" rel="noopener noreferrer">
-            @php
-                include (public_path('images/bgsnag-logo.svg'))
-            @endphp
-        </a>
-
-    </div>
-
 @stop

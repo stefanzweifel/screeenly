@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Screeenly\Services\CaptureService;
 use Screeenly\Http\Requests\TryRequest;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
 class TryController extends Controller
 {
@@ -40,7 +39,7 @@ class TryController extends Controller
 
             return redirect('try')->with('base64', $screenshot->getBase64());
         } catch (Exception $e) {
-            Bugsnag::notifyException($e);
+            \Sentry\captureException($e);
 
             return redirect('try')->with('fatal-error', true);
         }

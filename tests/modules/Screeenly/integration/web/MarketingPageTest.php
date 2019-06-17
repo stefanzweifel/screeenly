@@ -17,11 +17,4 @@ class MarketingPageTest extends BrowserKitTestCase
         $this->visit('/')
             ->see('Github');
     }
-
-    /** @test */
-    public function it_shows_bugsnag_as_sponsor()
-    {
-        $this->visit('/')
-            ->see('Bugsnag');
-    }
 }
