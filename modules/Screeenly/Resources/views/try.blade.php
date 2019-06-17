@@ -25,10 +25,6 @@
                         <label>URL of Website</label>
                         <input type="text" class="form-control" name="url" required placeholder="https://en.wikipedia.org/wiki/Special:Random" value="https://en.wikipedia.org/wiki/Special:Random">
                     </div>
-{{--                     <div class="form-group">
-                        <label for="">Proof your Human</label>
-                        <input type="text" name="proof" required class="form-control" value="">
-                    </div> --}}
                     <button type="submit" class="btn btn-primary">Create Screenshot</button>
 
                 </form>
