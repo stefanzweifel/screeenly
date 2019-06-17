@@ -23,7 +23,7 @@
 
                     <div class="form-group">
                         <label>URL of Website</label>
-                        <input type="text" class="form-control" name="url" required placeholder="https://medium.com" value="https://medium.com">
+                        <input type="text" class="form-control" name="url" required placeholder="https://en.wikipedia.org/wiki/Special:Random" value="https://en.wikipedia.org/wiki/Special:Random">
                     </div>
 {{--                     <div class="form-group">
                         <label for="">Proof your Human</label>
