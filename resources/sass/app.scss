@@ -71,14 +71,3 @@ body {
 .btn-black {
     @include button-variant(#fff, $black, $black);
 }
-
-
-/**
- * Bugsnag Logo Overrides
- */
-#Layer_1 {
-    max-width: 200px;
-}
-.st1 {
-    fill: #fff !important;
-}

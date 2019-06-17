@@ -12,7 +12,6 @@
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.0",
         "doctrine/dbal": "^2.5",
-        "bugsnag/bugsnag-laravel": "^2.0",
         "spatie/browsershot": "^3.0",
         "fideloper/proxy": "^4.0",
         "wnx/laravel-stats": "~1.9.2",
