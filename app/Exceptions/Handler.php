@@ -15,7 +15,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        \Symfony\Component\Process\Exception\ProcessTimedOutException::class
     ];
 
     /**
