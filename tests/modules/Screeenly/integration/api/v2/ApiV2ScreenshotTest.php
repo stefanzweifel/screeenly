@@ -42,7 +42,7 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
                 'url' => 'Foo',
             ])
             ->seeJson([
-                'url' => ['The url format is invalid.'],
+                'url' => ['The url format is invalid.', 'The url is not a valid URL.'],
             ]);
     }
 

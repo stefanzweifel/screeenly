@@ -39,7 +39,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.bar',
+                'url' => 'https://google.com',
                 'width' => '5000',
             ])
             ->seeJsonEquals([
@@ -55,7 +55,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.bar',
+                'url' => 'https://google.com',
                 'width' => '5',
             ])
             ->seeJsonEquals([
@@ -71,7 +71,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.bar',
+                'url' => 'https://google.com',
                 'height' => '5',
             ])
             ->seeJsonEquals([
@@ -87,7 +87,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.bar',
+                'url' => 'https://google.com',
                 'delay' => '15',
             ])
             ->seeJsonEquals([
@@ -103,7 +103,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
-                'url' => 'http://foo.bar',
+                'url' => 'https://google.com',
                 'delay' => '',
             ])
             ->seeJsonEquals([
