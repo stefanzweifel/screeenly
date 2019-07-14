@@ -16,7 +16,8 @@
         "fideloper/proxy": "^4.0",
         "wnx/laravel-stats": "~1.9.2",
         "laravel/tinker": "^1.0",
-        "sentry/sentry-laravel": "^1.0"
+        "sentry/sentry-laravel": "^1.0",
+        "spatie/laravel-cors": "^1.5"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "~5.1",
