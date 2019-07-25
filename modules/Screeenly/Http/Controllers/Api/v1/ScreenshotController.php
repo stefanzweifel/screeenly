@@ -48,7 +48,7 @@ class ScreenshotController extends Controller
                 'base64_raw' => $screenshot->getBase64(),
             ]);
         } catch (Exception $e) {
-            \Sentry\captureException($e);
+            // \Sentry\captureException($e);
 
             return response()->json([
                 'title' => 'An error accoured',
