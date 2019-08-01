@@ -3379,16 +3379,16 @@
         },
         {
             "name": "spatie/laravel-cors",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-cors.git",
-                "reference": "9f8992f2b5e13482f129df480daa21429c63c5e4"
+                "reference": "8f822676376bac76dd791d13252062e3bcc22a43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-cors/zipball/9f8992f2b5e13482f129df480daa21429c63c5e4",
-                "reference": "9f8992f2b5e13482f129df480daa21429c63c5e4",
+                "url": "https://api.github.com/repos/spatie/laravel-cors/zipball/8f822676376bac76dd791d13252062e3bcc22a43",
+                "reference": "8f822676376bac76dd791d13252062e3bcc22a43",
                 "shasum": ""
             },
             "require": {
@@ -3434,7 +3434,7 @@
                 "request",
                 "spatie"
             ],
-            "time": "2019-06-05T19:59:25+00:00"
+            "time": "2019-07-19T13:46:27+00:00"
         },
         {
             "name": "spatie/temporary-directory",
