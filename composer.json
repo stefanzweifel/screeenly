@@ -14,7 +14,7 @@
         "doctrine/dbal": "^2.5",
         "spatie/browsershot": "^3.0",
         "fideloper/proxy": "^4.0",
-        "wnx/laravel-stats": "~1.9.2",
+        "wnx/laravel-stats": "~2.0.0",
         "laravel/tinker": "^1.0",
         "sentry/sentry-laravel": "^1.0",
         "spatie/laravel-cors": "^1.5"

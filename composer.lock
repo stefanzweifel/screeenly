@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23df357e917941c8254becd48706a83c",
+    "content-hash": "e96138f8ab7d78b788099cda90ff2cc7",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -5060,31 +5060,31 @@
         },
         {
             "name": "wnx/laravel-stats",
-            "version": "v1.9.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stefanzweifel/laravel-stats.git",
-                "reference": "e7bb5b6a376e840167ec26d10754c4c1e0fdf12a"
+                "reference": "1b3c60bfbf81233973cbc2a63be4e6f83b2d6205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/e7bb5b6a376e840167ec26d10754c4c1e0fdf12a",
-                "reference": "e7bb5b6a376e840167ec26d10754c4c1e0fdf12a",
+                "url": "https://api.github.com/repos/stefanzweifel/laravel-stats/zipball/1b3c60bfbf81233973cbc2a63be4e6f83b2d6205",
+                "reference": "1b3c60bfbf81233973cbc2a63be4e6f83b2d6205",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0",
-                "php": ">=7.0.0",
+                "illuminate/console": "~5.8.0|^6.0",
+                "illuminate/support": "~5.8.0|^6.0",
+                "php": ">=7.2.0",
                 "phploc/phploc": "~4.0|~5.0",
                 "symfony/finder": "~3.3|~4.0"
             },
             "require-dev": {
                 "laravel/browser-kit-testing": "~2.0|~3.0|~4.0|~5.0",
-                "laravel/dusk": "~2.0|~3.0|~4.0",
+                "laravel/dusk": "~3.0|~4.0|~5.0",
                 "mockery/mockery": "^1.1",
-                "orchestra/testbench": "^3.5|^3.6|^3.7",
-                "phpunit/phpunit": "6.*|7.*"
+                "orchestra/testbench": "^3.8",
+                "phpunit/phpunit": "6.*|7.*|8.*"
             },
             "type": "library",
             "extra": {
@@ -5119,7 +5119,7 @@
                 "stats",
                 "wnx"
             ],
-            "time": "2019-03-20T19:38:00+00:00"
+            "time": "2019-09-01T14:18:49+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
