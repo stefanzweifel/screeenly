@@ -18,7 +18,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "laravel-mix-purgecss": "^4.1.0",
+    "laravel-mix-purgecss": "^4.2.0",
     "puppeteer": "^1.20.0",
     "turbolinks": "^5.2.0"
   }
