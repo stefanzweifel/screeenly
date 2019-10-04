@@ -41,7 +41,7 @@ class GithubOAuthLoginTest extends BrowserKitTestCase
     {
         $response = $this->call('GET', '/oauth/github/redirect');
 
-        $this->assertContains('github.com/login/oauth', $response->getTargetUrl());
+        $this->assertStringcontainsString('github.com/login/oauth', $response->getTargetUrl());
     }
 
     /** @test */
