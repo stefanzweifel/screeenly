@@ -37,7 +37,7 @@ class ApiKey extends Model
     {
         $key = str_random(50);
 
-        if (self::whereKey($key)->first()) {
+        if (self::where('key', $key)->first()) {
             return $this->generateKey();
         }
 
