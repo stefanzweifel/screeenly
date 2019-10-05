@@ -17,7 +17,8 @@
         "wnx/laravel-stats": "~2.0.0",
         "laravel/tinker": "^1.0",
         "sentry/sentry-laravel": "^1.0",
-        "spatie/laravel-cors": "^1.5"
+        "spatie/laravel-cors": "^1.5",
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "laravel/browser-kit-testing": "~5.1",
