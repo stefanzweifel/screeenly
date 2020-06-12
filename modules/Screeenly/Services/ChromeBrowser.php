@@ -15,7 +15,7 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
             ->ignoreHttpsErrors()
             ->windowSize($this->width, is_null($this->height) ? 768 : $this->height)
             ->timeout(30)
-            ->setDelay($this->delay * 100)
+            ->setDelay($this->delay * 1000)
             ->userAgent('screeenly-bot 2.0');
 
 
