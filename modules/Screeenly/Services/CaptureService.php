@@ -2,8 +2,9 @@
 
 namespace Screeenly\Services;
 
-use Screeenly\Entities\Url;
+use Illuminate\Support\Str;
 use Screeenly\Contracts\CanCaptureScreenshot;
+use Screeenly\Entities\Url;
 
 class CaptureService
 {
@@ -78,7 +79,7 @@ class CaptureService
     {
         $this->isUrlOnline();
 
-        $filename = uniqid().'_'.str_random(30);
+        $filename = uniqid().'_'.Str::random(30);
         $storageUrl = storage_path("app/public/{$filename}.png");
 
         return $this->browser->capture(
