@@ -3,6 +3,7 @@
 namespace Screeenly\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class ApiKey extends Model
 {
@@ -35,7 +36,7 @@ class ApiKey extends Model
      */
     public function generateKey()
     {
-        $key = str_random(50);
+        $key = Str::random(50);
 
         if (self::where('key', $key)->first()) {
             return $this->generateKey();
