@@ -1,53 +1,54 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Screeenly\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
-class EmailAuthLoginTest extends BrowserKitTestCase
+class EmailAuthLoginTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function it_shows_login_form()
     {
-        $this->visit('/login');
+        $response = $this->get('/login');
+
+        $response->assertOk();
     }
 
     /** @test */
     public function it_displays_forgot_password_link()
     {
-        $this->visit('/login')
-            ->see('Forgot Your Password?')
-            ->click('Forgot Your Password?')
-            ->seePageIs('password/reset')
-            ->see('Send Password Reset Link');
+        $response = $this->get('/login');
+
+        $response->assertSee('Forgot Your Password?');
     }
 
     /** @test */
     public function it_throws_error_if_email_or_password_does_not_match()
     {
-        $this->visit('/login')
-            ->type('foo@bar.com', 'email')
-            ->type('Password1234', 'password')
-            ->press('Login')
-            ->seePageIs('/login')
-            ->see('These credentials do not match our records.');
+        $response = $this->post('/login', [
+            'email' => 'foo@bar.com',
+            'password' => 'password1234'
+        ]);
+
+        $response->assertSessionHasErrors([
+            'email'
+        ]);
     }
 
     /** @test */
     public function it_lets_user_login_with_email_and_password()
     {
         factory(User::class)->create([
-            'email' => 'foo@bar.com',
-            'password' => bcrypt('Password1234'),
+            'email' => 'foo@bar.com'
         ]);
 
-        $this->visit('/login')
-            ->type('foo@bar.com', 'email')
-            ->type('Password1234', 'password')
-            ->press('Login')
-            ->seePageIs('/dashboard')
-            ->see('Documentation')
-            ->see('Logout');
+        $response = $this->post('/login', [
+            'email' => 'foo@bar.com',
+            'password' => 'password'
+        ]);
+
+        $response->assertRedirect('/dashboard');
     }
 }
