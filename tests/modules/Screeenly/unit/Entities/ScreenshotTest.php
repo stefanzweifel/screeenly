@@ -39,11 +39,15 @@ class ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_deletes_screenshot_from_disk()
     {
+        Storage::delete('test-screenshot-to-delete.jpg');
+
         Storage::copy('test-screenshot.jpg', 'test-screenshot-to-delete.jpg');
 
-        $path = storage_path('testing/test-screenshot-to-delete.jpg');
+        $path = storage_path('app/test-screenshot-to-delete.jpg');
         $screenshot = new Screenshot($path);
 
         $this->assertTrue($screenshot->delete());
+
+        Storage::disk('local')->assertMissing('test-screenshot-to-delete.jpg');
     }
 }
