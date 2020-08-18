@@ -4,6 +4,13 @@ use Screeenly\Entities\Screenshot;
 
 class ScreenshotTest extends BrowserKitTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Storage::disk('local')->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
+    }
+
     /** @test */
     public function it_sets_properties_on_screenshot()
     {

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
 use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Models\ApiKey;
 use Screeenly\Services\InMemoryBrowser;
@@ -49,6 +50,8 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_base64_representation_of_screenshot()
     {
+        Storage::disk('local')->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
+
         $apiKey = factory(ApiKey::class)->create();
 
         $this->app->bind(CanCaptureScreenshot::class, function ($app) {

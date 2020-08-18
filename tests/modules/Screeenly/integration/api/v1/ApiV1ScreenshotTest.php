@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
 use Screeenly\Models\ApiKey;
 
 class ApiV1ScreenshotTest extends BrowserKitTestCase
@@ -130,6 +131,8 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_path_and_base64_representation_of_to_image_on_successful_request()
     {
+        Storage::disk('local')->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
+
         $apiKey = factory(ApiKey::class)->create();
         $this->replaceBinding();
 
