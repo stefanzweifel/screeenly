@@ -45,7 +45,3 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml
-
-      - uses: codecov/codecov-action@v1.0.12
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
