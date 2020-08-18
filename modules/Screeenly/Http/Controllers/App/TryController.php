@@ -2,12 +2,12 @@
 
 namespace Screeenly\Http\Controllers\App;
 
-use Exception;
-use Screeenly\Entities\Url;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Screeenly\Services\CaptureService;
+use Exception;
+use Illuminate\Http\Request;
+use Screeenly\Entities\Url;
 use Screeenly\Http\Requests\TryRequest;
+use Screeenly\Services\CaptureService;
 
 class TryController extends Controller
 {

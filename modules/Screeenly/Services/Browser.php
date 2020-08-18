@@ -3,7 +3,6 @@
 namespace Screeenly\Services;
 
 use Exception;
-use Screeenly\Entities\Screenshot;
 
 class Browser
 {

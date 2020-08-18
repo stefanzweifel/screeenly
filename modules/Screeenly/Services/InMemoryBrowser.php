@@ -2,9 +2,9 @@
 
 namespace Screeenly\Services;
 
-use Screeenly\Entities\Url;
-use Screeenly\Entities\Screenshot;
 use Screeenly\Contracts\CanCaptureScreenshot;
+use Screeenly\Entities\Screenshot;
+use Screeenly\Entities\Url;
 
 class InMemoryBrowser extends Browser implements CanCaptureScreenshot
 {

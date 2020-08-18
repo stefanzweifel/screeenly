@@ -1,9 +1,9 @@
 <?php
 
-use Screeenly\Entities\Url;
-use Screeenly\Entities\Screenshot;
-use Screeenly\Services\CaptureService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Entities\Screenshot;
+use Screeenly\Entities\Url;
+use Screeenly\Services\CaptureService;
 
 class CaptureServiceTest extends BrowserKitTestCase
 {

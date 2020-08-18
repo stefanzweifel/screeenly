@@ -2,10 +2,10 @@
 
 namespace Screeenly\Http\Controllers\App;
 
-use Screeenly\Models\ApiKey;
 use App\Http\Controllers\Controller;
 use Screeenly\Http\Requests\CreateApiKeyRequest;
 use Screeenly\Http\Requests\DeleteApiKeyRequest;
+use Screeenly\Models\ApiKey;
 
 class ApiKeyController extends Controller
 {

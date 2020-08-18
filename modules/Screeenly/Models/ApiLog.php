@@ -2,8 +2,8 @@
 
 namespace Screeenly\Models;
 
-use Screeenly\Entities\Screenshot;
 use Illuminate\Database\Eloquent\Model;
+use Screeenly\Entities\Screenshot;
 
 class ApiLog extends Model
 {
