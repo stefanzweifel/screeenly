@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "facade/ignition": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "fzaninotto/faker": "^1.9.1",
         "laravel/browser-kit-testing": "^6.0",
         "mockery/mockery": "^1.3.1",
@@ -62,6 +63,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "format": [
+            "php-cs-fixer fix"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
