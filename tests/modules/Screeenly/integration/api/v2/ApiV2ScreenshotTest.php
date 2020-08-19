@@ -50,6 +50,8 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_base64_representation_of_screenshot()
     {
+        Storage::fake('local');
+
         Storage::disk('local')->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
 
         $apiKey = factory(ApiKey::class)->create();
