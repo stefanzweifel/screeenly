@@ -92,7 +92,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
-                'message' => 'Validation Error: The delay may not be greater than 10.',
+                'message' => 'Validation Error: The delay may not be greater than 15.',
             ]);
     }
 
