@@ -81,14 +81,14 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     }
 
     /** @test */
-    public function it_returns_an_error_if_delay_is_over_10_seconds()
+    public function it_returns_an_error_if_delay_is_over_15_seconds()
     {
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
                 'key' => $apiKey->key,
                 'url' => 'https://google.com',
-                'delay' => '15',
+                'delay' => '18',
             ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',

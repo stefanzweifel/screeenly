@@ -55,14 +55,14 @@ class BrowserTest extends BrowserKitTestCase
     }
 
     /** @test */
-    public function it_throws_an_error_if_delay_is_greater_than_10_seconds()
+    public function it_throws_an_error_if_delay_is_greater_than_15_seconds()
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('Delay can not exceed 10 seconds / 10000 miliseconds');
+        $this->expectExceptionMessage('Delay can not exceed 15 seconds / 15000 miliseconds');
 
         $browser = app(Browser::class);
 
-        $result = $browser->delay(10001);
+        $result = $browser->delay(15001);
     }
 
     /** @test */
