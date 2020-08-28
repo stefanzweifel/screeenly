@@ -29,7 +29,7 @@ class CreateScreenshotRequest extends FormRequest
             'url'    => ['required', 'url', 'active_url'],
             'width'  => ['sometimes', 'required', 'integer', 'max:2000', 'min:10'],
             'height' => ['sometimes', 'required', 'integer', 'min:10'],
-            'delay'  => ['sometimes', 'required', 'integer', 'max:10', 'min:0'],
+            'delay'  => ['sometimes', 'required', 'integer', 'max:15', 'min:0'],
         ];
     }
 }
