@@ -7,9 +7,6 @@
 <a href="https://travis-ci.org/stefanzweifel/screeenly" title="Build Status">
     <img src="https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master" alt="Build Status">
 </a>
-<a href="https://styleci.io/repos/21797405" title="StyleCI">
-    <img src="https://styleci.io/repos/21797405/shield" alt="StyleCI">
-</a>
 <a href="https://github.com/stefanzweifel/screeenly/releases" title="Releases">
     <img src="https://img.shields.io/github/release/stefanzweifel/screeenly.svg?style=flat-square" alt="Releases">
 </a>
@@ -45,6 +42,15 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 - [API specification](https://github.com/stefanzweifel/screeenly/wiki/Use-the-API)
 - [Self Hosting Guide](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install)
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
+
+## Docker Images
+
+If you're interested in a Docker version of screeenly, you can use the daily built images created by [Jacek Szafarkiewicz](https://github.com/hadogenes).
+
+- [Dockerfile](https://gitlab.com/_hadogenes_/docker/screeenly)
+- [Docker Image](https://hub.docker.com/r/hadogenes/screeenly)
+
+**Please note**: We do not provide any support for these Docker Images.
 
 # Security
 
