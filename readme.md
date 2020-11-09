@@ -1,16 +1,17 @@
 <p align="center"><img width="295" src="https://raw.githubusercontent.com/stefanzweifel/screeenly/master/readme-image.png" alt=""></p>
 
 <p align="center">
+<a href="https://github.com/stefanzweifel/screeenly/actions?query=workflow%3ATests">
+<img src="https://github.com/stefanzweifel/screeenly/workflows/Tests/badge.svg" alt="">
+</a>
 <a href="https://github.com/stefanzweifel/screeenly/blob/master/LICENSE" title="License">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License">
-</a>
-<a href="https://travis-ci.org/stefanzweifel/screeenly" title="Build Status">
-    <img src="https://travis-ci.org/stefanzweifel/screeenly.svg?branch=master" alt="Build Status">
 </a>
 <a href="https://github.com/stefanzweifel/screeenly/releases" title="Releases">
     <img src="https://img.shields.io/github/release/stefanzweifel/screeenly.svg?style=flat-square" alt="Releases">
 </a>
 </p>
+
 
 screeenly is an open source web application which lets users create website screenshots through a simple API.
 It's built with [Laravel](http://laravel.com).

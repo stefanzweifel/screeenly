@@ -1,8 +1,8 @@
 <?php
 
-use Screeenly\Models\User;
-use Laravel\Socialite\Contracts\Factory as Socialite;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laravel\Socialite\Contracts\Factory as Socialite;
+use Screeenly\Models\User;
 
 class GithubOAuthLoginTest extends BrowserKitTestCase
 {

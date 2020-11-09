@@ -1,16 +1,19 @@
 <?php
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Screeenly\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
-class ResetPasswordTest extends BrowserKitTestCase
+class ResetPasswordTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     /** @test */
     public function it_shows_form_to_send_reset_password_request()
     {
-        $this->visit('/password/reset');
+        $response = $this->get('/password/reset');
+
+        $response->assertOk();
     }
 
     /** @test */
@@ -18,8 +21,9 @@ class ResetPasswordTest extends BrowserKitTestCase
     {
         $user = factory(User::class)->create();
 
-        $this->actingAs($user)
-            ->visit('/password/reset')
-            ->seePageIs('/dashboard');
+        $response = $this->actingAs($user)
+            ->get('/password/reset');
+
+        $response->assertRedirect('/dashboard');
     }
 }

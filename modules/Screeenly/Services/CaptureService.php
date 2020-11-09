@@ -2,9 +2,9 @@
 
 namespace Screeenly\Services;
 
-use Screeenly\Entities\Url;
-use Screeenly\Contracts\CanCaptureScreenshot;
 use Illuminate\Support\Str;
+use Screeenly\Contracts\CanCaptureScreenshot;
+use Screeenly\Entities\Url;
 
 class CaptureService
 {
@@ -77,21 +77,11 @@ class CaptureService
      */
     public function capture()
     {
-        $this->isUrlOnline();
-
-        $filename = uniqid().'_'.Str::random(30);
-        $storageUrl = storage_path("app/public/{$filename}.png");
+        $filename = uniqid().'_'.Str::random(30) . ".png";
 
         return $this->browser->capture(
             $this->url,
-            $storageUrl
+            $filename
         );
-    }
-
-    protected function isUrlOnline()
-    {
-        // TODO: Implement Ping mechanism to check if a URL is online
-        // Throw Exception if url is not available to machine
-        return true;
     }
 }

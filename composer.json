@@ -1,44 +1,54 @@
 {
     "name": "laravel/laravel",
+    "type": "project",
     "description": "The Laravel Framework.",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
-    "type": "project",
     "require": {
-        "php": "^7.2",
-        "laravel/framework": "5.8.*",
-        "laravel/socialite": "^4.0",
-        "doctrine/dbal": "^2.5",
-        "spatie/browsershot": "^3.0",
-        "fideloper/proxy": "^4.0",
-        "wnx/laravel-stats": "~2.0.0",
-        "laravel/tinker": "^1.0",
-        "sentry/sentry-laravel": "^1.0",
-        "spatie/laravel-cors": "^1.5"
+        "php": "^7.2.5",
+        "doctrine/dbal": "^2.10",
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "laravel/framework": "^7.24",
+        "laravel/socialite": "^4.4",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "sentry/sentry-laravel": "^1.5",
+        "spatie/browsershot": "^3.33"
     },
     "require-dev": {
-        "laravel/browser-kit-testing": "~5.1",
-        "fzaninotto/faker": "^1.4",
-        "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^8.1",
-        "symfony/css-selector": "~4.0",
-        "symfony/dom-crawler": "~4.0",
-        "filp/whoops": "^2.0",
-        "nunomaduro/collision": "^3.0",
-        "beyondcode/laravel-dump-server": "^1.0"
+        "facade/ignition": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "fzaninotto/faker": "^1.9.1",
+        "laravel/browser-kit-testing": "^6.0",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^9.0",
+        "wnx/laravel-stats": "^2.2"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "autoload": {
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ],
         "psr-4": {
             "App\\": "app/",
             "Screeenly\\": "modules/Screeenly/"
-        }
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
     },
     "autoload-dev": {
         "classmap": [
@@ -50,12 +60,18 @@
             "Tests\\": "tests/"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "format": [
+            "php-cs-fixer fix"
         ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
@@ -65,17 +81,8 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan storage:link"
         ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
         ]
-    },
-    "config": {
-        "preferred-install": "dist"
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
     }
 }

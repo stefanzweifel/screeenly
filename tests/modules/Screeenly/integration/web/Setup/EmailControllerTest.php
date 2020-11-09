@@ -1,7 +1,7 @@
 <?php
 
-use Screeenly\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Screeenly\Models\User;
 
 class EmailControllerTest extends BrowserKitTestCase
 {

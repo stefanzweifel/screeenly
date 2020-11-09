@@ -1,7 +1,6 @@
 <?php
 
 use Screeenly\Services\Browser;
-use Screeenly\Entities\Screenshot;
 
 class BrowserTest extends BrowserKitTestCase
 {

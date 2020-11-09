@@ -2,11 +2,11 @@
 
 namespace Screeenly\Guards;
 
-use Screeenly\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Auth\GuardHelpers;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\UserProvider;
+use Illuminate\Http\Request;
+use Screeenly\Models\User;
 
 class ScreeenlyTokenGuard implements Guard
 {
@@ -48,10 +48,12 @@ class ScreeenlyTokenGuard implements Guard
         if (! empty($token)) {
             $user = User::whereHas('apiKeys', function ($q) use ($token) {
                 return $q->where('key', $token);
-            })->get();
+            })->first();
         }
 
-        return $this->user = $user;
+        $this->user = $user;
+
+        return $user;
     }
 
     /**

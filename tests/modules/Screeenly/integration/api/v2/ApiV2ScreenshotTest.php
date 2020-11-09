@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
+use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Models\ApiKey;
 use Screeenly\Services\InMemoryBrowser;
-use Screeenly\Contracts\CanCaptureScreenshot;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ApiV2ScreenshotTest extends BrowserKitTestCase
 {
@@ -25,8 +26,8 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v2/screenshot', [
-                'key' => $apiKey->key,
-            ])
+            'key' => $apiKey->key,
+        ])
             ->seeJson([
                 'url' => ['The url field is required.'],
             ]);
@@ -38,9 +39,9 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v2/screenshot', [
-                'key' => $apiKey->key,
-                'url' => 'Foo',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'Foo',
+        ])
             ->seeJson([
                 'url' => ['The url format is invalid.', 'The url is not a valid URL.'],
             ]);
@@ -49,6 +50,14 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_base64_representation_of_screenshot()
     {
+        Storage::fake('public');
+
+        Storage::disk('public')
+            ->put(
+                'test-screenshot.jpg',
+                file_get_contents(storage_path('testing/test-screenshot.jpg'))
+            );
+
         $apiKey = factory(ApiKey::class)->create();
 
         $this->app->bind(CanCaptureScreenshot::class, function ($app) {
@@ -56,9 +65,9 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
         });
 
         $this->json('POST', '/api/v2/screenshot', [
-                'key' => $apiKey->key,
-                'url' => 'http://google.com',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'http://google.com',
+        ])
         ->seeJsonStructure([
             'data' => [
                 'path', 'base64',

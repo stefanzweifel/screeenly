@@ -3,9 +3,9 @@
 namespace Screeenly\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Guards\ScreeenlyTokenGuard;
 use Screeenly\Services\ChromeBrowser;
-use Screeenly\Contracts\CanCaptureScreenshot;
 
 class ScreeenlyServiceProvider extends ServiceProvider
 {

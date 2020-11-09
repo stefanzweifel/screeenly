@@ -1,7 +1,8 @@
 <?php
 
-use Screeenly\Models\ApiKey;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Storage;
+use Screeenly\Models\ApiKey;
 
 class ApiV1ScreenshotTest extends BrowserKitTestCase
 {
@@ -24,8 +25,8 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-            ])
+            'key' => $apiKey->key,
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The url field is required.',
@@ -38,10 +39,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'width' => '5000',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'width' => '5000',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The width may not be greater than 2000.',
@@ -54,10 +55,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'width' => '5',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'width' => '5',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The width must be at least 10.',
@@ -70,10 +71,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'height' => '5',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'height' => '5',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The height must be at least 10.',
@@ -86,10 +87,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'delay' => '18',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'delay' => '18',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The delay may not be greater than 15.',
@@ -102,10 +103,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'delay' => '',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'delay' => '',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The delay field is required.',
@@ -118,9 +119,9 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'foo.com',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'foo.com',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The url format is invalid.',
@@ -130,6 +131,14 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_path_and_base64_representation_of_to_image_on_successful_request()
     {
+        Storage::fake('public');
+
+        Storage::disk('public')
+            ->put(
+                'test-screenshot.jpg',
+                file_get_contents(storage_path('testing/test-screenshot.jpg'))
+            );
+
         $apiKey = factory(ApiKey::class)->create();
         $this->replaceBinding();
 
