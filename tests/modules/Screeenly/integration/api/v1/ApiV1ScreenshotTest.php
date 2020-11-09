@@ -87,10 +87,10 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
         $apiKey = factory(ApiKey::class)->create();
 
         $this->json('POST', '/api/v1/fullsize', [
-                'key' => $apiKey->key,
-                'url' => 'https://google.com',
-                'delay' => '18',
-            ])
+            'key' => $apiKey->key,
+            'url' => 'https://google.com',
+            'delay' => '18',
+        ])
             ->seeJsonEquals([
                 'title' => 'An error accoured',
                 'message' => 'Validation Error: The delay may not be greater than 15.',
