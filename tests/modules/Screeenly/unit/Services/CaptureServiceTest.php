@@ -54,6 +54,14 @@ class CaptureServiceTest extends BrowserKitTestCase
     /** @test */
     public function it_captures_screenshot_and_returns_screenshot_instance()
     {
+        Storage::fake('public');
+
+        Storage::disk('public')
+            ->put(
+                'test-screenshot.jpg',
+                file_get_contents(storage_path('testing/test-screenshot.jpg'))
+            );
+
         $this->replaceBinding();
 
         $service = app(CaptureService::class);
