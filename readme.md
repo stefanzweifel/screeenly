@@ -18,9 +18,21 @@ It's built with [Laravel](http://laravel.com).
 
 The latest version is hosted on [screeenly.com](http://screeenly.com). You can follow us on [Twitter](https://twitter.com/screeenly)
 
-The project is currently maintained by [@_stefanzweifel](https://twitter.com/_stefanzweifel).
+---
 
-> Note: The project is currently not in active development. If major bugs come up we will try to fix them.
+☝️ A completely new version of screeenly has recently been released: [https://3.screeenly.com](https://3.screeenly.com).
+
+The app has been rebuilt from the ground up. Its API now can also convert websites into PDFs, return the rendered HTML of a website. This now also works for your own provided HTML code. 
+In addition, you can now update a lot more settings; like pixel density or wether images should be loaded.
+
+**The new app requires a paid subscription. The subscription covers server costs and maintenance.**
+
+The open source version of screeenly (this repo right here) which is hosted on [http://screeenly.com](http://screeenly.com) will remain available for the forseeable future. If anything should change and you've registered on screeenly.com, you will receive a notice. 
+
+The repository itself will soon get updates for Laravel 7 and Laravel 8.
+
+---
+
 
 
 
@@ -31,6 +43,15 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 - [API specification](https://github.com/stefanzweifel/screeenly/wiki/Use-the-API)
 - [Self Hosting Guide](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install)
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
+
+## Docker Images
+
+If you're interested in a Docker version of screeenly, you can use the daily built images created by [Jacek Szafarkiewicz](https://github.com/hadogenes).
+
+- [Dockerfile](https://gitlab.com/_hadogenes_/docker/screeenly)
+- [Docker Image](https://hub.docker.com/r/hadogenes/screeenly)
+
+**Please note**: We do not provide any support for these Docker Images.
 
 # Security
 
