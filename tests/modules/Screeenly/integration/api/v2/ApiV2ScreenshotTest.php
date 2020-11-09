@@ -57,7 +57,7 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
                 'test-screenshot.jpg',
                 file_get_contents(storage_path('testing/test-screenshot.jpg'))
             );
-        
+
         $apiKey = factory(ApiKey::class)->create();
 
         $this->app->bind(CanCaptureScreenshot::class, function ($app) {

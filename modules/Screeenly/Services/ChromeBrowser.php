@@ -2,6 +2,7 @@
 
 namespace Screeenly\Services;
 
+use Illuminate\Support\Facades\Storage;
 use Screeenly\Contracts\CanCaptureScreenshot;
 use Screeenly\Entities\Screenshot;
 use Screeenly\Entities\Url;
@@ -9,7 +10,7 @@ use Spatie\Browsershot\Browsershot;
 
 class ChromeBrowser extends Browser implements CanCaptureScreenshot
 {
-    public function capture(Url $url, $storageUrl)
+    public function capture(Url $url, $filename)
     {
         $browser = Browsershot::url($url->getUrl())
             ->ignoreHttpsErrors()
@@ -27,8 +28,10 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
             $browser->fullPage();
         }
 
-        $browser->save($storageUrl);
+        Storage::disk('public')->put($filename, $browser->screenshot());
 
-        return new Screenshot($storageUrl);
+        $path = Storage::disk('public')->path($filename);
+
+        return new Screenshot($path);
     }
 }
