@@ -5,6 +5,7 @@ namespace Screeenly\Http\Controllers\Api\v2;
 use App\Http\Controllers\Controller;
 use Screeenly\Entities\Url;
 use Screeenly\Http\Requests\CreateScreenshotRequest;
+use Screeenly\Models\ApiKey;
 use Screeenly\Services\CaptureService;
 
 class ScreenshotController extends Controller
@@ -26,7 +27,8 @@ class ScreenshotController extends Controller
      */
     public function store(CreateScreenshotRequest $request)
     {
-        $apiKey = $request->user()->first()->apiKeys()->where('key', $request->key)->first();
+       $apiKey = ApiKey::where('key', $request->key)->first();
+
         $screenshot = $this->captureService
                         ->height($request->get('height', null))
                         ->width($request->get('width', null))
@@ -35,7 +37,7 @@ class ScreenshotController extends Controller
                         ->capture();
 
         $apiKey->apiLogs()->create([
-            'user_id' => $request->user()->first()->id,
+            'user_id' => $apiKey->user->id,
             'images' => $screenshot->getPath(),
         ]);
 
