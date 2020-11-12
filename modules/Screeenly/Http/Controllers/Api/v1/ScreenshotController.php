@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Screeenly\Entities\Url;
 use Screeenly\Http\Requests\CreateScreenshotRequest;
+use Screeenly\Models\ApiKey;
 use Screeenly\Services\CaptureService;
 
 class ScreenshotController extends Controller
@@ -23,11 +24,11 @@ class ScreenshotController extends Controller
     /**
      * Create a new Screenshot.
      * @param  CreateScreenshotRequest $request
-     * @return Illuminate\Http\Response
+     * @return Illuminate\Http\JsonResponse
      */
     public function store(CreateScreenshotRequest $request)
     {
-        $apiKey = $request->user()->first()->apiKeys()->where('key', $request->key)->first();
+        $apiKey = ApiKey::where('key', $request->key)->first();
 
         try {
             $screenshot = $this->captureService
@@ -38,7 +39,7 @@ class ScreenshotController extends Controller
                             ->capture();
 
             $apiKey->apiLogs()->create([
-                'user_id' => $request->user()->first()->id,
+                'user_id' => $apiKey->user->id,
                 'images' => $screenshot->getPath(),
             ]);
 
