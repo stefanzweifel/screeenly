@@ -23,7 +23,7 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_shows_error_if_no_url_is_provied()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v2/screenshot', [
             'key' => $apiKey->key,
@@ -36,7 +36,7 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_shows_error_if_not_a_url_is_passed()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v2/screenshot', [
             'key' => $apiKey->key,
@@ -58,7 +58,7 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
                 file_get_contents(storage_path('testing/test-screenshot.jpg'))
             );
 
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->app->bind(CanCaptureScreenshot::class, function ($app) {
             return new InMemoryBrowser('http://foo.bar', '/path/to/storage');

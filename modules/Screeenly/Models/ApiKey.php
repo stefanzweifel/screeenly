@@ -2,11 +2,14 @@
 
 namespace Screeenly\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class ApiKey extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['name', 'key', 'user_id'];
 
     /**

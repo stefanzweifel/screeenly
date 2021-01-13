@@ -11,7 +11,7 @@ class DashboardTest extends BrowserKitTestCase
     /** @test */
     public function it_loads_dashboard_for_logged_in_user()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
                 ->visit('/dashboard')
@@ -21,7 +21,7 @@ class DashboardTest extends BrowserKitTestCase
     /** @test */
     public function it_redirects_logged_in_user_to_dashboard_route()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
                 ->visit('/')
@@ -40,7 +40,7 @@ class DashboardTest extends BrowserKitTestCase
     /** @test */
     public function it_redirects_user_to_setup_email_page_if_his_account_does_not_have_an_email_address()
     {
-        $user = factory(User::class)->create(['email' => '']);
+        $user = User::factory()->create(['email' => '']);
 
         $this->actingAs($user)
                 ->visit('/dashboard')
@@ -51,7 +51,7 @@ class DashboardTest extends BrowserKitTestCase
     /** @test */
     public function it_does_not_user_to_setup_email_page_if_account_has_an_email_address()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
                 ->visit('/')
@@ -62,8 +62,8 @@ class DashboardTest extends BrowserKitTestCase
     /** @test */
     public function it_shows_message_if_user_reached_limit_of_active_api_key()
     {
-        $user = factory(User::class)->create();
-        $apiKeys = factory(ApiKey::class, 10)->create(['user_id' => $user->id]);
+        $user = User::factory()->create();
+        $apiKeys = ApiKey::factory()->count(10)->create(['user_id' => $user->id]);
 
         $this->actingAs($user)
                 ->visit('/')

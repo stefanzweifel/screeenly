@@ -61,7 +61,7 @@ class GithubOAuthLoginTest extends BrowserKitTestCase
     /** @test */
     public function it_retrieves_github_request_and_login_existing_user()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->mockSocialiteFacade($user->email, $user->token, $user->provider_id);
 

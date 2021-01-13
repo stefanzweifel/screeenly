@@ -10,7 +10,7 @@ class UserSettingsTest extends BrowserKitTestCase
 
     public function login($override = [])
     {
-        return $this->actingAs(factory(User::class)->create($override));
+        return $this->actingAs(User::factory()->create($override));
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class UserSettingsTest extends BrowserKitTestCase
     /** @test */
     public function it_shows_error_message_if_email_address_is_already_in_use()
     {
-        factory(User::class)->create(['email' => 'foo@bar.com']);
+        User::factory()->create(['email' => 'foo@bar.com']);
 
         $this->login(['email' => 'test@bar.com'])
             ->visit('/settings')
@@ -80,8 +80,8 @@ class UserSettingsTest extends BrowserKitTestCase
     /** @test */
     public function it_deletes_account_and_all_api_keys()
     {
-        $user = factory(User::class)->create();
-        $apiKeys = factory(ApiKey::class, 5)->create(['user_id' => $user->id]);
+        $user = User::factory()->create();
+        $apiKeys = ApiKey::factory()->count(5)->create(['user_id' => $user->id]);
 
         $this->actingAs($user)->visit('/settings')
             ->press('Close Account')

@@ -10,14 +10,14 @@ class ApiKeyTest extends BrowserKitTestCase
 
     public function login($override = [])
     {
-        return $this->actingAs(factory(User::class)->create($override));
+        return $this->actingAs(User::factory()->create($override));
     }
 
     /** @test */
     public function it_lists_api_keys_a_user_created()
     {
-        $user = factory(User::class)->create();
-        $apiKey = factory(ApiKey::class)->create([
+        $user = User::factory()->create();
+        $apiKey = ApiKey::factory()->create([
             'user_id' => $user->id,
             'name' => 'This is my test API Key',
         ]);
@@ -30,7 +30,7 @@ class ApiKeyTest extends BrowserKitTestCase
     /** @test */
     public function it_shows_message_if_no_api_keys_exists()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->visit('/dashboard')
@@ -40,7 +40,7 @@ class ApiKeyTest extends BrowserKitTestCase
     /** @test */
     public function it_lets_user_create_a_new_api_key()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->visit('/dashboard')
@@ -59,8 +59,8 @@ class ApiKeyTest extends BrowserKitTestCase
     /** @test */
     public function it_lets_user_delete_an_api_key()
     {
-        $user = factory(User::class)->create();
-        $apiKey = factory(ApiKey::class)->create(['user_id' => $user->id]);
+        $user = User::factory()->create();
+        $apiKey = ApiKey::factory()->create(['user_id' => $user->id]);
 
         $this->actingAs($user)
             ->visit('/dashboard')

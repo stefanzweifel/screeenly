@@ -22,7 +22,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_error_if_no_url_was_passed_to_the_api()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -36,7 +36,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_error_if_width_is_to_big()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -52,7 +52,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_errof_if_width_is_lower_than_minimum()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -68,7 +68,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_errof_if_height_is_lower_than_minimum()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -84,7 +84,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_error_if_delay_is_over_15_seconds()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -100,7 +100,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_error_if_delay_key_is_in_request_but_no_value()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -116,7 +116,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_an_errof_if_url_has_no_protocol_prefix()
     {
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
 
         $this->json('POST', '/api/v1/fullsize', [
             'key' => $apiKey->key,
@@ -139,7 +139,7 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
                 file_get_contents(storage_path('testing/test-screenshot.jpg'))
             );
 
-        $apiKey = factory(ApiKey::class)->create();
+        $apiKey = ApiKey::factory()->create();
         $this->replaceBinding();
 
         $response = $this->json('POST', '/api/v1/fullsize', [

@@ -2,11 +2,14 @@
 
 namespace Screeenly\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Screeenly\Entities\Screenshot;
 
 class ApiLog extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['images', 'user_id'];
 
     protected $table = 'api_log';

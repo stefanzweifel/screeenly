@@ -19,7 +19,7 @@ class EmailAuthRegisterTest extends TestCase
     /** @test */
     public function it_shows_error_if_email_has_already_been_taken()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->post('/register', [
             'name' => 'foo',
