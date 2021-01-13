@@ -4,7 +4,7 @@ use Screeenly\Entities\Screenshot;
 
 class ScreenshotTest extends BrowserKitTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
