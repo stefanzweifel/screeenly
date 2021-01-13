@@ -28,7 +28,7 @@ class ApiKeyFactory extends Factory
         return [
             'name' => $this->faker->word,
             'key' => Str::random(10),
-            'user_id' => User::factory()->create()->id,
+            'user_id' => User::factory(),
         ];
     }
 }
