@@ -40,7 +40,7 @@ class EmailAuthLoginTest extends TestCase
     /** @test */
     public function it_lets_user_login_with_email_and_password()
     {
-        factory(User::class)->create([
+        User::factory()->create([
             'email' => 'foo@bar.com'
         ]);
 

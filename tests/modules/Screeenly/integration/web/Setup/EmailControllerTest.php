@@ -9,7 +9,7 @@ class EmailControllerTest extends BrowserKitTestCase
 
     public function createUserWithoutEmail()
     {
-        return factory(User::class)->create(['email' => '']);
+        return User::factory()->create(['email' => '']);
     }
 
     /** @test */
@@ -22,7 +22,7 @@ class EmailControllerTest extends BrowserKitTestCase
     /** @test */
     public function it_throws_validation_error_if_email_adress_already_exists()
     {
-        factory(User::class)->create(['email' => 'foo@bar.com']);
+        User::factory()->create(['email' => 'foo@bar.com']);
 
         $this->actingAs($this->createUserWithoutEmail())
                 ->visit('/setup/email')

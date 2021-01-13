@@ -19,7 +19,7 @@ class ResetPasswordTest extends TestCase
     /** @test */
     public function it_redirects_user_to_dashboard_if_they_try_to_reset_their_password_if_they_are_logged_in()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->actingAs($user)
             ->get('/password/reset');

@@ -12,7 +12,7 @@ class UserTest extends BrowserKitTestCase
     {
         $providerId = 123456;
 
-        $user = factory(User::class)->create(['provider_id' => $providerId]);
+        $user = User::factory()->create(['provider_id' => $providerId]);
 
         $this->assertEquals(true, User::githubUserExists($providerId));
     }
@@ -22,7 +22,7 @@ class UserTest extends BrowserKitTestCase
     {
         $providerId = 123456;
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertEquals(false, User::githubUserExists($providerId));
     }
@@ -32,7 +32,7 @@ class UserTest extends BrowserKitTestCase
     {
         $providerId = 123456;
 
-        $user = factory(User::class)->create(['provider_id' => $providerId]);
+        $user = User::factory()->create(['provider_id' => $providerId]);
 
         $this->assertEquals($user->id, User::getByProviderId($providerId)->id);
     }
@@ -44,7 +44,7 @@ class UserTest extends BrowserKitTestCase
 
         $providerId = 123456;
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
         $searchedUser = User::getByProviderId($providerId);
     }
 
