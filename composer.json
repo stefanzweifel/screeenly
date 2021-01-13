@@ -43,12 +43,10 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Screeenly\\": "modules/Screeenly/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "Screeenly\\": "modules/Screeenly/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "classmap": [
