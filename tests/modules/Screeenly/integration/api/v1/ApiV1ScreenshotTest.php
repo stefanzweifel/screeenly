@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Storage;
 use Screeenly\Models\ApiKey;
+use Screeenly\Models\ApiLog;
 
 class ApiV1ScreenshotTest extends BrowserKitTestCase
 {
@@ -151,6 +152,11 @@ class ApiV1ScreenshotTest extends BrowserKitTestCase
             'base64',
             'base64_raw',
         ]);
+
+        $log = ApiLog::where('user_id', $apiKey->user_id)->first();
+
+        $this->assertEquals('127.0.0.1', $log->ip_address);
+        $this->assertNotNull($log->images);
     }
 
     /** @test */

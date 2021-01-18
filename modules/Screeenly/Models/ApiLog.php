@@ -10,7 +10,7 @@ class ApiLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['images', 'user_id'];
+    protected $fillable = ['images', 'user_id', 'ip_address'];
 
     protected $table = 'api_log';
 
