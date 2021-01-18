@@ -41,6 +41,7 @@ class ScreenshotController extends Controller
             $apiKey->apiLogs()->create([
                 'user_id' => $apiKey->user->id,
                 'images' => $screenshot->getPath(),
+                'ip_address' => $request->ip(),
             ]);
 
             return response()->json([
