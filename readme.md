@@ -33,9 +33,6 @@ The repository itself will soon get updates for Laravel 7 and Laravel 8.
 
 ---
 
-
-
-
 ## Documentation and more
 
 The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentation.
@@ -52,6 +49,13 @@ If you're interested in a Docker version of screeenly, you can use the daily bui
 - [Docker Image](https://hub.docker.com/r/hadogenes/screeenly)
 
 **Please note**: We do not provide any support for these Docker Images.
+
+# Deployment
+
+## Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stefanzweifel/screeenly/tree/deploy-to-heroku)
+
 
 # Security
 
