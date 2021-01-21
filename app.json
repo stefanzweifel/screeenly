@@ -32,7 +32,7 @@
     },
     "APP_DEBUG": {
       "description": "If debug mode should be enabled",
-      "value": "false",
+      "value": false,
       "required": true
     },
     "APP_URL": {
