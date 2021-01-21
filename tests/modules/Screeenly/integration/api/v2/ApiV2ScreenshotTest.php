@@ -50,9 +50,9 @@ class ApiV2ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_returns_base64_representation_of_screenshot()
     {
-        Storage::fake('public');
+        Storage::fake(config('screeenly.filesystem_disk'));
 
-        Storage::disk('public')
+        Storage::disk(config('screeenly.filesystem_disk'))
             ->put(
                 'test-screenshot.jpg',
                 file_get_contents(storage_path('testing/test-screenshot.jpg'))

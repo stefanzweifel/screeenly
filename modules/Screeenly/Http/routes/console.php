@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Screeenly\Models\ApiLog;
 
 Artisan::command('screeenly:cleanup', function () {
-    ApiLog::where('created_at', '<', Carbon::now()->subHours(1))->get()->each(function ($log) {
+    ApiLog::where('created_at', '<', Carbon::now()->subHours(1))->get()->each(function (ApiLog $log) {
         try {
             $log->screenshot()->delete();
             $log->delete();
