@@ -5,6 +5,7 @@ use Screeenly\Models\ApiLog;
 
 Artisan::command('screeenly:cleanup', function () {
     ApiLog::query()
+        ->where('created_at', '<', Carbon::now()->subHours(1))
         ->get()
         ->each(function (ApiLog $log) {
 
