@@ -27,7 +27,7 @@
     },
     "APP_KEY": {
       "description": "Application secret key. Used for encryption.",
-      "generator": "secret",
+      "value": "base64:...",
       "required": true
     },
     "APP_DEBUG": {
