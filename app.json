@@ -75,7 +75,7 @@
     }
   },
   "addons": [
-    "heroku-scheduler",
+    "scheduler",
     {
       "plan": "heroku-postgresql",
       "options": {
