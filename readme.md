@@ -50,7 +50,7 @@ If you're interested in a Docker version of screeenly, you can use the daily bui
 
 **Please note**: We do not provide any support for these Docker Images.
 
-# Deployment
+# Deployment
 
 ## Heroku
 

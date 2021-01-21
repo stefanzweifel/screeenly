@@ -54,7 +54,8 @@
     },
     "SCREEENLY_DISK": {
       "description": "Filesystem Disk where Screenshots should be stored",
-      "generator": "s3"
+      "value": "s3",
+      "required": true,
     },
     "AWS_ACCESS_KEY_ID": {
       "description": "The AWS access key to access your bucket",
