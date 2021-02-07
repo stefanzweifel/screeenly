@@ -14,45 +14,6 @@
   "scripts": {
     "postdeploy": "php artisan migrate --force"
   },
-  "env": {
-    "APP_NAME": {
-      "description": "Name of the application",
-      "value": "screeenly",
-      "required": true
-    },
-    "APP_ENV": {
-      "description": "The environment the app should run in",
-      "value": "production",
-      "required": true
-    },
-    "APP_DEBUG": {
-      "description": "If debug mode should be enabled",
-      "value": false,
-      "required": true
-    },
-    "APP_URL": {
-      "description": "The URL your app will be available from",
-      "value": "https://xxx.herokuapp.com",
-      "required": true
-    },
-    "DB_CONNECTION": {
-      "value": "pgsql",
-      "required": true
-    },
-    "SCREEENLY_DISABLE_SANDBOX": {
-      "value": true,
-      "required": true
-    },
-    "SESSION_DRIVER": {
-      "value": "database",
-      "required": true
-    },
-    "SCREEENLY_DISK": {
-      "description": "Filesystem Disk where Screenshots should be stored",
-      "value": "s3",
-      "required": true
-    }
-  },
   "addons": [
     "scheduler",
     {
