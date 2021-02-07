@@ -25,11 +25,6 @@
       "value": "production",
       "required": true
     },
-    "APP_KEY": {
-      "description": "Application secret key. Used for encryption.",
-      "value": "base64:...",
-      "required": true
-    },
     "APP_DEBUG": {
       "description": "If debug mode should be enabled",
       "value": false,
@@ -56,22 +51,6 @@
       "description": "Filesystem Disk where Screenshots should be stored",
       "value": "s3",
       "required": true
-    },
-    "AWS_ACCESS_KEY_ID": {
-      "description": "The AWS access key to access your bucket"
-    },
-    "AWS_SECRET_ACCESS_KEY": {
-      "description": "The AWS secret key to access your bucket"
-    },
-    "AWS_DEFAULT_REGION": {
-      "description": "The AWS region where files should be stored (eg. eu-central-1)",
-      "value": "eu-central-1"
-    },
-    "AWS_BUCKET": {
-      "description": "The bucket where your files will be stored"
-    },
-    "AWS_URL": {
-      "description": "URL where you're files will be hosted (https://BUCKET.s3.DEFAULT_REGION.amazonaws.com)"
     }
   },
   "addons": [
