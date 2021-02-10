@@ -92,7 +92,6 @@ class Screenshot
             if (Storage::disk(config('screeenly.filesystem_disk'))->exists($absolutePath) == false) {
                 throw new Exception("Screenshot can't be generated for given URL");
             }
-
         }
     }
 
