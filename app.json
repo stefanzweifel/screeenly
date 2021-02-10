@@ -11,9 +11,6 @@
   "website": "http://screeenly.com/",
   "repository": "https://github.com/stefanzweifel/screeenly",
   "success_url": "/",
-  "scripts": {
-    "postdeploy": "php artisan migrate --force"
-  },
   "addons": [
     "scheduler",
     {
