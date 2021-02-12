@@ -33,16 +33,29 @@ The repository itself will soon get updates for Laravel 7 and Laravel 8.
 
 ---
 
-
-
-
 ## Documentation and more
 
 The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentation.
 
 - [API specification](https://github.com/stefanzweifel/screeenly/wiki/Use-the-API)
-- [Self Hosting Guide](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install)
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
+
+
+## Self Hosting
+
+screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the application on your own server.
+
+### Self Hosting on your own Server
+
+If you're comfortable running your own server follow your self-hosting guide [here](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install).
+
+### Deploy to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stefanzweifel/screeenly/tree/master)
+
+
+If managing servers is not your thing, we've also written [a guide](https://github.com/stefanzweifel/screeenly/wiki/Deploy-to-Heroku) on how to deploy the app to Heroku.   
+By using Heroku, you can run your own version of screeenly basically for free. 
 
 ## Docker Images
 

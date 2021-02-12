@@ -54,9 +54,9 @@ class CaptureServiceTest extends BrowserKitTestCase
     /** @test */
     public function it_captures_screenshot_and_returns_screenshot_instance()
     {
-        Storage::fake('public');
+        Storage::fake(config('screeenly.filesystem_disk'));
 
-        Storage::disk('public')
+        Storage::disk(config('screeenly.filesystem_disk'))
             ->put(
                 'test-screenshot.jpg',
                 file_get_contents(storage_path('testing/test-screenshot.jpg'))

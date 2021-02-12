@@ -1,0 +1,34 @@
+{
+  "name": "screeenly",
+  "description": "Create screenshots of websites through a simple API",
+  "keywords": [
+    "screeenly",
+    "Laravel",
+    "PHP",
+    "screenshots",
+    "puppeteer"
+  ],
+  "website": "http://screeenly.com/",
+  "repository": "https://github.com/stefanzweifel/screeenly",
+  "success_url": "/",
+  "addons": [
+    "scheduler",
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "13"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    },
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/jontewks/puppeteer-heroku-buildpack"
+    }
+  ]
+}

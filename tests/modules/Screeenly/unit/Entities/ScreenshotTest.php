@@ -8,7 +8,7 @@ class ScreenshotTest extends BrowserKitTestCase
     {
         parent::setUp();
 
-        Storage::disk('public')->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
+        Storage::disk(config('screeenly.filesystem_disk'))->put('test-screenshot.jpg', file_get_contents(storage_path('testing/test-screenshot.jpg')));
     }
 
     /** @test */
@@ -46,7 +46,7 @@ class ScreenshotTest extends BrowserKitTestCase
     /** @test */
     public function it_deletes_screenshot_from_disk()
     {
-        Storage::disk('public')->delete('test-screenshot.jpg');
+        Storage::disk(config('screeenly.filesystem_disk'))->delete('test-screenshot.jpg');
 
         Storage::put(
             'test-screenshot-to-delete.jpg',
@@ -58,6 +58,6 @@ class ScreenshotTest extends BrowserKitTestCase
 
         $this->assertTrue($screenshot->delete());
 
-        Storage::disk('public')->assertMissing('test-screenshot-to-delete.jpg');
+        Storage::disk(config('screeenly.filesystem_disk'))->assertMissing('test-screenshot-to-delete.jpg');
     }
 }

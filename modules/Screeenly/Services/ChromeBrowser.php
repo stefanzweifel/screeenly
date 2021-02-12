@@ -28,9 +28,9 @@ class ChromeBrowser extends Browser implements CanCaptureScreenshot
             $browser->fullPage();
         }
 
-        Storage::disk('public')->put($filename, $browser->screenshot());
+        Storage::disk(config('screeenly.filesystem_disk'))->put($filename, $browser->screenshot());
 
-        $path = Storage::disk('public')->path($filename);
+        $path = Storage::disk(config('screeenly.filesystem_disk'))->path($filename);
 
         return new Screenshot($path);
     }

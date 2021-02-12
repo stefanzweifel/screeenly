@@ -8,4 +8,9 @@ return [
      */
     'disable_sandbox' => env('SCREEENLY_DISABLE_SANDBOX', false),
 
+    /**
+     * The Filesystem disk where screenshots are being stored
+     */
+    'filesystem_disk' => env('SCREEENLY_DISK', 'public'),
+
 ];

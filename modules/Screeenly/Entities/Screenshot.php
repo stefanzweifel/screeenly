@@ -27,13 +27,18 @@ class Screenshot
      */
     protected $publicUrl;
 
+    /**
+     * Screenshot constructor.
+     * @param $absolutePath
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
     public function __construct($absolutePath)
     {
         $this->doesScreenshotExist($absolutePath);
         $this->path = $absolutePath;
         $this->filename = basename($absolutePath);
-        $this->publicUrl = asset(Storage::url($this->filename));
-        $this->base64 = base64_encode(Storage::disk('public')->get($this->filename));
+        $this->publicUrl = asset(Storage::disk(config('screeenly.filesystem_disk'))->url($this->filename));
+        $this->base64 = base64_encode(Storage::disk(config('screeenly.filesystem_disk'))->get($this->filename));
     }
 
     /**
@@ -54,6 +59,9 @@ class Screenshot
         return $this->filename;
     }
 
+    /**
+     * @return string
+     */
     public function getPath()
     {
         return $this->path;
@@ -70,13 +78,20 @@ class Screenshot
 
     /**
      * Test if a file is available.
-     * @param  string $absolutePath
+     * @param string $absolutePath
      * @return void
+     * @throws Exception
      */
-    protected function doesScreenshotExist($absolutePath)
+    protected function doesScreenshotExist(string $absolutePath)
     {
-        if (file_exists($absolutePath) == false) {
-            throw new Exception("Screenshot can't be generated for given URL");
+        if (config('screeenly.filesystem_disk') == 'public') {
+            if (file_exists($absolutePath) == false) {
+                throw new Exception("Screenshot can't be generated for given URL");
+            }
+        } else {
+            if (Storage::disk(config('screeenly.filesystem_disk'))->exists($absolutePath) == false) {
+                throw new Exception("Screenshot can't be generated for given URL");
+            }
         }
     }
 
@@ -86,6 +101,6 @@ class Screenshot
      */
     public function delete()
     {
-        return Storage::disk('public')->delete($this->filename);
+        return Storage::disk(config('screeenly.filesystem_disk'))->delete($this->filename);
     }
 }

@@ -17,6 +17,7 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
         "sentry/sentry-laravel": "^2.1",
         "spatie/browsershot": "^3.40"
     },
