@@ -8,7 +8,6 @@ Artisan::command('screeenly:cleanup', function () {
         ->where('created_at', '<', Carbon::now()->subHours(1))
         ->get()
         ->each(function (ApiLog $log) {
-
             $this->info("Delete Log #{$log->id}");
 
             try {
