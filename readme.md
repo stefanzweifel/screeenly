@@ -49,6 +49,15 @@ screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the
 
 If you're comfortable running your own server follow your self-hosting guide [here](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install).
 
+
+### Deploy to Zeet
+
+
+[![Deploy](https://deploy.zeet.co/screeenly.svg)](https://deploy.zeet.co/?url=https://github.com/stefanzweifel/screeenly)
+
+Otherwise, Zeet makes deploying Screeenly dead simple, just click the button above. [This guide](https://github.com/stefanzweifel/screeenly/wiki/Deploy-to-Heroku) will walk you through the configuration needed.
+
+
 ### Deploy to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/stefanzweifel/screeenly/tree/master)
