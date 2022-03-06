@@ -8,18 +8,20 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "doctrine/dbal": "^2.11",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hammerstone/sidecar": "^0.3.8",
         "laravel/framework": "^8.18",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "league/flysystem-aws-s3-v3": "^1.0",
         "sentry/sentry-laravel": "^2.1",
-        "spatie/browsershot": "^3.40"
+        "spatie/browsershot": "^3.40",
+        "wnx/sidecar-browsershot": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
