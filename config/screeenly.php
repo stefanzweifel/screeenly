@@ -13,4 +13,6 @@ return [
      */
     'filesystem_disk' => env('SCREEENLY_DISK', 'public'),
 
+
+    'use_aws_lambda_browser' => env('SCREEENLY_USE_AWS_LAMBDA_BROWSER', false),
 ];
