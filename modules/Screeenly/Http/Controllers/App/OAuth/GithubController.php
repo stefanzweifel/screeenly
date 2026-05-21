@@ -3,6 +3,7 @@
 namespace Screeenly\Http\Controllers\App\OAuth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Screeenly\Models\User;
 
@@ -49,6 +50,10 @@ class GithubController extends Controller
             auth()->login($user);
 
             return redirect()->route('app.dashboard');
+        }
+
+        if (now()->gte(Carbon::parse(config('screeenly.dusk_date')))) {
+            return redirect()->route('register');
         }
 
         if (is_null($user->email)) {

@@ -15,4 +15,14 @@ return [
 
 
     'use_aws_lambda_browser' => env('SCREEENLY_USE_AWS_LAMBDA_BROWSER', false),
+
+    /*
+     * Date after which new user registrations are blocked.
+     */
+    'dusk_date' => '2026-07-01',
+
+    /*
+     * Date after which all API requests are blocked.
+     */
+    'sunset_date' => '2026-08-21',
 ];
