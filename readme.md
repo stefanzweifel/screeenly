@@ -76,28 +76,7 @@ screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the
 If you're comfortable running your own server follow your self-hosting guide [here](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install).
 
 
-### HTTPS with an HTTP exception for the API
-
-`deploy/nginx/screeenly.conf` redirects the website to HTTPS and keeps `/api/` and `/storage/` reachable over HTTP. Old API integrations call `http://screeenly.com/api/...` and break when that URL redirects. The config also writes HTTP API requests to a separate log, `screeenly-api-http.log`, so you can see who still uses HTTP.
-
-When you enable HTTPS, set `APP_URL=https://...` and `SESSION_SECURE_COOKIE=true` in `.env`. The screenshot URLs in API responses are built from `APP_URL`, so they switch to `https://`.
-
-
 #### Laravel Forge
-
-Forge manages the nginx file of each site, so don't replace it with `deploy/nginx/screeenly.conf`. Change the generated config instead:
-
-1. Set the site's PHP version to 8.5 and install the Let's Encrypt certificate (Site → SSL). Forge writes its own certificate paths into the config.
-2. Open Site → Nginx Configuration. Leave the `FORGE CONFIG (DO NOT REMOVE!)` include lines, the `root`, the `.well-known/acme-challenge` handling and the `fastcgi_pass` socket as they are.
-3. Find the HTTP-to-HTTPS redirect. It is either a separate `server { listen 80; ... return 301 ...; }` block or part of the port-80 block.
-4. In the port-80 block, add the `/api/`, `/storage/` and `\.php$` locations from `deploy/nginx/screeenly.conf`, and put the `location / { return 301 https://$host$request_uri; }` redirect after them. Copy the `fastcgi_pass` socket from Forge's existing block.
-5. Save. Forge runs `nginx -t` before it reloads nginx.
-6. Check both behaviors:
-   - `curl -i -X POST http://screeenly.com/api/v2/screenshot` returns an application response, not a 301.
-   - `curl -I http://screeenly.com/login` returns a 301 to HTTPS.
-7. In the site's environment, set `APP_URL=https://screeenly.com` and `SESSION_SECURE_COOKIE=true`.
-
-Forge rewrites the nginx file when you change the site's PHP version or reinstall the certificate. Re-apply your edits afterwards. `deploy/nginx/screeenly.conf` is the reference copy.
 
 Deploy script for the site:
 
