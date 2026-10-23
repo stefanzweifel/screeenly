@@ -29,7 +29,7 @@ In addition, you can now update a lot more settings; like pixel density or wethe
 
 The open source version of screeenly (this repo right here) which is hosted on [http://screeenly.com](http://screeenly.com) will remain available for the forseeable future. If anything should change and you've registered on screeenly.com, you will receive a notice. 
 
-The repository itself will soon get updates for Laravel 7 and Laravel 8.
+The repository runs on Laravel 13.
 
 ---
 
@@ -40,6 +40,32 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 - [API specification](https://github.com/stefanzweifel/screeenly/wiki/Use-the-API)
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
 
+
+## Requirements
+
+- PHP 8.5 or newer
+- Composer 2
+- Node.js 20 or newer, with `puppeteer` installed (`npm install`)
+- A Chrome binary for Puppeteer: `npx puppeteer browsers install chrome-headless-shell`
+- MySQL, PostgreSQL or SQLite
+
+Run the tests with `vendor/bin/phpunit`.
+Format the code with `composer format`.
+
+If you build the frontend assets on Node.js 17 or newer, run `NODE_OPTIONS=--openssl-legacy-provider npm run prod`. The compiled assets are committed, so you only need this when you change `resources/js` or `resources/sass`.
+
+## Upgrading from Laravel 8 (PHP 8.0)
+
+1. Switch the server to PHP 8.5 or newer.
+2. Run `composer install --no-dev --optimize-autoloader`.
+3. Run `npm install` and `npx puppeteer browsers install chrome-headless-shell`. Puppeteer 24 needs this separate download.
+4. Update `.env`:
+   - `CACHE_DRIVER` is now `CACHE_STORE`. The old name still works.
+   - `FILESYSTEM_DRIVER` is now `FILESYSTEM_DISK`. The old name still works.
+   - `MAIL_ENCRYPTION` is replaced by `MAIL_SCHEME`. Use `smtps` for implicit TLS (port 465). Leave it empty for STARTTLS (port 587).
+   - `BROADCAST_DRIVER` is no longer used. Remove it.
+5. Run `php artisan migrate --force`, then `php artisan optimize`.
+6. Restart queue workers and PHP-FPM.
 
 ## Self Hosting
 

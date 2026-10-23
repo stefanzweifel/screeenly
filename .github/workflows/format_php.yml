@@ -6,19 +6,34 @@ on:
       - master
   pull_request:
     paths:
-    - '**.php'
+      - '**.php'
 
 jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
-    - name: Run php-cs-fixer
-      uses: docker://oskarstark/php-cs-fixer-ga
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: none
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Apply php-cs-fixer changes
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Run php-cs-fixer
+        run: composer format
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Apply php-cs-fixer changes
