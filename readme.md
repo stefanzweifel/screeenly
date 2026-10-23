@@ -45,20 +45,20 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 
 - PHP 8.5 or newer
 - Composer 2
-- Node.js 20 or newer, with `puppeteer` installed (`npm install`)
+- Node.js 22 or newer and npm
 - A Chrome binary for Puppeteer: `npx puppeteer browsers install chrome-headless-shell`
 - MySQL, PostgreSQL or SQLite
 
 Run the tests with `vendor/bin/phpunit`.
 Format the code with `composer format`.
 
-If you build the frontend assets on Node.js 17 or newer, run `NODE_OPTIONS=--openssl-legacy-provider npm run prod`. The compiled assets are committed, so you only need this when you change `resources/js` or `resources/sass`.
+Build the frontend assets with `npm ci && npm run build`. The compiled files in `public/css`, `public/js` and `public/mix-manifest.json` are committed. Rebuild and commit them after you change `resources/js` or `resources/sass`. `npm run dev` builds without minification, `npm run watch` rebuilds on changes.
 
 ## Upgrading from Laravel 8 (PHP 8.0)
 
 1. Switch the server to PHP 8.5 or newer.
 2. Run `composer install --no-dev --optimize-autoloader`.
-3. Run `npm install` and `npx puppeteer browsers install chrome-headless-shell`. Puppeteer 24 needs this separate download.
+3. Run `npm ci`, `npm run build` and `npx puppeteer browsers install chrome-headless-shell`. Puppeteer 24 needs this separate download.
 4. Update `.env`:
    - `CACHE_DRIVER` is now `CACHE_STORE`. The old name still works.
    - `FILESYSTEM_DRIVER` is now `FILESYSTEM_DISK`. The old name still works.
@@ -107,7 +107,7 @@ git pull origin $FORGE_SITE_BRANCH
 
 $FORGE_COMPOSER install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
-npm install --omit=dev
+npm ci
 npx puppeteer browsers install chrome-headless-shell
 
 ( flock -w 10 9 || exit 1

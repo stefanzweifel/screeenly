@@ -16,7 +16,7 @@ php artisan storage:link        # Link public storage (auto-runs on install/upda
 **Frontend**
 ```bash
 npm run dev                     # Build assets (development)
-npm run prod                    # Build assets (production)
+npm run build                   # Build assets (production)
 npm run watch                   # Watch + rebuild on change
 ```
 
@@ -111,7 +111,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Frontend Bundling
 
-- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `yarn run build` or ask the user to run `yarn run dev` or `composer run dev`.
+- If a frontend change doesn't show in the UI or you get a "Unable to locate file in Vite manifest" error, run `npm run build` or ask the user to run `npm run dev` or `composer run dev`.
 
 ## Documentation Files
 

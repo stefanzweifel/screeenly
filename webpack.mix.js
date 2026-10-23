@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const glob = require('glob-all');
 require('laravel-mix-purgecss');
 
 /*
@@ -16,12 +15,12 @@ require('laravel-mix-purgecss');
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .purgeCss({
-        folders: ['resources', 'modules'],
-
-        whitelistPatterns: [
-            /Layer_1/,
-            /st1/
-        ],
+        extend: {
+            content: ['modules/**/*.php'],
+            safelist: {
+                greedy: [/Layer_1/, /st1/],
+            },
+        },
     })
    .options({
         processCssUrls: false
