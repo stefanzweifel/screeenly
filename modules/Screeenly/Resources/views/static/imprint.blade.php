@@ -12,7 +12,7 @@
             Boulevard Lilienthal 54 <br>
             CH-8152 Glattpark
         </p>
-        <a href="mailto:hello@stefanzweifel.io">hello@stefanzweifel.io</a>
+        <a href="mailto:stefan@stefanzweifel.dev">stefan@stefanzweifel.dev</a>
 
     </div>
 </div>

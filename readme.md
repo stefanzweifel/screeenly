@@ -103,7 +103,7 @@ If you're interested in a Docker version of screeenly, you can use the daily bui
 
 # Security
 
-If you discover a security vulnerability within this package, please e-mail us at hello@stefanzweifel.io. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please e-mail us at stefan@stefanzweifel.dev. All security vulnerabilities will be promptly addressed.
 
 # LICENSE
 
