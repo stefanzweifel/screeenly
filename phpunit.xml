@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="vendor/autoload.php" colors="true">
-  <coverage processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">./app</directory>
-      <directory suffix=".php">./modules</directory>
-    </include>
-    <exclude>
-      <directory suffix="blade.php">./modules</directory>
-      <directory suffix="php">./modules/Screeenly/Http/routes</directory>
-    </exclude>
-  </coverage>
-  <testsuites>
-    <testsuite name="Tests">
-      <directory suffix="Test.php">./tests/</directory>
-    </testsuite>
-  </testsuites>
-  <php>
-    <server name="APP_ENV" value="testing"/>
-    <server name="BCRYPT_ROUNDS" value="4"/>
-    <server name="CACHE_DRIVER" value="array"/>
-    <server name="DB_CONNECTION" value="sqlite"/>
-    <server name="DB_DATABASE" value=":memory:"/>
-    <server name="MAIL_MAILER" value="array"/>
-    <server name="QUEUE_CONNECTION" value="sync"/>
-    <server name="SESSION_DRIVER" value="array"/>
-    <server name="TELESCOPE_ENABLED" value="false"/>
-    <server name="SCREEENLY_DISK" value="public"/>
-  </php>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Tests">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./modules</directory>
+        </include>
+        <exclude>
+            <directory suffix="blade.php">./modules</directory>
+            <directory suffix=".php">./modules/Screeenly/Http/routes</directory>
+        </exclude>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:dRiJaux3IZ968P3RSpQ5oOG5bNwhHmGyfyCIrAC4ozs="/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_URL" value=""/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="SCREEENLY_DISK" value="public"/>
+    </php>
 </phpunit>
