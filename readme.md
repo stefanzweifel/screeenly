@@ -76,6 +76,13 @@ screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the
 If you're comfortable running your own server follow your self-hosting guide [here](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install).
 
 
+### HTTPS with an HTTP exception for the API
+
+`deploy/nginx/screeenly.conf` redirects the website to HTTPS and keeps `/api/` and `/storage/` reachable over HTTP. Old API integrations call `http://screeenly.com/api/...` and break when that URL redirects. The config also writes HTTP API requests to a separate log, `screeenly-api-http.log`, so you can see who still uses HTTP.
+
+When you enable HTTPS, set `APP_URL=https://...` and `SESSION_SECURE_COOKIE=true` in `.env`. The screenshot URLs in API responses are built from `APP_URL`, so they switch to `https://`.
+
+
 ### Deploy to Zeet
 
 
