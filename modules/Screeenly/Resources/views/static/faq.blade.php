@@ -23,7 +23,7 @@
 
         <h3>I have a problem. How can I reach you?</h3>
         <p>
-            The best way is to send me an email at <a href="mailto:hello@stefanzweifel.io">hello@stefanzweifel.io</a> or @ me at <a href="http://twitter.com/@_stefanzweifel">@_stefanzweifel</a> or <a href="http://twitter.com/@screeenly">@screeenly</a> on Twitter.
+            The best way is to send me an email at <a href="mailto:stefan@stefanzweifel.dev">stefan@stefanzweifel.dev</a> or @ me at <a href="http://twitter.com/@_stefanzweifel">@_stefanzweifel</a> or <a href="http://twitter.com/@screeenly">@screeenly</a> on Twitter.
         </p>
         <p>
             Due to the fact that this is just a side project I can't guarantee an answer in the next 5 minutes (I usually answer in the next 24 hours)

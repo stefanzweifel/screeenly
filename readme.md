@@ -29,7 +29,7 @@ In addition, you can now update a lot more settings; like pixel density or wethe
 
 The open source version of screeenly (this repo right here) which is hosted on [http://screeenly.com](http://screeenly.com) will remain available for the forseeable future. If anything should change and you've registered on screeenly.com, you will receive a notice. 
 
-The repository itself will soon get updates for Laravel 7 and Laravel 8.
+The repository runs on Laravel 13.
 
 ---
 
@@ -41,6 +41,32 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 - [Read about the code structure](https://github.com/stefanzweifel/screeenly/wiki/Read-the-Code)
 
 
+## Requirements
+
+- PHP 8.5 or newer
+- Composer 2
+- Node.js 20 or newer, with `puppeteer` installed (`npm install`)
+- A Chrome binary for Puppeteer: `npx puppeteer browsers install chrome-headless-shell`
+- MySQL, PostgreSQL or SQLite
+
+Run the tests with `vendor/bin/phpunit`.
+Format the code with `composer format`.
+
+If you build the frontend assets on Node.js 17 or newer, run `NODE_OPTIONS=--openssl-legacy-provider npm run prod`. The compiled assets are committed, so you only need this when you change `resources/js` or `resources/sass`.
+
+## Upgrading from Laravel 8 (PHP 8.0)
+
+1. Switch the server to PHP 8.5 or newer.
+2. Run `composer install --no-dev --optimize-autoloader`.
+3. Run `npm install` and `npx puppeteer browsers install chrome-headless-shell`. Puppeteer 24 needs this separate download.
+4. Update `.env`:
+   - `CACHE_DRIVER` is now `CACHE_STORE`. The old name still works.
+   - `FILESYSTEM_DRIVER` is now `FILESYSTEM_DISK`. The old name still works.
+   - `MAIL_ENCRYPTION` is replaced by `MAIL_SCHEME`. Use `smtps` for implicit TLS (port 465). Leave it empty for STARTTLS (port 587).
+   - `BROADCAST_DRIVER` is no longer used. Remove it.
+5. Run `php artisan migrate --force`, then `php artisan optimize`.
+6. Restart queue workers and PHP-FPM.
+
 ## Self Hosting
 
 screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the application on your own server.
@@ -49,6 +75,49 @@ screeenly is quite a simple PHP app. Therefore, it's quite easy to self host the
 
 If you're comfortable running your own server follow your self-hosting guide [here](https://github.com/stefanzweifel/screeenly/wiki/Requirements-and-Install).
 
+
+### HTTPS with an HTTP exception for the API
+
+`deploy/nginx/screeenly.conf` redirects the website to HTTPS and keeps `/api/` and `/storage/` reachable over HTTP. Old API integrations call `http://screeenly.com/api/...` and break when that URL redirects. The config also writes HTTP API requests to a separate log, `screeenly-api-http.log`, so you can see who still uses HTTP.
+
+When you enable HTTPS, set `APP_URL=https://...` and `SESSION_SECURE_COOKIE=true` in `.env`. The screenshot URLs in API responses are built from `APP_URL`, so they switch to `https://`.
+
+
+#### Laravel Forge
+
+Forge manages the nginx file of each site, so don't replace it with `deploy/nginx/screeenly.conf`. Change the generated config instead:
+
+1. Set the site's PHP version to 8.5 and install the Let's Encrypt certificate (Site → SSL). Forge writes its own certificate paths into the config.
+2. Open Site → Nginx Configuration. Leave the `FORGE CONFIG (DO NOT REMOVE!)` include lines, the `root`, the `.well-known/acme-challenge` handling and the `fastcgi_pass` socket as they are.
+3. Find the HTTP-to-HTTPS redirect. It is either a separate `server { listen 80; ... return 301 ...; }` block or part of the port-80 block.
+4. In the port-80 block, add the `/api/`, `/storage/` and `\.php$` locations from `deploy/nginx/screeenly.conf`, and put the `location / { return 301 https://$host$request_uri; }` redirect after them. Copy the `fastcgi_pass` socket from Forge's existing block.
+5. Save. Forge runs `nginx -t` before it reloads nginx.
+6. Check both behaviors:
+   - `curl -i -X POST http://screeenly.com/api/v2/screenshot` returns an application response, not a 301.
+   - `curl -I http://screeenly.com/login` returns a 301 to HTTPS.
+7. In the site's environment, set `APP_URL=https://screeenly.com` and `SESSION_SECURE_COOKIE=true`.
+
+Forge rewrites the nginx file when you change the site's PHP version or reinstall the certificate. Re-apply your edits afterwards. `deploy/nginx/screeenly.conf` is the reference copy.
+
+Deploy script for the site:
+
+```bash
+cd $FORGE_SITE_PATH
+git pull origin $FORGE_SITE_BRANCH
+
+$FORGE_COMPOSER install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+npm install --omit=dev
+npx puppeteer browsers install chrome-headless-shell
+
+( flock -w 10 9 || exit 1
+    echo 'Restarting FPM...'; sudo -S service $FORGE_PHP_FPM reload ) 9>/tmp/fpmlock
+
+$FORGE_PHP artisan migrate --force
+$FORGE_PHP artisan optimize
+```
+
+The scheduler runs `screeenly:cleanup` every hour. Add a Forge scheduled job `php artisan schedule:run` every minute so it runs.
 
 ### Deploy to Zeet
 
@@ -77,7 +146,7 @@ If you're interested in a Docker version of screeenly, you can use the daily bui
 
 # Security
 
-If you discover a security vulnerability within this package, please e-mail us at hello@stefanzweifel.io. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please e-mail us at stefan@stefanzweifel.dev. All security vulnerabilities will be promptly addressed.
 
 # LICENSE
 
