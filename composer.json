@@ -8,35 +8,32 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "doctrine/dbal": "^2.11",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "hammerstone/sidecar": "^0.3.8",
-        "laravel/framework": "^8.18",
+        "php": "^8.5",
+        "guzzlehttp/guzzle": "^7.9",
+        "hammerstone/sidecar": "^0.8",
+        "laravel/framework": "^13.0",
         "laravel/socialite": "^5.0",
-        "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.0",
-        "league/flysystem-aws-s3-v3": "^1.0",
-        "sentry/sentry-laravel": "^2.1",
-        "spatie/browsershot": "^3.40",
-        "wnx/sidecar-browsershot": "^1.0"
+        "laravel/tinker": "^3.0",
+        "laravel/ui": "^4.6",
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "sentry/sentry-laravel": "^4.0",
+        "spatie/browsershot": "^5.0",
+        "wnx/sidecar-browsershot": "^3.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "laravel/browser-kit-testing": "^6.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3",
-        "wnx/laravel-stats": "^2.4",
-        "fakerphp/faker": "^1.9.1"
+        "fakerphp/faker": "^1.23",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "laravel/boost": "^2.10",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^12.0",
+        "wnx/laravel-stats": "^2.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {}
     },
     "extra": {
         "laravel": {
@@ -52,17 +49,11 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/BrowserKitTestCase.php",
-            "tests/modules/Screeenly/support/InteractsWithBrowser.php"
-        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "minimum-stability": "stable",
     "scripts": {
         "format": [
             "php-cs-fixer fix"
@@ -74,16 +65,20 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan storage:link"
-        ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan storage:link"
+            "@php artisan storage:link --force"
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "@php artisan storage:link --force"
         ]
-    }
+    },
+    "prefer-stable": true
 }
