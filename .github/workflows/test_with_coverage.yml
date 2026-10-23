@@ -26,13 +26,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
-      - name: Install Puppeteer
+      - name: Install Node dependencies and build assets
         run: |
-          npm i puppeteer --no-save
+          npm ci
+          npm run build
           npx puppeteer browsers install chrome-headless-shell
 
       - name: Copy Environment file

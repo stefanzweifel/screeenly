@@ -13,3 +13,6 @@ Homestead.yaml
 /.agents
 /.claude
 /.mcp.json
+/public/css
+/public/js
+/public/mix-manifest.json
