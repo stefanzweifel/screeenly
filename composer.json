@@ -16,7 +16,6 @@
         "laravel/tinker": "^3.0",
         "laravel/ui": "^4.6",
         "league/flysystem-aws-s3-v3": "^3.0",
-        "sentry/sentry-laravel": "^4.0",
         "spatie/browsershot": "^5.0",
         "wnx/sidecar-browsershot": "^3.0"
     },
