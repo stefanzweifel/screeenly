@@ -52,7 +52,7 @@ The [wiki](https://github.com/stefanzweifel/screeenly/wiki) holds the documentat
 Run the tests with `vendor/bin/phpunit`.
 Format the code with `composer format`.
 
-Build the frontend assets with `npm ci && npm run build`. The compiled files in `public/css`, `public/js` and `public/mix-manifest.json` are not committed, so every deploy has to build them. `npm run dev` builds without minification, `npm run watch` rebuilds on changes.
+Build the frontend assets with `npm ci && npm run build`. The compiled files in `public/css`, `public/js` and `public/mix-manifest.json` are committed. Rebuild and commit them after you change `resources/js` or `resources/sass`. `npm run dev` builds without minification, `npm run watch` rebuilds on changes.
 
 ## Upgrading from Laravel 8 (PHP 8.0)
 
@@ -108,7 +108,6 @@ git pull origin $FORGE_SITE_BRANCH
 $FORGE_COMPOSER install --no-dev --no-interaction --prefer-dist --optimize-autoloader
 
 npm ci
-npm run build
 npx puppeteer browsers install chrome-headless-shell
 
 ( flock -w 10 9 || exit 1
